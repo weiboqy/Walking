@@ -21,8 +21,7 @@
     
     NSLog(@"00000");
     NSLog(@"jiurong +1");
-<<<<<<< HEAD
-=======
+
     
 
     
@@ -31,10 +30,10 @@
 
     NSLog(@"111111110");
     
-    NSLog(@"jiurong000000hehe");
+    NSLog(@"jiurong000000hehe5555");
     
 
->>>>>>> c418c1928552ce0e6d202cb9019fed0fe1e79847
+
 
     // Do any additional setup after loading the view, typically from a nib.
 }
