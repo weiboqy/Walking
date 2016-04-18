@@ -22,20 +22,17 @@
     NSLog(@"00000");
     NSLog(@"jiurong +1");
     
-<<<<<<< HEAD
-    //wangjin
-=======
+
     
     NSLog(@"000055");
     
-<<<<<<< HEAD
+
     NSLog(@"111111110");
     
+    NSLog(@"jiurong000000hehe");
+    
 
-=======
-    //围脖
->>>>>>> f0d07bfb0b17383f453da8f9ce51dc659ffe2ee7
->>>>>>> 0156df0110435b1f31f48f12176231a91bc3d6ed
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 
