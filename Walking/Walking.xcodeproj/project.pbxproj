@@ -101,6 +101,7 @@
 		79FAC4881CC4E39F0068C093 /* Walking */ = {
 			isa = PBXGroup;
 			children = (
+				79FAC4BC1CC5303D0068C093 /* Base */,
 				79FAC48C1CC4E39F0068C093 /* AppDelegate.h */,
 				79FAC48D1CC4E39F0068C093 /* AppDelegate.m */,
 				79FAC48F1CC4E39F0068C093 /* ViewController.h */,
@@ -138,6 +139,133 @@
 				79FAC4B01CC4E39F0068C093 /* Info.plist */,
 			);
 			path = WalkingUITests;
+			sourceTree = "<group>";
+		};
+		79FAC4BC1CC5303D0068C093 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				79FAC4BD1CC5303D0068C093 /* Me */,
+				79FAC4C11CC5303D0068C093 /* Others */,
+				79FAC4C41CC5303D0068C093 /* Recommend */,
+				79FAC4C81CC5303D0068C093 /* World */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		79FAC4BD1CC5303D0068C093 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				79FAC4BE1CC5303D0068C093 /* Models */,
+				79FAC4BF1CC5303D0068C093 /* ViewControllers */,
+				79FAC4C01CC5303D0068C093 /* Views */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		79FAC4BE1CC5303D0068C093 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		79FAC4BF1CC5303D0068C093 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		79FAC4C01CC5303D0068C093 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		79FAC4C11CC5303D0068C093 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				79FAC4C21CC5303D0068C093 /* ViewControllers */,
+				79FAC4C31CC5303D0068C093 /* Views */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		79FAC4C21CC5303D0068C093 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		79FAC4C31CC5303D0068C093 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		79FAC4C41CC5303D0068C093 /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				79FAC4C51CC5303D0068C093 /* Models */,
+				79FAC4C61CC5303D0068C093 /* ViewControllers */,
+				79FAC4C71CC5303D0068C093 /* Views */,
+			);
+			path = Recommend;
+			sourceTree = "<group>";
+		};
+		79FAC4C51CC5303D0068C093 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		79FAC4C61CC5303D0068C093 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		79FAC4C71CC5303D0068C093 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		79FAC4C81CC5303D0068C093 /* World */ = {
+			isa = PBXGroup;
+			children = (
+				79FAC4C91CC5303D0068C093 /* Models */,
+				79FAC4CA1CC5303D0068C093 /* ViewControllers */,
+				79FAC4CB1CC5303D0068C093 /* Views */,
+			);
+			path = World;
+			sourceTree = "<group>";
+		};
+		79FAC4C91CC5303D0068C093 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		79FAC4CA1CC5303D0068C093 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		79FAC4CB1CC5303D0068C093 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,6 +627,7 @@
 				79FAC4B51CC4E39F0068C093 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		79FAC4B61CC4E39F0068C093 /* Build configuration list for PBXNativeTarget "WalkingTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +636,7 @@
 				79FAC4B81CC4E39F0068C093 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		79FAC4B91CC4E39F0068C093 /* Build configuration list for PBXNativeTarget "WalkingUITests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +645,7 @@
 				79FAC4BB1CC4E39F0068C093 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
