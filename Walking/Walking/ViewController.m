@@ -18,22 +18,8 @@
     [super viewDidLoad];
     
     
+  
     
-    NSLog(@"00000");
-    NSLog(@"jiurong +1");
-
-    
-
-    
-    NSLog(@"000055");
-    
-
-    NSLog(@"111111110");
-    
-
-    NSLog(@"jiurong");
-
-    NSLog(@"ouououo00");
     
 
 
