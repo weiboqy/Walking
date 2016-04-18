@@ -25,10 +25,7 @@
     
     NSLog(@"000055");
     
-<<<<<<< HEAD
-=======
-    //围脖
->>>>>>> f0d07bfb0b17383f453da8f9ce51dc659ffe2ee7
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 
