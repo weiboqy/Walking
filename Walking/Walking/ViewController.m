@@ -21,6 +21,7 @@
     
     NSLog(@"00000");
     NSLog(@"jiurong +1");
+
     
 
     
@@ -29,8 +30,13 @@
 
     NSLog(@"111111110");
     
-    NSLog(@"jiurong000000hehe0000");
+
+    NSLog(@"jiurong");
+
+    NSLog(@"jiuronghhhhhhhhh");
     
+
+
 
 
     // Do any additional setup after loading the view, typically from a nib.
