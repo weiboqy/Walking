@@ -21,7 +21,7 @@
     
     NSLog(@"00000");
     NSLog(@"jiurong +1");
-    NSLog(@"wangjin");
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 
