@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "WKTabBarViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +17,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // window作为启动窗口
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    // 根视图
+    self.window.rootViewController = [[WKTabBarViewController alloc]init];
+    // 窗口展示
+    [self.window makeKeyAndVisible];
+    
+    
+    
     // Override point for customization after application launch.
     return YES;
 }
