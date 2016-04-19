@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7907618C1CC654020097EF89 /* WKWorldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907618B1CC654020097EF89 /* WKWorldView.m */; };
+		7907618F1CC654170097EF89 /* WKWorldListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907618E1CC654170097EF89 /* WKWorldListModel.m */; };
+		790761921CC6544A0097EF89 /* WKNavigtionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 790761911CC6544A0097EF89 /* WKNavigtionBar.m */; };
+		790761951CC6545E0097EF89 /* WKRecommendListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790761941CC6545E0097EF89 /* WKRecommendListModel.m */; };
+		790761981CC6546F0097EF89 /* WKRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 790761971CC6546F0097EF89 /* WKRecommendView.m */; };
 		79FAC48B1CC4E39F0068C093 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC48A1CC4E39F0068C093 /* main.m */; };
 		79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC48D1CC4E39F0068C093 /* AppDelegate.m */; };
 		79FAC4961CC4E39F0068C093 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4951CC4E39F0068C093 /* Assets.xcassets */; };
@@ -41,10 +46,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7907618A1CC654020097EF89 /* WKWorldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldView.h; sourceTree = "<group>"; };
+		7907618B1CC654020097EF89 /* WKWorldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWorldView.m; sourceTree = "<group>"; };
+		7907618D1CC654170097EF89 /* WKWorldListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldListModel.h; sourceTree = "<group>"; };
+		7907618E1CC654170097EF89 /* WKWorldListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWorldListModel.m; sourceTree = "<group>"; };
+		790761901CC6544A0097EF89 /* WKNavigtionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKNavigtionBar.h; sourceTree = "<group>"; };
+		790761911CC6544A0097EF89 /* WKNavigtionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKNavigtionBar.m; sourceTree = "<group>"; };
+		790761931CC6545E0097EF89 /* WKRecommendListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendListModel.h; sourceTree = "<group>"; };
+		790761941CC6545E0097EF89 /* WKRecommendListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendListModel.m; sourceTree = "<group>"; };
+		790761961CC6546F0097EF89 /* WKRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendView.h; sourceTree = "<group>"; };
+		790761971CC6546F0097EF89 /* WKRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendView.m; sourceTree = "<group>"; };
 		79FAC4861CC4E39F0068C093 /* Walking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Walking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FAC48A1CC4E39F0068C093 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		79FAC48C1CC4E39F0068C093 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		79FAC48D1CC4E39F0068C093 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		79FAC48C1CC4E39F0068C093 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../../AppDelegate.h; sourceTree = "<group>"; };
+		79FAC48D1CC4E39F0068C093 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../../AppDelegate.m; sourceTree = "<group>"; };
 		79FAC4951CC4E39F0068C093 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79FAC4981CC4E39F0068C093 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79FAC49A1CC4E39F0068C093 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,11 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				79FAC4BC1CC5303D0068C093 /* Base */,
-				79FAC48C1CC4E39F0068C093 /* AppDelegate.h */,
-				79FAC48D1CC4E39F0068C093 /* AppDelegate.m */,
-				79FAC4951CC4E39F0068C093 /* Assets.xcassets */,
-				79FAC4971CC4E39F0068C093 /* LaunchScreen.storyboard */,
-				79FAC49A1CC4E39F0068C093 /* Info.plist */,
 				79FAC4891CC4E39F0068C093 /* Supporting Files */,
 			);
 			path = Walking;
@@ -131,6 +141,9 @@
 		79FAC4891CC4E39F0068C093 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				79FAC4951CC4E39F0068C093 /* Assets.xcassets */,
+				79FAC4971CC4E39F0068C093 /* LaunchScreen.storyboard */,
+				79FAC49A1CC4E39F0068C093 /* Info.plist */,
 				79FAC48A1CC4E39F0068C093 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -195,6 +208,8 @@
 		79FAC4C01CC5303D0068C093 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				79FAC48C1CC4E39F0068C093 /* AppDelegate.h */,
+				79FAC48D1CC4E39F0068C093 /* AppDelegate.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,6 +237,8 @@
 		79FAC4C31CC5303D0068C093 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				790761901CC6544A0097EF89 /* WKNavigtionBar.h */,
+				790761911CC6544A0097EF89 /* WKNavigtionBar.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,6 +256,8 @@
 		79FAC4C51CC5303D0068C093 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				790761931CC6545E0097EF89 /* WKRecommendListModel.h */,
+				790761941CC6545E0097EF89 /* WKRecommendListModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,6 +275,8 @@
 		79FAC4C71CC5303D0068C093 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				790761961CC6546F0097EF89 /* WKRecommendView.h */,
+				790761971CC6546F0097EF89 /* WKRecommendView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -273,6 +294,8 @@
 		79FAC4C91CC5303D0068C093 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7907618D1CC654170097EF89 /* WKWorldListModel.h */,
+				7907618E1CC654170097EF89 /* WKWorldListModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -290,6 +313,8 @@
 		79FAC4CB1CC5303D0068C093 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7907618A1CC654020097EF89 /* WKWorldView.h */,
+				7907618B1CC654020097EF89 /* WKWorldView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -430,10 +455,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				79FAC4D71CC5329A0068C093 /* WKTabBarViewController.m in Sources */,
+				7907618F1CC654170097EF89 /* WKWorldListModel.m in Sources */,
 				79FAC4E01CC533220068C093 /* WKWorldViewController.m in Sources */,
+				790761981CC6546F0097EF89 /* WKRecommendView.m in Sources */,
+				790761951CC6545E0097EF89 /* WKRecommendListModel.m in Sources */,
+				790761921CC6544A0097EF89 /* WKNavigtionBar.m in Sources */,
 				79FAC4E51CC533300068C093 /* WKMeViewController.m in Sources */,
 				79FAC4D41CC5328B0068C093 /* WKNavigationViewController.m in Sources */,
 				79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */,
+				7907618C1CC654020097EF89 /* WKWorldView.m in Sources */,
 				79FAC48B1CC4E39F0068C093 /* main.m in Sources */,
 				79FAC4DB1CC533130068C093 /* WKRecommendViewController.m in Sources */,
 			);
