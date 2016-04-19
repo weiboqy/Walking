@@ -43,8 +43,8 @@
 /* Begin PBXFileReference section */
 		79FAC4861CC4E39F0068C093 /* Walking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Walking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FAC48A1CC4E39F0068C093 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		79FAC48C1CC4E39F0068C093 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		79FAC48D1CC4E39F0068C093 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		79FAC48C1CC4E39F0068C093 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../../AppDelegate.h; sourceTree = "<group>"; };
+		79FAC48D1CC4E39F0068C093 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../../AppDelegate.m; sourceTree = "<group>"; };
 		79FAC4951CC4E39F0068C093 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79FAC4981CC4E39F0068C093 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79FAC49A1CC4E39F0068C093 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,11 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				79FAC4BC1CC5303D0068C093 /* Base */,
-				79FAC48C1CC4E39F0068C093 /* AppDelegate.h */,
-				79FAC48D1CC4E39F0068C093 /* AppDelegate.m */,
-				79FAC4951CC4E39F0068C093 /* Assets.xcassets */,
-				79FAC4971CC4E39F0068C093 /* LaunchScreen.storyboard */,
-				79FAC49A1CC4E39F0068C093 /* Info.plist */,
 				79FAC4891CC4E39F0068C093 /* Supporting Files */,
 			);
 			path = Walking;
@@ -131,6 +126,9 @@
 		79FAC4891CC4E39F0068C093 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				79FAC4951CC4E39F0068C093 /* Assets.xcassets */,
+				79FAC4971CC4E39F0068C093 /* LaunchScreen.storyboard */,
+				79FAC49A1CC4E39F0068C093 /* Info.plist */,
 				79FAC48A1CC4E39F0068C093 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -195,6 +193,8 @@
 		79FAC4C01CC5303D0068C093 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				79FAC48C1CC4E39F0068C093 /* AppDelegate.h */,
+				79FAC48D1CC4E39F0068C093 /* AppDelegate.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";

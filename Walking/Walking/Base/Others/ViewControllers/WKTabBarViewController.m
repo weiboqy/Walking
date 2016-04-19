@@ -51,13 +51,13 @@
     
     // 推荐模块
     WKRecommendViewController *recommendVC = [[WKRecommendViewController alloc]init];
-    [self createChildView:recommendVC title:@"推荐" image:@"推荐" selectedImage:@"推荐1"];
+    [self createChildView:recommendVC title:@"推荐" image:@"写字" selectedImage:nil];
     // 时间模块
     WKWorldViewController *worldVC = [[WKWorldViewController alloc]init];
-    [self createChildView:worldVC title:@"世界" image:@"地点" selectedImage:@"地点1"];
+    [self createChildView:worldVC title:@"世界" image:@"写字" selectedImage:nil];
     // 我 模块
     WKMeViewController *meVC = [[WKMeViewController alloc]init];
-    [self createChildView:meVC title:@"我" image:@"我" selectedImage:@"我1"];
+    [self createChildView:meVC title:@"我" image:@"写字" selectedImage:nil];
 }
 
 - (void)didReceiveMemoryWarning {
