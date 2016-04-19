@@ -22,14 +22,6 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)createListView {
-//    self.rootScrollView.contentSize = CGSizeMake(<#CGFloat width#>, <#CGFloat height#>)
-    
-    
-    NSLog(@"wj测试分支20:37");
-    
-}
-
 
 
 - (void)didReceiveMemoryWarning {
