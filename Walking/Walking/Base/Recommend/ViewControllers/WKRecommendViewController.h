@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WKRecommendViewController.h
 //  Walking
 //
 //  Created by lanou on 16/4/18.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface WKRecommendViewController : UIViewController
 
 @end
-

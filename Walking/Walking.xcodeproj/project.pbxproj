@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		79FAC48B1CC4E39F0068C093 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC48A1CC4E39F0068C093 /* main.m */; };
 		79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC48D1CC4E39F0068C093 /* AppDelegate.m */; };
-		79FAC4911CC4E39F0068C093 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC4901CC4E39F0068C093 /* ViewController.m */; };
-		79FAC4941CC4E39F0068C093 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4921CC4E39F0068C093 /* Main.storyboard */; };
 		79FAC4961CC4E39F0068C093 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4951CC4E39F0068C093 /* Assets.xcassets */; };
 		79FAC4991CC4E39F0068C093 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4971CC4E39F0068C093 /* LaunchScreen.storyboard */; };
 		79FAC4A41CC4E39F0068C093 /* WalkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC4A31CC4E39F0068C093 /* WalkingTests.m */; };
 		79FAC4AF1CC4E39F0068C093 /* WalkingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC4AE1CC4E39F0068C093 /* WalkingUITests.m */; };
+		79FAC4D41CC5328B0068C093 /* WKNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC4D31CC5328B0068C093 /* WKNavigationViewController.m */; };
+		79FAC4D71CC5329A0068C093 /* WKTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC4D61CC5329A0068C093 /* WKTabBarViewController.m */; };
+		79FAC4DB1CC533130068C093 /* WKRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC4D91CC533130068C093 /* WKRecommendViewController.m */; };
+		79FAC4DC1CC533130068C093 /* WKRecommendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4DA1CC533130068C093 /* WKRecommendViewController.xib */; };
+		79FAC4E01CC533220068C093 /* WKWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC4DE1CC533220068C093 /* WKWorldViewController.m */; };
+		79FAC4E11CC533220068C093 /* WKWorldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4DF1CC533220068C093 /* WKWorldViewController.xib */; };
+		79FAC4E51CC533300068C093 /* WKMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC4E31CC533300068C093 /* WKMeViewController.m */; };
+		79FAC4E61CC533300068C093 /* WKMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4E41CC533300068C093 /* WKMeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +45,6 @@
 		79FAC48A1CC4E39F0068C093 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		79FAC48C1CC4E39F0068C093 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		79FAC48D1CC4E39F0068C093 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		79FAC48F1CC4E39F0068C093 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		79FAC4901CC4E39F0068C093 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		79FAC4931CC4E39F0068C093 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		79FAC4951CC4E39F0068C093 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79FAC4981CC4E39F0068C093 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79FAC49A1CC4E39F0068C093 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +54,19 @@
 		79FAC4AA1CC4E39F0068C093 /* WalkingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalkingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FAC4AE1CC4E39F0068C093 /* WalkingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalkingUITests.m; sourceTree = "<group>"; };
 		79FAC4B01CC4E39F0068C093 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79FAC4D21CC5328B0068C093 /* WKNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKNavigationViewController.h; sourceTree = "<group>"; };
+		79FAC4D31CC5328B0068C093 /* WKNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKNavigationViewController.m; sourceTree = "<group>"; };
+		79FAC4D51CC5329A0068C093 /* WKTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTabBarViewController.h; sourceTree = "<group>"; };
+		79FAC4D61CC5329A0068C093 /* WKTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTabBarViewController.m; sourceTree = "<group>"; };
+		79FAC4D81CC533130068C093 /* WKRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendViewController.h; sourceTree = "<group>"; };
+		79FAC4D91CC533130068C093 /* WKRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendViewController.m; sourceTree = "<group>"; };
+		79FAC4DA1CC533130068C093 /* WKRecommendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKRecommendViewController.xib; sourceTree = "<group>"; };
+		79FAC4DD1CC533220068C093 /* WKWorldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldViewController.h; sourceTree = "<group>"; };
+		79FAC4DE1CC533220068C093 /* WKWorldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWorldViewController.m; sourceTree = "<group>"; };
+		79FAC4DF1CC533220068C093 /* WKWorldViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKWorldViewController.xib; sourceTree = "<group>"; };
+		79FAC4E21CC533300068C093 /* WKMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMeViewController.h; sourceTree = "<group>"; };
+		79FAC4E31CC533300068C093 /* WKMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMeViewController.m; sourceTree = "<group>"; };
+		79FAC4E41CC533300068C093 /* WKMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKMeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,9 +120,6 @@
 				79FAC4BC1CC5303D0068C093 /* Base */,
 				79FAC48C1CC4E39F0068C093 /* AppDelegate.h */,
 				79FAC48D1CC4E39F0068C093 /* AppDelegate.m */,
-				79FAC48F1CC4E39F0068C093 /* ViewController.h */,
-				79FAC4901CC4E39F0068C093 /* ViewController.m */,
-				79FAC4921CC4E39F0068C093 /* Main.storyboard */,
 				79FAC4951CC4E39F0068C093 /* Assets.xcassets */,
 				79FAC4971CC4E39F0068C093 /* LaunchScreen.storyboard */,
 				79FAC49A1CC4E39F0068C093 /* Info.plist */,
@@ -144,10 +157,10 @@
 		79FAC4BC1CC5303D0068C093 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				79FAC4BD1CC5303D0068C093 /* Me */,
 				79FAC4C11CC5303D0068C093 /* Others */,
 				79FAC4C41CC5303D0068C093 /* Recommend */,
 				79FAC4C81CC5303D0068C093 /* World */,
+				79FAC4BD1CC5303D0068C093 /* Me */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -172,6 +185,9 @@
 		79FAC4BF1CC5303D0068C093 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				79FAC4E21CC533300068C093 /* WKMeViewController.h */,
+				79FAC4E31CC533300068C093 /* WKMeViewController.m */,
+				79FAC4E41CC533300068C093 /* WKMeViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -195,6 +211,10 @@
 		79FAC4C21CC5303D0068C093 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				79FAC4D21CC5328B0068C093 /* WKNavigationViewController.h */,
+				79FAC4D31CC5328B0068C093 /* WKNavigationViewController.m */,
+				79FAC4D51CC5329A0068C093 /* WKTabBarViewController.h */,
+				79FAC4D61CC5329A0068C093 /* WKTabBarViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -226,6 +246,9 @@
 		79FAC4C61CC5303D0068C093 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				79FAC4D81CC533130068C093 /* WKRecommendViewController.h */,
+				79FAC4D91CC533130068C093 /* WKRecommendViewController.m */,
+				79FAC4DA1CC533130068C093 /* WKRecommendViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -257,6 +280,9 @@
 		79FAC4CA1CC5303D0068C093 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				79FAC4DD1CC533220068C093 /* WKWorldViewController.h */,
+				79FAC4DE1CC533220068C093 /* WKWorldViewController.m */,
+				79FAC4DF1CC533220068C093 /* WKWorldViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -330,12 +356,12 @@
 		79FAC47E1CC4E39F0068C093 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = WK;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = xqy;
 				TargetAttributes = {
 					79FAC4851CC4E39F0068C093 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = X4P4XDTS83;
 					};
 					79FAC49E1CC4E39F0068C093 = {
 						CreatedOnToolsVersion = 7.2;
@@ -374,9 +400,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79FAC4E61CC533300068C093 /* WKMeViewController.xib in Resources */,
 				79FAC4991CC4E39F0068C093 /* LaunchScreen.storyboard in Resources */,
+				79FAC4DC1CC533130068C093 /* WKRecommendViewController.xib in Resources */,
 				79FAC4961CC4E39F0068C093 /* Assets.xcassets in Resources */,
-				79FAC4941CC4E39F0068C093 /* Main.storyboard in Resources */,
+				79FAC4E11CC533220068C093 /* WKWorldViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,9 +429,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79FAC4911CC4E39F0068C093 /* ViewController.m in Sources */,
+				79FAC4D71CC5329A0068C093 /* WKTabBarViewController.m in Sources */,
+				79FAC4E01CC533220068C093 /* WKWorldViewController.m in Sources */,
+				79FAC4E51CC533300068C093 /* WKMeViewController.m in Sources */,
+				79FAC4D41CC5328B0068C093 /* WKNavigationViewController.m in Sources */,
 				79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */,
 				79FAC48B1CC4E39F0068C093 /* main.m in Sources */,
+				79FAC4DB1CC533130068C093 /* WKRecommendViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,14 +471,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		79FAC4921CC4E39F0068C093 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				79FAC4931CC4E39F0068C093 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		79FAC4971CC4E39F0068C093 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -542,10 +566,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Walking/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lanou3g.com.Walking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -553,10 +579,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Walking/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lanou3g.com.Walking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
