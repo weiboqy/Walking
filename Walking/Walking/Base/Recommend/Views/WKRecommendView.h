@@ -7,7 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WKCycleScrollView.h"
+#import "WKRecommendCollectionViewCell.h"
 
 @interface WKRecommendView : UIView
+
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIButton *moreButton;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) WKCycleScrollView *headScrolView;
+
+
+- (instancetype)initWithFrame:(CGRect)frame;
+
+
+
+
+
 
 @end

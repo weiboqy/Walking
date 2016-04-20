@@ -16,9 +16,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
 }
 
+// 这个方法可以拦截所有push进来的控制器
+//- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+//    // 如果push进来的不是第一个控制器,才会执行下面的方法
+//    if (self.childViewControllers.count > 0) {
+//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//        button.frame = CGRectMake(-10, 0, 70, 30);
+//        
+//        // 设置返回按钮的图片
+//        [button setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
+//        
+//        // 自适应尺寸
+//        [button sizeToFit];
+//        [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        // 将系统返回按钮替换并并设置为左按钮(如果不设置左按钮,Button不显示)
+//        viewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+//        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+//        
+//        //push之后 Tabbar消失
+//        viewController.hidesBottomBarWhenPushed = YES;
+//    }
+//   [super pushViewController:viewController animated:animated];
+//}
+
+- (void)backClick {
+    [self popViewControllerAnimated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
