@@ -19,6 +19,8 @@
 		791C35DE1CC774DF00FFC596 /* WKMyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791C35DC1CC774DF00FFC596 /* WKMyCollectionViewController.xib */; };
 		791C35E21CC7750E00FFC596 /* WKAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791C35E01CC7750E00FFC596 /* WKAboutUsViewController.m */; };
 		791C35E31CC7750E00FFC596 /* WKAboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791C35E11CC7750E00FFC596 /* WKAboutUsViewController.xib */; };
+		791C36291CC7BF0500FFC596 /* WKLoginAndRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791C36271CC7BF0500FFC596 /* WKLoginAndRegistViewController.m */; };
+		791C362A1CC7BF0500FFC596 /* WKLoginAndRegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791C36281CC7BF0500FFC596 /* WKLoginAndRegistViewController.xib */; };
 		793DBDC41CC6607A00A4E3CA /* WKMeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */; };
 		793DBDC61CC6609400A4E3CA /* WKMeHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */; };
 		79FAC48B1CC4E39F0068C093 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC48A1CC4E39F0068C093 /* main.m */; };
@@ -77,6 +79,9 @@
 		791C35DF1CC7750E00FFC596 /* WKAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKAboutUsViewController.h; sourceTree = "<group>"; };
 		791C35E01CC7750E00FFC596 /* WKAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKAboutUsViewController.m; sourceTree = "<group>"; };
 		791C35E11CC7750E00FFC596 /* WKAboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKAboutUsViewController.xib; sourceTree = "<group>"; };
+		791C36261CC7BF0500FFC596 /* WKLoginAndRegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKLoginAndRegistViewController.h; sourceTree = "<group>"; };
+		791C36271CC7BF0500FFC596 /* WKLoginAndRegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKLoginAndRegistViewController.m; sourceTree = "<group>"; };
+		791C36281CC7BF0500FFC596 /* WKLoginAndRegistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKLoginAndRegistViewController.xib; sourceTree = "<group>"; };
 		793DBDC21CC6607A00A4E3CA /* WKMeHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMeHeadView.h; sourceTree = SOURCE_ROOT; };
 		793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMeHeadView.m; sourceTree = SOURCE_ROOT; };
 		793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKMeHeadView.xib; sourceTree = "<group>"; };
@@ -231,6 +236,9 @@
 				791C35DF1CC7750E00FFC596 /* WKAboutUsViewController.h */,
 				791C35E01CC7750E00FFC596 /* WKAboutUsViewController.m */,
 				791C35E11CC7750E00FFC596 /* WKAboutUsViewController.xib */,
+				791C36261CC7BF0500FFC596 /* WKLoginAndRegistViewController.h */,
+				791C36271CC7BF0500FFC596 /* WKLoginAndRegistViewController.m */,
+				791C36281CC7BF0500FFC596 /* WKLoginAndRegistViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -472,6 +480,7 @@
 				79FAC4991CC4E39F0068C093 /* LaunchScreen.storyboard in Resources */,
 				79FAC4DC1CC533130068C093 /* WKRecommendViewController.xib in Resources */,
 				79FAC4961CC4E39F0068C093 /* Assets.xcassets in Resources */,
+				791C362A1CC7BF0500FFC596 /* WKLoginAndRegistViewController.xib in Resources */,
 				79FAC4E11CC533220068C093 /* WKWorldViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +512,7 @@
 				793DBDC41CC6607A00A4E3CA /* WKMeHeadView.m in Sources */,
 				79FAC4E01CC533220068C093 /* WKWorldViewController.m in Sources */,
 				790761981CC6546F0097EF89 /* WKRecommendView.m in Sources */,
+				791C36291CC7BF0500FFC596 /* WKLoginAndRegistViewController.m in Sources */,
 				790761951CC6545E0097EF89 /* WKRecommendListModel.m in Sources */,
 				790761921CC6544A0097EF89 /* WKNavigtionBar.m in Sources */,
 				790761A01CC66DF30097EF89 /* WKCollectionCell.m in Sources */,
