@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
 		7907618C1CC654020097EF89 /* WKWorldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907618B1CC654020097EF89 /* WKWorldView.m */; };
 		7907618F1CC654170097EF89 /* WKWorldListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907618E1CC654170097EF89 /* WKWorldListModel.m */; };
 		790761921CC6544A0097EF89 /* WKNavigtionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 790761911CC6544A0097EF89 /* WKNavigtionBar.m */; };
@@ -15,6 +16,12 @@
 		7907619D1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907619C1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m */; };
 		790761A01CC66DF30097EF89 /* WKCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907619F1CC66DF30097EF89 /* WKCollectionCell.m */; };
 		790761A21CC66E0C0097EF89 /* WKCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */; };
+
+		793DBDC41CC6607A00A4E3CA /* WKMeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */; };
+		793DBDC61CC6609400A4E3CA /* WKMeHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */; };
+		793DBDCA1CC67C6200A4E3CA /* WKMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 793DBDC81CC67C6200A4E3CA /* WKMeTableViewCell.m */; };
+		793DBDCB1CC67C6200A4E3CA /* WKMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793DBDC91CC67C6200A4E3CA /* WKMeTableViewCell.xib */; };
+
 		79FAC48B1CC4E39F0068C093 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC48A1CC4E39F0068C093 /* main.m */; };
 		79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC48D1CC4E39F0068C093 /* AppDelegate.m */; };
 		79FAC4961CC4E39F0068C093 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4951CC4E39F0068C093 /* Assets.xcassets */; };
@@ -49,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+
 		7907618A1CC654020097EF89 /* WKWorldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldView.h; sourceTree = "<group>"; };
 		7907618B1CC654020097EF89 /* WKWorldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWorldView.m; sourceTree = "<group>"; };
 		7907618D1CC654170097EF89 /* WKWorldListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldListModel.h; sourceTree = "<group>"; };
@@ -65,6 +73,14 @@
 		7907619E1CC66DF30097EF89 /* WKCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCollectionCell.h; sourceTree = "<group>"; };
 		7907619F1CC66DF30097EF89 /* WKCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCollectionCell.m; sourceTree = "<group>"; };
 		790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKCollectionCell.xib; sourceTree = "<group>"; };
+
+		793DBDC21CC6607A00A4E3CA /* WKMeHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMeHeadView.h; sourceTree = SOURCE_ROOT; };
+		793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMeHeadView.m; sourceTree = SOURCE_ROOT; };
+		793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKMeHeadView.xib; sourceTree = "<group>"; };
+		793DBDC71CC67C6200A4E3CA /* WKMeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMeTableViewCell.h; sourceTree = "<group>"; };
+		793DBDC81CC67C6200A4E3CA /* WKMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMeTableViewCell.m; sourceTree = "<group>"; };
+		793DBDC91CC67C6200A4E3CA /* WKMeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKMeTableViewCell.xib; sourceTree = "<group>"; };
+
 		79FAC4861CC4E39F0068C093 /* Walking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Walking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FAC48A1CC4E39F0068C093 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		79FAC48C1CC4E39F0068C093 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../../AppDelegate.h; sourceTree = "<group>"; };
@@ -217,8 +233,17 @@
 		79FAC4C01CC5303D0068C093 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+
 				79FAC48C1CC4E39F0068C093 /* AppDelegate.h */,
 				79FAC48D1CC4E39F0068C093 /* AppDelegate.m */,
+
+				793DBDC21CC6607A00A4E3CA /* WKMeHeadView.h */,
+				793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */,
+				793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */,
+				793DBDC71CC67C6200A4E3CA /* WKMeTableViewCell.h */,
+				793DBDC81CC67C6200A4E3CA /* WKMeTableViewCell.m */,
+				793DBDC91CC67C6200A4E3CA /* WKMeTableViewCell.xib */,
+
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -440,10 +465,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				793DBDC61CC6609400A4E3CA /* WKMeHeadView.xib in Resources */,
 				79FAC4E61CC533300068C093 /* WKMeViewController.xib in Resources */,
 				790761A21CC66E0C0097EF89 /* WKCollectionCell.xib in Resources */,
 				79FAC4991CC4E39F0068C093 /* LaunchScreen.storyboard in Resources */,
 				79FAC4DC1CC533130068C093 /* WKRecommendViewController.xib in Resources */,
+				793DBDCB1CC67C6200A4E3CA /* WKMeTableViewCell.xib in Resources */,
 				79FAC4961CC4E39F0068C093 /* Assets.xcassets in Resources */,
 				79FAC4E11CC533220068C093 /* WKWorldViewController.xib in Resources */,
 			);
@@ -471,8 +498,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				79FAC4D71CC5329A0068C093 /* WKTabBarViewController.m in Sources */,
+
 				7907619D1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m in Sources */,
 				7907618F1CC654170097EF89 /* WKWorldListModel.m in Sources */,
+
+				793DBDCA1CC67C6200A4E3CA /* WKMeTableViewCell.m in Sources */,
+				793DBDC41CC6607A00A4E3CA /* WKMeHeadView.m in Sources */,
+
 				79FAC4E01CC533220068C093 /* WKWorldViewController.m in Sources */,
 				790761981CC6546F0097EF89 /* WKRecommendView.m in Sources */,
 				790761951CC6545E0097EF89 /* WKRecommendListModel.m in Sources */,
