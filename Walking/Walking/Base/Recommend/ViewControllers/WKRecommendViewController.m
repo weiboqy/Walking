@@ -10,9 +10,12 @@
 #import "WKListTableViewCell.h"
 #import "WKRecommendView.h"
 #import "WKRecommendCollectionViewCell.h"
-#define kStr @"reuse"
 #import "WKRecommendNotesViewController.h"
 #import "WKRecommendStoryViewController.h"
+
+
+
+#define kStr @"reuse"
 
 @interface WKRecommendViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -29,12 +32,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.title = @"推荐";
     self.view.backgroundColor = [UIColor cyanColor];
     
     [self createListTableView];
     _index = 0;
+
+    self.view.backgroundColor = ColorGlobal;
+
     // Do any additional setup after loading the view from its nib.
+//    
+//    UIView *head = [[UIView alloc] initWithFrame:CGRectZero];
+////    head.layer.cornerRadius = 90;
+//    
+//    head.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:head];
+//    
+//    [UIView animateWithDuration:3.0 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionOverrideInheritedOptions animations:^{
+//        
+//        head.layer.cornerRadius = 50;
+//        head.frame = CGRectMake(100, 500, 100, 100);
+//    } completion:nil];
 }
 
 
