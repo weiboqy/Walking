@@ -15,6 +15,9 @@
 		7907619D1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907619C1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m */; };
 		790761A01CC66DF30097EF89 /* WKCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907619F1CC66DF30097EF89 /* WKCollectionCell.m */; };
 		790761A21CC66E0C0097EF89 /* WKCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */; };
+		7914E35D1CC773BF001A0C5F /* WKforeignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35C1CC773BF001A0C5F /* WKforeignViewController.m */; };
+		7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */; };
+		7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */; };
 		79FAC48B1CC4E39F0068C093 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC48A1CC4E39F0068C093 /* main.m */; };
 		79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC48D1CC4E39F0068C093 /* AppDelegate.m */; };
 		79FAC4961CC4E39F0068C093 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4951CC4E39F0068C093 /* Assets.xcassets */; };
@@ -65,6 +68,12 @@
 		7907619E1CC66DF30097EF89 /* WKCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCollectionCell.h; sourceTree = "<group>"; };
 		7907619F1CC66DF30097EF89 /* WKCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCollectionCell.m; sourceTree = "<group>"; };
 		790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKCollectionCell.xib; sourceTree = "<group>"; };
+		7914E35B1CC773BF001A0C5F /* WKforeignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKforeignViewController.h; sourceTree = "<group>"; };
+		7914E35C1CC773BF001A0C5F /* WKforeignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKforeignViewController.m; sourceTree = "<group>"; };
+		7914E35E1CC773EA001A0C5F /* WKInlandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKInlandViewController.h; sourceTree = "<group>"; };
+		7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKInlandViewController.m; sourceTree = "<group>"; };
+		7914E3611CC77A1B001A0C5F /* UIView+WKCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WKCustom.h"; sourceTree = "<group>"; };
+		7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WKCustom.m"; sourceTree = "<group>"; };
 		79FAC4861CC4E39F0068C093 /* Walking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Walking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FAC48A1CC4E39F0068C093 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		79FAC48C1CC4E39F0068C093 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../../AppDelegate.h; sourceTree = "<group>"; };
@@ -251,6 +260,8 @@
 				7907619A1CC6579D0097EF89 /* PrefixHeader.pch */,
 				7907619B1CC65D890097EF89 /* UIBarButtonItem+WKExtension.h */,
 				7907619C1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m */,
+				7914E3611CC77A1B001A0C5F /* UIView+WKCustom.h */,
+				7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,6 +329,10 @@
 				79FAC4DD1CC533220068C093 /* WKWorldViewController.h */,
 				79FAC4DE1CC533220068C093 /* WKWorldViewController.m */,
 				79FAC4DF1CC533220068C093 /* WKWorldViewController.xib */,
+				7914E35B1CC773BF001A0C5F /* WKforeignViewController.h */,
+				7914E35C1CC773BF001A0C5F /* WKforeignViewController.m */,
+				7914E35E1CC773EA001A0C5F /* WKInlandViewController.h */,
+				7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -471,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79FAC4D71CC5329A0068C093 /* WKTabBarViewController.m in Sources */,
+				7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */,
 				7907619D1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m in Sources */,
 				7907618F1CC654170097EF89 /* WKWorldListModel.m in Sources */,
 				79FAC4E01CC533220068C093 /* WKWorldViewController.m in Sources */,
@@ -481,9 +497,11 @@
 				79FAC4E51CC533300068C093 /* WKMeViewController.m in Sources */,
 				79FAC4D41CC5328B0068C093 /* WKNavigationViewController.m in Sources */,
 				79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */,
+				7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */,
 				7907618C1CC654020097EF89 /* WKWorldView.m in Sources */,
 				79FAC48B1CC4E39F0068C093 /* main.m in Sources */,
 				79FAC4DB1CC533130068C093 /* WKRecommendViewController.m in Sources */,
+				7914E35D1CC773BF001A0C5F /* WKforeignViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

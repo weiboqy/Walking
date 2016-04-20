@@ -18,6 +18,9 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = ColorGlobal;
+    
+//    UIImageView *titleImage = [UIImageView alloc]initWithFrame:<#(CGRect)#>
+    
     // Do any additional setup after loading the view from its nib.
 }
 

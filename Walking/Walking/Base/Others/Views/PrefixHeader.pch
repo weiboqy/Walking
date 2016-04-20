@@ -9,7 +9,9 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-#import "UIBarButtonItem+WKExtension.h"
+#import "UIBarButtonItem+WKExtension.h"  // 图片类型的UIBarButton
+
+#import "UIView+WKCustom.h"  // 类目view
 
 #define kScreenWidth self.view.frame.size.width
 #define kScreenHeight self.view.frame.size.height

@@ -10,4 +10,13 @@
 
 @interface WKNavigtionBar : UINavigationBar
 
+/** 返回按钮 */
+@property (strong, nonatomic)UIButton *backButton;
+
+/** 标题 */
+@property (strong, nonatomic)UILabel *titleLabel;
+
+/** 标题图片 */
+@property (strong, nonatomic)UIImageView *titleImageView;
+
 @end
