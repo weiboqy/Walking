@@ -65,7 +65,7 @@
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 200, 375 - 10, 330) collectionViewLayout:layout];
     self.collectionView.layer.cornerRadius = 3;
-    self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.backgroundColor = ColorGlobal;
     self.collectionView.showsHorizontalScrollIndicator = NO;//水平的滑动条 关闭
     self.collectionView.pagingEnabled = YES;
     [self addSubview:self.collectionView];

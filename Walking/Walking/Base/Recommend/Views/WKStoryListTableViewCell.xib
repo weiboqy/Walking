@@ -42,7 +42,7 @@
                 <outlet property="imageV" destination="KMm-pc-pA1" id="rj5-uo-4fs"/>
                 <outlet property="titleLabel" destination="fl9-P4-cYl" id="thc-z7-Fok"/>
             </connections>
-            <point key="canvasLocation" x="360.5" y="319.5"/>
+            <point key="canvasLocation" x="427.5" y="303.5"/>
         </tableViewCell>
     </objects>
 </document>

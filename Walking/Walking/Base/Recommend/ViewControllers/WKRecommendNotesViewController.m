@@ -7,18 +7,52 @@
 //
 
 #import "WKRecommendNotesViewController.h"
+#import "WKNotesListTableViewCell.h"
+#import "WKNotesListHeadView.h"
 
-@interface WKRecommendNotesViewController ()
+@interface WKRecommendNotesViewController ()<UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UITableView *listTableView;
 
 
 @end
 
 @implementation WKRecommendNotesViewController
 
+- (void)createListTableView{
+    
+    self.listTableView.dataSource = self;
+    self.listTableView.delegate = self;
+    
+    [self.listTableView registerNib:[UINib nibWithNibName:@"WKNotesListTableViewCell" bundle:nil] forCellReuseIdentifier:@"notesReuse"];
+    WKNotesListHeadView *headView = [[WKNotesListHeadView alloc] initWithFrame:CGRectMake(0, 0, 0, 350)];
+    self.listTableView.tableHeaderView = headView;
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = ColorGlobal;
+    
+    [self createListTableView];
+    
     // Do any additional setup after loading the view from its nib.
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 10;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    WKNotesListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"notesReuse" forIndexPath:indexPath];
+    cell.dayTimeLabel.text = @"2016/02/13";
+    cell.backgroundColor = ColorGlobal;
+    return  cell;    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 180;
 }
 
 - (void)didReceiveMemoryWarning {

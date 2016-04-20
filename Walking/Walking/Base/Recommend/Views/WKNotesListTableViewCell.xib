@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="270" id="KGk-i7-Jjw" customClass="WKNotesListTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="461" height="270"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="461" height="269"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zgc-bD-iT3">
+                        <rect key="frame" x="10" y="38" width="441" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="120" id="jpN-3d-iqu"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1He-Yd-7QG">
+                        <rect key="frame" x="30" y="8" width="42" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="NjN-N0-Wa6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esj-e3-ujj">
+                        <rect key="frame" x="30" y="239" width="42" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="88n-Nq-uTL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a33-kh-6eK">
+                        <rect key="frame" x="10" y="163" width="441" height="71"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zgc-bD-iT3" firstAttribute="top" secondItem="1He-Yd-7QG" secondAttribute="bottom" constant="5" id="8OF-io-xYC"/>
+                    <constraint firstItem="esj-e3-ujj" firstAttribute="top" secondItem="a33-kh-6eK" secondAttribute="bottom" constant="5" id="DL7-D2-Hhr"/>
+                    <constraint firstAttribute="bottom" secondItem="esj-e3-ujj" secondAttribute="bottom" constant="5" id="HRL-He-cet"/>
+                    <constraint firstAttribute="trailing" secondItem="a33-kh-6eK" secondAttribute="trailing" constant="10" id="QP2-Lp-mgh"/>
+                    <constraint firstItem="1He-Yd-7QG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="St8-bf-oc3"/>
+                    <constraint firstItem="1He-Yd-7QG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Zhl-ON-WVf"/>
+                    <constraint firstItem="a33-kh-6eK" firstAttribute="top" secondItem="zgc-bD-iT3" secondAttribute="bottom" constant="5" id="bXR-YX-aCK"/>
+                    <constraint firstAttribute="trailing" secondItem="zgc-bD-iT3" secondAttribute="trailing" constant="10" id="cTY-WS-SE6"/>
+                    <constraint firstItem="a33-kh-6eK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="enZ-h8-xtG"/>
+                    <constraint firstItem="zgc-bD-iT3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="hy7-kF-FHR"/>
+                    <constraint firstItem="esj-e3-ujj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="yLx-T7-BXS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLabel" destination="a33-kh-6eK" id="cLZ-K0-LI2"/>
+                <outlet property="dayTimeLabel" destination="1He-Yd-7QG" id="eoR-UD-r1e"/>
+                <outlet property="imageV" destination="zgc-bD-iT3" id="3bv-8y-xzt"/>
+                <outlet property="timeLabel" destination="esj-e3-ujj" id="XWl-jD-Sxl"/>
+            </connections>
+            <point key="canvasLocation" x="278.5" y="366"/>
+        </tableViewCell>
+    </objects>
+</document>
