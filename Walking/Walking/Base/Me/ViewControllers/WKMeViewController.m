@@ -10,9 +10,11 @@
 #import "WKMeHeadView.h"
 #import "WKMyCollectionViewController.h"
 #import "WKAboutUsViewController.h"
+#import "WKLoginAndRegistViewController.h"
 
 @interface WKMeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *meTableView;
+@property (nonatomic, strong) WKMeHeadView *meHeadView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
@@ -22,11 +24,11 @@
 //  创建头视图
 - (void)creatHeadView {
     NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"WKMeHeadView" owner:nil options:nil];
-    WKMeHeadView *meHeadView = [views lastObject];
-    meHeadView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200);
+    _meHeadView = [views lastObject];
+    _meHeadView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200);
 //    meHeadView.headImage.layer.masksToBounds = YES;
 //    meHeadView.headImage.layer.cornerRadius = 35;
-    _meTableView.tableHeaderView = meHeadView;
+    _meTableView.tableHeaderView = _meHeadView;
 }
 
 //  分区数组
@@ -38,13 +40,38 @@
     _dataArray = [[NSMutableArray alloc] initWithObjects:oneArray,twoArray,threeArray,fourArray, nil];
 }
 
+//  头logo
+- (void)setTitleImage {
+    UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 93, 30)];
+    titleImage.image = [UIImage imageNamed:@"Walking细"];
+    self.navigationItem.titleView = titleImage;
+}
+
+//  登录注册的按钮
+- (void)loginAndRegistButton {
+    [_meHeadView.LoginAndRegistButton addTarget:self action:@selector(loginAndRegistButton:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+//  点击登录注册按钮实现的方法
+- (void)loginAndRegistButton:(id)sender {
+    WKLoginAndRegistViewController *LoginAndRegistVC = [[WKLoginAndRegistViewController alloc] init];
+    [self.navigationController pushViewController:LoginAndRegistVC animated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.navigationController setNavigationBarHidden:YES];
+    [self setTitleImage];
+
+    self.view.backgroundColor = ColorGlobal;
+    
+//    UIImageView *titleImage = [UIImageView alloc]initWithFrame:<#(CGRect)#>
     _meTableView.backgroundColor = ColorGlobal;
     
     [self creatHeadView];
     [self creatArray];
+    [self loginAndRegistButton];
     
     // Do any additional setup after loading the view from its nib.
 }
