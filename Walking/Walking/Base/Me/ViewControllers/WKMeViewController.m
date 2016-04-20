@@ -8,6 +8,8 @@
 
 #import "WKMeViewController.h"
 #import "WKMeHeadView.h"
+#import "WKMyCollectionViewController.h"
+#import "WKAboutUsViewController.h"
 
 @interface WKMeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *meTableView;
@@ -21,7 +23,9 @@
 - (void)creatHeadView {
     NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"WKMeHeadView" owner:nil options:nil];
     WKMeHeadView *meHeadView = [views lastObject];
-    meHeadView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 160);
+    meHeadView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200);
+//    meHeadView.headImage.layer.masksToBounds = YES;
+//    meHeadView.headImage.layer.cornerRadius = 35;
     _meTableView.tableHeaderView = meHeadView;
 }
 
@@ -37,23 +41,102 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = ColorGlobal;
-    self.view.backgroundColor = [UIColor colorWithRed:245 / 255.0 green:245 / 255.0 blue:245 / 255.0 alpha:1.0];
+    _meTableView.backgroundColor = ColorGlobal;
     
-    
+    [self creatHeadView];
+    [self creatArray];
     
     // Do any additional setup after loading the view from its nib.
 }
-
+//  分区个数
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return _dataArray.count;
+}
+//  每个分区行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return [_dataArray[section] count];
+}
+//  cell内容
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *reuseIdentitfier = @"reuse";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentitfier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentitfier];
+    }
+    _meTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (indexPath.section == 2) {
+        cell.textLabel.text = _dataArray[indexPath.section][indexPath.row];
+        UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectMake(10, 300, 50, 20)];
+        [switchView addTarget:self action:@selector(updateSwitchAtIndexPath:) forControlEvents:UIControlEventValueChanged];
+        cell.accessoryView = switchView;
+    }
+    cell.textLabel.text = _dataArray[indexPath.section][indexPath.row];
+    return cell;
+}
+/**  夜间模式*/
+- (void)updateSwitchAtIndexPath:(id)sender {
+    UISwitch *switchView = (UISwitch *)sender;
+    if ([switchView isOn]) {
+//        [switchView setOn:NO animated:YES];
+        NSLog(@"开");
+    } else {
+        NSLog(@"关");
+    }
 }
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-////    static NSString *resu
-////    UITableViewCell *cell = [tableView dequ]
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+        case 0:{
+            // 进入我的收藏界面
+            WKMyCollectionViewController *myCollectionVC = [[WKMyCollectionViewController alloc] init];
+            [self.navigationController pushViewController:myCollectionVC animated:YES];
+            break;
+        }
+        case 1:{
+            // 清除缓存
+            break;
+        }
+        case 2:{
+            // 夜间模式
+            break;
+        }
+        case 3:{
+            // 进入关于我们界面
+            WKAboutUsViewController *aboutUsVC = [[WKAboutUsViewController alloc] init];
+            [self.navigationController pushViewController:aboutUsVC animated:YES];
+            break;
+        }
+        default:
+            break;
+    }
+}
 
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *view = [[UIView alloc]init];
+//    view.backgroundColor = [UIColor redColor];
+//    CGRect rect = view.frame;
+//    rect.size.height = 2;
+//    view.frame = rect;
+//    NSLog(@"Header%@",NSStringFromCGRect(view.frame));
+//    return view;
+//}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc]init];
+//    view.backgroundColor = [UIColor blueColor];
+    return view;
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 20;
+}
+//
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.1;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

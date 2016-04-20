@@ -19,43 +19,53 @@
                 </imageView>
                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6oQ-Bl-6NJ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mu5-Ul-6tk">
-                            <rect key="frame" x="157" y="60" width="60" height="60"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="60" id="Z6V-XP-FM7"/>
-                                <constraint firstAttribute="width" constant="60" id="hht-S7-XWZ"/>
-                            </constraints>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opb-dH-zSN">
-                            <rect key="frame" x="87" y="130" width="200" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="8id-VH-pv5"/>
-                                <constraint firstAttribute="width" constant="200" id="NOR-Hn-gCk"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                            <state key="normal" title="还没有登录哦">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" red="0.50196081399917603" green="0.25098040699958801" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="72F-Pg-6up"/>
-                        <constraint firstItem="Mu5-Ul-6tk" firstAttribute="centerX" secondItem="6oQ-Bl-6NJ" secondAttribute="centerX" id="BIW-rO-dVj"/>
-                        <constraint firstItem="opb-dH-zSN" firstAttribute="centerX" secondItem="6oQ-Bl-6NJ" secondAttribute="centerX" id="RN4-B5-CRo"/>
-                        <constraint firstItem="opb-dH-zSN" firstAttribute="top" secondItem="Mu5-Ul-6tk" secondAttribute="bottom" constant="10" id="dGn-2d-UQI"/>
-                        <constraint firstItem="Mu5-Ul-6tk" firstAttribute="top" secondItem="6oQ-Bl-6NJ" secondAttribute="top" constant="60" id="irl-KP-MZa"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opb-dH-zSN">
+                    <rect key="frame" x="87" y="140" width="200" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="8id-VH-pv5"/>
+                        <constraint firstAttribute="width" constant="200" id="NOR-Hn-gCk"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="jwh-Py-afU"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="kAZ-2E-lNu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="还没有登录哦">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headImage" translatesAutoresizingMaskIntoConstraints="NO" id="Mu5-Ul-6tk">
+                    <rect key="frame" x="153" y="60" width="70" height="70"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="BkF-Xy-2M3"/>
+                        <constraint firstAttribute="height" constant="70" id="Z6V-XP-FM7"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="ebA-0n-v71"/>
+                        <constraint firstAttribute="width" constant="70" id="hht-S7-XWZ"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Mu5-Ul-6tk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1Dz-8T-rPp"/>
                 <constraint firstItem="6oQ-Bl-6NJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Huo-Bt-NbJ"/>
                 <constraint firstAttribute="trailing" secondItem="6oQ-Bl-6NJ" secondAttribute="trailing" id="ISH-AT-ave"/>
                 <constraint firstItem="6oQ-Bl-6NJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="L1P-Ts-BDS"/>
+                <constraint firstItem="opb-dH-zSN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gFS-U2-iIP"/>
+                <constraint firstItem="opb-dH-zSN" firstAttribute="top" secondItem="Mu5-Ul-6tk" secondAttribute="bottom" constant="10" id="hhT-5d-8Xu"/>
                 <constraint firstAttribute="trailing" secondItem="aPY-9f-urD" secondAttribute="trailing" id="nPb-QT-Zdg"/>
                 <constraint firstItem="aPY-9f-urD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tW7-Lz-Ith"/>
+                <constraint firstItem="Mu5-Ul-6tk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="vYa-5A-GZz"/>
                 <constraint firstItem="aPY-9f-urD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="x9C-hh-ALF"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -68,5 +78,6 @@
     </objects>
     <resources>
         <image name="IMG_1349" width="1259" height="645"/>
+        <image name="headImage" width="450" height="451"/>
     </resources>
 </document>
