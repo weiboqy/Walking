@@ -63,6 +63,10 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     [self setTitleImage];
+
+    self.view.backgroundColor = ColorGlobal;
+    
+//    UIImageView *titleImage = [UIImageView alloc]initWithFrame:<#(CGRect)#>
     _meTableView.backgroundColor = ColorGlobal;
     
     [self creatHeadView];

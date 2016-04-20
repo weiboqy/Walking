@@ -5,9 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WKRecommendViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WKRecommendStoryViewController">
             <connections>
-                <outlet property="listTableView" destination="CDS-hE-3XJ" id="faY-6A-CDM"/>
+                <outlet property="listTableView" destination="v3v-dg-pR1" id="RLr-L7-mM0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,19 +16,19 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CDS-hE-3XJ">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v3v-dg-pR1">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="CDS-hE-3XJ" secondAttribute="trailing" id="1GA-1v-2uU"/>
-                <constraint firstItem="CDS-hE-3XJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gv4-eP-kiC"/>
-                <constraint firstAttribute="bottom" secondItem="CDS-hE-3XJ" secondAttribute="bottom" id="dN0-Zn-tyw"/>
-                <constraint firstItem="CDS-hE-3XJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="m7P-EK-00B"/>
+                <constraint firstItem="v3v-dg-pR1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5Qu-sa-mVv"/>
+                <constraint firstItem="v3v-dg-pR1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fxT-2u-lwp"/>
+                <constraint firstAttribute="bottom" secondItem="v3v-dg-pR1" secondAttribute="bottom" id="nYj-pm-my4"/>
+                <constraint firstAttribute="trailing" secondItem="v3v-dg-pR1" secondAttribute="trailing" id="wU0-eE-psI"/>
             </constraints>
-            <point key="canvasLocation" x="377" y="375"/>
+            <point key="canvasLocation" x="292" y="354"/>
         </view>
     </objects>
 </document>
