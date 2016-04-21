@@ -15,21 +15,15 @@
 		7907619D1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907619C1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m */; };
 		790761A01CC66DF30097EF89 /* WKCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907619F1CC66DF30097EF89 /* WKCollectionCell.m */; };
 		790761A21CC66E0C0097EF89 /* WKCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */; };
-<<<<<<< HEAD
-=======
 		7914E35D1CC773BF001A0C5F /* WKforeignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35C1CC773BF001A0C5F /* WKforeignViewController.m */; };
 		7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */; };
 		7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */; };
->>>>>>> 4f3911c4481e35f68bf226003a9b790628280ec3
 		791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791C35DB1CC774DF00FFC596 /* WKMyCollectionViewController.m */; };
 		791C35DE1CC774DF00FFC596 /* WKMyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791C35DC1CC774DF00FFC596 /* WKMyCollectionViewController.xib */; };
 		791C35E21CC7750E00FFC596 /* WKAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791C35E01CC7750E00FFC596 /* WKAboutUsViewController.m */; };
 		791C35E31CC7750E00FFC596 /* WKAboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791C35E11CC7750E00FFC596 /* WKAboutUsViewController.xib */; };
-<<<<<<< HEAD
-=======
 		791C36291CC7BF0500FFC596 /* WKLoginAndRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791C36271CC7BF0500FFC596 /* WKLoginAndRegistViewController.m */; };
 		791C362A1CC7BF0500FFC596 /* WKLoginAndRegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791C36281CC7BF0500FFC596 /* WKLoginAndRegistViewController.xib */; };
->>>>>>> 4f3911c4481e35f68bf226003a9b790628280ec3
 		791DA50D1CC725B1009D9093 /* WKRecommendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 791DA50B1CC725B1009D9093 /* WKRecommendCollectionViewCell.m */; };
 		791DA50E1CC725B1009D9093 /* WKRecommendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791DA50C1CC725B1009D9093 /* WKRecommendCollectionViewCell.xib */; };
 		791DA51C1CC769F9009D9093 /* WKRecommendStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791DA51A1CC769F9009D9093 /* WKRecommendStoryViewController.m */; };
@@ -63,6 +57,7 @@
 		79FAC4E11CC533220068C093 /* WKWorldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4DF1CC533220068C093 /* WKWorldViewController.xib */; };
 		79FAC4E51CC533300068C093 /* WKMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC4E31CC533300068C093 /* WKMeViewController.m */; };
 		79FAC4E61CC533300068C093 /* WKMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4E41CC533300068C093 /* WKMeViewController.xib */; };
+		890A9A7440843CA5E1484CDD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E80CE71F69D6659C8403C535 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4AC5FDF6D42329CAEADE9DCB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7907618A1CC654020097EF89 /* WKWorldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldView.h; sourceTree = "<group>"; };
 		7907618B1CC654020097EF89 /* WKWorldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWorldView.m; sourceTree = "<group>"; };
 		7907618D1CC654170097EF89 /* WKWorldListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldListModel.h; sourceTree = "<group>"; };
@@ -99,27 +95,21 @@
 		7907619E1CC66DF30097EF89 /* WKCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCollectionCell.h; sourceTree = "<group>"; };
 		7907619F1CC66DF30097EF89 /* WKCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCollectionCell.m; sourceTree = "<group>"; };
 		790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKCollectionCell.xib; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		7914E35B1CC773BF001A0C5F /* WKforeignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKforeignViewController.h; sourceTree = "<group>"; };
 		7914E35C1CC773BF001A0C5F /* WKforeignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKforeignViewController.m; sourceTree = "<group>"; };
 		7914E35E1CC773EA001A0C5F /* WKInlandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKInlandViewController.h; sourceTree = "<group>"; };
 		7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKInlandViewController.m; sourceTree = "<group>"; };
 		7914E3611CC77A1B001A0C5F /* UIView+WKCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WKCustom.h"; sourceTree = "<group>"; };
 		7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WKCustom.m"; sourceTree = "<group>"; };
->>>>>>> 4f3911c4481e35f68bf226003a9b790628280ec3
 		791C35DA1CC774DF00FFC596 /* WKMyCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMyCollectionViewController.h; sourceTree = "<group>"; };
 		791C35DB1CC774DF00FFC596 /* WKMyCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMyCollectionViewController.m; sourceTree = "<group>"; };
 		791C35DC1CC774DF00FFC596 /* WKMyCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKMyCollectionViewController.xib; sourceTree = "<group>"; };
 		791C35DF1CC7750E00FFC596 /* WKAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKAboutUsViewController.h; sourceTree = "<group>"; };
 		791C35E01CC7750E00FFC596 /* WKAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKAboutUsViewController.m; sourceTree = "<group>"; };
 		791C35E11CC7750E00FFC596 /* WKAboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKAboutUsViewController.xib; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		791C36261CC7BF0500FFC596 /* WKLoginAndRegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKLoginAndRegistViewController.h; sourceTree = "<group>"; };
 		791C36271CC7BF0500FFC596 /* WKLoginAndRegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKLoginAndRegistViewController.m; sourceTree = "<group>"; };
 		791C36281CC7BF0500FFC596 /* WKLoginAndRegistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKLoginAndRegistViewController.xib; sourceTree = "<group>"; };
->>>>>>> 4f3911c4481e35f68bf226003a9b790628280ec3
 		791DA50A1CC725B1009D9093 /* WKRecommendCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendCollectionViewCell.h; sourceTree = "<group>"; };
 		791DA50B1CC725B1009D9093 /* WKRecommendCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendCollectionViewCell.m; sourceTree = "<group>"; };
 		791DA50C1CC725B1009D9093 /* WKRecommendCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKRecommendCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -176,6 +166,8 @@
 		79FAC4E21CC533300068C093 /* WKMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMeViewController.h; sourceTree = "<group>"; };
 		79FAC4E31CC533300068C093 /* WKMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMeViewController.m; sourceTree = "<group>"; };
 		79FAC4E41CC533300068C093 /* WKMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKMeViewController.xib; sourceTree = "<group>"; };
+		BA9B7931D7FF7480C02BFBEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E80CE71F69D6659C8403C535 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				890A9A7440843CA5E1484CDD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +196,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		460FDDDAAF86AF4A4C6D6970 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E80CE71F69D6659C8403C535 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		790752531CC8630E00B968F3 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		79FAC47D1CC4E39F0068C093 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +218,8 @@
 				79FAC4A21CC4E39F0068C093 /* WalkingTests */,
 				79FAC4AD1CC4E39F0068C093 /* WalkingUITests */,
 				79FAC4871CC4E39F0068C093 /* Products */,
+				C5E23E32BEF3A6D6969A03D9 /* Pods */,
+				460FDDDAAF86AF4A4C6D6970 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -321,6 +331,7 @@
 		79FAC4C11CC5303D0068C093 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				790752531CC8630E00B968F3 /* Tools */,
 				79FAC4C21CC5303D0068C093 /* ViewControllers */,
 				79FAC4C31CC5303D0068C093 /* Views */,
 			);
@@ -464,6 +475,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C5E23E32BEF3A6D6969A03D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4AC5FDF6D42329CAEADE9DCB /* Pods.debug.xcconfig */,
+				BA9B7931D7FF7480C02BFBEF /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -471,9 +491,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79FAC4B31CC4E39F0068C093 /* Build configuration list for PBXNativeTarget "Walking" */;
 			buildPhases = (
+				28B9800B03A6A585DD1BC910 /* Check Pods Manifest.lock */,
 				79FAC4821CC4E39F0068C093 /* Sources */,
 				79FAC4831CC4E39F0068C093 /* Frameworks */,
 				79FAC4841CC4E39F0068C093 /* Resources */,
+				A72FDFD5AE5A41ED6D596355 /* Embed Pods Frameworks */,
+				4677F47CA7DD1DABC260F436 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -605,6 +628,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28B9800B03A6A585DD1BC910 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4677F47CA7DD1DABC260F436 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A72FDFD5AE5A41ED6D596355 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		79FAC4821CC4E39F0068C093 /* Sources */ = {
@@ -770,6 +841,7 @@
 		};
 		79FAC4B41CC4E39F0068C093 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AC5FDF6D42329CAEADE9DCB /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -784,6 +856,7 @@
 		};
 		79FAC4B51CC4E39F0068C093 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA9B7931D7FF7480C02BFBEF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
