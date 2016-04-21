@@ -29,17 +29,20 @@
     
     //指定头视图
     //xib 指定 不行
-//    WKStoryListHeadView *headView = [[NSBundle mainBundle] loadNibNamed:@"WKStoryListHeadView" owner:nil options:nil].lastObject;
-    WKStoryListHeadView *headView = [[WKStoryListHeadView alloc] initWithFrame:CGRectMake(0, 0, 0, 180)];
-//    [headView initializeData];
-    headView.imageV.backgroundColor = [UIColor yellowColor];
-    
+    WKStoryListHeadView *headView = [[NSBundle mainBundle] loadNibNamed:@"WKStoryListHeadView" owner:nil options:nil].lastObject;
+//    WKStoryListHeadView *headView = [[WKStoryListHeadView alloc] initWithFrame:CGRectMake(0, 0, 0, 180)];
+    [headView initializeData];
 //    headView = [[WKStoryListHeadView alloc] initWithFrame:CGRectMake(0, 0, 375, 200)];
-//    headView.frame = CGRectMake(0, -100, 0, 100);
-    headView.backgroundColor = [UIColor grayColor];
+    headView.frame = CGRectMake(0, 0, 0, 150);
+//    headView.backgroundColor = [UIColor grayColor];
     self.listTableView.tableHeaderView = headView;
     
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,12 +55,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableVie
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 15;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

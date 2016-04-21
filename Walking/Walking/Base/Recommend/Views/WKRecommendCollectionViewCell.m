@@ -14,7 +14,8 @@
     
     self.imageV.layer.cornerRadius = 6;
     self.icon.layer.cornerRadius   = 15;
-    // Initialization code
+    
+    
 }
 
 @end

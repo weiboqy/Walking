@@ -41,6 +41,8 @@
 
     self.view.backgroundColor = ColorGlobal;
 
+    
+    
     // Do any additional setup after loading the view from its nib.
 //    
 //    UIView *head = [[UIView alloc] initWithFrame:CGRectZero];
@@ -61,7 +63,7 @@
     
     CGFloat with = [[UIScreen mainScreen] bounds].size.width;
     self.headView = [[WKRecommendView alloc] initWithFrame:CGRectMake(0, 0, with, 570)];
-    self.headView.backgroundColor = [UIColor colorWithRed:0.948 green:0.967 blue:0.90 alpha:1.0];
+    self.headView.backgroundColor = ColorGlobal;
     self.listTableView.tableHeaderView = self.headView;
     
    //1 设置头视图轮播图
