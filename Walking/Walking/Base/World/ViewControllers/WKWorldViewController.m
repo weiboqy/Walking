@@ -11,7 +11,7 @@
 #import "WKforeignViewController.h"
 #import "WKInlandViewController.h"
 #import "WKWorldListModel.h"
-
+#import "WKTabBarViewController.h"
 
 
 @interface WKWorldViewController ()<UIScrollViewDelegate>
@@ -47,12 +47,9 @@
     
     // 自定义导航条
     [self addCustomNagationBar];
-    
-    
     // Do any additional setup after loading the view from its nib.
-}
-
-
+    
+    }
 
 - (void)createListView {
     // 关闭自带的自动布局
@@ -150,7 +147,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 /*
  #pragma mark - Navigation
  

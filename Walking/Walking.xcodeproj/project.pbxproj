@@ -45,6 +45,7 @@
 		793123621CC8D0C60052CDEE /* WKWorldDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 793123601CC8D0C60052CDEE /* WKWorldDetailCell.m */; };
 		793123631CC8D0C60052CDEE /* WKWorldDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793123611CC8D0C60052CDEE /* WKWorldDetailCell.xib */; };
 		793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 793123651CC8D1DE0052CDEE /* WKWorldDetailModel.m */; };
+		7939D9121CC9036800833B9E /* WKDarkLightMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 7939D9111CC9036800833B9E /* WKDarkLightMode.m */; };
 		793DBDC41CC6607A00A4E3CA /* WKMeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */; };
 		793DBDC61CC6609400A4E3CA /* WKMeHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */; };
 		79FAC48B1CC4E39F0068C093 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC48A1CC4E39F0068C093 /* main.m */; };
@@ -148,6 +149,8 @@
 		793123611CC8D0C60052CDEE /* WKWorldDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKWorldDetailCell.xib; sourceTree = "<group>"; };
 		793123641CC8D1DE0052CDEE /* WKWorldDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldDetailModel.h; sourceTree = "<group>"; };
 		793123651CC8D1DE0052CDEE /* WKWorldDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWorldDetailModel.m; sourceTree = "<group>"; };
+		7939D9101CC9036800833B9E /* WKDarkLightMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKDarkLightMode.h; path = Walking/Base/Others/WKDarkLightMode.h; sourceTree = SOURCE_ROOT; };
+		7939D9111CC9036800833B9E /* WKDarkLightMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKDarkLightMode.m; path = Walking/Base/Others/WKDarkLightMode.m; sourceTree = SOURCE_ROOT; };
 		793DBDC21CC6607A00A4E3CA /* WKMeHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMeHeadView.h; sourceTree = SOURCE_ROOT; };
 		793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMeHeadView.m; sourceTree = SOURCE_ROOT; };
 		793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKMeHeadView.xib; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 		790752531CC8630E00B968F3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				7939D9101CC9036800833B9E /* WKDarkLightMode.h */,
+				7939D9111CC9036800833B9E /* WKDarkLightMode.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -714,6 +719,7 @@
 				791DA5211CC76A0F009D9093 /* WKRecommendNotesViewController.m in Sources */,
 				791DA5261CC77B52009D9093 /* WKStoryListTableViewCell.m in Sources */,
 				793DBDC41CC6607A00A4E3CA /* WKMeHeadView.m in Sources */,
+				7939D9121CC9036800833B9E /* WKDarkLightMode.m in Sources */,
 				79FAC4E01CC533220068C093 /* WKWorldViewController.m in Sources */,
 				790761981CC6546F0097EF89 /* WKRecommendView.m in Sources */,
 				791C36291CC7BF0500FFC596 /* WKLoginAndRegistViewController.m in Sources */,
