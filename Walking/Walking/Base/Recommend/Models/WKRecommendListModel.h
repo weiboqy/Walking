@@ -10,4 +10,10 @@
 
 @interface WKRecommendListModel : NSObject
 
+@property (nonatomic, strong) NSString *title;
+
+
+
+
+
 @end
