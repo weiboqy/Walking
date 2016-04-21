@@ -13,7 +13,7 @@
 
 #import "UIView+WKCustom.h"  // 类目view
 #import "WKNavigtionBar.h"   // 自定义导航栏
-
+#import "UIImageView+WebCache.h"
 
 
 #define kScreenWidth self.view.frame.size.width
@@ -27,6 +27,12 @@
 #endif
 
 #define WKLogFun WKLog(@"%s", __func__)
+
+
+
+
+
+
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
