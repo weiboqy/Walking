@@ -116,7 +116,7 @@ static NSString * const foreignCollectViewCellID = @"WKForeignCollectViewCellID"
     WKWorldDetailViewController *detailVC = [[WKWorldDetailViewController alloc]init];
     
     WKWorldListModel *model = self.dataArr[indexPath.row];
-    detailVC.id = model.id;
+    detailVC.index = model.id;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

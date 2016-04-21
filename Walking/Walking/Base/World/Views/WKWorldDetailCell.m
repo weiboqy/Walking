@@ -10,6 +10,13 @@
 
 @implementation WKWorldDetailCell
 
+- (void)setModel:(WKWorldDetailModel *)model {
+    _model = model;
+    self.name_zh_cnLabel.text = [NSString stringWithFormat:@"%@", model.name_zh_cn];
+    self.name_enLabel.text = [NSString stringWithFormat:@"%@", model.name_en];
+    [self.image_urlImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", model.image_url]] placeholderImage:PLACEHOLDER];
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }

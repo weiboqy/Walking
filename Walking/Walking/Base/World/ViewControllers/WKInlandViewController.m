@@ -9,6 +9,7 @@
 #import "WKInlandViewController.h"
 #import "WKCollectionCell.h"
 #import "WKWorldListModel.h"
+#import "WKWorldDetailViewController.h"
 
 @interface WKInlandViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -98,6 +99,14 @@ static NSString * const inlandCollectViewCellID = @"WKInlandCollectViewCellID";
     WKWorldListModel *model = self.dataArr[indexPath.row];
     cell.model = model;
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    WKWorldDetailViewController *detailVC = [[WKWorldDetailViewController alloc]init];
+    
+    WKWorldListModel *model = self.dataArr[indexPath.row];
+    detailVC.index = model.id;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 //- collect
