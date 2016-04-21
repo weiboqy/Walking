@@ -61,7 +61,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.navigationController setNavigationBarHidden:YES];
+//    [self.navigationController setNavigationBarHidden:YES];
     [self setTitleImage];
 
     self.view.backgroundColor = ColorGlobal;
@@ -123,6 +123,7 @@
         }
         case 1:{
             // 清除缓存
+            
             break;
         }
         case 2:{
@@ -140,6 +141,8 @@
     }
 }
 
+
+
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 //{
 //    UIView *view = [[UIView alloc]init];
@@ -153,7 +156,6 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc]init];
-//    view.backgroundColor = [UIColor blueColor];
     return view;
     
 }
@@ -169,6 +171,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation
