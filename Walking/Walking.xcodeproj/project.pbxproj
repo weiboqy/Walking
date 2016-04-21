@@ -573,6 +573,7 @@
 				TargetAttributes = {
 					79FAC4851CC4E39F0068C093 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 77724DT35C;
 					};
 					79FAC49E1CC4E39F0068C093 = {
 						CreatedOnToolsVersion = 7.2;
@@ -869,6 +870,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = Walking/Base/Others/Views/PrefixHeader.pch;
 				INFOPLIST_FILE = Walking/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lanou3g.com.Walking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -884,6 +886,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = Walking/Base/Others/Views/PrefixHeader.pch;
 				INFOPLIST_FILE = Walking/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lanou3g.com.Walking;
 				PRODUCT_NAME = "$(TARGET_NAME)";

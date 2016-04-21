@@ -29,7 +29,6 @@
     selectedAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:12];
     selectedAttrs[NSForegroundColorAttributeName] = [UIColor darkGrayColor];
     
-    
     UITabBarItem *item = [UITabBarItem appearance];
     [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [item setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
@@ -38,8 +37,8 @@
 // 初始化 子视图
 - (void)createChildView:(UIViewController *)viewController title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage{
     viewController.tabBarItem.title = title;
-    viewController.tabBarItem.image = [[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    viewController.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
+    viewController.tabBarItem.image = [UIImage imageNamed:image];
+    viewController.tabBarItem.selectedImage = [UIImage imageNamed:selectedImage];
     WKNavigationViewController *naVC = [[WKNavigationViewController alloc]initWithRootViewController:viewController];
     
     // 添加子视图
