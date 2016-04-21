@@ -41,6 +41,10 @@
 		793035291CC687BA003E5491 /* WKListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793035271CC687BA003E5491 /* WKListTableViewCell.xib */; };
 		7930352C1CC68857003E5491 /* WKCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7930352B1CC68857003E5491 /* WKCycleScrollView.m */; };
 		7930352F1CC6886A003E5491 /* NSTimer+myTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7930352E1CC6886A003E5491 /* NSTimer+myTimer.m */; };
+		7931235E1CC8CDFE0052CDEE /* WKWorldDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7931235D1CC8CDFE0052CDEE /* WKWorldDetailViewController.m */; };
+		793123621CC8D0C60052CDEE /* WKWorldDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 793123601CC8D0C60052CDEE /* WKWorldDetailCell.m */; };
+		793123631CC8D0C60052CDEE /* WKWorldDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793123611CC8D0C60052CDEE /* WKWorldDetailCell.xib */; };
+		793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 793123651CC8D1DE0052CDEE /* WKWorldDetailModel.m */; };
 		793DBDC41CC6607A00A4E3CA /* WKMeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */; };
 		793DBDC61CC6609400A4E3CA /* WKMeHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */; };
 		79FAC48B1CC4E39F0068C093 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC48A1CC4E39F0068C093 /* main.m */; };
@@ -137,6 +141,13 @@
 		7930352B1CC68857003E5491 /* WKCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCycleScrollView.m; sourceTree = "<group>"; };
 		7930352D1CC6886A003E5491 /* NSTimer+myTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+myTimer.h"; sourceTree = "<group>"; };
 		7930352E1CC6886A003E5491 /* NSTimer+myTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+myTimer.m"; sourceTree = "<group>"; };
+		7931235C1CC8CDFE0052CDEE /* WKWorldDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldDetailViewController.h; sourceTree = "<group>"; };
+		7931235D1CC8CDFE0052CDEE /* WKWorldDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWorldDetailViewController.m; sourceTree = "<group>"; };
+		7931235F1CC8D0C60052CDEE /* WKWorldDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldDetailCell.h; sourceTree = "<group>"; };
+		793123601CC8D0C60052CDEE /* WKWorldDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWorldDetailCell.m; sourceTree = "<group>"; };
+		793123611CC8D0C60052CDEE /* WKWorldDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKWorldDetailCell.xib; sourceTree = "<group>"; };
+		793123641CC8D1DE0052CDEE /* WKWorldDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldDetailModel.h; sourceTree = "<group>"; };
+		793123651CC8D1DE0052CDEE /* WKWorldDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWorldDetailModel.m; sourceTree = "<group>"; };
 		793DBDC21CC6607A00A4E3CA /* WKMeHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMeHeadView.h; sourceTree = SOURCE_ROOT; };
 		793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMeHeadView.m; sourceTree = SOURCE_ROOT; };
 		793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKMeHeadView.xib; sourceTree = "<group>"; };
@@ -443,6 +454,8 @@
 			children = (
 				7907618D1CC654170097EF89 /* WKWorldListModel.h */,
 				7907618E1CC654170097EF89 /* WKWorldListModel.m */,
+				793123641CC8D1DE0052CDEE /* WKWorldDetailModel.h */,
+				793123651CC8D1DE0052CDEE /* WKWorldDetailModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -457,6 +470,8 @@
 				7914E35C1CC773BF001A0C5F /* WKforeignViewController.m */,
 				7914E35E1CC773EA001A0C5F /* WKInlandViewController.h */,
 				7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */,
+				7931235C1CC8CDFE0052CDEE /* WKWorldDetailViewController.h */,
+				7931235D1CC8CDFE0052CDEE /* WKWorldDetailViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -471,6 +486,9 @@
 				7907619E1CC66DF30097EF89 /* WKCollectionCell.h */,
 				7907619F1CC66DF30097EF89 /* WKCollectionCell.m */,
 				790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */,
+				7931235F1CC8D0C60052CDEE /* WKWorldDetailCell.h */,
+				793123601CC8D0C60052CDEE /* WKWorldDetailCell.m */,
+				793123611CC8D0C60052CDEE /* WKWorldDetailCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -598,6 +616,7 @@
 				791C35E31CC7750E00FFC596 /* WKAboutUsViewController.xib in Resources */,
 				79FAC4E61CC533300068C093 /* WKMeViewController.xib in Resources */,
 				790761A21CC66E0C0097EF89 /* WKCollectionCell.xib in Resources */,
+				793123631CC8D0C60052CDEE /* WKWorldDetailCell.xib in Resources */,
 				79FAC4991CC4E39F0068C093 /* LaunchScreen.storyboard in Resources */,
 				79FAC4DC1CC533130068C093 /* WKRecommendViewController.xib in Resources */,
 				791DA5731CC7B695009D9093 /* WKNotesListTableViewCell.xib in Resources */,
@@ -702,9 +721,12 @@
 				790761A01CC66DF30097EF89 /* WKCollectionCell.m in Sources */,
 				79FAC4E51CC533300068C093 /* WKMeViewController.m in Sources */,
 				79FAC4D41CC5328B0068C093 /* WKNavigationViewController.m in Sources */,
+				7931235E1CC8CDFE0052CDEE /* WKWorldDetailViewController.m in Sources */,
 				791C35E21CC7750E00FFC596 /* WKAboutUsViewController.m in Sources */,
+				793123621CC8D0C60052CDEE /* WKWorldDetailCell.m in Sources */,
 				79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */,
 				7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */,
+				793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */,
 				791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */,
 				7907618C1CC654020097EF89 /* WKWorldView.m in Sources */,
 				791DA50D1CC725B1009D9093 /* WKRecommendCollectionViewCell.m in Sources */,

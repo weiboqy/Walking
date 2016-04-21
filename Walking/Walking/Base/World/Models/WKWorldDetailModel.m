@@ -1,14 +1,14 @@
 //
-//  WKWorldListModel.m
+//  WKWorldDetailModel.m
 //  Walking
 //
-//  Created by lanou on 16/4/19.
+//  Created by lanou on 16/4/21.
 //  Copyright © 2016年 xqy. All rights reserved.
 //
 
-#import "WKWorldListModel.h"
+#import "WKWorldDetailModel.h"
 
-@implementation WKWorldListModel
+@implementation WKWorldDetailModel
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     

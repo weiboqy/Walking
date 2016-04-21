@@ -8,11 +8,13 @@
 
 #import "WKInlandViewController.h"
 #import "WKCollectionCell.h"
+#import "WKWorldListModel.h"
 
 @interface WKInlandViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 /** 界面列表 */
 @property (strong, nonatomic) UICollectionView *inlandCollectView;
+@property (strong, nonatomic)NSMutableArray *dataArr;
 
 @end
 
@@ -21,20 +23,52 @@ static NSString * const inlandCollectViewCellID = @"WKInlandCollectViewCellID";
 
 @implementation WKInlandViewController
 
+- (NSMutableArray *)dataArr {
+    if (_dataArr == nil) {
+        _dataArr = [[NSMutableArray alloc]initWithCapacity:0];
+    }
+    return _dataArr;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = ColorGlobal;
+    // 关闭自带的自动布局
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.view.backgroundColor = [UIColor cyanColor];
+    // 加载数据
+    [self praseData];
     
     // 初始化 视图
     [self setupSubView];
 }
+
+#pragma mark  ---加载数据
+- (void)praseData {
+    [[AFHTTPSessionManager manager] GET:@"http://chanyouji.com/api/destinations.json?page=1" parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        for (int i = 3; i < 5; i ++) {
+            NSDictionary *dic = responseObject[i];
+            for (NSDictionary *dataDic in dic[@"destinations"]) {
+                WKWorldListModel *listModel = [[WKWorldListModel alloc]init];
+                [listModel setValuesForKeysWithDictionary:dataDic];
+                [self.dataArr addObject:listModel];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.inlandCollectView reloadData];
+        });
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        WKLog(@"faile");
+    }];
+    
+}
+
 - (void)setupSubView {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     // 每个item直接的间距
-    layout.minimumInteritemSpacing = 5;
+    layout.minimumInteritemSpacing = 10;
     // 每行之间的间距
-    layout.minimumLineSpacing = 5;
+    layout.minimumLineSpacing = 10;
     //设置分区上下左右的边距
     layout.sectionInset = UIEdgeInsetsMake(20, 10, 20, 10);
     
@@ -51,17 +85,21 @@ static NSString * const inlandCollectViewCellID = @"WKInlandCollectViewCellID";
 }
 // 每个item 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((kScreenWidth - 35) / 2, 200);
+    return CGSizeMake((kScreenWidth - 30) / 2, 180);
 }
 
 #pragma mark ---UICollectViewDelegate\UICollectViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 20;
+    return self.dataArr.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     WKCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:inlandCollectViewCellID forIndexPath:indexPath];
+    WKWorldListModel *model = self.dataArr[indexPath.row];
+    cell.model = model;
     return cell;
 }
+
+//- collect
 
 @end
