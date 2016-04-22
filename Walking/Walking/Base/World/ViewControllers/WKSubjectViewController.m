@@ -7,10 +7,12 @@
 //
 
 #import "WKSubjectViewController.h"
+#import "WKSubjectModel.h"
 
 @interface WKSubjectViewController ()
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
+@property (weak, nonatomic) IBOutlet UIImageView *Image;
 
 @end
 
@@ -25,61 +27,72 @@
 }
 
 //  请求数据
-//- (void)parseData {
-//    // 显示指示器
-//    [SVProgressHUD show];
-//    
-//    // id请求参数
-//    WKLog(@"%@", _ID);
-//    
-//    NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/destinations/%@.json?page=1", _ID];
-//    [[AFHTTPSessionManager manager] GET:url parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
-//        
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        for (NSDictionary *dic in responseObject) {
-//            WKWorldDetailModel *model = [[WKWorldDetailModel alloc]init];
-//            [model setValuesForKeysWithDictionary:dic];
-//            [self.dataArr addObject:model];
-//            WKLog(@"%@", model.name_zh_cn);
-//            //            WKLog(@"%ld", self.dataArr.count);
-//        }
-//        // 取消指示器
-//        [SVProgressHUD dismiss];
-//        
-//        // 刷新tableView
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.tableView reloadData];
-//        });
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        // 失败也取消指示器
-//        [SVProgressHUD dismiss];
-//        [SVProgressHUD showErrorWithStatus:@"数据加载失败"];
-//    }];
-//}
-
-//  请求数据
 - (void)parseData {
     // 显示指示器
     [SVProgressHUD show];
     // ID请求参数
-    WKLog(@"%@",_ID);
-    
-    NSString *url = [NSString stringWithFormat:@"https://chanyouji.com/api/articles.json?destination_id=%@&page=1", _ID];
+//    WKLog(@"%@",_destination_id);
+
+    NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/articles.json?destination_id=%@&page=1", _destination_id];
     [[AFHTTPSessionManager manager] GET:url parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        WKLog(@"%@",responseObject);
-//        for (NSDictionary *dic in responseObject) {
-//            <#statements#>
-//        }
+        // 检测请求到的数组
+//        WKLog(@"%@",responseObject);
+        for (NSDictionary *dic in responseObject) {
+            WKSubjectModel *model = [[WKSubjectModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            WKLog(@"url = %@", model.image_url);
+            [self.dataArr addObject:model];
+        }
+        // 测试请求到的数据个数
+        WKLog(@"%ld",self.dataArr.count);
+        // 取消指示器
+        [SVProgressHUD dismiss];
+        // 刷新tableView
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 回到主线程刷新UI
+            WKSubjectModel *model = _dataArr[0];
+            [self.Image sd_setImageWithURL:[NSURL URLWithString:model.image_url] placeholderImage:PLACEHOLDER];
+        });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        WKLog(@"faile");
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
         
     }];
 }
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self addCustomNagationBar];
+    [self parseData];
+    
+    
+    
     // Do any additional setup after loading the view from its nib.
 }
+
+- (void)addCustomNagationBar {
+    // NavigationBar
+    WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
+    bar.backgroundColor = [UIColor clearColor];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(18, 10, 70, 30);
+    // 设置返回按钮的图片
+    [button setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
+    // 自适应尺寸
+    [button sizeToFit];
+    [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+    [bar addSubview:button];
+    [self.view addSubview:bar];
+}
+
+- (void)backClick {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

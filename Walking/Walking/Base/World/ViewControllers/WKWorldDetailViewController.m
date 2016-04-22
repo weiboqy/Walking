@@ -76,7 +76,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     [SVProgressHUD show];
     
     // id请求参数
-    WKLog(@"%@", _ID);
+//    WKLog(@"%@", _ID);
     
     NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/destinations/%@.json?page=1", _ID];
     [[AFHTTPSessionManager manager] GET:url parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -86,7 +86,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
                 WKWorldDetailModel *model = [[WKWorldDetailModel alloc]init];
                 [model setValuesForKeysWithDictionary:dic];
                 [self.dataArr addObject:model];
-                WKLog(@"%@", model.name_zh_cn);
+//                WKLog(@"%@", model.name_zh_cn);
 //            WKLog(@"%ld", self.dataArr.count);
         }
         // 取消指示器
@@ -99,7 +99,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         // 失败也取消指示器
         [SVProgressHUD dismiss];
-        [SVProgressHUD showErrorWithStatus:@"数据加载失败"];
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
 }
 
@@ -122,6 +122,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     WKCategoryViewController *categoryVC = [[WKCategoryViewController alloc]init];
     WKWorldDetailModel *model = self.dataArr[indexPath.row];
     categoryVC.model = model;
+    categoryVC.ID = _ID;
     [self.navigationController pushViewController:categoryVC animated:YES];
     
 }
