@@ -1,0 +1,1 @@
+../../../XMAFNetworking/XMAFNetworkExample/XMAFNetworking/Assistants/XMAFRequestGenerator.h

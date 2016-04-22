@@ -16,7 +16,7 @@
 @property (nonatomic, strong) UIButton *moreButton;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) WKCycleScrollView *headScrolView;
-
+@property (nonatomic, strong) UILabel *label;
 
 - (instancetype)initWithFrame:(CGRect)frame;
 

@@ -8,9 +8,23 @@
 
 #import "WKStoryListTableViewCell.h"
 
+
 @implementation WKStoryListTableViewCell
 
+
+- (void)setDetailModel:(WKRecommendStoryDetailModel *)detailModel{
+    _detailModel = detailModel;
+    
+    [_imageV sd_setImageWithURL:[NSURL URLWithString:detailModel.photo_s]];
+//    _imageV.contentMode = UIViewContentModeScaleAspectFit;
+    _titleLabel.text = detailModel.text;
+    
+}
+
 - (void)awakeFromNib {
+    
+    
+    
     // Initialization code
 }
 

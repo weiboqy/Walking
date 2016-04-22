@@ -11,9 +11,13 @@
 @interface WKStoryListHeadView : UIView
 
 
-@property (strong, nonatomic) IBOutlet UIImageView *imageV;
-@property (strong, nonatomic) IBOutlet UIImageView *icon;
 
+@property (strong, nonatomic) IBOutlet UIImageView *icon;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *TLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UIView *view;
 
 
 - (instancetype)initWithFrame:(CGRect)frame;

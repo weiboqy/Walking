@@ -9,77 +9,149 @@
 #import "WKRecommendStoryViewController.h"
 #import "WKStoryListTableViewCell.h"
 #import "WKStoryListHeadView.h"
+#import "NetWorkRequestManager.h"
+#import "WKRecommendStoryDetailModel.h"
+#import "WKStoryListTableViewHeadCell.h"
 
 @interface WKRecommendStoryViewController ()<UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *listTableView;
+@property (strong, nonatomic) UITableView *listTableView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) WKStoryListHeadView *headView;
 
+//显示的 内容
+@property (nonatomic, copy) NSString *uName;//作者姓名
+@property (nonatomic, copy) NSString *avatar_l;//头像
+@property (nonatomic, copy) NSString *name;//trip旅行家
+@property (nonatomic, copy) NSString *date_added;//时间
+@property (nonatomic, copy) NSString *text;//第一条标题
 
 
 @end
 
 @implementation WKRecommendStoryViewController
 
-- (void)createListTableView{ 
+
+- (NSMutableArray *)dataArray{
+    if (!_dataArray) {
+        self.dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
+
+- (void)requestData{
     
-    [self.listTableView registerNib:[UINib nibWithNibName:@"WKStoryListTableViewCell" bundle:nil] forCellReuseIdentifier:@"cells"];
+    [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendStoryDetailURL, _spot_id] parDic:@{} finish:^(NSData *data) {
+        NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"%@", dicData);
+        
+        NSDictionary *dicT = dicData[@"data"];
+        _text = dicT[@"spot"][@"text"];
+        _name = dicT[@"trip"][@"name"];
+        _date_added = dicT[@"trip"][@"date_added"];
+        _uName = dicT[@"trip"][@"user"][@"name"];
+        _avatar_l = dicT[@"trip"][@"user"][@"avatar_l"];
+        
+        for (NSDictionary *dicN in dicT[@"spot"][@"detail_list"]) {
+            WKRecommendStoryDetailModel *detailModel = [[WKRecommendStoryDetailModel alloc] init];
+            [detailModel setValuesForKeysWithDictionary:dicN];
+            [self.dataArray addObject:detailModel];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.listTableView reloadData];
+            //2016-04-04T13:21:26+08:00
+            _headView.timeLabel.text = [NSString stringWithFormat:@"%@", [_date_added substringWithRange:NSMakeRange(0, 10)]];
+            _headView.TLabel.text = [NSString stringWithFormat:@"此故事由 %@ 收录于", _uName];
+            _headView.titleLabel.text = _name;
+            [_headView.icon sd_setImageWithURL:[NSURL URLWithString:_avatar_l]];
+        });
+        
+    } error:^(NSError *error) {
+        WKLog(@"error%@", error);
+    }];
+}
+
+- (void)createListTableView{
+    
+    self.navigationController.navigationBar.translucent = NO;
+    
+    self.listTableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.listTableView.backgroundColor = [UIColor clearColor];
     
     self.listTableView.delegate = self;
     self.listTableView.dataSource = self;
     
+    //添加背景图
+    UIImageView *imageV = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+        effectview.frame = [UIScreen mainScreen].bounds;
+        effectview.alpha = 0.5;
+    [imageV sd_setImageWithURL:[NSURL URLWithString:self.imageURL]];
+    [imageV addSubview:effectview];
+    [self.view addSubview:imageV];
+    [self.view addSubview:self.listTableView];
+    
+    
+    [self.listTableView registerNib:[UINib nibWithNibName:@"WKStoryListTableViewCell" bundle:nil] forCellReuseIdentifier:@"listCell"];
+    [self.listTableView registerNib:[UINib nibWithNibName:@"WKStoryListTableViewHeadCell" bundle:nil] forCellReuseIdentifier:@"listHeadCell"];
     //指定头视图
     //xib 指定 不行
-    WKStoryListHeadView *headView = [[NSBundle mainBundle] loadNibNamed:@"WKStoryListHeadView" owner:nil options:nil].lastObject;
-//    WKStoryListHeadView *headView = [[WKStoryListHeadView alloc] initWithFrame:CGRectMake(0, 0, 0, 180)];
-    [headView initializeData];
-//    headView = [[WKStoryListHeadView alloc] initWithFrame:CGRectMake(0, 0, 375, 200)];
-    headView.frame = CGRectMake(0, 0, 0, 150);
-//    headView.backgroundColor = [UIColor grayColor];
-    self.listTableView.tableHeaderView = headView;
+    _headView = [[NSBundle mainBundle] loadNibNamed:@"WKStoryListHeadView" owner:nil options:nil].lastObject;
+    _headView.frame = CGRectMake(0, 0, 0, 200);
+    [_headView initializeData];
+    
+    self.listTableView.rowHeight = UITableViewAutomaticDimension;
+    self.listTableView.estimatedRowHeight = 1200;
+
+    self.listTableView.tableHeaderView = _headView;
     
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0;
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"精选故事";
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self createListTableView];
     
-    
+    [self requestData];
     // Do any additional setup after loading the view from its nib.
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableVie
-{
-    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 15;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    WKStoryListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cells" forIndexPath:indexPath];
-    cell.titleLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
-    
-    return cell;
+    if (indexPath.row == 0) {
+        WKStoryListTableViewHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:@"listHeadCell" forIndexPath:indexPath];
+        if (!cell) {
+            cell = [[WKStoryListTableViewHeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"listHeadCell"];
+        }
+        cell.contentLabel.text = _text;
+//        cell.textLabel.numberOfLines = 0;
+        return cell;
+        
+    }else{
+        WKStoryListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"listCell" forIndexPath:indexPath];
+        if (!cell) {
+            cell = [[WKStoryListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"listCell"];
+        }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        cell.detailModel = self.dataArray[indexPath.row];
+        return cell;
+    }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 160;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return 180;
+//}
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*
 #pragma mark - Navigation

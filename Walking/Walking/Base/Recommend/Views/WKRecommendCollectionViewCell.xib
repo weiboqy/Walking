@@ -14,24 +14,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="279" height="275"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xaJ-LV-iZ1">
-                        <rect key="frame" x="0.0" y="0.0" width="279" height="275"/>
+                        <rect key="frame" x="0.0" y="0.0" width="279" height="245"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PHW-Vd-czQ">
-                        <rect key="frame" x="10" y="235" width="30" height="30"/>
+                        <rect key="frame" x="10" y="249" width="26" height="26"/>
                         <color key="backgroundColor" red="0.84988557450000002" green="0.84988557450000002" blue="0.84988557450000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="qay-mV-QWA"/>
-                            <constraint firstAttribute="height" constant="30" id="wpn-zB-MbN"/>
+                            <constraint firstAttribute="width" constant="26" id="qay-mV-QWA"/>
+                            <constraint firstAttribute="height" constant="26" id="wpn-zB-MbN"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEt-3O-JdR">
-                        <rect key="frame" x="50" y="240" width="42" height="20"/>
+                        <rect key="frame" x="38" y="252" width="36" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="HDg-UB-sbz"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -40,13 +40,13 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="xaJ-LV-iZ1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Air-9U-qZT"/>
-                <constraint firstItem="HEt-3O-JdR" firstAttribute="leading" secondItem="PHW-Vd-czQ" secondAttribute="trailing" constant="10" id="Lxs-3d-K4U"/>
-                <constraint firstAttribute="bottom" secondItem="PHW-Vd-czQ" secondAttribute="bottom" constant="10" id="QVt-lL-JpD"/>
+                <constraint firstItem="HEt-3O-JdR" firstAttribute="leading" secondItem="PHW-Vd-czQ" secondAttribute="trailing" constant="2" id="Lxs-3d-K4U"/>
+                <constraint firstAttribute="bottom" secondItem="PHW-Vd-czQ" secondAttribute="bottom" id="QVt-lL-JpD"/>
                 <constraint firstItem="xaJ-LV-iZ1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SBf-qG-ud3"/>
                 <constraint firstItem="HEt-3O-JdR" firstAttribute="centerY" secondItem="PHW-Vd-czQ" secondAttribute="centerY" id="UMf-IV-F86"/>
                 <constraint firstItem="PHW-Vd-czQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Ziw-Ig-R73"/>
                 <constraint firstAttribute="trailing" secondItem="xaJ-LV-iZ1" secondAttribute="trailing" id="cLW-mr-FjC"/>
-                <constraint firstAttribute="bottom" secondItem="xaJ-LV-iZ1" secondAttribute="bottom" id="iAV-Bd-upy"/>
+                <constraint firstAttribute="bottom" secondItem="xaJ-LV-iZ1" secondAttribute="bottom" constant="30" id="iAV-Bd-upy"/>
             </constraints>
             <size key="customSize" width="279" height="275"/>
             <connections>

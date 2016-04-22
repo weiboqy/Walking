@@ -9,23 +9,21 @@
 #import <UIKit/UIKit.h>
 
 @interface WKNotesListHeadView : UIView
+@property (strong, nonatomic) IBOutlet UIImageView *imageV;
+@property (strong, nonatomic) IBOutlet UIImageView *icon;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 
-@property (nonatomic, strong) UIImageView *imageV;
-@property (nonatomic, strong) UIImageView *icon;
-@property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dayLabel;
+@property (strong, nonatomic) IBOutlet UILabel *daysLabel;
+@property (strong, nonatomic) IBOutlet UILabel *moterLabel;
+@property (strong, nonatomic) IBOutlet UILabel *motersLabel;
 
-@property (nonatomic, strong) UILabel *timeLabel;
-@property (nonatomic, strong) UILabel *dayLabel;
-@property (nonatomic, strong) UILabel *mileageLabel;
-@property (nonatomic, strong) UILabel *motreLabel;
-@property (nonatomic, strong) UILabel *loveLabel;
-@property (nonatomic, strong) UILabel *countLabel;
+@property (strong, nonatomic) IBOutlet UILabel *loveLabel;
+@property (strong, nonatomic) IBOutlet UILabel *lovesLabel;
 
 
-
-- (instancetype)initWithFrame:(CGRect)frame;
-
+- (void)handleImage;
 
 
 @end

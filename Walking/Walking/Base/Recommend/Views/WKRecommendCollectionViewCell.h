@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WKRecommendStoryModel.h"
 
 @interface WKRecommendCollectionViewCell : UICollectionViewCell
 
@@ -15,5 +16,6 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *icon;
 
+@property (nonatomic, strong) WKRecommendStoryModel *storyModel;
 
 @end
