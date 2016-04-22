@@ -8,6 +8,8 @@
 
 #import "WKCategoryViewController.h"
 #import "WKRouteViewController.h"
+#import "WKSubjectViewController.h"
+#import "WKGuideViewController.h"
 
 @interface WKCategoryViewController ()
 
@@ -62,6 +64,16 @@
     WKRouteViewController *routeVC = [[WKRouteViewController alloc]init];
     routeVC.ID = _ID;
     [self.navigationController pushViewController:routeVC animated:YES];
+}
+- (IBAction)Guide:(id)sender {
+    WKGuideViewController *guideVC = [[WKGuideViewController alloc]init];
+    guideVC.ID = _ID;
+    [self.navigationController pushViewController:guideVC animated:YES];
+}
+- (IBAction)Subject:(id)sender {
+    WKSubjectViewController *subjectVC = [[WKSubjectViewController alloc]init];
+    subjectVC.ID = _ID;
+    [self.navigationController pushViewController:subjectVC animated:YES];
 }
 
 

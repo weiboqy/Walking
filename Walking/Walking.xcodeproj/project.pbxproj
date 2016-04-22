@@ -60,6 +60,8 @@
 		79C5FEC11CCA589B004B61AA /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C5FEBB1CCA589B004B61AA /* Foundation+Log.m */; };
 		79C5FEC21CCA589B004B61AA /* NetWorkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C5FEBD1CCA589B004B61AA /* NetWorkRequestManager.m */; };
 		79C5FEC31CCA589B004B61AA /* WKDarkLightMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C5FEC01CCA589B004B61AA /* WKDarkLightMode.m */; };
+		79C5FEC71CCA66F5004B61AA /* WKGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C5FEC51CCA66F5004B61AA /* WKGuideViewController.m */; };
+		79C5FEC81CCA66F5004B61AA /* WKGuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C5FEC61CCA66F5004B61AA /* WKGuideViewController.xib */; };
 		79CBB2AC1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CBB2AA1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.m */; };
 		79CBB2AD1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79CBB2AB1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.xib */; };
 		79CBB2B01CCA2C94005FEA30 /* WKRecommendSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CBB2AF1CCA2C94005FEA30 /* WKRecommendSearchView.m */; };
@@ -191,6 +193,9 @@
 		79C5FEBE1CCA589B004B61AA /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		79C5FEBF1CCA589B004B61AA /* WKDarkLightMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKDarkLightMode.h; sourceTree = "<group>"; };
 		79C5FEC01CCA589B004B61AA /* WKDarkLightMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKDarkLightMode.m; sourceTree = "<group>"; };
+		79C5FEC41CCA66F5004B61AA /* WKGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKGuideViewController.h; sourceTree = "<group>"; };
+		79C5FEC51CCA66F5004B61AA /* WKGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKGuideViewController.m; sourceTree = "<group>"; };
+		79C5FEC61CCA66F5004B61AA /* WKGuideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKGuideViewController.xib; sourceTree = "<group>"; };
 		79CBB2A91CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKStoryListTableViewHeadCell.h; sourceTree = "<group>"; };
 		79CBB2AA1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKStoryListTableViewHeadCell.m; sourceTree = "<group>"; };
 		79CBB2AB1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKStoryListTableViewHeadCell.xib; sourceTree = "<group>"; };
@@ -532,24 +537,30 @@
 			isa = PBXGroup;
 			children = (
 				79FAC4DD1CC533220068C093 /* WKWorldViewController.h */,
-				7914E35E1CC773EA001A0C5F /* WKInlandViewController.h */,
 				79FAC4DE1CC533220068C093 /* WKWorldViewController.m */,
 				79FAC4DF1CC533220068C093 /* WKWorldViewController.xib */,
 				7914E35B1CC773BF001A0C5F /* WKforeignViewController.h */,
 				7914E35C1CC773BF001A0C5F /* WKforeignViewController.m */,
+				7914E35E1CC773EA001A0C5F /* WKInlandViewController.h */,
 				7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */,
 				7931235C1CC8CDFE0052CDEE /* WKWorldDetailViewController.h */,
 				7931235D1CC8CDFE0052CDEE /* WKWorldDetailViewController.m */,
+<<<<<<< HEAD
 
+=======
+				79C5FEAA1CC9B5C5004B61AA /* WKCategoryViewController.h */,
+				79C5FEAB1CC9B5C5004B61AA /* WKCategoryViewController.m */,
+				79C5FEAC1CC9B5C5004B61AA /* WKCategoryViewController.xib */,
+>>>>>>> origin/master
 				79C5FEB01CCA3FA1004B61AA /* WKRouteViewController.h */,
 				79C5FEB11CCA3FA1004B61AA /* WKRouteViewController.m */,
 				79C5FEB21CCA3FA1004B61AA /* WKRouteViewController.xib */,
 				790040E91CC9CC8F00D291C3 /* WKSubjectViewController.h */,
 				790040EA1CC9CC8F00D291C3 /* WKSubjectViewController.m */,
 				790040EB1CC9CC8F00D291C3 /* WKSubjectViewController.xib */,
-				79C5FEAA1CC9B5C5004B61AA /* WKCategoryViewController.h */,
-				79C5FEAB1CC9B5C5004B61AA /* WKCategoryViewController.m */,
-				79C5FEAC1CC9B5C5004B61AA /* WKCategoryViewController.xib */,
+				79C5FEC41CCA66F5004B61AA /* WKGuideViewController.h */,
+				79C5FEC51CCA66F5004B61AA /* WKGuideViewController.m */,
+				79C5FEC61CCA66F5004B61AA /* WKGuideViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -689,6 +700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				791C35DE1CC774DF00FFC596 /* WKMyCollectionViewController.xib in Resources */,
+				79C5FEC81CCA66F5004B61AA /* WKGuideViewController.xib in Resources */,
 				793DBDC61CC6609400A4E3CA /* WKMeHeadView.xib in Resources */,
 				791C35E31CC7750E00FFC596 /* WKAboutUsViewController.xib in Resources */,
 				79FAC4E61CC533300068C093 /* WKMeViewController.xib in Resources */,
@@ -815,6 +827,7 @@
 				791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */,
 				7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */,
 				793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */,
+				79C5FEC71CCA66F5004B61AA /* WKGuideViewController.m in Sources */,
 				791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */,
 				7907618C1CC654020097EF89 /* WKWorldView.m in Sources */,
 				791DA50D1CC725B1009D9093 /* WKRecommendCollectionViewCell.m in Sources */,

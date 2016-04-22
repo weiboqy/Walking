@@ -53,19 +53,18 @@
 
 - (void)parseData {
     WKLog(@"%@", _ID);
-    [[AFHTTPSessionManager manager] GET:[NSString stringWithFormat:@"http://chanyouji.com/api/destinations/plans/%@.json?page=1", _ID] parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        WKLog(@"%@", reonseObject);
-        for (NSDictionary *dic in responseObject) {
+    [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:@"http://chanyouji.com/api/destinations/plans/%@.json?page=1", _ID] parDic:@{} finish:^(NSData *data) {
+        NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        for (NSDictionary *dic in dataArr) {
             WKRouteModel *model = [[WKRouteModel alloc]init];
             [model setValuesForKeysWithDictionary:dic];
             [self.dataArr addObject:model];
         }
         WKLog(@"%ld", self.dataArr.count);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        WKLog(@"faile");
+    } error:^(NSError *error) {
+        
     }];
+   
 }
 
 - (void)didReceiveMemoryWarning {
