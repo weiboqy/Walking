@@ -10,6 +10,9 @@
 #import "WKCollectionCell.h"
 #import "WKforeignViewController.h"
 #import "WKInlandViewController.h"
+#import "WKWorldListModel.h"
+#import "WKTabBarViewController.h"
+
 
 @interface WKWorldViewController ()<UIScrollViewDelegate>
 
@@ -22,22 +25,19 @@
 /** 国内按钮 */
 @property (strong, nonatomic) UIButton *inlandButton;
 
-
-
-
-
 @end
-
 
 @implementation WKWorldViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // 全局色
     self.view.backgroundColor = ColorGlobal;
     
     // 初始化 控制器
-    [self initControllers];
+    [self ReloadControllers];
     
     // 创建列表展示
     [self createListView];
@@ -47,40 +47,37 @@
     
     // 自定义导航条
     [self addCustomNagationBar];
-    
     // Do any additional setup after loading the view from its nib.
-}
+    
+    }
 
 - (void)createListView {
-    
-    
     // 关闭自带的自动布局
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.rootScrollView.contentSize = CGSizeMake(self.childViewControllers.count * kScreenWidth, 0);
-//    self.rootScrollView.contentOffset = CGPointMake(0, 0);
+    self.rootScrollView.backgroundColor = ColorGlobal;
     self.rootScrollView.pagingEnabled = YES;
     self.rootScrollView.delegate = self;
+    
     [self scrollViewDidEndScrollingAnimation:self.rootScrollView];
     
 }
 
 // 初始化 子控制器
-- (void)initControllers {
+- (void)ReloadControllers {
     WKforeignViewController *foreignVC = [[WKforeignViewController alloc]init];
     [self addChildViewController:foreignVC];
-    
     WKInlandViewController *inlandVC = [[WKInlandViewController alloc]init];
     [self addChildViewController:inlandVC];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    WKLog( @"%ld", self.childViewControllers.count);
-    
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    WKLog( @"%ld", self.childViewControllers.count);
+//}
 
 // scrollView结束减速的方法
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-  [self scrollViewDidEndScrollingAnimation:self.rootScrollView];
+    [self scrollViewDidEndScrollingAnimation:self.rootScrollView];
     NSInteger index = self.rootScrollView.contentOffset.x / kScreenWidth;
     if (index == 0) {
         [_foreignButton setImage:[UIImage imageNamed:@"国外"] forState:UIControlStateNormal];
@@ -99,7 +96,7 @@
     vc.view.x = self.rootScrollView.contentOffset.x;
     vc.view.y = 0;
     vc.view.width = kScreenWidth;
-    vc.view.height = self.rootScrollView.height;
+    vc.view.height = self.rootScrollView.height ;
     [self.rootScrollView addSubview:vc.view];
 }
 
@@ -131,8 +128,8 @@
 - (void)foreignClick {
     WKLogFun;
     _foreignButton.selected = YES;
-   [_foreignButton setImage:[UIImage imageNamed:@"国外"] forState:UIControlStateNormal];
-   [_inlandButton setImage:[UIImage imageNamed:@"国内1"] forState:UIControlStateNormal];
+    [_foreignButton setImage:[UIImage imageNamed:@"国外"] forState:UIControlStateNormal];
+    [_inlandButton setImage:[UIImage imageNamed:@"国内1"] forState:UIControlStateNormal];
     self.rootScrollView.contentOffset = CGPointMake(0, 0);
 }
 
@@ -150,15 +147,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
