@@ -29,6 +29,8 @@
     selectedAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:12];
     selectedAttrs[NSForegroundColorAttributeName] = [UIColor darkGrayColor];
     
+    
+    UITabBarItem *item = [UITabBarItem appearance];  // 当有appearance的时候 就表明可以配置全局性的东西
     UITabBarItem *item = [UITabBarItem appearance];
     [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [item setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];

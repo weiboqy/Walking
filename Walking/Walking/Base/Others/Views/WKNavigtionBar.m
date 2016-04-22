@@ -12,24 +12,27 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor whiteColor];
-        
+        self.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.1];
+        UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, -20, self.width, 64)];
+        bgView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.3];
         _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _backButton.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         [_backButton setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-        [self addSubview:_backButton];
+        [bgView addSubview:_backButton];
         
         _titleLabel = [[UILabel alloc]init];
         _titleLabel.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
         _titleLabel.bounds = CGRectMake(0, 0, 100, self.frame.size.height);
         _titleLabel.font = [UIFont systemFontOfSize:18];
-        [self addSubview:_titleLabel];
+        [bgView addSubview:_titleLabel];
         
         
         _titleImageView = [[UIImageView alloc]init];
         _titleImageView.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
         _titleImageView.bounds = CGRectMake(0, 0, 96, 35);
-        [self addSubview:_titleImageView];
+        [bgView addSubview:_titleImageView];
+        
+        [self addSubview:bgView];
         
     }
     return self;
