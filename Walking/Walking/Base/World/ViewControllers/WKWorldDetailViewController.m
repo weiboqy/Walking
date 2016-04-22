@@ -9,6 +9,7 @@
 #import "WKWorldDetailViewController.h"
 #import "WKWorldDetailModel.h"
 #import "WKWorldDetailCell.h"
+#import "WKCategoryViewController.h"
 
 @interface WKWorldDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -31,6 +32,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.view.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:.5];
     self.view.backgroundColor = ColorGlobal;
     
     [self addCustomNagationBar];
@@ -56,10 +58,8 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(18, 10, 70, 30);
-    
     // 设置返回按钮的图片
     [button setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-    
     // 自适应尺寸
     [button sizeToFit];
     [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
@@ -116,6 +116,14 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     WKWorldDetailModel *model = self.dataArr[indexPath.row];
     cell.model = model;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    WKCategoryViewController *categoryVC = [[WKCategoryViewController alloc]init];
+    WKWorldDetailModel *model = self.dataArr[indexPath.row];
+    categoryVC.model = model;
+    [self.navigationController pushViewController:categoryVC animated:YES];
+    
 }
 
 
