@@ -16,9 +16,8 @@
 #import "UIImageView+WebCache.h"
 
 #import "WKDarkLightMode.h"
+#import "NetWorkRequestManager.h"
 
-
-#import <AFNetworking/AFNetworking.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <SDWebImage/SDImageCache.h>
 

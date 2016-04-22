@@ -1,1 +1,0 @@
-../../../XMAFNetworking/XMAFNetworkExample/XMAFNetworking/Services/XMAFService.h

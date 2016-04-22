@@ -75,22 +75,22 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
 
 - (void)parseData {
     // 显示指示器
-    [SVProgressHUD show];
+//    [SVProgressHUD show];
+    [SVProgressHUD showInfoWithStatus:@"正在加载数据哦~~~~"];
     
     // id请求参数
     WKLog(@"%@", _ID);
     
     NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/destinations/%@.json?page=1", _ID];
-    [[AFHTTPSessionManager manager] GET:url parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            for (NSDictionary *dic in responseObject) {
-                WKWorldDetailModel *model = [[WKWorldDetailModel alloc]init];
-                [model setValuesForKeysWithDictionary:dic];
-                [self.dataArr addObject:model];
-                
-                WKLog(@"%@", model.name_zh_cn);
-//            WKLog(@"%ld", self.dataArr.count);
+    [NetWorkRequestManager requestWithType:GET urlString:url parDic:@{} finish:^(NSData *data) {
+        NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        for (NSDictionary *dic in dataArr) {
+            WKWorldDetailModel *model = [[WKWorldDetailModel alloc]init];
+            [model setValuesForKeysWithDictionary:dic];
+            [self.dataArr addObject:model];
+            
+            WKLog(@"%@", model.name_zh_cn);
+            //            WKLog(@"%ld", self.dataArr.count);
         }
         // 取消指示器
         [SVProgressHUD dismiss];
@@ -99,7 +99,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } error:^(NSError *error) {
         // 失败也取消指示器
         [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"数据加载失败"];

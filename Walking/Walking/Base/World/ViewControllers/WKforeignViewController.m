@@ -47,10 +47,12 @@ static NSString * const foreignCollectViewCellID = @"WKForeignCollectViewCellID"
 
 #pragma mark  ---加载数据
 - (void)praseData {
-    [SVProgressHUD show];
-    [[AFHTTPSessionManager manager] GET:@"http://chanyouji.com/api/destinations.json?page=1" parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    // 显示指示器
+    [SVProgressHUD showInfoWithStatus:@"正在加载哦~~~"];
+    [NetWorkRequestManager requestWithType:GET urlString:@"http://chanyouji.com/api/destinations.json?page=1" parDic:@{} finish:^(NSData *data) {
+        NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         for (int i = 0; i < 3; i ++) {
-            NSDictionary *dic = responseObject[i];
+            NSDictionary *dic = dataArr[i];
             for (NSDictionary *dataDic in dic[@"destinations"]) {
                 WKWorldListModel *listModel = [[WKWorldListModel alloc]init];
                 [listModel setValuesForKeysWithDictionary:dataDic];
@@ -63,7 +65,7 @@ static NSString * const foreignCollectViewCellID = @"WKForeignCollectViewCellID"
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.foreignCollectView reloadData];
         });
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } error:^(NSError *error) {
         WKLog(@"failre");
         [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"数据加载失败"];

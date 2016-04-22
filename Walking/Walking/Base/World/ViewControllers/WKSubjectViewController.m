@@ -24,63 +24,28 @@
     return _dataArr;
 }
 
-//  请求数据
-//- (void)parseData {
-//    // 显示指示器
-//    [SVProgressHUD show];
-//    
-//    // id请求参数
-//    WKLog(@"%@", _ID);
-//    
-//    NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/destinations/%@.json?page=1", _ID];
-//    [[AFHTTPSessionManager manager] GET:url parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
-//        
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        for (NSDictionary *dic in responseObject) {
-//            WKWorldDetailModel *model = [[WKWorldDetailModel alloc]init];
-//            [model setValuesForKeysWithDictionary:dic];
-//            [self.dataArr addObject:model];
-//            WKLog(@"%@", model.name_zh_cn);
-//            //            WKLog(@"%ld", self.dataArr.count);
-//        }
-//        // 取消指示器
-//        [SVProgressHUD dismiss];
-//        
-//        // 刷新tableView
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.tableView reloadData];
-//        });
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        // 失败也取消指示器
-//        [SVProgressHUD dismiss];
-//        [SVProgressHUD showErrorWithStatus:@"数据加载失败"];
-//    }];
-//}
-
-//  请求数据
-- (void)parseData {
-    // 显示指示器
-    [SVProgressHUD show];
-    // ID请求参数
-    WKLog(@"%@",_ID);
-    
-    NSString *url = [NSString stringWithFormat:@"https://chanyouji.com/api/articles.json?destination_id=%@&page=1", _ID];
-    [[AFHTTPSessionManager manager] GET:url parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        WKLog(@"%@",responseObject);
-//        for (NSDictionary *dic in responseObject) {
-//            <#statements#>
-//        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
+//  请求数据
+- (void)parseData {
+//    // 显示指示器
+//    [SVProgressHUD show];
+//    // ID请求参数
+//    WKLog(@"%@",_ID);
+//    
+//    NSString *url = [NSString stringWithFormat:@"https://chanyouji.com/api/articles.json?destination_id=%@&page=1", _ID];
+//    
+//    [NetWorkRequestManager requestWithType:GET urlString:url parDic:@{} finish:^(NSData *data) {
+//        NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//        
+//    } error:^(NSError *error) {
+//        
+//    }];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

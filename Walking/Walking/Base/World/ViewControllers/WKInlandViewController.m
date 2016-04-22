@@ -46,22 +46,28 @@ static NSString * const inlandCollectViewCellID = @"WKInlandCollectViewCellID";
 
 #pragma mark  ---加载数据
 - (void)praseData {
-    [[AFHTTPSessionManager manager] GET:@"http://chanyouji.com/api/destinations.json?page=1" parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    // 显示指示器
+    [SVProgressHUD showInfoWithStatus:@"正在加载哦~~~"];
+    [NetWorkRequestManager requestWithType:GET urlString:@"http://chanyouji.com/api/destinations.json?page=1" parDic:@{} finish:^(NSData *data) {
+         NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         for (int i = 3; i < 5; i ++) {
-            NSDictionary *dic = responseObject[i];
+            NSDictionary *dic = dataArr[i];
             for (NSDictionary *dataDic in dic[@"destinations"]) {
                 WKWorldListModel *listModel = [[WKWorldListModel alloc]init];
                 [listModel setValuesForKeysWithDictionary:dataDic];
                 [self.dataArr addObject:listModel];
             }
         }
+        // 关闭指示器
+        [SVProgressHUD dismiss];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.inlandCollectView reloadData];
         });
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        WKLog(@"faile");
+    } error:^(NSError *error) {
+       WKLog(@"faile");
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"数据加载失败"];
     }];
-    
 }
 
 - (void)setupSubView {

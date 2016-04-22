@@ -1,1 +1,0 @@
-../../../XMAFNetworking/XMAFNetworkExample/XMAFNetworking/Components/UploadComponent/XMAFUploadManager.h
