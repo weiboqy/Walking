@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WKRecommendNotesDetailModel.h"
 
 @interface WKNotesListTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *dayTimeLabel;
-
 @property (strong, nonatomic) IBOutlet UIImageView *imageV;
-
 @property (strong, nonatomic) IBOutlet UILabel *contentLabel;
-
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 
+@property (nonatomic, strong) WKRecommendNotesDetailModel *detailModel;
+@property (strong, nonatomic) IBOutlet UIImageView *imageC;
 
 @end

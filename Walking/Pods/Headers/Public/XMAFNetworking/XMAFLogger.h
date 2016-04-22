@@ -1,0 +1,1 @@
+../../../XMAFNetworking/XMAFNetworkExample/XMAFNetworking/Components/LogComponent/XMAFLogger.h

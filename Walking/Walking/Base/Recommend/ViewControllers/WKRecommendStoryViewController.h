@@ -10,4 +10,8 @@
 
 @interface WKRecommendStoryViewController : UIViewController
 
+@property (nonatomic, copy) NSString *spot_id;
+@property (nonatomic, strong) NSString *imageURL;
+
+
 @end
