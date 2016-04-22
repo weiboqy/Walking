@@ -10,6 +10,6 @@
 
 @interface WKWorldDetailViewController : UIViewController
 
-@property (assign, nonatomic)NSInteger index;
+@property (copy, nonatomic)NSString *ID;
 
 @end

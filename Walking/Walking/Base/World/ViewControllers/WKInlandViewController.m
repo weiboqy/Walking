@@ -105,7 +105,7 @@ static NSString * const inlandCollectViewCellID = @"WKInlandCollectViewCellID";
     WKWorldDetailViewController *detailVC = [[WKWorldDetailViewController alloc]init];
     
     WKWorldListModel *model = self.dataArr[indexPath.row];
-    detailVC.index = model.id;
+    detailVC.ID = model.ID;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

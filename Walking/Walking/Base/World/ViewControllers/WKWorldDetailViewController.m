@@ -76,9 +76,9 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     [SVProgressHUD show];
     
     // id请求参数
-    WKLog(@"%ld", _index);
+    WKLog(@"%@", _ID);
     
-    NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/destinations/%ld.json?page=1", _index];
+    NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/destinations/%@.json?page=1", _ID];
     [[AFHTTPSessionManager manager] GET:url parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
