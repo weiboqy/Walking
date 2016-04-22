@@ -489,15 +489,12 @@
 				7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */,
 				7931235C1CC8CDFE0052CDEE /* WKWorldDetailViewController.h */,
 				7931235D1CC8CDFE0052CDEE /* WKWorldDetailViewController.m */,
-<<<<<<< HEAD
 				790040E91CC9CC8F00D291C3 /* WKSubjectViewController.h */,
 				790040EA1CC9CC8F00D291C3 /* WKSubjectViewController.m */,
 				790040EB1CC9CC8F00D291C3 /* WKSubjectViewController.xib */,
-=======
 				79C5FEAA1CC9B5C5004B61AA /* WKCategoryViewController.h */,
 				79C5FEAB1CC9B5C5004B61AA /* WKCategoryViewController.m */,
 				79C5FEAC1CC9B5C5004B61AA /* WKCategoryViewController.xib */,
->>>>>>> origin/master
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
