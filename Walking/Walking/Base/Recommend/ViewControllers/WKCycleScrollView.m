@@ -18,13 +18,11 @@
 
 @property (nonatomic, assign) NSInteger currentPageIndex; // 当前页数
 @property (nonatomic, strong) NSMutableArray *contentViews;
+@property (nonatomic, strong) UILabel *titleLabel;
 
 @end
 
 @implementation WKCycleScrollView
-
-
-
 
 
 #pragma mark -初始化方法-
@@ -49,8 +47,11 @@
         [self addSubview:self.scrollView];
         
         // 创建UIPageControl对象
-        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(self.bounds.size.width - 100, self.bounds.size.height - 30, 100, 30)];
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake((self.bounds.size.width - 100)/2, self.bounds.size.height - 30, 100, 30)];
         [self addSubview:_pageControl];
+        
+
+        
     }
     return self;
 }
@@ -125,6 +126,15 @@
         CGRect rightRect = contentView.frame;
         rightRect.origin = CGPointMake(CGRectGetWidth(self.scrollView.frame) * (counter ++), 0);
         contentView.frame = rightRect;
+        
+        
+//        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.bounds.size.height - 85, self.bounds.size.width - 20, 20)];
+//        _titleLabel.text = @"0000";
+        
+        
+        
+        [contentView addSubview:_titleLabel];
+        
         [self.scrollView addSubview:contentView];
     }
     [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0)];

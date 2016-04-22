@@ -10,4 +10,7 @@
 
 @interface WKRecommendNotesViewController : UIViewController
 
+@property (nonatomic, copy) NSString *ID;
+
+
 @end

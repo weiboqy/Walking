@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WKRecommendStoryDetailModel.h"
 
 @interface WKStoryListTableViewCell : UITableViewCell
 
@@ -14,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageV;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
+@property (nonatomic, strong) WKRecommendStoryDetailModel *detailModel;
 
 @end

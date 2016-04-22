@@ -7,19 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WKRecommendListModel.h"
 
 @interface WKListTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *backImageV;
 
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *addressLabel;
 
 @property (strong, nonatomic) IBOutlet UIImageView *icon;
-
 @property (strong, nonatomic) IBOutlet UILabel *userName;
-
 @property (strong, nonatomic) IBOutlet UIView *view;
-@property (strong, nonatomic) IBOutlet UIImageView *backImageV;
+
+
+@property (nonatomic, strong) WKRecommendListModel *listModel;
 
 @end

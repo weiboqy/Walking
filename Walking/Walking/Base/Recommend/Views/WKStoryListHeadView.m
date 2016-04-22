@@ -16,13 +16,18 @@
     if (self) {
         self.icon.layer.cornerRadius = 30;
         self.icon.layer.masksToBounds = YES;
+        self.view.layer.cornerRadius = 5;
+        self.view.layer.masksToBounds = YES;
     }
     return self;
 }
 
 - (void)initializeData{
-    self.icon.layer.cornerRadius = 30;
+    self.icon.layer.cornerRadius = 28;
     self.icon.layer.masksToBounds = YES;
+    self.view.layer.cornerRadius = 5;
+//    self.view.layer.masksToBounds = YES;
+    
 }
 
 
