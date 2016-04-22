@@ -11,11 +11,13 @@
 #import "WKMyCollectionViewController.h"
 #import "WKAboutUsViewController.h"
 #import "WKLoginAndRegistViewController.h"
-
+#import "WKAboutUsViewController.h"
+#import "WKTabBarViewController.h"
 @interface WKMeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *meTableView;
 @property (nonatomic, strong) WKMeHeadView *meHeadView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, weak) UIView *bgView;//夜间模式视图
 
 @end
 
@@ -62,16 +64,19 @@
     [super viewDidLoad];
     
 //    [self.navigationController setNavigationBarHidden:YES];
+    // 显示头logo
     [self setTitleImage];
 
-    self.view.backgroundColor = ColorGlobal;
-    
-//    UIImageView *titleImage = [UIImageView alloc]initWithFrame:<#(CGRect)#>
     _meTableView.backgroundColor = ColorGlobal;
-    
+    // 创建头视图
     [self creatHeadView];
+    // 分区数组
     [self creatArray];
+    // 登录注册的按钮
     [self loginAndRegistButton];
+    
+    // 夜间模式
+//    [self setupBgView];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -106,11 +111,28 @@
 - (void)updateSwitchAtIndexPath:(id)sender {
     UISwitch *switchView = (UISwitch *)sender;
     if ([switchView isOn]) {
-//        [switchView setOn:NO animated:YES];
+//        self.bgView.hidden = NO;
+        [[WKDarkLightMode defaultManager] darkmode];
+        [WKDarkLightMode defaultManager].type = WKDarkLightModeTypeDark;
         NSLog(@"开");
     } else {
+//        self.bgView.hidden = YES;
+        [[WKDarkLightMode defaultManager] lightmode];
+        [WKDarkLightMode defaultManager].type = WKDarkLightModeTypeLight;
         NSLog(@"关");
     }
+}
+
+- (void)setupBgView {
+    UIView *bgView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    bgView.backgroundColor = [UIColor blackColor];
+    bgView.alpha = 0.3;
+    bgView.userInteractionEnabled = NO;
+    self.bgView = bgView;
+    WKTabBarViewController *tab = (WKTabBarViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    [tab.view insertSubview:bgView atIndex:[UIApplication sharedApplication].windows.count ];
+//    [self.view bringSubviewToFront:vc.view];
+//    bgView.hidden = YES;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -171,8 +193,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 /*
 #pragma mark - Navigation

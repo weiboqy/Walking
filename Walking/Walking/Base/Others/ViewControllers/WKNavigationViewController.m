@@ -35,7 +35,6 @@
         [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
         
         // 将系统返回按钮替换并并设置为左按钮(如果不设置左按钮,Button不显示)
-        viewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
         
         //push之后 Tabbar消失
