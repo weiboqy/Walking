@@ -540,12 +540,10 @@
 				7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */,
 				7931235C1CC8CDFE0052CDEE /* WKWorldDetailViewController.h */,
 				7931235D1CC8CDFE0052CDEE /* WKWorldDetailViewController.m */,
-<<<<<<< HEAD
-=======
+
 				79C5FEB01CCA3FA1004B61AA /* WKRouteViewController.h */,
 				79C5FEB11CCA3FA1004B61AA /* WKRouteViewController.m */,
 				79C5FEB21CCA3FA1004B61AA /* WKRouteViewController.xib */,
->>>>>>> origin/master
 				790040E91CC9CC8F00D291C3 /* WKSubjectViewController.h */,
 				790040EA1CC9CC8F00D291C3 /* WKSubjectViewController.m */,
 				790040EB1CC9CC8F00D291C3 /* WKSubjectViewController.xib */,
