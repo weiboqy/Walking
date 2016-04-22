@@ -1,44 +1,37 @@
 //
-//  WKCategoryViewController.m
+//  WKRouteViewController.m
 //  Walking
 //
 //  Created by lanou on 16/4/22.
 //  Copyright © 2016年 xqy. All rights reserved.
 //
 
-#import "WKCategoryViewController.h"
 #import "WKRouteViewController.h"
+#import "WKRouteModel.h"
 
-@interface WKCategoryViewController ()
+@interface WKRouteViewController ()
 
-@property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (strong, nonatomic)NSMutableArray *dataArr;
 
 @end
 
-@implementation WKCategoryViewController
+@implementation WKRouteViewController
+
+- (NSMutableArray *)dataArr {
+    if (!_dataArr) {
+        _dataArr = [[NSMutableArray alloc]initWithCapacity:0];
+    }
+    return _dataArr;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self addCustomNagationBar];
+    [self addCustomNagationBar];
     
-    [self bgView];
-    
-    // Do any additional setup after loading the view from its nib.
-}
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self parseData];
 }
 
-- (void)bgView {
-    self.name_zh_cnLabel.text = [NSString stringWithFormat:@"%@", _model.name_zh_cn];
-    self.name_enLabel.text = [NSString stringWithFormat:@"%@", _model.name_en];
-    self.backgroundImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _model.image_url]]]];
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
-    effectView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-    [self.backgroundImageView addSubview:effectView];
-}
 - (void)addCustomNagationBar {
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
@@ -58,16 +51,26 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)Route:(id)sender {
-    WKRouteViewController *routeVC = [[WKRouteViewController alloc]init];
-    routeVC.ID = _ID;
-    [self.navigationController pushViewController:routeVC animated:YES];
+- (void)parseData {
+    WKLog(@"%@", _ID);
+    [[AFHTTPSessionManager manager] GET:[NSString stringWithFormat:@"http://chanyouji.com/api/destinations/plans/%@.json?page=1", _ID] parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        WKLog(@"%@", reonseObject);
+        for (NSDictionary *dic in responseObject) {
+            WKRouteModel *model = [[WKRouteModel alloc]init];
+            [model setValuesForKeysWithDictionary:dic];
+            [self.dataArr addObject:model];
+        }
+        WKLog(@"%ld", self.dataArr.count);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        WKLog(@"faile");
+    }];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 /*

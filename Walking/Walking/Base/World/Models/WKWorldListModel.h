@@ -11,7 +11,7 @@
 @interface WKWorldListModel : NSObject
 
 /** id */
-@property (assign, nonatomic)NSInteger id;
+@property (copy, nonatomic)NSString *ID;
 /** 图片 */
 @property (copy, nonatomic)NSString *image_url;
 

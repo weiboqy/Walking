@@ -48,6 +48,8 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    // 隐藏分割线
+    self.tableView.separatorStyle = NO;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([WKWorldDetailCell class]) bundle:nil] forCellReuseIdentifier:WorldDetailCellID];
     
     [self.view addSubview:self.tableView];
@@ -76,9 +78,9 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     [SVProgressHUD show];
     
     // id请求参数
-    WKLog(@"%ld", _index);
+    WKLog(@"%@", _ID);
     
-    NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/destinations/%ld.json?page=1", _index];
+    NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/destinations/%@.json?page=1", _ID];
     [[AFHTTPSessionManager manager] GET:url parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -86,6 +88,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
                 WKWorldDetailModel *model = [[WKWorldDetailModel alloc]init];
                 [model setValuesForKeysWithDictionary:dic];
                 [self.dataArr addObject:model];
+                
                 WKLog(@"%@", model.name_zh_cn);
 //            WKLog(@"%ld", self.dataArr.count);
         }
@@ -122,6 +125,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     WKCategoryViewController *categoryVC = [[WKCategoryViewController alloc]init];
     WKWorldDetailModel *model = self.dataArr[indexPath.row];
     categoryVC.model = model;
+    categoryVC.ID = _ID;
     [self.navigationController pushViewController:categoryVC animated:YES];
     
 }
