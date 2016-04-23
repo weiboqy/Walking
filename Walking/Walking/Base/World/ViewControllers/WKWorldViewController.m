@@ -69,6 +69,7 @@
     [self addChildViewController:foreignVC];
     WKInlandViewController *inlandVC = [[WKInlandViewController alloc]init];
     [self addChildViewController:inlandVC];
+    
 }
 
 //- (void)scrollViewDidScroll:(UIScrollView *)scrollView {

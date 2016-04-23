@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		790040EC1CC9CC8F00D291C3 /* WKSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790040EA1CC9CC8F00D291C3 /* WKSubjectViewController.m */; };
 		790040ED1CC9CC8F00D291C3 /* WKSubjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790040EB1CC9CC8F00D291C3 /* WKSubjectViewController.xib */; };
+
 		790428FA1CC9C4D7007AE8A4 /* WKNotesListHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790428F91CC9C4D7007AE8A4 /* WKNotesListHeadView.xib */; };
 		7907525C1CC8A58F00B968F3 /* WKRecommendStoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907525B1CC8A58F00B968F3 /* WKRecommendStoryModel.m */; };
 		790752AD1CC8CFA300B968F3 /* WKRecommendListUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790752AC1CC8CFA300B968F3 /* WKRecommendListUserModel.m */; };
 		790752BC1CC9275B00B968F3 /* WKRecommendStoryDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790752BB1CC9275B00B968F3 /* WKRecommendStoryDetailModel.m */; };
+		790040F01CCA0B1E00D291C3 /* WKSubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790040EF1CCA0B1E00D291C3 /* WKSubjectModel.m */; };
 		7907618C1CC654020097EF89 /* WKWorldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907618B1CC654020097EF89 /* WKWorldView.m */; };
 		7907618F1CC654170097EF89 /* WKWorldListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907618E1CC654170097EF89 /* WKWorldListModel.m */; };
 		790761921CC6544A0097EF89 /* WKNavigtionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 790761911CC6544A0097EF89 /* WKNavigtionBar.m */; };
@@ -105,6 +107,9 @@
 		790040E91CC9CC8F00D291C3 /* WKSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSubjectViewController.h; sourceTree = "<group>"; };
 		790040EA1CC9CC8F00D291C3 /* WKSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSubjectViewController.m; sourceTree = "<group>"; };
 		790040EB1CC9CC8F00D291C3 /* WKSubjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKSubjectViewController.xib; sourceTree = "<group>"; };
+
+
+
 		790428F91CC9C4D7007AE8A4 /* WKNotesListHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKNotesListHeadView.xib; sourceTree = "<group>"; };
 		7907525A1CC8A58F00B968F3 /* WKRecommendStoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendStoryModel.h; sourceTree = "<group>"; };
 		7907525B1CC8A58F00B968F3 /* WKRecommendStoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendStoryModel.m; sourceTree = "<group>"; };
@@ -112,6 +117,9 @@
 		790752AC1CC8CFA300B968F3 /* WKRecommendListUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendListUserModel.m; sourceTree = "<group>"; };
 		790752BA1CC9275B00B968F3 /* WKRecommendStoryDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendStoryDetailModel.h; sourceTree = "<group>"; };
 		790752BB1CC9275B00B968F3 /* WKRecommendStoryDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendStoryDetailModel.m; sourceTree = "<group>"; };
+		790040EE1CCA0B1E00D291C3 /* WKSubjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSubjectModel.h; sourceTree = "<group>"; };
+		790040EF1CCA0B1E00D291C3 /* WKSubjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSubjectModel.m; sourceTree = "<group>"; };
+
 		7907618A1CC654020097EF89 /* WKWorldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldView.h; sourceTree = "<group>"; };
 		7907618B1CC654020097EF89 /* WKWorldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWorldView.m; sourceTree = "<group>"; };
 		7907618D1CC654170097EF89 /* WKWorldListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWorldListModel.h; sourceTree = "<group>"; };
@@ -529,6 +537,8 @@
 				793123651CC8D1DE0052CDEE /* WKWorldDetailModel.m */,
 				79C5FEB71CCA446F004B61AA /* WKRouteModel.h */,
 				79C5FEB81CCA446F004B61AA /* WKRouteModel.m */,
+				790040EE1CCA0B1E00D291C3 /* WKSubjectModel.h */,
+				790040EF1CCA0B1E00D291C3 /* WKSubjectModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -545,6 +555,7 @@
 				7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */,
 				7931235C1CC8CDFE0052CDEE /* WKWorldDetailViewController.h */,
 				7931235D1CC8CDFE0052CDEE /* WKWorldDetailViewController.m */,
+
 				79C5FEAA1CC9B5C5004B61AA /* WKCategoryViewController.h */,
 				79C5FEAB1CC9B5C5004B61AA /* WKCategoryViewController.m */,
 				79C5FEAC1CC9B5C5004B61AA /* WKCategoryViewController.xib */,
@@ -557,6 +568,12 @@
 				79C5FEC41CCA66F5004B61AA /* WKGuideViewController.h */,
 				79C5FEC51CCA66F5004B61AA /* WKGuideViewController.m */,
 				79C5FEC61CCA66F5004B61AA /* WKGuideViewController.xib */,
+				79C5FEAA1CC9B5C5004B61AA /* WKCategoryViewController.h */,
+				79C5FEAB1CC9B5C5004B61AA /* WKCategoryViewController.m */,
+				79C5FEAC1CC9B5C5004B61AA /* WKCategoryViewController.xib */,
+				790040E91CC9CC8F00D291C3 /* WKSubjectViewController.h */,
+				790040EA1CC9CC8F00D291C3 /* WKSubjectViewController.m */,
+				790040EB1CC9CC8F00D291C3 /* WKSubjectViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -836,6 +853,7 @@
 				79C5FEC21CCA589B004B61AA /* NetWorkRequestManager.m in Sources */,
 				79CBB2AC1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.m in Sources */,
 				79C5FEAD1CC9B5C5004B61AA /* WKCategoryViewController.m in Sources */,
+				790040F01CCA0B1E00D291C3 /* WKSubjectModel.m in Sources */,
 				7914E35D1CC773BF001A0C5F /* WKforeignViewController.m in Sources */,
 				79C5FEC31CCA589B004B61AA /* WKDarkLightMode.m in Sources */,
 			);
