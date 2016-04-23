@@ -44,6 +44,7 @@
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:@"https://chanyouji.com/api/wiki/destinations/%@.json?page=1", _ID] parDic:@{} finish:^(NSData *data) {
         NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
+        // wangjin hao shuai ~~~~~~~~~
     } error:^(NSError *error) {
         
     }];
