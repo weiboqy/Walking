@@ -32,15 +32,20 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+// 背景图 毛玻璃效果
 - (void)bgView {
     self.name_zh_cnLabel.text = [NSString stringWithFormat:@"%@", _model.name_zh_cn];
     self.name_enLabel.text = [NSString stringWithFormat:@"%@", _model.name_en];
     self.backgroundImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _model.image_url]]]];
+    
+    // 使用UIBlurEffect来制作毛玻璃
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
-    effectView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    effectView.frame = [[UIScreen mainScreen] bounds];
     [self.backgroundImageView addSubview:effectView];
 }
+
+// 自定义导航条
 - (void)addCustomNagationBar {
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
@@ -60,16 +65,21 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+//行程
 - (IBAction)Route:(id)sender {
     WKRouteViewController *routeVC = [[WKRouteViewController alloc]init];
     routeVC.ID = _ID;
     [self.navigationController pushViewController:routeVC animated:YES];
 }
+
+// 游玩指南
 - (IBAction)Guide:(id)sender {
     WKGuideViewController *guideVC = [[WKGuideViewController alloc]init];
     guideVC.ID = _ID;
     [self.navigationController pushViewController:guideVC animated:YES];
 }
+
+// 专题
 - (IBAction)Subject:(id)sender {
     WKSubjectViewController *subjectVC = [[WKSubjectViewController alloc]init];
     subjectVC.ID = _ID;
