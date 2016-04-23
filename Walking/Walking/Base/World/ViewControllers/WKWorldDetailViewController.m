@@ -37,7 +37,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     
     [self addCustomNagationBar];
     
-    
+    [self parseData];
     
     // 
     [self createListView];
@@ -71,6 +71,40 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
 
 - (void)backClick {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void)parseData {
+    // 显示指示器
+    [SVProgressHUD show];
+    
+    // id请求参数
+    WKLog(@"%@", _ID);
+    
+    NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/destinations/%@.json?page=1", _ID];
+    [NetWorkRequestManager requestWithType:GET urlString:url parDic:@{} finish:^(NSData *data) {
+        NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            for (NSDictionary *dic in dataArr) {
+                WKWorldDetailModel *model = [[WKWorldDetailModel alloc]init];
+                [model setValuesForKeysWithDictionary:dic];
+                [self.dataArr addObject:model];
+                
+                WKLog(@"%@", model.name_zh_cn);
+                //            WKLog(@"%ld", self.dataArr.count);
+            }
+            // 取消指示器
+            [SVProgressHUD dismiss];
+            
+            // 刷新tableView
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+
+    } error:^(NSError *error) {
+        // 失败也取消指示器
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"数据加载失败"];
+    }];
 }
 
 
