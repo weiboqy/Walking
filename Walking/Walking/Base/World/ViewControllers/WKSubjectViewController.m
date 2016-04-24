@@ -69,7 +69,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = ColorGlobal;
-    
     _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight)];
     _bgView.backgroundColor = [UIColor darkGrayColor];
     [self.view addSubview:_bgView];
