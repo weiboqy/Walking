@@ -10,6 +10,7 @@
 
 @interface WKSubjectViewController : UIViewController
 
-@property (nonatomic, copy) NSString *ID;
+@property (nonatomic, copy) NSString *destination_id;
+@property (nonatomic, copy) NSString *titleName;
 
 @end
