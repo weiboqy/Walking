@@ -14,6 +14,12 @@
 		790085911CCB12C1007E5E58 /* WKGuideDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085901CCB12C1007E5E58 /* WKGuideDetailModel.m */; };
 		790085941CCB172C007E5E58 /* WKGuideDetailPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085931CCB172C007E5E58 /* WKGuideDetailPhotoModel.m */; };
 		790085971CCB1A88007E5E58 /* WKGuideDetailSectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085961CCB1A88007E5E58 /* WKGuideDetailSectionsModel.m */; };
+		7900859A1CCB58D9007E5E58 /* WKGuideUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085991CCB58D9007E5E58 /* WKGuideUserModel.m */; };
+		790085E01CCB735F007E5E58 /* WKGuideOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085DE1CCB735F007E5E58 /* WKGuideOverviewCell.m */; };
+		790085E11CCB735F007E5E58 /* WKGuideOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790085DF1CCB735F007E5E58 /* WKGuideOverviewCell.xib */; };
+		790085E51CCB7390007E5E58 /* WKGuideImpressionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085E31CCB7390007E5E58 /* WKGuideImpressionCell.m */; };
+		790085E61CCB7390007E5E58 /* WKGuideImpressionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790085E41CCB7390007E5E58 /* WKGuideImpressionCell.xib */; };
+		790085EE1CCB8ED3007E5E58 /* WKTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085ED1CCB8ED3007E5E58 /* WKTableHeaderView.m */; };
 		790428FA1CC9C4D7007AE8A4 /* WKNotesListHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790428F91CC9C4D7007AE8A4 /* WKNotesListHeadView.xib */; };
 		7907525C1CC8A58F00B968F3 /* WKRecommendStoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907525B1CC8A58F00B968F3 /* WKRecommendStoryModel.m */; };
 		790752AD1CC8CFA300B968F3 /* WKRecommendListUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790752AC1CC8CFA300B968F3 /* WKRecommendListUserModel.m */; };
@@ -47,6 +53,8 @@
 		791DA5721CC7B695009D9093 /* WKNotesListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 791DA5701CC7B695009D9093 /* WKNotesListTableViewCell.m */; };
 		791DA5731CC7B695009D9093 /* WKNotesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791DA5711CC7B695009D9093 /* WKNotesListTableViewCell.xib */; };
 		791DA5761CC7BB64009D9093 /* WKNotesListHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 791DA5751CC7BB64009D9093 /* WKNotesListHeadView.m */; };
+		791FB7521CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791FB7501CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m */; };
+		791FB7531CCCAF5E0027C050 /* WKNoGuideCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791FB7511CCCAF5E0027C050 /* WKNoGuideCategoryViewController.xib */; };
 		793035281CC687BA003E5491 /* WKListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 793035261CC687BA003E5491 /* WKListTableViewCell.m */; };
 		793035291CC687BA003E5491 /* WKListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793035271CC687BA003E5491 /* WKListTableViewCell.xib */; };
 		7930352C1CC68857003E5491 /* WKCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7930352B1CC68857003E5491 /* WKCycleScrollView.m */; };
@@ -120,6 +128,16 @@
 		790085931CCB172C007E5E58 /* WKGuideDetailPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKGuideDetailPhotoModel.m; sourceTree = "<group>"; };
 		790085951CCB1A88007E5E58 /* WKGuideDetailSectionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKGuideDetailSectionsModel.h; sourceTree = "<group>"; };
 		790085961CCB1A88007E5E58 /* WKGuideDetailSectionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKGuideDetailSectionsModel.m; sourceTree = "<group>"; };
+		790085981CCB58D9007E5E58 /* WKGuideUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKGuideUserModel.h; sourceTree = "<group>"; };
+		790085991CCB58D9007E5E58 /* WKGuideUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKGuideUserModel.m; sourceTree = "<group>"; };
+		790085DD1CCB735F007E5E58 /* WKGuideOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKGuideOverviewCell.h; sourceTree = "<group>"; };
+		790085DE1CCB735F007E5E58 /* WKGuideOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKGuideOverviewCell.m; sourceTree = "<group>"; };
+		790085DF1CCB735F007E5E58 /* WKGuideOverviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKGuideOverviewCell.xib; sourceTree = "<group>"; };
+		790085E21CCB7390007E5E58 /* WKGuideImpressionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKGuideImpressionCell.h; sourceTree = "<group>"; };
+		790085E31CCB7390007E5E58 /* WKGuideImpressionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKGuideImpressionCell.m; sourceTree = "<group>"; };
+		790085E41CCB7390007E5E58 /* WKGuideImpressionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKGuideImpressionCell.xib; sourceTree = "<group>"; };
+		790085EC1CCB8ED3007E5E58 /* WKTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTableHeaderView.h; sourceTree = "<group>"; };
+		790085ED1CCB8ED3007E5E58 /* WKTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTableHeaderView.m; sourceTree = "<group>"; };
 		790428F91CC9C4D7007AE8A4 /* WKNotesListHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKNotesListHeadView.xib; sourceTree = "<group>"; };
 		7907525A1CC8A58F00B968F3 /* WKRecommendStoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendStoryModel.h; sourceTree = "<group>"; };
 		7907525B1CC8A58F00B968F3 /* WKRecommendStoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendStoryModel.m; sourceTree = "<group>"; };
@@ -177,6 +195,9 @@
 		791DA5711CC7B695009D9093 /* WKNotesListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKNotesListTableViewCell.xib; sourceTree = "<group>"; };
 		791DA5741CC7BB64009D9093 /* WKNotesListHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKNotesListHeadView.h; sourceTree = "<group>"; };
 		791DA5751CC7BB64009D9093 /* WKNotesListHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKNotesListHeadView.m; sourceTree = "<group>"; };
+		791FB74F1CCCAF5E0027C050 /* WKNoGuideCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKNoGuideCategoryViewController.h; sourceTree = "<group>"; };
+		791FB7501CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKNoGuideCategoryViewController.m; sourceTree = "<group>"; };
+		791FB7511CCCAF5E0027C050 /* WKNoGuideCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKNoGuideCategoryViewController.xib; sourceTree = "<group>"; };
 		793035251CC687BA003E5491 /* WKListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKListTableViewCell.h; sourceTree = "<group>"; };
 		793035261CC687BA003E5491 /* WKListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKListTableViewCell.m; sourceTree = "<group>"; };
 		793035271CC687BA003E5491 /* WKListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKListTableViewCell.xib; sourceTree = "<group>"; };
@@ -550,10 +571,12 @@
 				7900858A1CCB0EDB007E5E58 /* WKGuideModel.m */,
 				7900858F1CCB12C1007E5E58 /* WKGuideDetailModel.h */,
 				790085901CCB12C1007E5E58 /* WKGuideDetailModel.m */,
-				790085921CCB172C007E5E58 /* WKGuideDetailPhotoModel.h */,
-				790085931CCB172C007E5E58 /* WKGuideDetailPhotoModel.m */,
 				790085951CCB1A88007E5E58 /* WKGuideDetailSectionsModel.h */,
 				790085961CCB1A88007E5E58 /* WKGuideDetailSectionsModel.m */,
+				790085921CCB172C007E5E58 /* WKGuideDetailPhotoModel.h */,
+				790085931CCB172C007E5E58 /* WKGuideDetailPhotoModel.m */,
+				790085981CCB58D9007E5E58 /* WKGuideUserModel.h */,
+				790085991CCB58D9007E5E58 /* WKGuideUserModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -573,6 +596,9 @@
 				79C5FEAA1CC9B5C5004B61AA /* WKCategoryViewController.h */,
 				79C5FEAB1CC9B5C5004B61AA /* WKCategoryViewController.m */,
 				79C5FEAC1CC9B5C5004B61AA /* WKCategoryViewController.xib */,
+				791FB74F1CCCAF5E0027C050 /* WKNoGuideCategoryViewController.h */,
+				791FB7501CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m */,
+				791FB7511CCCAF5E0027C050 /* WKNoGuideCategoryViewController.xib */,
 				79C5FEB01CCA3FA1004B61AA /* WKRouteViewController.h */,
 				79C5FEB11CCA3FA1004B61AA /* WKRouteViewController.m */,
 				79C5FEB21CCA3FA1004B61AA /* WKRouteViewController.xib */,
@@ -597,6 +623,14 @@
 				7931235F1CC8D0C60052CDEE /* WKWorldDetailCell.h */,
 				793123601CC8D0C60052CDEE /* WKWorldDetailCell.m */,
 				793123611CC8D0C60052CDEE /* WKWorldDetailCell.xib */,
+				790085DD1CCB735F007E5E58 /* WKGuideOverviewCell.h */,
+				790085DE1CCB735F007E5E58 /* WKGuideOverviewCell.m */,
+				790085DF1CCB735F007E5E58 /* WKGuideOverviewCell.xib */,
+				790085E21CCB7390007E5E58 /* WKGuideImpressionCell.h */,
+				790085E31CCB7390007E5E58 /* WKGuideImpressionCell.m */,
+				790085E41CCB7390007E5E58 /* WKGuideImpressionCell.xib */,
+				790085EC1CCB8ED3007E5E58 /* WKTableHeaderView.h */,
+				790085ED1CCB8ED3007E5E58 /* WKTableHeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -722,6 +756,7 @@
 			files = (
 				791C35DE1CC774DF00FFC596 /* WKMyCollectionViewController.xib in Resources */,
 				79C5FEC81CCA66F5004B61AA /* WKGuideViewController.xib in Resources */,
+				791FB7531CCCAF5E0027C050 /* WKNoGuideCategoryViewController.xib in Resources */,
 				793DBDC61CC6609400A4E3CA /* WKMeHeadView.xib in Resources */,
 				791C35E31CC7750E00FFC596 /* WKAboutUsViewController.xib in Resources */,
 				79FAC4E61CC533300068C093 /* WKMeViewController.xib in Resources */,
@@ -738,11 +773,13 @@
 				790040ED1CC9CC8F00D291C3 /* WKSubjectViewController.xib in Resources */,
 				79FAC4961CC4E39F0068C093 /* Assets.xcassets in Resources */,
 				791C362A1CC7BF0500FFC596 /* WKLoginAndRegistViewController.xib in Resources */,
+				790085E61CCB7390007E5E58 /* WKGuideImpressionCell.xib in Resources */,
 				79FAC4E11CC533220068C093 /* WKWorldViewController.xib in Resources */,
 				793035291CC687BA003E5491 /* WKListTableViewCell.xib in Resources */,
 				790428FA1CC9C4D7007AE8A4 /* WKNotesListHeadView.xib in Resources */,
 				791DA5271CC77B52009D9093 /* WKStoryListTableViewCell.xib in Resources */,
 				79CBB2AD1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.xib in Resources */,
+				790085E11CCB735F007E5E58 /* WKGuideOverviewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -815,6 +852,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				791FB7521CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m in Sources */,
 				7930352F1CC6886A003E5491 /* NSTimer+myTimer.m in Sources */,
 				791DA5721CC7B695009D9093 /* WKNotesListTableViewCell.m in Sources */,
 				79C5FEB31CCA3FA1004B61AA /* WKRouteViewController.m in Sources */,
@@ -842,12 +880,15 @@
 				790761921CC6544A0097EF89 /* WKNavigtionBar.m in Sources */,
 				790761A01CC66DF30097EF89 /* WKCollectionCell.m in Sources */,
 				79FAC4E51CC533300068C093 /* WKMeViewController.m in Sources */,
+				790085E01CCB735F007E5E58 /* WKGuideOverviewCell.m in Sources */,
 				7907525C1CC8A58F00B968F3 /* WKRecommendStoryModel.m in Sources */,
 				79FAC4D41CC5328B0068C093 /* WKNavigationViewController.m in Sources */,
+				790085EE1CCB8ED3007E5E58 /* WKTableHeaderView.m in Sources */,
 				7931235E1CC8CDFE0052CDEE /* WKWorldDetailViewController.m in Sources */,
 				791C35E21CC7750E00FFC596 /* WKAboutUsViewController.m in Sources */,
 				793123621CC8D0C60052CDEE /* WKWorldDetailCell.m in Sources */,
 				79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */,
+				7900859A1CCB58D9007E5E58 /* WKGuideUserModel.m in Sources */,
 				791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */,
 				7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */,
 				793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */,
@@ -864,6 +905,7 @@
 				79C5FEC11CCA589B004B61AA /* Foundation+Log.m in Sources */,
 				79C5FEC21CCA589B004B61AA /* NetWorkRequestManager.m in Sources */,
 				79CBB2AC1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.m in Sources */,
+				790085E51CCB7390007E5E58 /* WKGuideImpressionCell.m in Sources */,
 				79C5FEAD1CC9B5C5004B61AA /* WKCategoryViewController.m in Sources */,
 				790040F01CCA0B1E00D291C3 /* WKSubjectModel.m in Sources */,
 				7914E35D1CC773BF001A0C5F /* WKforeignViewController.m in Sources */,
