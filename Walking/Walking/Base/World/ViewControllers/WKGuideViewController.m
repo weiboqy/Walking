@@ -157,11 +157,9 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     }];
 }
 
-//  eeee
-
-
-
 - (void)createListView {
+    
+    
     UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64)];
     bgView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:bgView];
