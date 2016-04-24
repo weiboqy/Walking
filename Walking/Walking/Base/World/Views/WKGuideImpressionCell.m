@@ -10,6 +10,14 @@
 
 @implementation WKGuideImpressionCell
 
+- (void)setModel:(WKGuideDetailSectionsModel *)model {
+    _model = model;
+    _titleLabel.text = [NSString stringWithFormat:@"%@", model.title];
+    _descriptionLable.text = [NSString stringWithFormat:@"%@", model.descriptioN];
+    _travel_dataLabel.text = [NSString stringWithFormat:@"%@", model.travel_date];
+    _nameLabel.text = [NSString stringWithFormat:@"%@", model.userModel.name];
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }

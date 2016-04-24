@@ -81,7 +81,7 @@ static NSString * const inlandCollectViewCellID = @"WKInlandCollectViewCellID";
     
     // 关闭自带的自动布局
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.inlandCollectView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) collectionViewLayout:layout];
+    self.inlandCollectView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 80) collectionViewLayout:layout];
     self.inlandCollectView.backgroundColor = [UIColor colorWithRed:232 / 255.0 green:232 / 255.0 blue:232 / 255.0 alpha:1.0];
     self.inlandCollectView.dataSource = self;
     self.inlandCollectView.delegate = self;
@@ -112,6 +112,7 @@ static NSString * const inlandCollectViewCellID = @"WKInlandCollectViewCellID";
     
     WKWorldListModel *model = self.dataArr[indexPath.row];
     detailVC.ID = model.ID;
+    detailVC.titleName = model.name_zh_cn;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

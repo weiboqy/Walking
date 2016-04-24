@@ -13,7 +13,7 @@
 
 /** 标题 */
 @property (copy, nonatomic)NSString *title;
-
+/** 详细信息 */
 @property (strong, nonatomic)WKGuideDetailModel *detailModel;
 
 

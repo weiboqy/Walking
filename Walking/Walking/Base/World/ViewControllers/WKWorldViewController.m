@@ -59,6 +59,7 @@
     self.rootScrollView.pagingEnabled = YES;
     self.rootScrollView.delegate = self;
     
+    // 手动加载结束动画
     [self scrollViewDidEndScrollingAnimation:self.rootScrollView];
     
 }
@@ -122,6 +123,7 @@
     [bar addSubview:_foreignButton];
     [bar addSubview:_inlandButton];
     [self.view addSubview:bar];
+  
 }
 
 #pragma mark --国内\国外按钮的点击方式
