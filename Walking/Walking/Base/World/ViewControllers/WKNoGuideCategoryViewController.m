@@ -55,7 +55,7 @@
 // 专题
 - (IBAction)Subject:(id)sender {
     WKSubjectViewController *subjectVC = [[WKSubjectViewController alloc]init];
-    subjectVC.ID = _ID;
+    subjectVC.destination_id = _ID;
     [self.navigationController pushViewController:subjectVC animated:YES];
 }
 
