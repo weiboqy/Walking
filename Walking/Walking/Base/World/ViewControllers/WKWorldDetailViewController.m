@@ -132,12 +132,12 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     if ([model.name_zh_cn isEqualToString:@"老挝"] || [model.name_zh_cn isEqualToString:@"朝鲜"] || [model.name_zh_cn isEqualToString:@"西安"] || [model.name_zh_cn isEqualToString:@"青海湖及周边"] || [model.name_zh_cn isEqualToString:@"甘南与兰州"] || [model.name_zh_cn isEqualToString:@"内蒙古"] || [model.name_zh_cn isEqualToString:@"敦煌与嘉峪关"] || [model.name_zh_cn isEqualToString:@"三亚"] || [model.name_zh_cn isEqualToString:@"新疆"] || [model.name_zh_cn isEqualToString:@"哈尔滨"] || [model.name_zh_cn isEqualToString:@"青岛"] || [model.name_zh_cn isEqualToString:@"洛阳"] || [model.name_zh_cn isEqualToString:@"桂林"] || [model.name_zh_cn isEqualToString:@"凤凰与张家界"] || [model.name_zh_cn isEqualToString:@"婺源"]) {
         WKNoGuideCategoryViewController *noGuideCategoryVC = [[WKNoGuideCategoryViewController alloc]init];
         noGuideCategoryVC.model = model;
-        noGuideCategoryVC.ID = _ID;
+        noGuideCategoryVC.ID = model.ID;
         [self.navigationController pushViewController:noGuideCategoryVC animated:YES];
     } else {
         WKCategoryViewController *categoryVC = [[WKCategoryViewController alloc]init];
         categoryVC.model = model;
-        categoryVC.ID = _ID;
+        categoryVC.ID = model.ID;
         [self.navigationController pushViewController:categoryVC animated:YES];
     }
     
