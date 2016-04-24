@@ -898,10 +898,7 @@
 				793123621CC8D0C60052CDEE /* WKWorldDetailCell.m in Sources */,
 				79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */,
 				7900859A1CCB58D9007E5E58 /* WKGuideUserModel.m in Sources */,
-<<<<<<< HEAD
 				791732951CCB64DC00199176 /* WKImageSwitchView.m in Sources */,
-=======
->>>>>>> cbd89773b6dd8171b84e849eb180796c0f08dba6
 				791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */,
 				7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */,
 				793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */,
