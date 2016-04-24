@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		790040EC1CC9CC8F00D291C3 /* WKSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790040EA1CC9CC8F00D291C3 /* WKSubjectViewController.m */; };
+<<<<<<< HEAD
 		790040ED1CC9CC8F00D291C3 /* WKSubjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790040EB1CC9CC8F00D291C3 /* WKSubjectViewController.xib */; };
+=======
+>>>>>>> cbd89773b6dd8171b84e849eb180796c0f08dba6
 		790040F01CCA0B1E00D291C3 /* WKSubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790040EF1CCA0B1E00D291C3 /* WKSubjectModel.m */; };
 		7900858B1CCB0EDB007E5E58 /* WKGuideModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7900858A1CCB0EDB007E5E58 /* WKGuideModel.m */; };
 		790085911CCB12C1007E5E58 /* WKGuideDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085901CCB12C1007E5E58 /* WKGuideDetailModel.m */; };
@@ -20,7 +23,10 @@
 		790085E51CCB7390007E5E58 /* WKGuideImpressionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085E31CCB7390007E5E58 /* WKGuideImpressionCell.m */; };
 		790085E61CCB7390007E5E58 /* WKGuideImpressionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790085E41CCB7390007E5E58 /* WKGuideImpressionCell.xib */; };
 		790085EE1CCB8ED3007E5E58 /* WKTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085ED1CCB8ED3007E5E58 /* WKTableHeaderView.m */; };
+<<<<<<< HEAD
 		790040F01CCA0B1E00D291C3 /* WKSubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790040EF1CCA0B1E00D291C3 /* WKSubjectModel.m */; };
+=======
+>>>>>>> cbd89773b6dd8171b84e849eb180796c0f08dba6
 		790428FA1CC9C4D7007AE8A4 /* WKNotesListHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790428F91CC9C4D7007AE8A4 /* WKNotesListHeadView.xib */; };
 		7907525C1CC8A58F00B968F3 /* WKRecommendStoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907525B1CC8A58F00B968F3 /* WKRecommendStoryModel.m */; };
 		790752AD1CC8CFA300B968F3 /* WKRecommendListUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790752AC1CC8CFA300B968F3 /* WKRecommendListUserModel.m */; };
@@ -36,7 +42,6 @@
 		7914E35D1CC773BF001A0C5F /* WKforeignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35C1CC773BF001A0C5F /* WKforeignViewController.m */; };
 		7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */; };
 		7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */; };
-		791732951CCB64DC00199176 /* WKImageSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 791732941CCB64DC00199176 /* WKImageSwitchView.m */; };
 		791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791782B81CC9D1360015C0BD /* WKRecommendNotesDetailModel.m */; };
 		791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791C35DB1CC774DF00FFC596 /* WKMyCollectionViewController.m */; };
 		791C35DE1CC774DF00FFC596 /* WKMyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791C35DC1CC774DF00FFC596 /* WKMyCollectionViewController.xib */; };
@@ -57,6 +62,8 @@
 		791DA5761CC7BB64009D9093 /* WKNotesListHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 791DA5751CC7BB64009D9093 /* WKNotesListHeadView.m */; };
 		791FB7521CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791FB7501CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m */; };
 		791FB7531CCCAF5E0027C050 /* WKNoGuideCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791FB7511CCCAF5E0027C050 /* WKNoGuideCategoryViewController.xib */; };
+		791FB94C1CCCF0FE0027C050 /* WKImageSwitchView.h in Sources */ = {isa = PBXBuildFile; fileRef = 791732931CCB64DC00199176 /* WKImageSwitchView.h */; };
+		791FB94D1CCCF13F0027C050 /* WKImageSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 791732941CCB64DC00199176 /* WKImageSwitchView.m */; };
 		793035281CC687BA003E5491 /* WKListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 793035261CC687BA003E5491 /* WKListTableViewCell.m */; };
 		793035291CC687BA003E5491 /* WKListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793035271CC687BA003E5491 /* WKListTableViewCell.xib */; };
 		7930352C1CC68857003E5491 /* WKCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7930352B1CC68857003E5491 /* WKCycleScrollView.m */; };
@@ -119,7 +126,10 @@
 		4AC5FDF6D42329CAEADE9DCB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		790040E91CC9CC8F00D291C3 /* WKSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSubjectViewController.h; sourceTree = "<group>"; };
 		790040EA1CC9CC8F00D291C3 /* WKSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSubjectViewController.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		790040EB1CC9CC8F00D291C3 /* WKSubjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKSubjectViewController.xib; sourceTree = "<group>"; };
+=======
+>>>>>>> cbd89773b6dd8171b84e849eb180796c0f08dba6
 		790040EE1CCA0B1E00D291C3 /* WKSubjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSubjectModel.h; sourceTree = "<group>"; };
 		790040EF1CCA0B1E00D291C3 /* WKSubjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSubjectModel.m; sourceTree = "<group>"; };
 		790085891CCB0EDB007E5E58 /* WKGuideModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKGuideModel.h; sourceTree = "<group>"; };
@@ -140,8 +150,11 @@
 		790085E41CCB7390007E5E58 /* WKGuideImpressionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKGuideImpressionCell.xib; sourceTree = "<group>"; };
 		790085EC1CCB8ED3007E5E58 /* WKTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTableHeaderView.h; sourceTree = "<group>"; };
 		790085ED1CCB8ED3007E5E58 /* WKTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTableHeaderView.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		790040EE1CCA0B1E00D291C3 /* WKSubjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSubjectModel.h; sourceTree = "<group>"; };
 		790040EF1CCA0B1E00D291C3 /* WKSubjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSubjectModel.m; sourceTree = "<group>"; };
+=======
+>>>>>>> cbd89773b6dd8171b84e849eb180796c0f08dba6
 		790428F91CC9C4D7007AE8A4 /* WKNotesListHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKNotesListHeadView.xib; sourceTree = "<group>"; };
 		7907525A1CC8A58F00B968F3 /* WKRecommendStoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendStoryModel.h; sourceTree = "<group>"; };
 		7907525B1CC8A58F00B968F3 /* WKRecommendStoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendStoryModel.m; sourceTree = "<group>"; };
@@ -858,6 +871,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				791FB94D1CCCF13F0027C050 /* WKImageSwitchView.m in Sources */,
+				791FB94C1CCCF0FE0027C050 /* WKImageSwitchView.h in Sources */,
 				791FB7521CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m in Sources */,
 				7930352F1CC6886A003E5491 /* NSTimer+myTimer.m in Sources */,
 				791DA5721CC7B695009D9093 /* WKNotesListTableViewCell.m in Sources */,
@@ -895,7 +910,10 @@
 				793123621CC8D0C60052CDEE /* WKWorldDetailCell.m in Sources */,
 				79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */,
 				7900859A1CCB58D9007E5E58 /* WKGuideUserModel.m in Sources */,
+<<<<<<< HEAD
 				791732951CCB64DC00199176 /* WKImageSwitchView.m in Sources */,
+=======
+>>>>>>> cbd89773b6dd8171b84e849eb180796c0f08dba6
 				791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */,
 				7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */,
 				793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */,

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WKGuideDetailSectionsModel.h"
 
 @interface WKGuideImpressionCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLable;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *travel_dataLabel;
+
+@property (strong, nonatomic)WKGuideDetailSectionsModel *model;
 @end

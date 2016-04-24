@@ -56,6 +56,8 @@
 
 // 加载数据
 - (void)parseData {
+    // 显示指示器
+    [SVProgressHUD showInfoWithStatus:@"正在加载哦~~~"];
     WKLog(@"%@", _ID);
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:@"http://chanyouji.com/api/destinations/plans/%@.json?page=1", _ID] parDic:@{} finish:^(NSData *data) {
         NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -64,9 +66,13 @@
             [model setValuesForKeysWithDictionary:dic];
             [self.dataArr addObject:model];
         }
+        // 取消指示器
+        [SVProgressHUD dismiss];
         WKLog(@"%ld", self.dataArr.count);
     } error:^(NSError *error) {
-        
+        // 取消指示器
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"数据加载失败"];
     }];
    
 }

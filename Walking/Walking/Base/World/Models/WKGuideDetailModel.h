@@ -14,8 +14,7 @@
 
 /** 标题 */
 @property (copy, nonatomic)NSString *title;
-/** 描述 */
-@property (copy, nonatomic)NSString *descriptioN;
+
 /** 分区信息 */
 @property (strong, nonatomic)WKGuideDetailSectionsModel *sectionsModel;
 

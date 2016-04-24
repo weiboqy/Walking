@@ -83,7 +83,7 @@ static NSString * const foreignCollectViewCellID = @"WKForeignCollectViewCellID"
     
     // 关闭自带的自动布局
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.foreignCollectView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) collectionViewLayout:layout];
+    self.foreignCollectView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 80) collectionViewLayout:layout];
     self.foreignCollectView.backgroundColor = [UIColor colorWithRed:232 / 255.0 green:232 / 255.0 blue:232 / 255.0 alpha:1.0];
     self.foreignCollectView.dataSource = self;
     self.foreignCollectView.delegate = self;
@@ -119,6 +119,7 @@ static NSString * const foreignCollectViewCellID = @"WKForeignCollectViewCellID"
     
     WKWorldListModel *model = self.dataArr[indexPath.row];
     detailVC.ID = model.ID;
+    detailVC.titleName = model.name_zh_cn;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

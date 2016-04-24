@@ -10,6 +10,13 @@
 
 @implementation WKGuideOverviewCell
 
+- (void)setModel:(WKGuideDetailSectionsModel *)model {
+    _model = model;
+    _titleLabel.text = [NSString stringWithFormat:@"%@", model.title];
+    _descriptionLabel.text = [NSString stringWithFormat:@"%@", model.descriptioN];
+    [_image_urlImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", model.photoModel.image_url]] placeholderImage:PLACEHOLDER];
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }

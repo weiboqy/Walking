@@ -10,4 +10,6 @@
 
 @interface WKTableHeaderView : UITableViewHeaderFooterView
 
+@property (strong, nonatomic)UILabel *titleLabel;
+
 @end
