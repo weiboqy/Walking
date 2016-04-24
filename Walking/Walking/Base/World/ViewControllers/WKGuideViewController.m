@@ -7,20 +7,36 @@
 //
 
 #import "WKGuideViewController.h"
+#import "WKGuideModel.h"
 
 @interface WKGuideViewController ()
+
+/** 数据源 */
+@property (strong, nonatomic)NSMutableArray *dataArr;
 
 @end
 
 @implementation WKGuideViewController
 
+- (NSMutableArray *)dataArr {
+    if (_dataArr == nil) {
+        _dataArr = [[NSMutableArray alloc]initWithCapacity:0];
+    }
+    return _dataArr;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 自定义导航条
     [self addCustomNagationBar];
-    // Do any additional setup after loading the view from its nib.
+    
+    // 加载数据
+    [self parseData];
+    
 }
 
+// 自定义导航条
 - (void)addCustomNagationBar {
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
@@ -35,19 +51,47 @@
     [bar addSubview:button];
     [self.view addSubview:bar];
 }
-
+// 返回按钮
 - (void)backClick {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+// 加载数据
 - (void)parseData {
-    [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:@"https://chanyouji.com/api/wiki/destinations/%@.json?page=1", _ID] parDic:@{} finish:^(NSData *data) {
+    // 显示
+    WKLog(@"ID = %@", _ID);
+    [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:@"http://chanyouji.com/api/wiki/destinations/%@.json?page=1", _ID] parDic:@{} finish:^(NSData *data) {
         NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-       
+        NSDictionary *dic = dataArr[0];
+        NSDictionary *dataDic = dic[@"pages"][0];
+        WKGuideModel *model = [[WKGuideModel alloc]init];
+        [model setValuesForKeysWithDictionary:dataDic];
+        for (NSDictionary *detailDic in dataDic[@"children"]) {
+            WKGuideDetailModel *detailModel = [[WKGuideDetailModel alloc]init];
+            [detailModel setValuesForKeysWithDictionary:detailDic];
+            for (NSDictionary *detailDic1 in detailDic[@"sections"]) {
+                WKGuideDetailSectionsModel *sectionsModel = [[WKGuideDetailSectionsModel alloc]init];
+                [sectionsModel setValuesForKeysWithDictionary:detailDic1];
+                for (NSDictionary *detailDic2 in detailDic1[@"phtots"]) {
+                    WKGuideDetailPhotoModel *photoModel = [[WKGuideDetailPhotoModel alloc]init];
+                    [photoModel setValuesForKeysWithDictionary:detailDic2];
+                    sectionsModel.photoModel = photoModel;
+                    detailModel.sectionsModel = sectionsModel;
+                }
+                model.detailModel = detailModel;
+                WKLog(@"title = %@", model.title);
+                WKLog(@"title1 = %@", model.detailModel.title);
+                WKLog(@"title2 = %@", model.detailModel.sectionsModel.title);
+                [self.dataArr addObject:model];
+            }
+            
+            
+        }
     } error:^(NSError *error) {
         
     }];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

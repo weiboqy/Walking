@@ -10,6 +10,7 @@
 
 @interface WKRouteViewController : UIViewController
 
+// 请求参数
 @property (copy, nonatomic)NSString *ID;
 
 @end

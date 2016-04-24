@@ -11,6 +11,7 @@
 @interface WKGuideViewController : UIViewController
 
 
+// 请求参数
 @property (nonatomic, copy) NSString *ID;
 
 @end

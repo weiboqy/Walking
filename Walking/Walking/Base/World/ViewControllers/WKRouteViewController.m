@@ -27,11 +27,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 自定义导航条
     [self addCustomNagationBar];
     
+    // 加载数据
     [self parseData];
 }
 
+// 自定义导航条
 - (void)addCustomNagationBar {
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
@@ -46,11 +49,12 @@
     [bar addSubview:button];
     [self.view addSubview:bar];
 }
-
+// 返回按钮
 - (void)backClick {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+// 加载数据
 - (void)parseData {
     WKLog(@"%@", _ID);
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:@"http://chanyouji.com/api/destinations/plans/%@.json?page=1", _ID] parDic:@{} finish:^(NSData *data) {
