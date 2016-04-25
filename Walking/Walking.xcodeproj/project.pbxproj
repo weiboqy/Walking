@@ -34,6 +34,7 @@
 		7914E35D1CC773BF001A0C5F /* WKforeignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35C1CC773BF001A0C5F /* WKforeignViewController.m */; };
 		7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */; };
 		7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */; };
+		791603071CCDB78B00D3F2FD /* UIImage+WKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603061CCDB78B00D3F2FD /* UIImage+WKExtension.m */; };
 		791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791782B81CC9D1360015C0BD /* WKRecommendNotesDetailModel.m */; };
 		791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791C35DB1CC774DF00FFC596 /* WKMyCollectionViewController.m */; };
 		791C35DE1CC774DF00FFC596 /* WKMyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791C35DC1CC774DF00FFC596 /* WKMyCollectionViewController.xib */; };
@@ -170,6 +171,8 @@
 		7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKInlandViewController.m; sourceTree = "<group>"; };
 		7914E3611CC77A1B001A0C5F /* UIView+WKCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WKCustom.h"; sourceTree = "<group>"; };
 		7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WKCustom.m"; sourceTree = "<group>"; };
+		791603051CCDB78B00D3F2FD /* UIImage+WKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WKExtension.h"; sourceTree = "<group>"; };
+		791603061CCDB78B00D3F2FD /* UIImage+WKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WKExtension.m"; sourceTree = "<group>"; };
 		791732931CCB64DC00199176 /* WKImageSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKImageSwitchView.h; sourceTree = "<group>"; };
 		791732941CCB64DC00199176 /* WKImageSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKImageSwitchView.m; sourceTree = "<group>"; };
 		791782B71CC9D1360015C0BD /* WKRecommendNotesDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendNotesDetailModel.h; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 				79C5FEBE1CCA589B004B61AA /* PrefixHeader.pch */,
 				79C5FEBF1CCA589B004B61AA /* WKDarkLightMode.h */,
 				79C5FEC01CCA589B004B61AA /* WKDarkLightMode.m */,
+				791603051CCDB78B00D3F2FD /* UIImage+WKExtension.h */,
+				791603061CCDB78B00D3F2FD /* UIImage+WKExtension.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -881,6 +886,7 @@
 				79C5FEB31CCA3FA1004B61AA /* WKRouteViewController.m in Sources */,
 				79FAC4D71CC5329A0068C093 /* WKTabBarViewController.m in Sources */,
 				7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */,
+				791603071CCDB78B00D3F2FD /* UIImage+WKExtension.m in Sources */,
 				7930352C1CC68857003E5491 /* WKCycleScrollView.m in Sources */,
 				790040EC1CC9CC8F00D291C3 /* WKSubjectViewController.m in Sources */,
 				793035281CC687BA003E5491 /* WKListTableViewCell.m in Sources */,

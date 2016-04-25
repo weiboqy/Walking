@@ -33,7 +33,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.view.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:.5];
+    
     self.view.backgroundColor = ColorGlobal;
     
     [self addCustomNagationBar];
@@ -60,6 +60,10 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
     bar.titleLabel.text = _titleName;
+    bar.titleLabel.center = CGPointMake(kScreenWidth / 2, 44);
+    bar.titleLabel.bounds = CGRectMake(0, 0, 60, 30);
+    bar.titleLabel.backgroundColor = [UIColor redColor];
+    bar.titleLabel.textAlignment = 2;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(18, 10, 70, 30);
     // 设置返回按钮的图片

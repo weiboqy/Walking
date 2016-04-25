@@ -21,6 +21,12 @@
 /**列表展示*/
 @property (strong, nonatomic)UITableView *tableView;
 
+@property (strong, nonatomic)WKNavigtionBar *bar;
+
+/** 记录总偏移量 */
+@property (assign, nonatomic)CGFloat bgViewOffsetY;
+@property (strong, nonatomic)UIView *bgView;
+
 @end
 
 // TableViewCell标识符
@@ -53,19 +59,23 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     // 配置全局色背景
     self.view.backgroundColor = ColorGlobal;
     
-    // 自定义导航条
-    [self addCustomNagationBar];
-    
     // 加载数据
     [self parseData];
     
     [self createListView];
+    
+    // 自定义导航条
+    [self addCustomNagationBar];
 }
 
 // 自定义导航条
 - (void)addCustomNagationBar {
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
+    bar.titleLabel.text = [NSString stringWithFormat:@"%@游玩指南", _name_zn];
+    bar.titleLabel.center = CGPointMake(kScreenWidth / 2, 44);
+    bar.titleLabel.bounds = CGRectMake(0, 0, 100, 30);
+    bar.titleLabel.textAlignment = NSTextAlignmentCenter;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(18, 10, 70, 30);
     // 设置返回按钮的图片
@@ -76,8 +86,10 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     // 添加方法
     [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:button];
-    [self.view addSubview:bar];
+    _bar = bar;
+    [self.view addSubview:_bar];
 }
+
 // 返回按钮
 - (void)backClick {
     [self.navigationController popViewControllerAnimated:YES];
@@ -96,11 +108,11 @@ static NSString * const tableHeaderID = @"tableHeaderID";
         [model setValuesForKeysWithDictionary:dataDic];
         
         for (NSDictionary *detailDic in dataDic[@"children"]) {
-           WKGuideDetailModel *detailModel = [[WKGuideDetailModel alloc]init];
+            WKGuideDetailModel *detailModel = [[WKGuideDetailModel alloc]init];
             [detailModel setValuesForKeysWithDictionary:detailDic];
             
+            WKGuideDetailSectionsModel *sectionsModel = [[WKGuideDetailSectionsModel alloc]init];
             for (NSDictionary *detailDic1 in detailDic[@"sections"]) {
-                WKGuideDetailSectionsModel *sectionsModel = [[WKGuideDetailSectionsModel alloc]init];
                 [sectionsModel setValuesForKeysWithDictionary:detailDic1];
                 
                 NSDictionary *userDic = detailDic1[@"user"];
@@ -125,7 +137,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
                         [photoModel setValuesForKeysWithDictionary:detailDic2];
                         sectionsModel.photoModel = photoModel;
                     }
-                  
+                    
                 }
                 detailModel.sectionsModel = sectionsModel;
                 [self.dataArr addObject:sectionsModel];
@@ -133,10 +145,10 @@ static NSString * const tableHeaderID = @"tableHeaderID";
                 WKLog(@"name = %@", model.detailModel.sectionsModel.userModel.name);
                 
                 model.detailModel = detailModel;
-//                [self.dataArr addObject:model];
-//                NSMutableDictionary *dataMutableDic = [[NSMutableDictionary alloc]initWithCapacity:0];
-//                [dataMutableDic setObject:detailModel forKey:detailModel.title];
-//                [self.dataArr addObject:dataMutableDic];
+                //                [self.dataArr addObject:model];
+                //                NSMutableDictionary *dataMutableDic = [[NSMutableDictionary alloc]initWithCapacity:0];
+                //                [dataMutableDic setObject:detailModel forKey:detailModel.title];
+                //                [self.dataArr addObject:dataMutableDic];
             }
             WKLog(@"title = %@", model.title);
             WKLog(@"title1 = %@", model.detailModel.title);
@@ -157,22 +169,26 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     }];
 }
 
+// 创建列表展示
 - (void)createListView {
-    
-    
-    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64)];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 210)];
     bgView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:bgView];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 210)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -200, kScreenWidth * 1.8, (624.0 / 1024) * kScreenWidth * 1.8) ];
     imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _image_url]]]];
-    [bgView addSubview:imageView];
+    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
+    WKLog(@"%@", _image_url);
+    _bgView = bgView;
+    [_bgView addSubview:imageView];
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 60) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor clearColor];
-    
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.tableHeaderView = _bgView;
     // 自适应高度
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 1000;
@@ -181,7 +197,34 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([WKGuideImpressionCell class]) bundle:nil] forCellReuseIdentifier:ImpressionCellID];
     [self.tableView registerClass:[WKTableHeaderView class] forHeaderFooterViewReuseIdentifier:tableHeaderID];
     
-    [bgView addSubview:self.tableView];
+    [self.view addSubview:self.tableView];
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = self.tableView.contentOffset.y;
+    
+    // 计算tabView滚动的偏移量
+    CGFloat delta = offsetY - self.bgViewOffsetY;
+    
+    CGFloat height = 210 - delta;
+    
+    height = height < 0 ? 0 : height;
+    
+//    self.stackTOpConstraint.constant = height;
+    
+    CGFloat alpha = 0;
+    if (height <= 64) {
+        alpha = 0.99;
+        [_bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
+    }else {
+        alpha = 0;
+        [_bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    }
+    
+    UIImage *image = [UIImage imageWithColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:alpha]];
+    [_bar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+
 }
 
 #pragma  mark -----TabvlewView代理

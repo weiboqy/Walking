@@ -56,6 +56,7 @@
     WKGuideViewController *guideVC = [[WKGuideViewController alloc]init];
     guideVC.ID = _ID;
     guideVC.image_url = _model.image_url;
+    guideVC.name_zn = _model.name_zh_cn;
     [self.navigationController pushViewController:guideVC animated:YES];
 }
 
