@@ -9,6 +9,7 @@
 #import "WKSubjectViewController.h"
 #import "WKSubjectModel.h"
 #import "WKImageSwitchView.h"
+#import "WKSubjectDetailViewController.h"
 
 @interface WKSubjectViewController ()
 
@@ -46,7 +47,7 @@
             [model setValuesForKeysWithDictionary:dic];
             [self.dataArr addObject:model];
         }
-        WKLog(@"%@",self.dataArr);
+//        WKLog(@"%@",self.dataArr);
         // 取消指示器
         [SVProgressHUD dismiss];
         // 刷新UI
@@ -69,8 +70,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = ColorGlobal;
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.imageSwitchView.imageScrollView.autoresizesSubviews = NO;
     _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight)];
+//    _bgView.userInteractionEnabled = YES;
     _bgView.backgroundColor = [UIColor darkGrayColor];
+//    _bgView.backgroundColor = ColorGlobal;
     [self.view addSubview:_bgView];
     
     [self addCustomNagationBar];
@@ -99,11 +106,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-//  scrollView位置
-//- (void)viewDidLayoutSubviews {
-//    
-//}
-
 //  轮播图上将要展示的图片数组
 - (NSArray *)imageSwitchViewArray {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
@@ -112,24 +114,33 @@
         NSInteger index = [_dataArr indexOfObject:viewDic];
         WKSubjectModel *model = [[WKSubjectModel alloc] init];
 //        [model setValuesForKeysWithDictionary:viewDic];
+        model = _dataArr[index];
+        
+//        [_bgView sd_setImageWithURL:[NSURL URLWithString:model.image_url]];
+//        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//        UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+//        effectview.frame = CGRectMake(0, 0, _bgView.frame.size.width, _bgView.frame.size.height);
+//        [_bgView addSubview:effectview];
 
         // 设置背景框view
         UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width * (295.0 / 375), kScreenWidth * (390.0 / 375))];
-        WKLog(@"%f",[UIScreen mainScreen].bounds.size.width * (295.0 / 375));
         backView.backgroundColor = [UIColor whiteColor];
-        backView.tag = index + 101;
+//        backView.tag = index + 101;
         
-        [_imageSwitchView.imageScrollView addSubview:backView];
+//        [_imageSwitchView.imageScrollView addSubview:backView];
         
         // 展示的图片
-//        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake((backView.frame.size.width - kScreenWidth * (285 / 375)) / 2, (backView.frame.size.width - kScreenWidth * (285 / 375)) / 2, kScreenWidth * (285 / 375), kScreenWidth * (285 / 375) * (295 / 285))];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((backView.frame.size.width - kScreenWidth * (285.0 / 375)) / 2, (backView.frame.size.width - kScreenWidth * (285.0 / 375)) / 2, kScreenWidth * (285.0 / 375), kScreenWidth * (285.0 / 375) * (295.0 / 285.0))];
-//        _imageView = imageView;
-        WKLog(@"ImageViewCGRect = %@", NSStringFromCGRect(imageView.frame));
+//        WKLog(@"ImageViewCGRect = %@", NSStringFromCGRect(imageView.frame));
         
-        model = _dataArr[index];
-        WKLog(@"image_url = %@",model.image_url);
+//        WKLog(@"image_url = %@",model.image_url);
         [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", model.image_url]] placeholderImage:PLACEHOLDER];
+        imageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+        tap.numberOfTapsRequired = 1;
+        tap.numberOfTouchesRequired = 1;
+        [imageView addGestureRecognizer:tap];
+        imageView.tag = index + 1000;
         [backView addSubview:imageView];
         
         // nameLabel
@@ -146,18 +157,29 @@
         _titleLabel.font = [UIFont boldSystemFontOfSize:15];
         [backView addSubview:_titleLabel];
         [array addObject:backView];
-        WKLog(@"%@",array);
     }
     return array;
 }
 
+- (void)tap:(UITapGestureRecognizer *)tap {
+    
+    WKSubjectDetailViewController *subjectDetailVC = [[WKSubjectDetailViewController alloc] init];
+    UIImageView *image = (UIImageView *)tap.view;
+    NSInteger index = image.tag - 1000;
+    WKSubjectModel *model = _dataArr[index];
+    subjectDetailVC.ID = model.ID;
+//    [self.navigationController pushViewController:subjectDetailVC animated:YES];
+    subjectDetailVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:subjectDetailVC animated:YES completion:nil];
+}
+
 - (void)addScrollView {
-    _imageSwitchView = [[WKImageSwitchView alloc] initWithFrame:CGRectMake(0, (kScreenHeight - kScreenWidth * (390.0 / 375) - 64) / 4, kScreenWidth, kScreenWidth * (390.0 / 375))];
+    _imageSwitchView = [[WKImageSwitchView alloc] initWithFrame:CGRectMake(0, (kScreenHeight - kScreenWidth * (390.0 / 375) - 64) / 2, kScreenWidth, kScreenWidth * (390.0 / 375))];
     [_imageSwitchView setImageSwitchViewArray:[self imageSwitchViewArray] delegate:self];
     
-    WKLog(@"cgrect ===== %@", NSStringFromCGRect(_imageSwitchView.frame));
-    WKLog(@"cgrectImageScrollView ===== %@", NSStringFromCGRect(_imageSwitchView.imageScrollView.frame));
-    WKLog(@"cgrectImageView ===== %@", NSStringFromCGRect(_imageView.frame));
+//    WKLog(@"cgrect ===== %@", NSStringFromCGRect(_imageSwitchView.frame));
+//    WKLog(@"cgrectImageScrollView ===== %@", NSStringFromCGRect(_imageSwitchView.imageScrollView.frame));
+//    WKLog(@"cgrectImageView ===== %@", NSStringFromCGRect(_imageView.frame));
     
     [_bgView addSubview:_imageSwitchView];
 }
