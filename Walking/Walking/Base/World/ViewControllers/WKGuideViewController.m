@@ -172,6 +172,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 // 创建列表展示
 - (void)createListView {
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
     UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 210)];
     bgView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:bgView];
