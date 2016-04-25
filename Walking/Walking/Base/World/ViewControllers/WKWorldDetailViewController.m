@@ -38,6 +38,8 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     
     [self addCustomNagationBar];
     
+//    [self.navigationController setNavigationBarHidden:NO];
+    
     [self parseData];
     
     // 
@@ -62,7 +64,6 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     bar.titleLabel.text = _titleName;
     bar.titleLabel.center = CGPointMake(kScreenWidth / 2, 44);
     bar.titleLabel.bounds = CGRectMake(0, 0, 60, 30);
-    bar.titleLabel.backgroundColor = [UIColor redColor];
     bar.titleLabel.textAlignment = 2;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(18, 10, 70, 30);
@@ -73,6 +74,8 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:button];
     [self.view addSubview:bar];
+    
+//    self.navigationItem.title = _titleName;
 }
 
 - (void)backClick {

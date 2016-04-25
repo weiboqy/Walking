@@ -14,8 +14,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         _imageScrollView = [[UIScrollView alloc] initWithFrame:frame];
-//        _imageScrollView.backgroundColor = [UIColor redColor];
-        _imageScrollView.center = self.center;
+        _imageScrollView.frame = CGRectMake(0, 0, self.width, self.height);
         _imageScrollView.showsHorizontalScrollIndicator = NO;
         _imageScrollView.bounces = NO;
         _imageScrollView.delegate = self;
@@ -49,6 +48,8 @@
         
         view.transform = CGAffineTransformMakeScale(1.0, scale);
         
+//        WKLog(@"%@",NSStringFromCGRect(view.frame));
+        
         [_imageScrollView addSubview:view];
         
     }
@@ -77,6 +78,8 @@
 
 //  正在滚动触发的方法
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    NSLog(@"scrollView.subviews----->%@",scrollView.subviews);
+//    NSLog(@"%f",scrollView.contentOffset.x);
     //获取偏移量
     CGFloat offset = scrollView.contentOffset.x;
     if (offset < 0 || (offset > scrollView.contentSize.width - self.frame.size.width)) {
@@ -110,6 +113,7 @@
 
 //  停止拖拽
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    
     [self scrollToViewCenter];
 }
 
