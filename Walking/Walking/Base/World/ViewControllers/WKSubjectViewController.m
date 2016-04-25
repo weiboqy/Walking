@@ -84,6 +84,9 @@
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
     bar.backgroundColor = [UIColor clearColor];
     bar.titleLabel.text = [NSString stringWithFormat:@"%@专题",_titleName];
+    bar.titleLabel.center = CGPointMake(kScreenWidth / 2, 44);
+    bar.titleLabel.bounds = CGRectMake(0, 0, 100, 30);
+    bar.titleLabel.textAlignment = NSTextAlignmentCenter;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(18, 10, 70, 30);
     // 设置返回按钮的图片

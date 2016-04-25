@@ -71,7 +71,6 @@
         WKLog(@"%ld", self.dataArr.count);
     } error:^(NSError *error) {
         // 取消指示器
-        [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"数据加载失败"];
     }];
    

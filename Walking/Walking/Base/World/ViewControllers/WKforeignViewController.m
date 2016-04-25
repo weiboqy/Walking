@@ -67,7 +67,6 @@ static NSString * const foreignCollectViewCellID = @"WKForeignCollectViewCellID"
         });
     } error:^(NSError *error) {
         WKLog(@"failre");
-        [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"数据加载失败"];
     }];
     

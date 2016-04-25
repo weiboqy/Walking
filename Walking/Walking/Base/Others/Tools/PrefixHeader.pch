@@ -14,7 +14,7 @@
 #import "UIView+WKCustom.h"  // 类目view
 #import "WKNavigtionBar.h"   // 自定义导航栏
 #import "UIImageView+WebCache.h"
-
+#import "UIImage+WKExtension.h"
 #import "WKDarkLightMode.h"
 #import "NetWorkRequestManager.h"
 

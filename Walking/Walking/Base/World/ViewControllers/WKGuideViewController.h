@@ -17,4 +17,7 @@
 /** 图片 */
 @property (copy, nonatomic)NSString *image_url;
 
+/** 标题 */
+@property (copy, nonatomic)NSString *name_zn;
+
 @end
