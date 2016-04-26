@@ -172,6 +172,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //隐藏系统自带的NavigationBar
+    [self.navigationController setNavigationBarHidden:YES];
 
     self.title = @"推荐";
     self.view.backgroundColor = ColorGlobal;
