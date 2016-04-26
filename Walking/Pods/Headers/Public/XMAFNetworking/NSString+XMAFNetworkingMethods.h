@@ -1,0 +1,1 @@
+../../../XMAFNetworking/XMAFNetworkExample/XMAFNetworking/Categories/NSString+XMAFNetworkingMethods.h

@@ -58,6 +58,7 @@
     }
     //数组里所有Key＝Value的字符串通过&符号连接
     NSString *parString = [array componentsJoinedByString:@"&"];
+//    WKLog(@"%@", parString);
     return [parString dataUsingEncoding:NSUTF8StringEncoding];
 }
 

@@ -12,6 +12,7 @@
 #import "WKRecommendCollectionViewCell.h"
 #import "WKRecommendNotesViewController.h"
 #import "WKRecommendStoryViewController.h"
+#import "WKSearchTableViewController.h"
 
 #import "NetWorkRequestManager.h"
 #import "WKRecommendStoryModel.h"
@@ -19,18 +20,23 @@
 #import "WKRecommendListUserModel.h"
 #define kStr @"reuse"
 
-@interface WKRecommendViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
-
+@interface WKRecommendViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UITextFieldDelegate>
+//轮播图数据 数组
+@property (nonatomic, strong) NSMutableArray *viewArray;
 
 @property (strong, nonatomic) IBOutlet UITableView *listTableView;
 @property (nonatomic, strong) WKRecommendView *headView;
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) NSMutableArray *dataArray;
-
 @property (nonatomic, strong) NSMutableArray *tableViewDataArray;
-
 //刷新位置
 @property (nonatomic, strong) NSString *start;
+
+
+@property (nonatomic, assign) BOOL isTure;
+//@property (nonatomic, strong) UITextField *searchField;
+@property (nonatomic, strong) UISearchBar *searchBar;
+//@property (nonatomic, strong) UITextField *searchField;
 
 @end
 
@@ -44,6 +50,13 @@
     return _dataArray;
 }
 
+- (NSMutableArray *)viewArray{
+    if (!_viewArray) {
+        self.viewArray = [NSMutableArray array];
+    }
+    return _viewArray;
+    
+}
 
 - (NSMutableArray *)tableViewDataArray{
     if (!_tableViewDataArray) {
@@ -86,7 +99,6 @@
 //请求  轮播图  tableView的数据
 - (void)requestDataForList{
     
-    
     [NetWorkRequestManager requestWithType:GET urlString:RecommendTableViewURL parDic:@{} finish:^(NSData *data) {
         
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -100,34 +112,29 @@
                 NSArray *arr = dic[@"data"];
                 NSDictionary *dicS = arr[0];
                 [listModel setValuesForKeysWithDictionary:dicS];
-            
                 [userModel setValuesForKeysWithDictionary:dicS[@"user"] ];
                 listModel.userMosel = userModel;
                 [self.tableViewDataArray addObject:listModel];
             }
         }
 //        WKLog(@"%@", [self.tableViewDataArray[0] ID]);
-        //1 设置头视图轮播图
-        NSMutableArray *viewArray = [@[] mutableCopy];
-        for (int i = 0; i < 4; i ++) {
-            UIImageView *imageV = [[UIImageView alloc] initWithFrame:self.headView.headScrolView.bounds];
-            imageV.backgroundColor = [UIColor colorWithRed:arc4random()%256/255.f green:arc4random()%256/255.f blue:arc4random()%256/255.f alpha:1.0];
-            [imageV sd_setImageWithURL:[NSURL URLWithString:[self.tableViewDataArray[i + 10] cover_image]]];
-            [viewArray addObject:imageV];
-        }
         dispatch_async(dispatch_get_main_queue(), ^{
-            
-            
-            //2 设置轮播的图片
-//            __weak WKRecommendViewController *VC = self;
-            self.headView.headScrolView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+            //1 设置头视图轮播图设置(添加文字)
+            for (int i = 0; i < 4; i ++) {
+                //没有 alloc 操作的还是本身对象
+                UIImageView *imageView = self.viewArray[i];
                 
-                return viewArray[pageIndex];
-            };
-            
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, self.headView.headScrolView.frame.size.height - 50, kScreenWidth - 10, 25)];                ;
+//                label.backgroundColor = [UIColor redColor];
+                label.textColor = [UIColor whiteColor];
+                label.text = [NSString stringWithFormat:@"%@",[self.tableViewDataArray[i+10] name]];
+                [imageView addSubview:label];
+                
+                [self.viewArray[i] sd_setImageWithURL:[NSURL URLWithString:[self.tableViewDataArray[i+10] cover_image]]];
+            }
+
             [self.listTableView reloadData];
         });
-        
 //        WKLog(@"%@, %ld", _start, self.tableViewDataArray.count);
         
     } error:^(NSError *error) {
@@ -172,12 +179,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.title = @"推荐";
-    self.view.backgroundColor = ColorGlobal;
+    _isTure = YES;
+    self.view.backgroundColor = [UIColor redColor];
     
-    UIBarButtonItem *searchBt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search)];
-    self.navigationItem.rightBarButtonItem = searchBt;
+//    self.title = @"推荐";
+//    self.view.backgroundColor = ColorGlobal;
+    
+#pragma mark -----设置搜索框-----
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
+//    _searchBar.backgroundColor = [UIColor clearColor];
+//    _searchBar.barStyle = UIBarStyleBlackTranslucent;//透明度设置
+//    _searchBar.keyboardType = UIKeyboardTypeDefault;
+    _searchBar.placeholder = @"搜索";
+    _searchBar.delegate = self;
+    _searchBar.tintColor = [UIColor orangeColor];
+    self.navigationItem.titleView = _searchBar;
     
     [self requestDataForCollection];
     [self requestDataForList];
@@ -187,54 +203,73 @@
     _start = @"2387313699";
 
     
-
-    
     // Do any additional setup after loading the view from its nib.
 //    
 
 }
 
-- (void)search{
-    WKLog(@"search!!!");
+#pragma mark --- search--------
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    return YES;
+}//任务编辑文
+
+//开始编辑的 执行的方法
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBa{
+    WKLog(@"开始编辑");
+
+}
+//结束编辑 执行的方法
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+    WKLog(@"结束编辑");
+}
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    return YES;
+}//要求
+//编辑框文字发生变化 执行的方法
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    WKLog(@"文本变化了, %@", searchText);
     
-    //测试使用 刷新 新的数据
-//    [self requestDataWithStart:_start];
+}
+
+//点击搜索按钮 执行的方法
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    WKLog(@"点击搜索, %@", searchBar.text);
+    [searchBar resignFirstResponder];
     
-    
-    
-    
+    WKSearchTableViewController *searchVc = [[WKSearchTableViewController alloc] init];
+    searchVc.keyStr = searchBar.text;
+    [self.navigationController pushViewController:searchVc animated:YES];
+
 }
 
 - (void)listTableViewHeadView{
     
     CGFloat with = [[UIScreen mainScreen] bounds].size.width;
-    self.headView = [[WKRecommendView alloc] initWithFrame:CGRectMake(0, 0, with, 570)];
+    //590
+    self.headView = [[WKRecommendView alloc] initWithFrame:CGRectMake(0, 0, with, 0.978* kScreenHeight)];//0.884* kScreenHeight
     self.headView.backgroundColor = ColorGlobal;
     self.listTableView.tableHeaderView = self.headView;
     
-   //1 设置头视图轮播图
-//    NSMutableArray *viewArray = [@[] mutableCopy];
-//    for (int i = 0; i < 4; i ++) {
-//        UIImageView *imageV = [[UIImageView alloc] initWithFrame:self.headView.headScrolView.bounds];
-//            imageV.backgroundColor = [UIColor colorWithRed:arc4random()%256/255.f green:arc4random()%256/255.f blue:arc4random()%256/255.f alpha:1.0];
-//        [viewArray addObject:imageV];
-//    }
-//        //2 设置轮播的图片
-//    __weak WKRecommendViewController *VC = self;
-//    self.headView.headScrolView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
-////        if (VC.tableViewDataArray) {
-////            for (int i = 11; i < 12; i ++) {
-////                [viewArray addObject:VC.tableViewDataArray[i]];
-////            }
-////        }        
-//        
-//        return viewArray[pageIndex];
-//    };
+   //1 设置头视图轮播图(设置占位符)
+    for (int i = 0; i < 4; i ++) {
+        UIImageView *imageV = [[UIImageView alloc] initWithFrame:self.headView.headScrolView.bounds];
+        imageV.image = [UIImage imageNamed:@"placeholder.jpg"];
+        [self.viewArray addObject:imageV];
+    }
+        //2 设置轮播的图片
+    __block WKRecommendViewController *Vc = self;
+    self.headView.headScrolView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+        return Vc.viewArray[pageIndex];
+    };
     self.headView.headScrolView.totalPagesCount = 4;
-    
     //3 这个是点击图片的的触发方法
     self.headView.headScrolView.TapActionBlock = ^(NSInteger pageIndex){
-            NSLog(@"点击了：%ld", (long)pageIndex);
+//            NSLog(@"点击了：%ld", (long)pageIndex);
+        [Vc.searchBar resignFirstResponder];
+        
+        WKRecommendNotesViewController *notesVc = [[WKRecommendNotesViewController alloc] init];
+        notesVc.ID = [Vc.tableViewDataArray[pageIndex] ID];
+        [Vc.navigationController pushViewController:notesVc animated:YES];
     };
     //2 moreButton
     [self.headView.moreButton addTarget:self action:@selector(button) forControlEvents:UIControlEventTouchUpInside];
@@ -244,11 +279,6 @@
     
     self.headView.collectionView.delegate = self;
     self.headView.collectionView.dataSource = self;
-    
-    
-    
-// [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:2500 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
-   
 }
 //更多的点击方法
 - (void)button{
@@ -283,7 +313,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     WKRecommendCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kStr forIndexPath:indexPath];
-    
     cell.storyModel = self.dataArray[indexPath.row];
     
     return cell;
@@ -291,6 +320,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 //    NSLog(@"%ld, %ld", indexPath.section, indexPath.row);
+    [_searchBar resignFirstResponder];
     
     WKRecommendStoryViewController *storyVc = [[WKRecommendStoryViewController alloc] init];
     //把我图片 传给 跳转的视图控制器
@@ -329,12 +359,13 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 180;
+    //220
+    return (0.329) * kScreenHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld", indexPath.row);
-    
+//    NSLog(@"%ld", indexPath.row);
+    [_searchBar resignFirstResponder];
     WKRecommendNotesViewController *notesVc = [[WKRecommendNotesViewController alloc] init];
     notesVc.ID = [self.tableViewDataArray[indexPath.row] ID];
     [self.navigationController pushViewController:notesVc animated:YES];

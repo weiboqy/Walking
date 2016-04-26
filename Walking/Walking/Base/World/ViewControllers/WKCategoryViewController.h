@@ -17,6 +17,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *name_zh_cnLabel;
 @property (strong, nonatomic) IBOutlet UILabel *name_enLabel;
 
+@property (copy, nonatomic)NSString *ID;
+
 
 
 

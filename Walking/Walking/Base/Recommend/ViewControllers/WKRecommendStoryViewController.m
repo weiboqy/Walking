@@ -43,7 +43,7 @@
     
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendStoryDetailURL, _spot_id] parDic:@{} finish:^(NSData *data) {
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"%@", dicData);
+//        NSLog(@"%@", dicData);
         
         NSDictionary *dicT = dicData[@"data"];
         _text = dicT[@"spot"][@"text"];
@@ -64,7 +64,7 @@
             _headView.timeLabel.text = [NSString stringWithFormat:@"%@", [_date_added substringWithRange:NSMakeRange(0, 10)]];
             _headView.TLabel.text = [NSString stringWithFormat:@"此故事由 %@ 收录于", _uName];
             _headView.titleLabel.text = _name;
-            [_headView.icon sd_setImageWithURL:[NSURL URLWithString:_avatar_l]];
+            [_headView.icon sd_setImageWithURL:[NSURL URLWithString:_avatar_l] placeholderImage:PLACEHOLDER];
         });
         
     } error:^(NSError *error) {
@@ -76,7 +76,7 @@
     
     self.navigationController.navigationBar.translucent = NO;
     
-    self.listTableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
     self.listTableView.backgroundColor = [UIColor clearColor];
     
     self.listTableView.delegate = self;
@@ -88,11 +88,9 @@
         UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
         effectview.frame = [UIScreen mainScreen].bounds;
         effectview.alpha = 0.5;
-    [imageV sd_setImageWithURL:[NSURL URLWithString:self.imageURL]];
+    [imageV sd_setImageWithURL:[NSURL URLWithString:self.imageURL] placeholderImage:PLACEHOLDER];
     [imageV addSubview:effectview];
     [self.view addSubview:imageV];
-    [self.view addSubview:self.listTableView];
-    
     
     [self.listTableView registerNib:[UINib nibWithNibName:@"WKStoryListTableViewCell" bundle:nil] forCellReuseIdentifier:@"listCell"];
     [self.listTableView registerNib:[UINib nibWithNibName:@"WKStoryListTableViewHeadCell" bundle:nil] forCellReuseIdentifier:@"listHeadCell"];
@@ -101,11 +99,13 @@
     _headView = [[NSBundle mainBundle] loadNibNamed:@"WKStoryListHeadView" owner:nil options:nil].lastObject;
     _headView.frame = CGRectMake(0, 0, 0, 200);
     [_headView initializeData];
+    self.listTableView.tableHeaderView = _headView;
     
     self.listTableView.rowHeight = UITableViewAutomaticDimension;
-    self.listTableView.estimatedRowHeight = 1200;
-
-    self.listTableView.tableHeaderView = _headView;
+    self.listTableView.estimatedRowHeight = 500;
+    
+    
+  [self.view addSubview:self.listTableView];
     
 }
 
@@ -133,7 +133,7 @@
             cell = [[WKStoryListTableViewHeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"listHeadCell"];
         }
         cell.contentLabel.text = _text;
-//        cell.textLabel.numberOfLines = 0;
+        cell.textLabel.numberOfLines = 0;
         return cell;
         
     }else{
@@ -142,14 +142,13 @@
             cell = [[WKStoryListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"listCell"];
         }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
         cell.detailModel = self.dataArray[indexPath.row];
         return cell;
     }
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 180;
+//    return 300;
 //}
 
 

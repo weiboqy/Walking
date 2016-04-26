@@ -23,9 +23,14 @@
     _dayTimeLabel.text = [NSString stringWithFormat:@"第%@天 %@", detailModel.DAY, str];
     _timeLabel.text = detailModel.date;
 
-    [_imageV sd_setImageWithURL:[NSURL URLWithString:detailModel.photo]];
-    _contentLabel.text = detailModel.text;
+    [_imageV sd_setImageWithURL:[NSURL URLWithString:detailModel.photo] placeholderImage:PLACEHOLDER];
+    _imageV.layer.cornerRadius = 6;
+    _imageV.layer.masksToBounds = YES;
+    _imageV.contentMode = UIViewContentModeScaleAspectFill;
+    _imageV.clipsToBounds = YES;
+    _imageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
+    _contentLabel.text = detailModel.text;    
     self.imageC.layer.cornerRadius = 6;
     self.imageC.layer.masksToBounds = YES;
     
@@ -33,6 +38,10 @@
 
 
 - (void)awakeFromNib {
+    
+    self.imageC.layer.cornerRadius = 6;
+    self.imageC.layer.masksToBounds = YES;
+    
     // Initialization code
 }
 

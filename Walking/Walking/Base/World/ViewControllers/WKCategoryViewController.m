@@ -7,6 +7,7 @@
 //
 
 #import "WKCategoryViewController.h"
+#import "WKRouteViewController.h"
 
 @interface WKCategoryViewController ()
 
@@ -56,6 +57,14 @@
 - (void)backClick {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)Route:(id)sender {
+    WKRouteViewController *routeVC = [[WKRouteViewController alloc]init];
+    routeVC.ID = _ID;
+    [self.navigationController pushViewController:routeVC animated:YES];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

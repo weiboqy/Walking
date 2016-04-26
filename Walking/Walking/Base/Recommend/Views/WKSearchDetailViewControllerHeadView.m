@@ -1,14 +1,14 @@
 //
-//  WKRecommendSearchView.m
+//  WKSearchDetailViewControllerHeadView.m
 //  Walking
 //
-//  Created by lanou on 16/4/22.
+//  Created by lanou on 16/4/25.
 //  Copyright © 2016年 xqy. All rights reserved.
 //
 
-#import "WKRecommendSearchView.h"
+#import "WKSearchDetailViewControllerHeadView.h"
 
-@implementation WKRecommendSearchView
+@implementation WKSearchDetailViewControllerHeadView
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -1,5 +1,5 @@
 //
-//  WKRecommendSearchView.h
+//  WKRouteViewController.h
 //  Walking
 //
 //  Created by lanou on 16/4/22.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WKRecommendSearchView : UIView
+@interface WKRouteViewController : UIViewController
+
+@property (copy, nonatomic)NSString *ID;
 
 @end
