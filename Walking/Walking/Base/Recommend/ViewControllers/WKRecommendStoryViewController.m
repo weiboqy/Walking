@@ -96,7 +96,7 @@
         UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
         UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
         effectview.frame = [UIScreen mainScreen].bounds;
-        effectview.alpha = 0.5;
+        effectview.alpha = 1;
     [imageV sd_setImageWithURL:[NSURL URLWithString:self.imageURL]];
     [imageV addSubview:effectview];
     _bannerImageView = imageV;
@@ -109,7 +109,7 @@
     //指定头视图
     //xib 指定 不行
     _headView = [[NSBundle mainBundle] loadNibNamed:@"WKStoryListHeadView" owner:nil options:nil].lastObject;
-    _headView.frame = CGRectMake(0, 0, 0, 200);
+    _headView.frame = CGRectMake(0, 0, 0, 240);
     [_headView initializeData];
     
     self.listTableView.rowHeight = UITableViewAutomaticDimension;
@@ -134,8 +134,9 @@
     
     // Do any additional setup after loading the view from its nib.
 }
--(void) buildNavigationBar
-{
+
+// 透明导航栏
+-(void)buildNavigationBar {
     _customNavigationBar = [[UIView alloc]init];
     [self.view addSubview:_customNavigationBar];
     NSDictionary *views = NSDictionaryOfVariableBindings(_customNavigationBar);
@@ -177,16 +178,27 @@
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
     effectView.frame = CGRectMake(0, 0, kScreenWidth, 64);
     [_navigationBangroundImageView addSubview:effectView];
+//    _navigationTitle.center = CGPointMake(kScreenWidth / 2, 22);
+//    _navigationTitle.bounds = CGRectMake(0, 0, 100, 30);
+    _navigationTitle.frame = CGRectMake(kScreenWidth / 2 - 50, 32, 100, 30);
+    
+    _navigationTitle.textAlignment = NSTextAlignmentCenter;
     metrics = @{@"WB":@(34)};
     visualFormats =  @[@"H:|[_navigationBangroundImageView]|",
-                       @"H:|[_infoButton(==WB)]-[_navigationTitle]-|",
+                       @"H:|-[_infoButton(==WB)]-(-20)-[_navigationTitle]|",
+                       @"H:|[_infoButton(==60)]|",
+//                       @"H:|[_navigationTitle(==390)]|",
                        @"V:|[_navigationBangroundImageView]|",
-                       @"V:|-[_navigationTitle]-|",
-                       @"V:|-[_infoButton]-|"
+                       @"V:|-[_navigationTitle(==50)]|",
+                       @"V:|-[_infoButton(==50)]|"
                        ];
     [VisualFormatLayout autoLayout:_customNavigationBar visualFormats:visualFormats metrics:metrics views:views];
 }
 
+// 视图将要出现时,_customNavigationBar的透明度为0,一开始不让它显示
+- (void)viewWillAppear:(BOOL)animated {
+   _customNavigationBar.alpha = 0;
+}
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat threholdHeight = _bannerImageView.frame.size.height - kNavigationAndStatusBarHeihght;
@@ -197,6 +209,7 @@
         _customNavigationBar.alpha = alpha;
     }
     else if(scrollView.contentOffset.y < 0) {
+        _customNavigationBar.alpha = 0;
         scrollView.contentOffset = CGPointMake(0, 0);
     }
     else {

@@ -12,7 +12,9 @@
 @implementation WKGuideDetailModel
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-    
+    if ([key isEqualToString:@"id"]) {
+        _ID = value;
+    }
 }
 
 @end

@@ -2,7 +2,7 @@
 //  WKTravelNoteViewController.h
 //  Walking
 //
-//  Created by lanou on 16/4/25.
+//  Created by lanou on 16/4/26.
 //  Copyright © 2016年 xqy. All rights reserved.
 //
 
@@ -10,8 +10,9 @@
 
 @interface WKTravelNoteViewController : UIViewController
 
+/** title */
+@property (copy, nonatomic)NSString *name_zn;
 
 @property (copy, nonatomic)NSString *ID;
-@property (copy, nonatomic)NSString *name_zn;
 
 @end

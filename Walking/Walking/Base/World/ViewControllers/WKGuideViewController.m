@@ -110,9 +110,8 @@ static NSString * const tableHeaderID = @"tableHeaderID";
         for (NSDictionary *detailDic in dataDic[@"children"]) {
             WKGuideDetailModel *detailModel = [[WKGuideDetailModel alloc]init];
             [detailModel setValuesForKeysWithDictionary:detailDic];
-            
-            WKGuideDetailSectionsModel *sectionsModel = [[WKGuideDetailSectionsModel alloc]init];
             for (NSDictionary *detailDic1 in detailDic[@"sections"]) {
+                WKGuideDetailSectionsModel *sectionsModel = [[WKGuideDetailSectionsModel alloc]init];
                 [sectionsModel setValuesForKeysWithDictionary:detailDic1];
                 
                 NSDictionary *userDic = detailDic1[@"user"];
@@ -137,10 +136,10 @@ static NSString * const tableHeaderID = @"tableHeaderID";
                         [photoModel setValuesForKeysWithDictionary:detailDic2];
                         sectionsModel.photoModel = photoModel;
                     }
-                    
                 }
                 detailModel.sectionsModel = sectionsModel;
                 [self.dataArr addObject:sectionsModel];
+                
                 [self.dataArr1 addObject:detailModel];
                 WKLog(@"titleSECTION = %@", model.detailModel.sectionsModel.title);
                 
@@ -173,7 +172,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 - (void)createListView {
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 210)];
+    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, (624.0 / 1024) * kScreenWidth * 1.8 - 200) ];
     bgView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:bgView];
     
@@ -182,14 +181,14 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
     WKLog(@"%@", _image_url);
     _bgView = bgView;
-    [_bgView addSubview:imageView];
+    [bgView addSubview:imageView];
     
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.showsVerticalScrollIndicator = NO;
-    self.tableView.tableHeaderView = _bgView;
+    self.tableView.tableHeaderView = bgView;
     // 自适应高度
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 1000;
@@ -252,9 +251,14 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WKGuideDetailModel *detailModel = self.dataArr1[indexPath.row];
-    WKGuideDetailSectionsModel *model = self.dataArr[indexPath.row];
+    WKGuideDetailSectionsModel *model = detailModel.sectionsModel;
+    WKLog(@"model===%@", model);
     WKLog(@"%@", model.title);
     if ([detailModel.title isEqualToString:@"旅行者印象"]) {
+        WKGuideImpressionCell *cell = [tableView dequeueReusableCellWithIdentifier:ImpressionCellID];
+        cell.model = model;
+        return cell;
+    }else if([detailModel.title isEqualToString:@"适宜气候"]){
         WKGuideImpressionCell *cell = [tableView dequeueReusableCellWithIdentifier:ImpressionCellID];
         cell.model = model;
         return cell;
