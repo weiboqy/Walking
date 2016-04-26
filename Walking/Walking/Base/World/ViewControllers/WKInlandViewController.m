@@ -46,22 +46,27 @@ static NSString * const inlandCollectViewCellID = @"WKInlandCollectViewCellID";
 
 #pragma mark  ---加载数据
 - (void)praseData {
-    [[AFHTTPSessionManager manager] GET:@"http://chanyouji.com/api/destinations.json?page=1" parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    // 显示指示器
+    [SVProgressHUD showInfoWithStatus:@"正在加载哦~~~"];
+    [NetWorkRequestManager requestWithType:GET urlString:@"http://chanyouji.com/api/destinations.json?page=1" parDic:@{} finish:^(NSData *data) {
+         NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         for (int i = 3; i < 5; i ++) {
-            NSDictionary *dic = responseObject[i];
+            NSDictionary *dic = dataArr[i];
             for (NSDictionary *dataDic in dic[@"destinations"]) {
                 WKWorldListModel *listModel = [[WKWorldListModel alloc]init];
                 [listModel setValuesForKeysWithDictionary:dataDic];
                 [self.dataArr addObject:listModel];
             }
         }
+        // 关闭指示器
+        [SVProgressHUD dismiss];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.inlandCollectView reloadData];
         });
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        WKLog(@"faile");
+    } error:^(NSError *error) {
+       WKLog(@"faile");
+        [SVProgressHUD showErrorWithStatus:@"数据加载失败"];
     }];
-    
 }
 
 - (void)setupSubView {
@@ -75,7 +80,7 @@ static NSString * const inlandCollectViewCellID = @"WKInlandCollectViewCellID";
     
     // 关闭自带的自动布局
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.inlandCollectView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) collectionViewLayout:layout];
+    self.inlandCollectView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 80) collectionViewLayout:layout];
     self.inlandCollectView.backgroundColor = [UIColor colorWithRed:232 / 255.0 green:232 / 255.0 blue:232 / 255.0 alpha:1.0];
     self.inlandCollectView.dataSource = self;
     self.inlandCollectView.delegate = self;
@@ -106,6 +111,7 @@ static NSString * const inlandCollectViewCellID = @"WKInlandCollectViewCellID";
     
     WKWorldListModel *model = self.dataArr[indexPath.row];
     detailVC.ID = model.ID;
+    detailVC.titleName = model.name_zh_cn;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

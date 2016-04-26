@@ -27,11 +27,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 自定义导航条
     [self addCustomNagationBar];
     
+    // 加载数据
     [self parseData];
 }
 
+// 自定义导航条
 - (void)addCustomNagationBar {
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
@@ -46,26 +49,31 @@
     [bar addSubview:button];
     [self.view addSubview:bar];
 }
-
+// 返回按钮
 - (void)backClick {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+// 加载数据
 - (void)parseData {
+    // 显示指示器
+    [SVProgressHUD showInfoWithStatus:@"正在加载哦~~~"];
     WKLog(@"%@", _ID);
-    [[AFHTTPSessionManager manager] GET:[NSString stringWithFormat:@"http://chanyouji.com/api/destinations/plans/%@.json?page=1", _ID] parameters:@{} progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        WKLog(@"%@", reonseObject);
-        for (NSDictionary *dic in responseObject) {
+    [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:@"http://chanyouji.com/api/destinations/plans/%@.json?page=1", _ID] parDic:@{} finish:^(NSData *data) {
+        NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        for (NSDictionary *dic in dataArr) {
             WKRouteModel *model = [[WKRouteModel alloc]init];
             [model setValuesForKeysWithDictionary:dic];
             [self.dataArr addObject:model];
         }
+        // 取消指示器
+        [SVProgressHUD dismiss];
         WKLog(@"%ld", self.dataArr.count);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        WKLog(@"faile");
+    } error:^(NSError *error) {
+        // 取消指示器
+        [SVProgressHUD showErrorWithStatus:@"数据加载失败"];
     }];
+   
 }
 
 - (void)didReceiveMemoryWarning {

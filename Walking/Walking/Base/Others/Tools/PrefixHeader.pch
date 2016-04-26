@@ -14,17 +14,16 @@
 #import "UIView+WKCustom.h"  // 类目view
 #import "WKNavigtionBar.h"   // 自定义导航栏
 #import "UIImageView+WebCache.h"
-
+#import "UIImage+WKExtension.h"
 #import "WKDarkLightMode.h"
+#import "NetWorkRequestManager.h"
 
-
-#import <AFNetworking/AFNetworking.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <SDWebImage/SDImageCache.h>
 
 
-#define kScreenWidth self.view.frame.size.width
-#define kScreenHeight self.view.frame.size.height
+#define kScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define kScreenHeight [[UIScreen mainScreen] bounds].size.height
 #define ColorGlobal [UIColor colorWithRed:245 / 255.0 green:245 / 255.0 blue:245 / 255.0 alpha:1.0]
 #define PLACEHOLDER [UIImage imageNamed:@"placeholder.jpg"]  // 占位图
 

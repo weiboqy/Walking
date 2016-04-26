@@ -1,1 +1,0 @@
-../../../XMAFNetworking/XMAFNetworkExample/XMAFNetworking/Assistants/XMAFCommonParamsGenerator.h

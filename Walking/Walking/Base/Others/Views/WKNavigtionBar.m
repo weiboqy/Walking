@@ -21,9 +21,9 @@
         [bgView addSubview:_backButton];
         
         _titleLabel = [[UILabel alloc]init];
-        _titleLabel.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
-        _titleLabel.bounds = CGRectMake(0, 0, 100, self.frame.size.height);
         _titleLabel.font = [UIFont systemFontOfSize:18];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        [_titleLabel sizeToFit];
         [bgView addSubview:_titleLabel];
         
         

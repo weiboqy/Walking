@@ -1,1 +1,0 @@
-../../../XMAFNetworking/XMAFNetworkExample/XMAFNetworking/Categories/UIDevice+XMAFNetworkingMethods.h

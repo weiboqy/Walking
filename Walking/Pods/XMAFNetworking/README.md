@@ -1,2 +1,0 @@
-# XMAFNetworkingExample
-一个基于AFNetworking 网络请求类库的封装

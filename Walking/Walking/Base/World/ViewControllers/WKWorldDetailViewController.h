@@ -11,5 +11,6 @@
 @interface WKWorldDetailViewController : UIViewController
 
 @property (copy, nonatomic)NSString *ID;
+@property (copy, nonatomic)NSString *titleName;
 
 @end
