@@ -36,7 +36,7 @@
 //  请求数据
 - (void)parseData {
     // 显示指示器
-    [SVProgressHUD show];
+//    [SVProgressHUD show];
     // ID请求参数
 //    WKLog(@"%@",_destination_id);
     NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/articles.json?destination_id=%@&page=1", _destination_id];
@@ -49,7 +49,7 @@
         }
 //        WKLog(@"%@",self.dataArr);
         // 取消指示器
-        [SVProgressHUD dismiss];
+//        [SVProgressHUD dismiss];
         // 刷新UI
         dispatch_async(dispatch_get_main_queue(), ^{
 //            WKSubjectModel *model = _dataArr[5];
@@ -62,8 +62,8 @@
         });
     } error:^(NSError *error) {
         // 失败也取消指示器
-        [SVProgressHUD dismiss];
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+//        [SVProgressHUD dismiss];
+//        [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
 }
 

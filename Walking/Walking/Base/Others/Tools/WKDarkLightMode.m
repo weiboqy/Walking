@@ -31,9 +31,10 @@
     bgView.backgroundColor = [UIColor blackColor];
     bgView.alpha = 0.5;
     bgView.userInteractionEnabled = NO;
-    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+//    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
     self.bgView = bgView;
-    [vc.view insertSubview:self.bgView atIndex:[UIApplication sharedApplication].windows.count];
+//    [vc.view insertSubview:self.bgView atIndex:[UIApplication sharedApplication].windows.count];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.bgView];
 }
 
 /** 白天 */

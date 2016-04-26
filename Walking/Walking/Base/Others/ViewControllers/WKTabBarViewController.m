@@ -62,6 +62,8 @@
 //                //        [vc.tabBar addSubview:v];
 //                //        [vc.tabBar insertSubview:v atIndex:0];
 //                [vc.tabBar insertSubview:v atIndex:self.view.subviews.count];
+//        [self.tabBar setBarTintColor:[UIColor colorWithRed:112/255.0 green:112/255.0 blue:112/255.0 alpha:1]];
+//        [self.tabBar setBackgroundImage:[]]
     }
 }
 
@@ -79,6 +81,9 @@
         WKMeViewController *meVC = [[WKMeViewController alloc]init];
         [self createChildView:meVC title:@"我" image:@"写字" selectedImage:nil];
     }];
+    
+//    [self.tabBar setBarTintColor:[UIColor colorWithRed:112/255.0 green:112/255.0 blue:112/255.0 alpha:0.2]];
+//    [self.tabBar setBackgroundImage:<#(UIImage * _Nullable)#>]
 
 }
 

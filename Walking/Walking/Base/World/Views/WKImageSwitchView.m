@@ -51,7 +51,7 @@
 //        WKLog(@"%@",NSStringFromCGRect(view.frame));
         
         [_imageScrollView addSubview:view];
-        
+      
     }
     
     _imageScrollView.contentSize = CGSizeMake((space * 2 + width * imageSwitchViewArray.count) + space, _imageScrollView.frame.size.height);

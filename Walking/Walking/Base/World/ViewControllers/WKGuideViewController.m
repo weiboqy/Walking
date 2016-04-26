@@ -99,7 +99,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 - (void)parseData {
     // 显示指示器
     [SVProgressHUD showInfoWithStatus:@"正在加载哦~~~"];
-    WKLog(@"ID = %@", _ID);
+//    WKLog(@"ID = %@", _ID);
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:@"http://chanyouji.com/api/wiki/destinations/%@.json?page=1", _ID] parDic:@{} finish:^(NSData *data) {
         NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSDictionary *dic = dataArr[0];
@@ -121,7 +121,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
                 sectionsModel.userModel = userModel;
                 
                 NSArray *arr = detailDic1[@"photos"];
-                WKLog(@"count - %ld", arr.count);
+//                WKLog(@"count - %ld", arr.count);
                 if (arr.count == 0) {
                     // 空返回
                 }
@@ -142,7 +142,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
                 detailModel.sectionsModel = sectionsModel;
                 [self.dataArr addObject:sectionsModel];
                 [self.dataArr1 addObject:detailModel];
-                WKLog(@"name = %@", model.detailModel.sectionsModel.userModel.name);
+//                WKLog(@"name = %@", model.detailModel.sectionsModel.userModel.name);
                 
                 model.detailModel = detailModel;
                 //                [self.dataArr addObject:model];
@@ -150,13 +150,13 @@ static NSString * const tableHeaderID = @"tableHeaderID";
                 //                [dataMutableDic setObject:detailModel forKey:detailModel.title];
                 //                [self.dataArr addObject:dataMutableDic];
             }
-            WKLog(@"title = %@", model.title);
-            WKLog(@"title1 = %@", model.detailModel.title);
-            WKLog(@"title2 = %@", model.detailModel.sectionsModel.title);
-            WKLog(@"des  = %@", model.detailModel.sectionsModel.descriptioN);
-            WKLog(@"imageUrl = %@", model.detailModel.sectionsModel.photoModel.image_url);
+//            WKLog(@"title = %@", model.title);
+//            WKLog(@"title1 = %@", model.detailModel.title);
+//            WKLog(@"title2 = %@", model.detailModel.sectionsModel.title);
+//            WKLog(@"des  = %@", model.detailModel.sectionsModel.descriptioN);
+//            WKLog(@"imageUrl = %@", model.detailModel.sectionsModel.photoModel.image_url);
         }
-        WKLog(@"count ARR = %@", self.dataArr);
+//        WKLog(@"count ARR = %@", self.dataArr);
         // 取消指示器
         [SVProgressHUD dismiss];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -178,8 +178,8 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -200, kScreenWidth * 1.8, (624.0 / 1024) * kScreenWidth * 1.8) ];
     imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _image_url]]]];
-    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
-    WKLog(@"%@", _image_url);
+//    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
+//    WKLog(@"%@", _image_url);
     _bgView = bgView;
     [_bgView addSubview:imageView];
     
@@ -252,7 +252,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WKGuideDetailModel *detailModel = self.dataArr1[indexPath.row];
     WKGuideDetailSectionsModel *model = self.dataArr[indexPath.row];
-    WKLog(@"%@", model.title);
+//    WKLog(@"%@", model.title);
     if ([detailModel.title isEqualToString:@"旅行者印象"]) {
         WKGuideImpressionCell *cell = [tableView dequeueReusableCellWithIdentifier:ImpressionCellID];
         cell.model = model;
