@@ -142,7 +142,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
                 detailModel.sectionsModel = sectionsModel;
                 [self.dataArr addObject:sectionsModel];
                 [self.dataArr1 addObject:detailModel];
-                WKLog(@"name = %@", model.detailModel.sectionsModel.userModel.name);
+                WKLog(@"titleSECTION = %@", model.detailModel.sectionsModel.title);
                 
                 model.detailModel = detailModel;
                 //                [self.dataArr addObject:model];
@@ -202,31 +202,31 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 }
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offsetY = self.tableView.contentOffset.y;
-    
-    // 计算tabView滚动的偏移量
-    CGFloat delta = offsetY - self.bgViewOffsetY;
-    
-    CGFloat height = 210 - delta;
-    
-    height = height < 0 ? 0 : height;
-    
-//    self.stackTOpConstraint.constant = height;
-    
-    CGFloat alpha = 0;
-    if (height <= 64) {
-        alpha = 0.99;
-        [_bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
-    }else {
-        alpha = 0;
-        [_bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    }
-    
-    UIImage *image = [UIImage imageWithColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:alpha]];
-    [_bar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    CGFloat offsetY = self.tableView.contentOffset.y;
+//    
+//    // 计算tabView滚动的偏移量
+//    CGFloat delta = offsetY - self.bgViewOffsetY;
+//    
+//    CGFloat height = 210 - delta;
+//    
+//    height = height < 0 ? 0 : height;
+//    
+////    self.stackTOpConstraint.constant = height;
+//    
+//    CGFloat alpha = 0;
+//    if (height <= 64) {
+//        alpha = 0.99;
+//        [_bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
+//    }else {
+//        alpha = 0;
+//        [_bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+//    }
+//    
+//    UIImage *image = [UIImage imageWithColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:alpha]];
+//    [_bar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+//
+//}
 
 #pragma  mark -----TabvlewView代理
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
