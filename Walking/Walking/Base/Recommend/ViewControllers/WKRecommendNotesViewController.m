@@ -15,6 +15,7 @@
 @interface WKRecommendNotesViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *listTableView;
+
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) WKNotesListHeadView *headView;
 
@@ -30,6 +31,7 @@
 @end
 
 @implementation WKRecommendNotesViewController
+
 
 - (NSMutableArray *)dataArray{
     if (!_dataArray) {
@@ -55,28 +57,26 @@
         _uName = dic[@"user"][@"name"];
         //cell中模型赋值
         for (NSDictionary *dicT in dic[@"days"]) {
-            WKRecommendNotesDetailModel *model = [[WKRecommendNotesDetailModel alloc] init];
-            [model setValuesForKeysWithDictionary:dicT];
             for (NSDictionary *dicc in dicT[@"waypoints"]) {
+                WKRecommendNotesDetailModel *model = [[WKRecommendNotesDetailModel alloc] init];
+                [model setValuesForKeysWithDictionary:dicT];
                 [model setValuesForKeysWithDictionary:dicc];
+                [self.dataArray addObject:model];
             }
-            
-            [self.dataArray addObject:model];
         }
-        WKLog(@" %@, %@",  _recommendations, [self.dataArray[0] photo]);
+//        WKLog(@" %@, %@",  _recommendations, [self.dataArray[0] photo]);
         dispatch_async(dispatch_get_main_queue(), ^{
             //头视图 的空间 赋值
             [self.listTableView reloadData];
             self.headView.titleLabel.text = _name;
-            [self.headView.imageV sd_setImageWithURL:[NSURL URLWithString:_imageT]];
-            [self.headView.icon sd_setImageWithURL:[NSURL URLWithString:_avatar_m]];
+            [self.headView.imageV sd_setImageWithURL:[NSURL URLWithString:_imageT] placeholderImage:PLACEHOLDER];
+            [self.headView.icon sd_setImageWithURL:[NSURL URLWithString:_avatar_m] placeholderImage:PLACEHOLDER];
 //            WKLog(@"%@", _uName);
             self.headView.nameLabel.text = _uName;
             NSArray *strArray = [(NSString *)[NSString stringWithFormat:@"%@", _mileage] componentsSeparatedByString:@"."];
             self.headView.motersLabel.text = strArray[0];
             self.headView.daysLabel.text = [NSString stringWithFormat:@"%@", _day_count];
             self.headView.lovesLabel.text = [NSString stringWithFormat:@"%@",  _recommendations];
-            
         });
         
     } error:^(NSError *error) {
@@ -86,7 +86,7 @@
 
 - (void)createListTableView{
     
-    self.listTableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
     
     self.listTableView.dataSource = self;
     self.listTableView.delegate = self;
@@ -99,7 +99,7 @@
     self.listTableView.tableHeaderView = _headView;
     
     self.listTableView.rowHeight = UITableViewAutomaticDimension;
-    self.listTableView.estimatedRowHeight = 320;
+    self.listTableView.estimatedRowHeight = 50;
     
     [self.view addSubview:self.listTableView];
 }

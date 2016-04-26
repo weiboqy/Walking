@@ -3,46 +3,48 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="306" id="KGk-i7-Jjw" customClass="WKStoryListTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="435" height="306"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="342" id="KGk-i7-Jjw" customClass="WKStoryListTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="389" height="342"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="435" height="305"/>
+                <rect key="frame" x="0.0" y="0.0" width="389" height="341"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fl9-P4-cYl">
-                        <rect key="frame" x="10" y="279" width="415" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fl9-P4-cYl">
+                        <rect key="frame" x="10" y="256" width="369" height="80"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KMm-pc-pA1">
-                        <rect key="frame" x="10" y="5" width="415" height="269"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KMm-pc-pA1">
+                        <rect key="frame" x="10" y="5" width="369" height="246"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="200" id="kcS-Aw-b2Q"/>
+                            <constraint firstAttribute="width" secondItem="KMm-pc-pA1" secondAttribute="height" multiplier="3:2" id="SrF-QM-APK"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="KMm-pc-pA1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="2r2-mk-haq"/>
-                    <constraint firstAttribute="trailing" secondItem="KMm-pc-pA1" secondAttribute="trailing" constant="10" id="3oR-Ad-qnx"/>
-                    <constraint firstItem="fl9-P4-cYl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="JaW-HE-1IT"/>
-                    <constraint firstAttribute="trailing" secondItem="fl9-P4-cYl" secondAttribute="trailing" constant="10" id="UG7-aJ-wks"/>
-                    <constraint firstAttribute="bottom" secondItem="fl9-P4-cYl" secondAttribute="bottom" constant="5" id="h4U-RH-uEi"/>
-                    <constraint firstItem="KMm-pc-pA1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="hOW-i8-NOm"/>
-                    <constraint firstItem="fl9-P4-cYl" firstAttribute="top" secondItem="KMm-pc-pA1" secondAttribute="bottom" constant="5" id="rlq-fv-vaf"/>
+                    <constraint firstItem="fl9-P4-cYl" firstAttribute="top" secondItem="KMm-pc-pA1" secondAttribute="bottom" constant="5" id="DEF-Df-yFH"/>
+                    <constraint firstItem="fl9-P4-cYl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="FcL-bh-i7C"/>
+                    <constraint firstAttribute="bottom" secondItem="fl9-P4-cYl" secondAttribute="bottom" constant="5" id="JYl-j9-jKc"/>
+                    <constraint firstAttribute="trailing" secondItem="fl9-P4-cYl" secondAttribute="trailing" constant="10" id="Sgb-9G-tzi"/>
+                    <constraint firstItem="KMm-pc-pA1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="XCD-DA-4DE"/>
+                    <constraint firstAttribute="trailing" secondItem="KMm-pc-pA1" secondAttribute="trailing" constant="10" id="e6D-Cz-ooM"/>
+                    <constraint firstItem="KMm-pc-pA1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="fjg-mU-zw0"/>
+                    <constraint firstItem="fl9-P4-cYl" firstAttribute="top" secondItem="KMm-pc-pA1" secondAttribute="bottom" constant="5" id="tIH-Vh-YCy"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="imageV" destination="KMm-pc-pA1" id="rj5-uo-4fs"/>
                 <outlet property="titleLabel" destination="fl9-P4-cYl" id="thc-z7-Fok"/>
             </connections>
-            <point key="canvasLocation" x="485.5" y="344"/>
+            <point key="canvasLocation" x="525.5" y="407"/>
         </tableViewCell>
     </objects>
 </document>

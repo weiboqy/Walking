@@ -9,6 +9,9 @@
 #import "WKCycleScrollView.h"
 #import "NSTimer+myTimer.h"
 @interface WKCycleScrollView ()
+{
+    int i;
+}
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIPageControl *pageControl;
@@ -18,7 +21,6 @@
 
 @property (nonatomic, assign) NSInteger currentPageIndex; // 当前页数
 @property (nonatomic, strong) NSMutableArray *contentViews;
-@property (nonatomic, strong) UILabel *titleLabel;
 
 @end
 
@@ -32,6 +34,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+
+        //标题 的 标记
         
         self.autoresizesSubviews = YES; // 设置子视图自动调整布局
         
@@ -49,9 +53,6 @@
         // 创建UIPageControl对象
         _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake((self.bounds.size.width - 100)/2, self.bounds.size.height - 30, 100, 30)];
         [self addSubview:_pageControl];
-        
-
-        
     }
     return self;
 }
@@ -115,7 +116,6 @@
     [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     // 获取数据
     [self setScrollViewContentDataSource];
-    
     NSInteger counter = 0;
     for (UIView *contentView in self.contentViews) {
         contentView.userInteractionEnabled = YES;
@@ -127,16 +127,9 @@
         rightRect.origin = CGPointMake(CGRectGetWidth(self.scrollView.frame) * (counter ++), 0);
         contentView.frame = rightRect;
         
-        
-//        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.bounds.size.height - 85, self.bounds.size.width - 20, 20)];
-//        _titleLabel.text = @"0000";
-        
-        
-        
-        [contentView addSubview:_titleLabel];
-        
         [self.scrollView addSubview:contentView];
     }
+  
     [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0)];
 }
 

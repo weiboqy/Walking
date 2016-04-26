@@ -13,9 +13,10 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageV;
 @property (strong, nonatomic) IBOutlet UILabel *userName;
-
 @property (strong, nonatomic) IBOutlet UIImageView *icon;
-
 @property (nonatomic, strong) WKRecommendStoryModel *storyModel;
+@property (strong, nonatomic) IBOutlet UIImageView *backImageV;
+
+
 
 @end

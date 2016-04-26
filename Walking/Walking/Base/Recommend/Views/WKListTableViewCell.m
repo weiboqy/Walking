@@ -13,10 +13,15 @@
 
 - (void)setListModel:(WKRecommendListModel *)listModel{
     
+    
     _listModel = listModel;
+    
     _titleLabel.text = listModel.name;
     
-    [_backImageV sd_setImageWithURL:[NSURL URLWithString:listModel.cover_image]];
+    [_backImageV sd_setImageWithURL:[NSURL URLWithString:listModel.cover_image] placeholderImage:PLACEHOLDER];
+//    _backImageV.contentMode = UIViewContentModeScaleAspectFill;
+//    _backImageV.clipsToBounds = YES;
+//    _backImageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 //    _backImageV.contentMode = UIViewContentModeScaleAspectFit;//图片的自适应大小
     //毛玻璃效果
 //    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
@@ -25,7 +30,7 @@
 //    effectview.alpha = 0.3;
 //    [_backImageV addSubview:effectview];
     
-    [_icon sd_setImageWithURL:[NSURL URLWithString:listModel.userMosel.cover]];
+    [_icon sd_setImageWithURL:[NSURL URLWithString:listModel.userMosel.cover] placeholderImage:PLACEHOLDER];
     _userName.text = listModel.userMosel.name;
     _timeLabel.text = [NSString stringWithFormat:@"%@ %@天 %@浏览量", listModel.first_day, listModel.day_count, listModel.view_count];
     _addressLabel.text = listModel.popular_place_str;

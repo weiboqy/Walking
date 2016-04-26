@@ -20,10 +20,10 @@
 
 // 程序运行期间只会 执行一次
 + (void)initialize {
+    
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSFontAttributeName] = [UIFont systemFontOfSize:12];
-    attrs[NSForegroundColorAttributeName] = [UIColor grayColor];
-    
+    attrs[NSForegroundColorAttributeName] = [UIColor grayColor];    
     
     NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
     selectedAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:12];
