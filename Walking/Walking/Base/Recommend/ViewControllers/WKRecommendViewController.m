@@ -182,6 +182,29 @@
         WKLog(@"error%@", error);
     }];
 }
+// 自定义导航条
+- (void)addCustomNagationBar {
+    // NavigationBar
+    WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
+    bar.backgroundColor = ColorGlobal;
+    
+    
+#pragma mark -----设置搜索框-----
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
+    //    _searchBar.barStyle = UIBarStyleBlackTranslucent;//透明度设置
+    //    _searchBar.keyboardType = UIKeyboardTypeDefault;
+    _searchBar.placeholder = @"搜索";
+    _searchBar.delegate = self;
+    _searchBar.barTintColor = ColorGlobal;
+    _searchBar.tintColor = [UIColor orangeColor];
+    self.navigationItem.titleView = _searchBar;
+    UIView *searchView = [[UIView alloc]initWithFrame:CGRectMake(20, 0, kScreenWidth, 0)];
+    searchView.backgroundColor = ColorGlobal;
+    [searchView addSubview:_searchBar];
+    [bar addSubview:searchView];
+    [self.view addSubview:bar];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -198,20 +221,11 @@
     _index = 0;
     _start = @"2387313699";
     
-    self.view.backgroundColor = [UIColor redColor];
     
+    [self addCustomNagationBar];
 //    self.title = @"推荐";
 //    self.view.backgroundColor = ColorGlobal;
-    
-#pragma mark -----设置搜索框-----
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
-//    _searchBar.backgroundColor = [UIColor clearColor];
-//    _searchBar.barStyle = UIBarStyleBlackTranslucent;//透明度设置
-//    _searchBar.keyboardType = UIKeyboardTypeDefault;
-    _searchBar.placeholder = @"搜索";
-    _searchBar.delegate = self;
-    _searchBar.tintColor = [UIColor orangeColor];
-    self.navigationItem.titleView = _searchBar;
+
     
 
 #pragma mark ----刷新界面

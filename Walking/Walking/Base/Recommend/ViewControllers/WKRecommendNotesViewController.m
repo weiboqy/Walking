@@ -12,6 +12,7 @@
 #import "NetWorkRequestManager.h"
 #import "WKRecommendNotesDetailModel.h"
 
+#define kNavigationAndStatusBarHeihght 64
 
 @interface WKRecommendNotesViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
@@ -30,6 +31,12 @@
 @property (nonatomic, strong) NSString *imageT;
 @property (nonatomic, strong) NSString *uName;
 @property (nonatomic, strong) NSString *avatar_m;
+
+@property (nonatomic, strong) UIView *customNavigationBar;
+@property (nonatomic, strong) UIImageView *navigationBangroundImageView;
+@property (nonatomic, strong) UILabel *navigationTitle;
+@property (nonatomic, strong) UIImageView *bannerImageView;
+@property (nonatomic, strong) UIButton *infoButton;
 
 @end
 
@@ -86,10 +93,95 @@
         WKLog(@"error:%@", error);
     }];
 }
+// 透明导航栏
+-(void)buildNavigationBar {
+    _customNavigationBar = [[UIView alloc]init];
+    [self.view addSubview:_customNavigationBar];
+    NSDictionary *views = NSDictionaryOfVariableBindings(_customNavigationBar);
+    NSDictionary *metrics = @{@"HN":@(kNavigationAndStatusBarHeihght)};
+    NSArray *visualFormats = @[@"H:|[_customNavigationBar]|",
+                               @"V:|[_customNavigationBar(==HN)]"
+                               ];
+    [VisualFormatLayout autoLayout:self.view visualFormats:visualFormats metrics:metrics views:views];
+    
+    _navigationBangroundImageView = [[UIImageView alloc]init];
+    _navigationBangroundImageView.contentMode = UIViewContentModeScaleToFill;
+    UIImage *bannerImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _imageT]]]];
+    
+    CGSize bannerImageSize = bannerImage.size;
+    CGFloat bannerNavBGImageHeight = bannerImageSize.width / self.view.frame.size.width * kNavigationAndStatusBarHeihght;
+    CGRect navigationBackroundImageRect = CGRectMake(0, 0, bannerImageSize.width, bannerNavBGImageHeight);
+    UIImage *bannerNavBGImage = [bannerImage partImageInRect:navigationBackroundImageRect];
+    _navigationBangroundImageView.image = bannerNavBGImage;
+    [_customNavigationBar addSubview:_navigationBangroundImageView];
+    
+    _navigationTitle = [[UILabel alloc]init];
+    _navigationTitle.text = @"精彩故事";
+    _navigationTitle.textColor = [UIColor whiteColor];
+    _navigationTitle.textAlignment = NSTextAlignmentCenter;
+    _navigationTitle.font = [UIFont systemFontOfSize:18.0];
+    [_customNavigationBar addSubview:_navigationTitle];
+    
+    
+    _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_infoButton setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
+    // 自适应尺寸
+    //    [_infoButton sizeToFit];
+    [_infoButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+    [_customNavigationBar addSubview:_infoButton];
+    
+    views = NSDictionaryOfVariableBindings(_navigationBangroundImageView, _navigationTitle, _infoButton);
+    // 使用UIBlurEffect来制作毛玻璃
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+    effectView.frame = CGRectMake(0, 0, kScreenWidth, 64);
+    [_navigationBangroundImageView addSubview:effectView];
+    //    _navigationTitle.center = CGPointMake(kScreenWidth / 2, 22);
+    //    _navigationTitle.bounds = CGRectMake(0, 0, 100, 30);
+    _navigationTitle.frame = CGRectMake(kScreenWidth / 2 - 50, 32, 100, 30);
+    
+    _navigationTitle.textAlignment = NSTextAlignmentCenter;
+    metrics = @{@"WB":@(34)};
+    visualFormats =  @[@"H:|[_navigationBangroundImageView]|",
+                       @"H:|-[_infoButton(==WB)]-(-20)-[_navigationTitle]|",
+                       @"H:|[_infoButton(==60)]|",
+                       //                       @"H:|[_navigationTitle(==390)]|",
+                       @"V:|[_navigationBangroundImageView]|",
+                       @"V:|-[_navigationTitle(==50)]|",
+                       @"V:|-[_infoButton(==50)]|"
+                       ];
+    [VisualFormatLayout autoLayout:_customNavigationBar visualFormats:visualFormats metrics:metrics views:views];
+}
+
+// 视图将要出现时,_customNavigationBar的透明度为0,一开始不让它显示
+- (void)viewWillAppear:(BOOL)animated {
+    _customNavigationBar.alpha = 0;
+}
+-(void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat threholdHeight = _bannerImageView.frame.size.height - kNavigationAndStatusBarHeihght;
+    if(scrollView.contentOffset.y >= 0 &&
+       scrollView.contentOffset.y <= threholdHeight) {
+        _customNavigationBar.alpha = 0;
+        CGFloat alpha = scrollView.contentOffset.y / threholdHeight;
+        _customNavigationBar.alpha = alpha;
+    }
+    else if(scrollView.contentOffset.y < 0) {
+        _customNavigationBar.alpha = 0;
+        scrollView.contentOffset = CGPointMake(0, 0);
+    }
+    else {
+        _customNavigationBar.alpha = 1.0;
+    }
+}
+-(void)backClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)createListTableView{
     
-    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     
     self.listTableView.dataSource = self;
     self.listTableView.delegate = self;
@@ -107,14 +199,35 @@
     [self.view addSubview:self.listTableView];
 }
 
+// 自定义导航条
+- (void)addCustomNagationBar {
+    // NavigationBar
+    WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
+    bar.backgroundColor = [UIColor clearColor];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(18, 10, 70, 30);
+    // 设置返回按钮的图片
+    [button setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
+    // 自适应尺寸
+    [button sizeToFit];
+    [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+    [bar addSubview:button];
+    [self.view addSubview:bar];
+}
+//// 返回按钮
+//- (void)backClick {
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.translucent = NO;
-    self.tabBarController.tabBar.translucent = NO;
+//    self.navigationController.navigationBar.translucent = NO;
+//    self.tabBarController.tabBar.translucent = NO;
     self.view.backgroundColor = ColorGlobal;
     self.title = @"精彩游记";
     [self createListTableView];
     [self requestData];
+    [self addCustomNagationBar];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -154,6 +267,7 @@
     for (WKRecommendNotesDetailModel *model in self.dataArray) {
         i ++;
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width * (i - 1), 0, [UIScreen mainScreen].bounds.size.width, (300 / 667.0) * kScreenHeight)];
+//        imageV.frame.size.height = model    //可以设置图片的高度 
         imageV.contentMode =  UIViewContentModeScaleToFill;
         imageV.clipsToBounds = YES;
         imageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -180,7 +294,7 @@
     //添加下边的滑动条
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, kScreenWidth - 20, (3/667.0) * kScreenHeight)];//(620/667.0) * kScreenHeight
     view.backgroundColor = [UIColor grayColor];
-    self.scroView = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, flo * indexPath.row, (3/667.0) * kScreenHeight)];
+    self.scroView = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, flo * (indexPath.row + 1), (3/667.0) * kScreenHeight)];
     self.scroView.backgroundColor = [UIColor redColor];
     
     [_imView addSubview:_scrollView];
@@ -190,8 +304,8 @@
     [_imView addGestureRecognizer:tap];
     
 //    [UIView animateWithDuration:1.0 animations:^{
-    UIWindow *Window = [[UIApplication sharedApplication].windows lastObject];
-    [Window addSubview:_imView];
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:_imView];
 //    }];
 }
 //删除 显示的图片

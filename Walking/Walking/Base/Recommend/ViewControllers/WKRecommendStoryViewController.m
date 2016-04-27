@@ -84,9 +84,9 @@
 
 - (void)createListTableView{
     
-    self.navigationController.navigationBar.translucent = NO;
+//    self.navigationController.navigationBar.translucent = NO;
     
-    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     self.listTableView.backgroundColor = [UIColor clearColor];
     
     self.listTableView.delegate = self;
@@ -263,7 +263,7 @@
     }else{
         WKRecommendStoryDetailModel *detailModel = self.dataArray[indexPath.row ];
         WKLog(@"cellHeight:%f, model.height:%f", [detailModel cellHeight], detailModel.photo_height);
-        return [detailModel cellHeight];
+        return 100;
     }
     
     

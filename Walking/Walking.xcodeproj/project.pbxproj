@@ -969,10 +969,9 @@
 				79CBB2AD1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.xib in Resources */,
 				79EFB5251CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.xib in Resources */,
 				790085E11CCB735F007E5E58 /* WKGuideOverviewCell.xib in Resources */,
-<<<<<<< HEAD
-=======
+
 				79128A061CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.xib in Resources */,
->>>>>>> 3cf5a18b804f0b6b64503f49a44e1c407fd73fdd
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1054,10 +1053,9 @@
 				79C5FEB31CCA3FA1004B61AA /* WKRouteViewController.m in Sources */,
 				79FAC4D71CC5329A0068C093 /* WKTabBarViewController.m in Sources */,
 				7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */,
-<<<<<<< HEAD
-=======
+
 				7916030F1CCE3BE300D3F2FD /* WKTravelNoteModel.m in Sources */,
->>>>>>> 3cf5a18b804f0b6b64503f49a44e1c407fd73fdd
+
 				79EFB5281CCE3750005D9B63 /* WKRecomendSearchDetailModel.m in Sources */,
 				791603071CCDB78B00D3F2FD /* UIImage+WKExtension.m in Sources */,
 				7930352C1CC68857003E5491 /* WKCycleScrollView.m in Sources */,
