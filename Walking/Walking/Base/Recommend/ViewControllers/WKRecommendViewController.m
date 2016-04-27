@@ -185,6 +185,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //隐藏系统自带的NavigationBar
+    [self.navigationController setNavigationBarHidden:YES];
+
+    self.title = @"推荐";
+    self.view.backgroundColor = ColorGlobal;
+    
+    UIBarButtonItem *searchBt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search)];
+    self.navigationItem.rightBarButtonItem = searchBt;
     _isTure = YES;
     _index = 0;
     _start = @"2387313699";
