@@ -814,21 +814,18 @@
 				790085ED1CCB8ED3007E5E58 /* WKTableHeaderView.m */,
 				791732931CCB64DC00199176 /* WKImageSwitchView.h */,
 				791732941CCB64DC00199176 /* WKImageSwitchView.m */,
-<<<<<<< HEAD
 				792150691CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.h */,
 				7921506A1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.m */,
 				7921506B1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.xib */,
 				7921506E1CCF534B000CA6D8 /* WKSubjectImageTableViewCell.h */,
 				7921506F1CCF534B000CA6D8 /* WKSubjectImageTableViewCell.m */,
 				792150701CCF534B000CA6D8 /* WKSubjectImageTableViewCell.xib */,
-=======
 				791289FD1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.h */,
 				791289FE1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.m */,
 				791289FF1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.xib */,
 				79128A101CCF878800FCCA55 /* WKTravleDetailCell.h */,
 				79128A111CCF878800FCCA55 /* WKTravleDetailCell.m */,
 				79128A121CCF878800FCCA55 /* WKTravleDetailCell.xib */,
->>>>>>> 98e3e01acb6ba808c542b2b449fcf01c59e5e223
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -987,18 +984,12 @@
 				791DA5271CC77B52009D9093 /* WKStoryListTableViewCell.xib in Resources */,
 				79128A1C1CCFAF2700FCCA55 /* WKRouteDetailViewController.xib in Resources */,
 				79CBB2AD1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.xib in Resources */,
-<<<<<<< HEAD
 				7921506D1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.xib in Resources */,
 				79EFB5251CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.xib in Resources */,
 				790085E11CCB735F007E5E58 /* WKGuideOverviewCell.xib in Resources */,
-=======
 				79EFB5251CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.xib in Resources */,
 				790085E11CCB735F007E5E58 /* WKGuideOverviewCell.xib in Resources */,
-<<<<<<< HEAD
-=======
 				79128A061CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.xib in Resources */,
->>>>>>> 3cf5a18b804f0b6b64503f49a44e1c407fd73fdd
->>>>>>> 98e3e01acb6ba808c542b2b449fcf01c59e5e223
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1081,13 +1072,7 @@
 				79C5FEB31CCA3FA1004B61AA /* WKRouteViewController.m in Sources */,
 				79FAC4D71CC5329A0068C093 /* WKTabBarViewController.m in Sources */,
 				7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 				7916030F1CCE3BE300D3F2FD /* WKTravelNoteModel.m in Sources */,
->>>>>>> 3cf5a18b804f0b6b64503f49a44e1c407fd73fdd
->>>>>>> 98e3e01acb6ba808c542b2b449fcf01c59e5e223
 				79EFB5281CCE3750005D9B63 /* WKRecomendSearchDetailModel.m in Sources */,
 				791603071CCDB78B00D3F2FD /* UIImage+WKExtension.m in Sources */,
 				7930352C1CC68857003E5491 /* WKCycleScrollView.m in Sources */,
