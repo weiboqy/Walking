@@ -56,11 +56,12 @@ static NSString * const ImageCellID = @"imageCell";
             [detailSectionModel setValuesForKeysWithDictionary:detailDic];
             detailModel.subjectDetailSectionsModel = detailSectionModel;
             [self.dataArray addObject:detailSectionModel];
+            WKLog(@"%@",detailSectionModel.image_url);
         }
          
         [self.headArray addObject:detailModel];
 //        WKLog(@"headArray is %@", _headArray);
-//        WKLog(@"dataArray is %@", _dataArray);
+        WKLog(@"dataArray is %@", _dataArray);
 //        WKLog(@"%ld",_dataArray.count);
 //        WKLog(@"_headArray.count = %ld",_headArray.count);
         // 取消指示器
@@ -108,10 +109,6 @@ static NSString * const ImageCellID = @"imageCell";
     [self.tableView registerClass:[WKSubjectImageTableViewCell class]forCellReuseIdentifier:ImageCellID];
 }
 
-//- (void)backAction:(id)sender {
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
-
 - (void)addCustomNagationBar {
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
@@ -136,15 +133,6 @@ static NSString * const ImageCellID = @"imageCell";
 - (void)createHeadeView {
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    // 背景图
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth * (350.0 / 375))];
-    bgView.backgroundColor = [UIColor whiteColor];
-    // 请求图片
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -200, kScreenWidth, (624.0 / 1024) * kScreenWidth * 1.8)];
-    WKSubjectDetailModel *model = _headArray[0];
-//    WKLog(@"%@",model);
-    [imageView sd_setImageWithURL:[NSURL URLWithString:model.image_url]];
-    [bgView addSubview:imageView];
     // 自适应文本
     WKSubjectDetailSectionsModel *detailModel = _dataArray[0];
     CGSize maxSize = [detailModel.Description boundingRectWithSize:CGSizeMake(kScreenWidth - 20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15.0]} context:nil].size;
@@ -152,13 +140,24 @@ static NSString * const ImageCellID = @"imageCell";
     self.label.text = detailModel.Description;
     self.label.numberOfLines = 0;
     self.label.font = [UIFont systemFontOfSize:15.0];
+    
+    // 背景图
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, (624.0 / 1024) * kScreenWidth * 1.8 - 200 + 30 + maxSize.height)];
+    bgView.backgroundColor = [UIColor whiteColor];
+    // 请求图片
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -200, kScreenWidth, (624.0 / 1024) * kScreenWidth * 1.8)];
+    WKSubjectDetailModel *model = _headArray[0];
+//    WKLog(@"%@",model);
+    [imageView sd_setImageWithURL:[NSURL URLWithString:model.image_url]];
+    [bgView addSubview:imageView];
+    
     [bgView addSubview:_label];
     
     // UIView
     UIImageView *lineView = [[UIImageView alloc] initWithFrame:CGRectMake(10, (624.0 / 1024) * kScreenWidth * 1.8 - 200 + 20 + maxSize.height, maxSize.width, 2)];
-    [lineView sd_setImageWithURL:[NSURL URLWithString:model.image_url]];
-    
-//    lineView.backgroundColor = [UIColor blackColor];
+//    [lineView sd_setImageWithURL:[NSURL URLWithString:model.image_url]];
+    lineView.layer.cornerRadius = 2;
+    lineView.backgroundColor = [UIColor lightGrayColor];
     [bgView addSubview:lineView];
     
     self.tableView.tableHeaderView = bgView;
@@ -181,7 +180,7 @@ static NSString * const ImageCellID = @"imageCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataArray.count - 1;
+    return self.dataArray.count - 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

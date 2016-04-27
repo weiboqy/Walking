@@ -21,7 +21,7 @@
 //  返回cell的高度
 - (CGFloat)cellHeight {
     if (!_cellHeight) {
-        if (self.image_width != 0) {
+        if (![self.image_url isEqualToString:@""]) {
             CGFloat imageH = self.image_height;
             CGFloat imageW = self.image_width;
             if (self.image_width > (kScreenWidth - Margin * 2)) {

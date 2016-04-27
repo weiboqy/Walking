@@ -71,15 +71,12 @@
 		793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 793123651CC8D1DE0052CDEE /* WKWorldDetailModel.m */; };
 		793DBDC41CC6607A00A4E3CA /* WKMeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */; };
 		793DBDC61CC6609400A4E3CA /* WKMeHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */; };
-<<<<<<< HEAD
 		794D35001CCDAF9800A90A99 /* WKRecommendSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D34FF1CCDAF9800A90A99 /* WKRecommendSearchModel.m */; };
 		794D35031CCDB60600A90A99 /* WKRecommendSearchCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D35021CCDB60600A90A99 /* WKRecommendSearchCityModel.m */; };
-=======
 		798B54CD1CCDAF5C00AA096B /* WKSubjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 798B54CC1CCDAF5C00AA096B /* WKSubjectDetailModel.m */; };
 		798B54D01CCDB28F00AA096B /* WKSubjectDetailSectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 798B54CF1CCDB28F00AA096B /* WKSubjectDetailSectionsModel.m */; };
 		798B54D41CCDB94300AA096B /* WKSubjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 798B54D21CCDB94300AA096B /* WKSubjectDetailViewController.m */; };
 		798B54D51CCDB94300AA096B /* WKSubjectDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 798B54D31CCDB94300AA096B /* WKSubjectDetailViewController.xib */; };
->>>>>>> f5f8613ca7ed355e0420413b7f6508155e8b6a98
 		79C5FEAD1CC9B5C5004B61AA /* WKCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C5FEAB1CC9B5C5004B61AA /* WKCategoryViewController.m */; };
 		79C5FEAE1CC9B5C5004B61AA /* WKCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C5FEAC1CC9B5C5004B61AA /* WKCategoryViewController.xib */; };
 		79C5FEB31CCA3FA1004B61AA /* WKRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C5FEB11CCA3FA1004B61AA /* WKRouteViewController.m */; };
@@ -247,12 +244,10 @@
 		793DBDC21CC6607A00A4E3CA /* WKMeHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMeHeadView.h; sourceTree = SOURCE_ROOT; };
 		793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMeHeadView.m; sourceTree = SOURCE_ROOT; };
 		793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKMeHeadView.xib; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		794D34FE1CCDAF9800A90A99 /* WKRecommendSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendSearchModel.h; sourceTree = "<group>"; };
 		794D34FF1CCDAF9800A90A99 /* WKRecommendSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendSearchModel.m; sourceTree = "<group>"; };
 		794D35011CCDB60600A90A99 /* WKRecommendSearchCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendSearchCityModel.h; sourceTree = "<group>"; };
 		794D35021CCDB60600A90A99 /* WKRecommendSearchCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendSearchCityModel.m; sourceTree = "<group>"; };
-=======
 		798B54CB1CCDAF5C00AA096B /* WKSubjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSubjectDetailModel.h; sourceTree = "<group>"; };
 		798B54CC1CCDAF5C00AA096B /* WKSubjectDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSubjectDetailModel.m; sourceTree = "<group>"; };
 		798B54CE1CCDB28F00AA096B /* WKSubjectDetailSectionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSubjectDetailSectionsModel.h; sourceTree = "<group>"; };
@@ -260,7 +255,6 @@
 		798B54D11CCDB94300AA096B /* WKSubjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSubjectDetailViewController.h; sourceTree = "<group>"; };
 		798B54D21CCDB94300AA096B /* WKSubjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSubjectDetailViewController.m; sourceTree = "<group>"; };
 		798B54D31CCDB94300AA096B /* WKSubjectDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKSubjectDetailViewController.xib; sourceTree = "<group>"; };
->>>>>>> f5f8613ca7ed355e0420413b7f6508155e8b6a98
 		79C5FEAA1CC9B5C5004B61AA /* WKCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCategoryViewController.h; sourceTree = "<group>"; };
 		79C5FEAB1CC9B5C5004B61AA /* WKCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCategoryViewController.m; sourceTree = "<group>"; };
 		79C5FEAC1CC9B5C5004B61AA /* WKCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKCategoryViewController.xib; sourceTree = "<group>"; };
@@ -874,15 +868,9 @@
 				790428FA1CC9C4D7007AE8A4 /* WKNotesListHeadView.xib in Resources */,
 				791DA5271CC77B52009D9093 /* WKStoryListTableViewCell.xib in Resources */,
 				79CBB2AD1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.xib in Resources */,
-<<<<<<< HEAD
 				7921506D1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.xib in Resources */,
-=======
-<<<<<<< HEAD
 				79EFB5251CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.xib in Resources */,
-=======
->>>>>>> 481532665c37da947db5a02afba2b41c95f05a04
 				790085E11CCB735F007E5E58 /* WKGuideOverviewCell.xib in Resources */,
->>>>>>> f5f8613ca7ed355e0420413b7f6508155e8b6a98
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -964,11 +952,8 @@
 				79C5FEB31CCA3FA1004B61AA /* WKRouteViewController.m in Sources */,
 				79FAC4D71CC5329A0068C093 /* WKTabBarViewController.m in Sources */,
 				7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */,
-<<<<<<< HEAD
 				79EFB5281CCE3750005D9B63 /* WKRecomendSearchDetailModel.m in Sources */,
-=======
 				791603071CCDB78B00D3F2FD /* UIImage+WKExtension.m in Sources */,
->>>>>>> f5f8613ca7ed355e0420413b7f6508155e8b6a98
 				7930352C1CC68857003E5491 /* WKCycleScrollView.m in Sources */,
 				794D35001CCDAF9800A90A99 /* WKRecommendSearchModel.m in Sources */,
 				790040EC1CC9CC8F00D291C3 /* WKSubjectViewController.m in Sources */,
@@ -1018,11 +1003,8 @@
 				79FAC48B1CC4E39F0068C093 /* main.m in Sources */,
 				791DA5761CC7BB64009D9093 /* WKNotesListHeadView.m in Sources */,
 				791DA51C1CC769F9009D9093 /* WKRecommendStoryViewController.m in Sources */,
-<<<<<<< HEAD
 				79EC2E571CCB689000BF59B3 /* WKSearchTableViewController.m in Sources */,
-=======
 				790085941CCB172C007E5E58 /* WKGuideDetailPhotoModel.m in Sources */,
->>>>>>> f5f8613ca7ed355e0420413b7f6508155e8b6a98
 				79FAC4DB1CC533130068C093 /* WKRecommendViewController.m in Sources */,
 				79EFB52B1CCE4ADE005D9B63 /* WKSearchDetailViewControllerHeadView.m in Sources */,
 				790752BC1CC9275B00B968F3 /* WKRecommendStoryDetailModel.m in Sources */,
