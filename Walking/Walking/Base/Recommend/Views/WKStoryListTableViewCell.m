@@ -11,25 +11,22 @@
 
 @implementation WKStoryListTableViewCell
 
-//压缩图片
-- (UIImage *)image:(UIImage*)image scaledToSize:(CGSize)newSize
-{
-    // Create a graphics image context
-    UIGraphicsBeginImageContext(newSize);
-    // Tell the old image to draw in this new context, with the desired
-    // new size
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    // Get the new image from the context
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    // End the context
-    UIGraphicsEndImageContext();
-    // Return the new image.
-    return newImage;
-}
-- (CGFloat)getImageViewHeight: (float)width_ andHeigeht_:(float)height_
-{
-    return 260 * height_ / width_;
-}
+////压缩图片
+//- (UIImage *)image:(UIImage*)image scaledToSize:(CGSize)newSize
+//{
+//    // Create a graphics image context
+//    UIGraphicsBeginImageContext(newSize);
+//    // Tell the old image to draw in this new context, with the desired
+//    // new size
+//    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+//    // Get the new image from the context
+//    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+//    // End the context
+//    UIGraphicsEndImageContext();
+//    // Return the new image.
+//    return newImage;
+//}
+
 
 /*
  + (CGFloat)heightForString:(NSString *)string{
@@ -39,28 +36,37 @@
  
  return rect.size.height;
  }
- 
  */
 
-#warning mark-----------imageView--------
+
+
+//#warning mark-----------imageView--------
 - (void)setDetailModel:(WKRecommendStoryDetailModel *)detailModel{
     _detailModel = detailModel;
     
     [_imageV sd_setImageWithURL:[NSURL URLWithString:detailModel.photo_s] placeholderImage:PLACEHOLDER];
+    
+//   CGRect rect = self.imageV.image.size.height + 10
+   
 //    _imageV.bounds.size.height = 
-    _imageV.contentMode = UIViewContentModeScaleAspectFill;
-    _imageV.clipsToBounds = YES;
-    _imageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+//    _imageV.contentMode = UIViewContentModeScaleAspectFill;
+//    _imageV.clipsToBounds = YES;
+//    _imageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
-    _titleLabel.text = detailModel.text;
-    
-}
 
+    _titleLabel.text = detailModel.text;
+
+
+}
+//- (CGFloat)cellHeight
+//{
+//    CGSize maxSize = CGSizeMake(kScreenWidth-2*10, MAXFLOAT);
+//    CGFloat titleTextH = [self.titleLabel.text boundingRectWithSize:maxSize options:0 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
+//    
+//    return CGRectGetMinY(self.titleLabel.frame) + titleTextH + 10 ;
+//}
 - (void)awakeFromNib {
-    
-    
-    
-    // Initialization code
+      // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -26,6 +26,7 @@
 @property (nonatomic, copy) NSString *date_added;//时间
 @property (nonatomic, copy) NSString *text;//第一条标题
 
+@property (nonatomic, assign) CGFloat flo;
 
 @end
 
@@ -101,9 +102,8 @@
     [_headView initializeData];
     self.listTableView.tableHeaderView = _headView;
     
-    self.listTableView.rowHeight = UITableViewAutomaticDimension;
-    self.listTableView.estimatedRowHeight = 500;
-    
+//    self.listTableView.rowHeight = UITableViewAutomaticDimension;
+//    self.listTableView.estimatedRowHeight = 500;    
     
   [self.view addSubview:self.listTableView];
     
@@ -141,15 +141,44 @@
         if (!cell) {
             cell = [[WKStoryListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"listCell"];
         }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.detailModel = self.dataArray[indexPath.row];
+//        //返回给 cell的高度
+//        self.cellHeightBlock = ^(){
+//            return cell.cellHeight;
+//            WKLog(@"00000%f", cell.cellHeight);
+//        };
         return cell;
     }
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 300;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        return 50;
+    }else{
+        WKRecommendStoryDetailModel *detailModel = self.dataArray[indexPath.row ];
+        WKLog(@"cellHeight:%f, model.height:%f", [detailModel cellHeight], detailModel.photo_height);
+        return [detailModel cellHeight];
+    }
+    
+    
+/*
+//    if (self.cellHeightBlock) {
+//        
+//        if (indexPath.row == 0) {
+//            CGSize maxSize = CGSizeMake(kScreenWidth-2*10, MAXFLOAT);
+//            CGFloat titleTextH = [_text boundingRectWithSize:maxSize options:0 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
+//            return  titleTextH + 10;
+//        }else{
+//            return self.cellHeightBlock();
+//        }
+//        
+//    }else{
+//        return 0.0;
+//    }
+ */
+    
+}
 
 
 /*

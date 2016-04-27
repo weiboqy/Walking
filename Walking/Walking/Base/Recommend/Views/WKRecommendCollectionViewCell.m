@@ -15,6 +15,9 @@
     _storyModel = storyModel;
     
     [self.imageV sd_setImageWithURL:[NSURL URLWithString:storyModel.cover_image] placeholderImage:PLACEHOLDER];
+    _backImageV.contentMode = UIViewContentModeScaleAspectFill;
+    _backImageV.clipsToBounds = YES;
+    _backImageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [self.icon sd_setImageWithURL:[NSURL URLWithString:storyModel.cover] placeholderImage:PLACEHOLDER];
     self.userName.text = storyModel.name;
     

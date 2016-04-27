@@ -29,6 +29,7 @@
     _imageV.contentMode = UIViewContentModeScaleAspectFill;
     _imageV.clipsToBounds = YES;
     _imageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+//    _imageV.userInteractionEnabled = YES;
     
     _contentLabel.text = detailModel.text;    
     self.imageC.layer.cornerRadius = 6;
