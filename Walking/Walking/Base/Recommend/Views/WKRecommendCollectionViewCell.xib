@@ -13,23 +13,24 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="279" height="275"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xZH-n0-KFV">
+                        <rect key="frame" x="0.0" y="0.0" width="279" height="275"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xaJ-LV-iZ1">
                         <rect key="frame" x="0.0" y="0.0" width="279" height="245"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PHW-Vd-czQ">
-                        <rect key="frame" x="10" y="249" width="26" height="26"/>
+                        <rect key="frame" x="10" y="247" width="26" height="26"/>
                         <color key="backgroundColor" red="0.84988557450000002" green="0.84988557450000002" blue="0.84988557450000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="26" id="qay-mV-QWA"/>
                             <constraint firstAttribute="height" constant="26" id="wpn-zB-MbN"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEt-3O-JdR">
-                        <rect key="frame" x="38" y="252" width="36" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="HDg-UB-sbz"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ww8-oQ-02L">
+                        <rect key="frame" x="38" y="250" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -37,22 +38,27 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="xZH-n0-KFV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2IH-UU-W2Y"/>
                 <constraint firstItem="xaJ-LV-iZ1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Air-9U-qZT"/>
-                <constraint firstItem="HEt-3O-JdR" firstAttribute="leading" secondItem="PHW-Vd-czQ" secondAttribute="trailing" constant="2" id="Lxs-3d-K4U"/>
-                <constraint firstAttribute="bottom" secondItem="PHW-Vd-czQ" secondAttribute="bottom" id="QVt-lL-JpD"/>
+                <constraint firstAttribute="bottom" secondItem="PHW-Vd-czQ" secondAttribute="bottom" constant="2" id="QVt-lL-JpD"/>
                 <constraint firstItem="xaJ-LV-iZ1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SBf-qG-ud3"/>
-                <constraint firstItem="HEt-3O-JdR" firstAttribute="centerY" secondItem="PHW-Vd-czQ" secondAttribute="centerY" id="UMf-IV-F86"/>
+                <constraint firstAttribute="bottom" secondItem="xZH-n0-KFV" secondAttribute="bottom" id="SKA-Ym-VU5"/>
+                <constraint firstAttribute="trailing" secondItem="xZH-n0-KFV" secondAttribute="trailing" id="W5L-Hd-kOo"/>
                 <constraint firstItem="PHW-Vd-czQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Ziw-Ig-R73"/>
                 <constraint firstAttribute="trailing" secondItem="xaJ-LV-iZ1" secondAttribute="trailing" id="cLW-mr-FjC"/>
+                <constraint firstItem="ww8-oQ-02L" firstAttribute="centerY" secondItem="PHW-Vd-czQ" secondAttribute="centerY" id="e3Z-B5-ghj"/>
                 <constraint firstAttribute="bottom" secondItem="xaJ-LV-iZ1" secondAttribute="bottom" constant="30" id="iAV-Bd-upy"/>
+                <constraint firstItem="xZH-n0-KFV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kSd-Cr-wdk"/>
+                <constraint firstItem="ww8-oQ-02L" firstAttribute="leading" secondItem="PHW-Vd-czQ" secondAttribute="trailing" constant="2" id="n4c-y7-Cq7"/>
             </constraints>
             <size key="customSize" width="279" height="275"/>
             <connections>
+                <outlet property="backImageV" destination="xZH-n0-KFV" id="SDw-4P-3BS"/>
                 <outlet property="icon" destination="PHW-Vd-czQ" id="m8q-Tg-rAT"/>
                 <outlet property="imageV" destination="xaJ-LV-iZ1" id="F3L-fq-pZL"/>
-                <outlet property="userName" destination="HEt-3O-JdR" id="SfH-R6-SwU"/>
+                <outlet property="userName" destination="ww8-oQ-02L" id="mdj-mo-g3N"/>
             </connections>
             <point key="canvasLocation" x="265.5" y="359.5"/>
         </collectionViewCell>

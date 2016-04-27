@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WKRoutePlanModel.h"
+
 
 @interface WKRouteModel : NSObject
 
@@ -22,6 +24,8 @@
 @property (copy, nonatomic)NSString *plan_nodes_counts;
 /** 图片 */
 @property (copy, nonatomic)NSString *image_url;
+
+@property (strong, nonatomic)WKRoutePlanModel *planModel;
 
 
 

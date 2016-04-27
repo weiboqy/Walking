@@ -14,8 +14,8 @@
 - (void)setStoryModel:(WKRecommendStoryModel *)storyModel{
     _storyModel = storyModel;
     
-    [self.imageV sd_setImageWithURL:[NSURL URLWithString:storyModel.cover_image]];
-    [self.icon sd_setImageWithURL:[NSURL URLWithString:storyModel.cover]];
+    [self.imageV sd_setImageWithURL:[NSURL URLWithString:storyModel.cover_image] placeholderImage:PLACEHOLDER];
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:storyModel.cover] placeholderImage:PLACEHOLDER];
     self.userName.text = storyModel.name;
     
     
@@ -29,6 +29,8 @@
     self.icon.layer.cornerRadius   = 13;
     self.icon.layer.masksToBounds = YES;
     
+    self.backImageV.layer.cornerRadius = 10;
+    self.backImageV.layer.masksToBounds = YES;
 }
 
 @end

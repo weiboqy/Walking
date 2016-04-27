@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "WKTravelNoteUserModel.h"
+#import "WKTravelDetailModel.h"
+#import "WKTravleNotesModel.h"
+
 @interface WKTravelNoteModel : NSObject
+
 
 /** ID */
 @property (copy, nonatomic)NSString *ID;
@@ -24,6 +28,11 @@
 @property (copy, nonatomic)NSString *photos_count;
 /** 封面图片 */
 @property (copy, nonatomic)NSString *front_cover_photo_url;
+
+@property (strong, nonatomic)WKTravleNotesModel *notesModel;
+
+
+
 
 /** 用户信息 */
 @property (strong, nonatomic)WKTravelNoteUserModel *userModel;

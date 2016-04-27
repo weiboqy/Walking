@@ -12,7 +12,10 @@
 #import "WKGuideImpressionCell.h"
 #import "WKTableHeaderView.h"
 
-@interface WKGuideViewController ()<UITableViewDataSource, UITableViewDelegate>
+#define kNavigationAndStatusBarHeihght 64
+
+@interface WKGuideViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+
 
 /** 数据源 */
 @property (strong, nonatomic)NSMutableArray *dataArr;
@@ -26,6 +29,12 @@
 /** 记录总偏移量 */
 @property (assign, nonatomic)CGFloat bgViewOffsetY;
 @property (strong, nonatomic)UIView *bgView;
+
+@property (nonatomic, strong) UIView *customNavigationBar;
+@property (nonatomic, strong) UIImageView *navigationBangroundImageView;
+@property (nonatomic, strong) UILabel *navigationTitle;
+@property (nonatomic, strong) UIImageView *bannerImageView;
+@property (nonatomic, strong) UIButton *infoButton;
 
 @end
 
@@ -65,35 +74,10 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     [self createListView];
     
     // 自定义导航条
-    [self addCustomNagationBar];
+//    [self addCustomNagationBar];
+    [self buildNavigationBar];
 }
 
-// 自定义导航条
-- (void)addCustomNagationBar {
-    // NavigationBar
-    WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
-    bar.titleLabel.text = [NSString stringWithFormat:@"%@游玩指南", _name_zn];
-    bar.titleLabel.center = CGPointMake(kScreenWidth / 2, 44);
-    bar.titleLabel.bounds = CGRectMake(0, 0, 120, 30);
-    bar.titleLabel.textAlignment = NSTextAlignmentCenter;
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(18, 10, 70, 30);
-    // 设置返回按钮的图片
-    [button setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-    // 自适应尺寸
-    [button sizeToFit];
-    
-    // 添加方法
-    [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
-    [bar addSubview:button];
-    _bar = bar;
-    [self.view addSubview:_bar];
-}
-
-// 返回按钮
-- (void)backClick {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 // 加载数据
 - (void)parseData {
@@ -176,14 +160,14 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     bgView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:bgView];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -200, kScreenWidth * 1.8, (624.0 / 1024) * kScreenWidth * 1.8) ];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 1.8, (624.0 / 1024) * kScreenWidth * 1.8 - 200) ];
     imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _image_url]]]];
     WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
     WKLog(@"%@", _image_url);
-    _bgView = bgView;
+    _bannerImageView = imageView;
     [bgView addSubview:imageView];
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0 , kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -200,45 +184,94 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     [self.view addSubview:self.tableView];
 }
 
+// 透明导航栏
+-(void)buildNavigationBar {
+    _customNavigationBar = [[UIView alloc]init];
+    [self.view addSubview:_customNavigationBar];
+    NSDictionary *views = NSDictionaryOfVariableBindings(_customNavigationBar);
+    NSDictionary *metrics = @{@"HN":@(kNavigationAndStatusBarHeihght)};
+    NSArray *visualFormats = @[@"H:|[_customNavigationBar]|",
+                               @"V:|[_customNavigationBar(==HN)]"
+                               ];
+    [VisualFormatLayout autoLayout:self.view visualFormats:visualFormats metrics:metrics views:views];
+    
+    _navigationBangroundImageView = [[UIImageView alloc]init];
+    _navigationBangroundImageView.contentMode = UIViewContentModeScaleToFill;
+    UIImage *bannerImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _image_url]]]];
+    
+    CGSize bannerImageSize = bannerImage.size;
+    CGFloat bannerNavBGImageHeight = bannerImageSize.width / self.view.frame.size.width * kNavigationAndStatusBarHeihght;
+    CGRect navigationBackroundImageRect = CGRectMake(0, 0, bannerImageSize.width, bannerNavBGImageHeight);
+    UIImage *bannerNavBGImage = [bannerImage partImageInRect:navigationBackroundImageRect];
+    _navigationBangroundImageView.image = bannerNavBGImage;
+    [_customNavigationBar addSubview:_navigationBangroundImageView];
+    
+    _navigationTitle = [[UILabel alloc]init];
+    _navigationTitle.text = [NSString stringWithFormat:@"%@游玩指南", _name_zn];;
+    _navigationTitle.textColor = [UIColor whiteColor];
+    _navigationTitle.textAlignment = NSTextAlignmentCenter;
+    _navigationTitle.font = [UIFont systemFontOfSize:18.0];
+    [_customNavigationBar addSubview:_navigationTitle];
+    
+    
+    _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_infoButton setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
+    // 自适应尺寸
+    //    [_infoButton sizeToFit];
+    [_infoButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+    [_customNavigationBar addSubview:_infoButton];
+    
+    views = NSDictionaryOfVariableBindings(_navigationBangroundImageView, _navigationTitle, _infoButton);
+    // 使用UIBlurEffect来制作毛玻璃
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+    effectView.frame = CGRectMake(0, 0, kScreenWidth, 64);
+    [_navigationBangroundImageView addSubview:effectView];
+    _navigationTitle.frame = CGRectMake(kScreenWidth / 2 - 50, 32, 100, 30);
+    
+    _navigationTitle.textAlignment = NSTextAlignmentCenter;
+    metrics = @{@"WB":@(34)};
+    visualFormats =  @[@"H:|[_navigationBangroundImageView]|",
+                       @"H:|-[_infoButton(==WB)]-(-20)-[_navigationTitle]|",
+                       @"H:|[_infoButton(==60)]|",
+                       @"V:|[_navigationBangroundImageView]|",
+                       @"V:|-[_navigationTitle(==50)]|",
+                       @"V:|-[_infoButton(==50)]|"
+                       ];
+    [VisualFormatLayout autoLayout:_customNavigationBar visualFormats:visualFormats metrics:metrics views:views];
+}
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    CGFloat offsetY = self.tableView.contentOffset.y;
-//    
-//    // 计算tabView滚动的偏移量
-//    CGFloat delta = offsetY - self.bgViewOffsetY;
-//    
-//    CGFloat height = 210 - delta;
-//    
-//    height = height < 0 ? 0 : height;
-//    
-////    self.stackTOpConstraint.constant = height;
-//    
-//    CGFloat alpha = 0;
-//    if (height <= 64) {
-//        alpha = 0.99;
-//        [_bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
-//    }else {
-//        alpha = 0;
-//        [_bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-//    }
-//    
-//    UIImage *image = [UIImage imageWithColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:alpha]];
-//    [_bar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-//
-//}
+// 视图将要出现时,_customNavigationBar的透明度为0,一开始不让它显示
+- (void)viewWillAppear:(BOOL)animated {
+    _customNavigationBar.alpha = 0;
+}
+-(void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat threholdHeight = _bannerImageView.frame.size.height - kNavigationAndStatusBarHeihght;
+    if(scrollView.contentOffset.y >= 0 &&
+       scrollView.contentOffset.y <= threholdHeight) {
+        _customNavigationBar.alpha = 0;
+        CGFloat alpha = scrollView.contentOffset.y / threholdHeight;
+        _customNavigationBar.alpha = alpha;
+    }
+    else if(scrollView.contentOffset.y < 0) {
+        _customNavigationBar.alpha = 0;
+        scrollView.contentOffset = CGPointMake(0, 0);
+    }
+    else {
+        _customNavigationBar.alpha = 1.0;
+    }
+}
+- (void)backClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma  mark -----TabvlewView代理
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return self.dataArr.count;
-//}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    NSInteger count = 0;
-//    for (NSDictionary *dic in self.dataArr) {
-//        count = count + dic.count;
-//    }
-//    WKLog(@"cellCount = %ld", count);
-//    return count;
+
     return self.dataArr.count;
 }
 

@@ -62,17 +62,19 @@
 //创建 scrollView 轮播图
 - (void)createScrollView{
     
+   double flo = [UIScreen mainScreen].bounds.size.height;
+    
     //1 初始话布局
-    self.headScrolView = [[WKCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 160) animationDuration:2];
+    self.headScrolView = [[WKCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 180 ) animationDuration:2];//180
     [self addSubview:self.headScrolView];
 }
 
 - (void)createCollectionView{
-    
+    double flo = [UIScreen mainScreen].bounds.size.height;
     //collectionView
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, _label.frame.origin.y + 35, self.bounds.size.width - 10, 330) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, _label.frame.origin.y + 35, self.bounds.size.width - 10, 330) collectionViewLayout:layout];//330
     self.collectionView.layer.cornerRadius = 3;
     self.collectionView.backgroundColor = ColorGlobal;
     self.collectionView.showsHorizontalScrollIndicator = NO;//水平的滑动条 关闭

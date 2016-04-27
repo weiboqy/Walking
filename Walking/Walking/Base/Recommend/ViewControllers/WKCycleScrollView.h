@@ -24,7 +24,6 @@
  */
 // 页面图片的总个数
 @property (nonatomic, assign) NSInteger totalPagesCount;
-@property (nonatomic, strong) NSMutableArray *array;
 
 // 刷新视图
 @property (nonatomic, copy) UIView *(^fetchContentViewAtIndex)(NSInteger pageIndex);
