@@ -123,6 +123,9 @@
     [bar addSubview:_foreignButton];
     [bar addSubview:_inlandButton];
     [self.view addSubview:bar];
+    
+//    [self.navigationController.navigationBar addSubview:_foreignButton];
+//    [self.navigationController.navigationBar addSubview:_inlandButton];
   
 }
 

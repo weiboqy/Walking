@@ -29,6 +29,8 @@
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *tableViewDataArray;
+
+@property (nonatomic, strong) NSString *firstStart;
 //刷新位置
 @property (nonatomic, strong) NSString *start;
 
@@ -104,6 +106,9 @@
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //        WKLog(@"%@", dicData[@"elements"]);
         _start = dicData[@"next_start"];
+        if (self.tableViewDataArray.count>0) {
+            [self.tableViewDataArray removeAllObjects];
+        }
         
         for (NSDictionary *dic in dicData[@"elements"]) {
             WKRecommendListModel *listModel = [[WKRecommendListModel alloc] init];
@@ -132,8 +137,8 @@
                 
                 [self.viewArray[i] sd_setImageWithURL:[NSURL URLWithString:[self.tableViewDataArray[i+10] cover_image]]];
             }
-
             [self.listTableView reloadData];
+            [self.listTableView.mj_header endRefreshing];
         });
 //        WKLog(@"%@, %ld", _start, self.tableViewDataArray.count);
         
@@ -145,7 +150,7 @@
 //上拉刷新的请求方法
 - (void)requestDataWithStart:(NSString *)next_start{
     
-    [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendTableViewMoreURL, _start] parDic:@{next_start : _start} finish:^(NSData *data) {
+    [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendTableViewMoreURL, _start] parDic:@{} finish:^(NSData *data) {
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //       WKLog(@"%@", dicData[@"elements"]);
         //改变 刷新的 开始位置
@@ -168,6 +173,7 @@
         }        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.listTableView reloadData];
+            [self.listTableView.mj_footer endRefreshing];
             
         });
 //        WKLog(@"%@, %ld", _start, self.tableViewDataArray.count);
@@ -179,7 +185,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //隐藏系统自带的NavigationBar
+    [self.navigationController setNavigationBarHidden:YES];
+
+    self.title = @"推荐";
+    self.view.backgroundColor = ColorGlobal;
+    
+    UIBarButtonItem *searchBt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search)];
+    self.navigationItem.rightBarButtonItem = searchBt;
     _isTure = YES;
+    _index = 0;
+    _start = @"2387313699";
+    
     self.view.backgroundColor = [UIColor redColor];
     
 //    self.title = @"推荐";
@@ -195,18 +213,57 @@
     _searchBar.tintColor = [UIColor orangeColor];
     self.navigationItem.titleView = _searchBar;
     
+
+#pragma mark ----刷新界面
+//    self.listTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        // 进入刷新状态后会自动调用这个block
+//        WKLog(@"000000");
+//    }];
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
+    self.listTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    
+    self.listTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        // 进入刷新状态后会自动调用这个block
+    }];
+    
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
+    self.listTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+
+#pragma mark ---collectionView 刷新---
+//    self.headView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(collectionHeadRefreshData)];
+//    self.headView.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(collectionFooterRefreshData)];
+    
     [self requestDataForCollection];
     [self requestDataForList];
     
     [self createListTableView];
-    _index = 0;
-    _start = @"2387313699";
-
     
     // Do any additional setup after loading the view from its nib.
 //    
 
 }
+
+- (void)loadNewData{
+    // 马上进入刷新状态
+    //    [self.listTableView.mj_header beginRefreshing];
+    WKLog(@"下啦刷新开始了");
+    [self requestDataForList];
+    
+}
+
+- (void)loadMoreData{
+    WKLog(@"上啦刷新开始了");
+    [self requestDataWithStart:_start];
+}
+
+//- (void)collectionHeadRefreshData{
+//    
+//    WKLog(@"collection下啦开始了");
+//}
+//
+//- (void)collectionFooterRefreshData{
+//     WKLog(@"collection上啦开始了");
+//}
 
 #pragma mark --- search--------
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
@@ -245,8 +302,9 @@
 - (void)listTableViewHeadView{
     
     CGFloat with = [[UIScreen mainScreen] bounds].size.width;
+    CGFloat height = [[UIScreen mainScreen] bounds].size.height;
     //590
-    self.headView = [[WKRecommendView alloc] initWithFrame:CGRectMake(0, 0, with, 0.978* kScreenHeight)];//0.884* kScreenHeight
+    self.headView = [[WKRecommendView alloc] initWithFrame:CGRectMake(0, 0, with, 0.884 * height)];//0.884* kScreenHeight
     self.headView.backgroundColor = ColorGlobal;
     self.listTableView.tableHeaderView = self.headView;
     
@@ -279,7 +337,11 @@
     
     self.headView.collectionView.delegate = self;
     self.headView.collectionView.dataSource = self;
+    
+
 }
+
+
 //更多的点击方法
 - (void)button{
 //    NSLog(@"moreButton");
@@ -299,7 +361,9 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((kScreenWidth-20-10)/ 2, 160);
+//    WKLog(@"%.2f", (kScreenWidth-20-10)/ 2);//0.927
+    
+    return CGSizeMake((kScreenWidth-20-10)/ 2, (kScreenWidth-20-10)/ 2 * 0.927);//160
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 10;
@@ -359,8 +423,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //220
-    return (0.329) * kScreenHeight;
+    //250
+    return (230/667.0) * kScreenHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

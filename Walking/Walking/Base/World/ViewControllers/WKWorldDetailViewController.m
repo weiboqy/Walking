@@ -38,6 +38,8 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     
     [self addCustomNagationBar];
     
+//    [self.navigationController setNavigationBarHidden:NO];
+    
     [self parseData];
     
     // 
@@ -61,8 +63,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
     bar.titleLabel.text = _titleName;
     bar.titleLabel.center = CGPointMake(kScreenWidth / 2, 44);
-    bar.titleLabel.bounds = CGRectMake(0, 0, 60, 30);
-    bar.titleLabel.backgroundColor = [UIColor redColor];
+    bar.titleLabel.bounds = CGRectMake(0, 0, 40, 30);
     bar.titleLabel.textAlignment = 2;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(18, 10, 70, 30);
@@ -73,6 +74,8 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:button];
     [self.view addSubview:bar];
+    
+//    self.navigationItem.title = _titleName;
 }
 
 - (void)backClick {
@@ -133,7 +136,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     WKWorldDetailModel *model = self.dataArr[indexPath.row];
     
-    if ([model.name_zh_cn isEqualToString:@"老挝"] || [model.name_zh_cn isEqualToString:@"朝鲜"] || [model.name_zh_cn isEqualToString:@"西安"] || [model.name_zh_cn isEqualToString:@"青海湖及周边"] || [model.name_zh_cn isEqualToString:@"甘南与兰州"] || [model.name_zh_cn isEqualToString:@"内蒙古"] || [model.name_zh_cn isEqualToString:@"敦煌与嘉峪关"] || [model.name_zh_cn isEqualToString:@"三亚"] || [model.name_zh_cn isEqualToString:@"新疆"] || [model.name_zh_cn isEqualToString:@"哈尔滨"] || [model.name_zh_cn isEqualToString:@"青岛"] || [model.name_zh_cn isEqualToString:@"洛阳"] || [model.name_zh_cn isEqualToString:@"桂林"] || [model.name_zh_cn isEqualToString:@"凤凰与张家界"] || [model.name_zh_cn isEqualToString:@"婺源"]) {
+    if ([model.name_zh_cn isEqualToString:@"老挝"] || [model.name_zh_cn isEqualToString:@"朝鲜"] || [model.name_zh_cn isEqualToString:@"西安"] || [model.name_zh_cn isEqualToString:@"青海湖及周边"] || [model.name_zh_cn isEqualToString:@"甘南与兰州"] || [model.name_zh_cn isEqualToString:@"呼伦贝尔"] || [model.name_zh_cn isEqualToString:@"额济纳旗"] || [model.name_zh_cn isEqualToString:@"赤峰"] || [model.name_zh_cn isEqualToString:@"呼和浩特"] || [model.name_zh_cn isEqualToString:@"阿尔山"] || [model.name_zh_cn isEqualToString:@"锡林郭勒"] || [model.name_zh_cn isEqualToString:@"乌鲁木齐"] || [model.name_zh_cn isEqualToString:@"喀纳斯"] || [model.name_zh_cn isEqualToString:@"伊犁"] || [model.name_zh_cn isEqualToString:@"吐鲁番"] || [model.name_zh_cn isEqualToString:@"喀什"] || [model.name_zh_cn isEqualToString:@"敦煌与嘉峪关"] || [model.name_zh_cn isEqualToString:@"三亚"] || [model.name_zh_cn isEqualToString:@"新疆"] || [model.name_zh_cn isEqualToString:@"哈尔滨"] || [model.name_zh_cn isEqualToString:@"青岛"] || [model.name_zh_cn isEqualToString:@"洛阳"] || [model.name_zh_cn isEqualToString:@"桂林"] || [model.name_zh_cn isEqualToString:@"凤凰与张家界"] || [model.name_zh_cn isEqualToString:@"婺源"] || [model.name_zh_cn isEqualToString:@"马六甲"] || [model.name_zh_cn isEqualToString:@"民丹岛"] || [model.name_zh_cn isEqualToString:@"龙目岛"] || [model.name_zh_cn isEqualToString:@"加勒及南部海岸"] || [model.name_zh_cn isEqualToString:@"东部海岸"] || [model.name_zh_cn isEqualToString:@"蓝毗尼"] || [model.name_zh_cn isEqualToString:@"琅勃拉邦及北部"] || [model.name_zh_cn isEqualToString:@"万象和万荣"] || [model.name_zh_cn isEqualToString:@"里昂"] || [model.name_zh_cn isEqualToString:@"马特洪峰与瓦莱州"] || [model.name_zh_cn isEqualToString:@"美国"] || [model.name_zh_cn isEqualToString:@"洛杉矶"] || [model.name_zh_cn isEqualToString:@"旧金山"] || [model.name_zh_cn isEqualToString:@"拉斯维加斯"] || [model.name_zh_cn isEqualToString:@"纽约"] || [model.name_zh_cn isEqualToString:@"华盛顿"] || [model.name_zh_cn isEqualToString:@"黄石国家公园"] || [model.name_zh_cn isEqualToString:@"西雅图"] || [model.name_zh_cn isEqualToString:@"芝加哥"] || [model.name_zh_cn isEqualToString:@"迈阿密"]) {
         WKNoGuideCategoryViewController *noGuideCategoryVC = [[WKNoGuideCategoryViewController alloc]init];
         noGuideCategoryVC.model = model;
         noGuideCategoryVC.ID = model.ID;

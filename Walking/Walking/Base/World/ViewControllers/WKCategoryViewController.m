@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    WKLog(@"进来了哦~~");
+    
 //    [self addCustomNagationBar];
     
     [self bgView];

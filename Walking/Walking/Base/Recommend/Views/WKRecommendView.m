@@ -11,8 +11,6 @@
 @interface WKCycleScrollView ()
 
 
-
-
 @end
 
 @implementation WKRecommendView
@@ -62,26 +60,32 @@
 //创建 scrollView 轮播图
 - (void)createScrollView{
     
-   double flo = [UIScreen mainScreen].bounds.size.height;
+//   double flo = [UIScreen mainScreen].bounds.size.height;
     
     //1 初始话布局
-    self.headScrolView = [[WKCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 180 ) animationDuration:2];//180
+    self.headScrolView = [[WKCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 0.305*self.frame.size.height) animationDuration:2];//180
     [self addSubview:self.headScrolView];
 }
 
 - (void)createCollectionView{
-    double flo = [UIScreen mainScreen].bounds.size.height;
+//    double flo = [UIScreen mainScreen].bounds.size.height;
     //collectionView
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, _label.frame.origin.y + 35, self.bounds.size.width - 10, 330) collectionViewLayout:layout];//330
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, _label.frame.origin.y + 35, self.bounds.size.width - 10, 0.559 * self.frame.size.height) collectionViewLayout:layout];//330
     self.collectionView.layer.cornerRadius = 3;
     self.collectionView.backgroundColor = ColorGlobal;
     self.collectionView.showsHorizontalScrollIndicator = NO;//水平的滑动条 关闭
     self.collectionView.pagingEnabled = YES;
+    
+//    self.collectionView.mj_header =  [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(collectionHeadRefreshData)];
+//    self.collectionView.
     [self addSubview:self.collectionView];
 }
-
+//- (void)collectionHeadRefreshData{
+//    
+//        WKLog(@"collection下啦开始了");
+//}
 
 
 @end

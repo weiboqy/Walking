@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="278" id="KGk-i7-Jjw" customClass="WKRouteDetailCell">
+            <rect key="frame" x="0.0" y="0.0" width="407" height="278"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="407" height="277"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="信号塔" translatesAutoresizingMaskIntoConstraints="NO" id="0Fp-1z-S44">
+                        <rect key="frame" x="10" y="10" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="7l7-Cn-shl"/>
+                            <constraint firstAttribute="width" constant="30" id="ErY-2S-Jjh"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72Y-Zn-Bsb">
+                        <rect key="frame" x="50" y="10" width="38" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="0eO-zU-x2x"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k3f-pb-hsE">
+                        <rect key="frame" x="10" y="50" width="387" height="191"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfP-Xe-Bv9">
+                        <rect key="frame" x="10" y="246" width="387" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="五角星" translatesAutoresizingMaskIntoConstraints="NO" id="Txf-ap-2TW">
+                        <rect key="frame" x="50" y="30" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="p1A-l4-VzU"/>
+                            <constraint firstAttribute="width" constant="10" id="uE6-Hn-7kL"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="五角星" translatesAutoresizingMaskIntoConstraints="NO" id="iXJ-h3-GMG">
+                        <rect key="frame" x="62" y="30" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="0F1-o4-vtQ"/>
+                            <constraint firstAttribute="height" constant="10" id="WH7-Pr-J2e"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="五角星" translatesAutoresizingMaskIntoConstraints="NO" id="ziw-zS-1Pk">
+                        <rect key="frame" x="74" y="30" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="DTy-ej-pAZ"/>
+                            <constraint firstAttribute="width" constant="10" id="WGj-JX-J0F"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="五角星" translatesAutoresizingMaskIntoConstraints="NO" id="4Yb-M4-Vew">
+                        <rect key="frame" x="86" y="30" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="2YP-Ml-sfl"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="7r2-Ct-wKq"/>
+                            <constraint firstAttribute="width" constant="10" id="NK8-ZM-QgC"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="UGw-03-R07"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="五角星 (1)" translatesAutoresizingMaskIntoConstraints="NO" id="zCC-fe-v3T">
+                        <rect key="frame" x="98" y="30" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="Owc-g0-Kf9"/>
+                            <constraint firstAttribute="width" constant="10" id="jep-Vh-dWj"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Txf-ap-2TW" firstAttribute="top" secondItem="72Y-Zn-Bsb" secondAttribute="bottom" id="2AB-CW-bZO"/>
+                    <constraint firstAttribute="trailing" secondItem="k3f-pb-hsE" secondAttribute="trailing" constant="10" id="2hF-sl-Vi6"/>
+                    <constraint firstItem="72Y-Zn-Bsb" firstAttribute="leading" secondItem="0Fp-1z-S44" secondAttribute="trailing" constant="10" id="3yf-Ga-bHi"/>
+                    <constraint firstItem="0Fp-1z-S44" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="4jh-LC-7ZB"/>
+                    <constraint firstItem="Txf-ap-2TW" firstAttribute="leading" secondItem="0Fp-1z-S44" secondAttribute="trailing" constant="10" id="6N0-SO-BAT"/>
+                    <constraint firstItem="TfP-Xe-Bv9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="7o5-nv-Hph"/>
+                    <constraint firstItem="4Yb-M4-Vew" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="Cf5-q7-Z5X"/>
+                    <constraint firstItem="ziw-zS-1Pk" firstAttribute="leading" secondItem="iXJ-h3-GMG" secondAttribute="trailing" constant="2" id="DbG-HA-mQ9"/>
+                    <constraint firstItem="4Yb-M4-Vew" firstAttribute="leading" secondItem="ziw-zS-1Pk" secondAttribute="trailing" constant="2" id="GMl-IA-OeR"/>
+                    <constraint firstItem="4Yb-M4-Vew" firstAttribute="leading" secondItem="ziw-zS-1Pk" secondAttribute="trailing" constant="2" id="Hmp-1V-zFa"/>
+                    <constraint firstItem="k3f-pb-hsE" firstAttribute="top" secondItem="0Fp-1z-S44" secondAttribute="bottom" constant="10" id="IyQ-EJ-T7W"/>
+                    <constraint firstAttribute="trailing" secondItem="TfP-Xe-Bv9" secondAttribute="trailing" constant="10" id="L1G-bI-dCf"/>
+                    <constraint firstItem="Txf-ap-2TW" firstAttribute="leading" secondItem="72Y-Zn-Bsb" secondAttribute="leading" id="MAa-Rn-AHD"/>
+                    <constraint firstItem="iXJ-h3-GMG" firstAttribute="top" secondItem="72Y-Zn-Bsb" secondAttribute="bottom" id="MiA-6r-Hsc"/>
+                    <constraint firstItem="TfP-Xe-Bv9" firstAttribute="top" secondItem="k3f-pb-hsE" secondAttribute="bottom" constant="5" id="QjY-Lz-WF3"/>
+                    <constraint firstItem="0Fp-1z-S44" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="VLx-KP-OTY"/>
+                    <constraint firstItem="72Y-Zn-Bsb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="er3-0q-b6e"/>
+                    <constraint firstAttribute="bottom" secondItem="TfP-Xe-Bv9" secondAttribute="bottom" constant="10" id="gfC-WX-j3D"/>
+                    <constraint firstItem="k3f-pb-hsE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="hJL-9G-i5H"/>
+                    <constraint firstItem="TfP-Xe-Bv9" firstAttribute="top" secondItem="k3f-pb-hsE" secondAttribute="bottom" constant="5" id="i2U-QO-nEB"/>
+                    <constraint firstItem="zCC-fe-v3T" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="kXF-H1-W36"/>
+                    <constraint firstItem="zCC-fe-v3T" firstAttribute="leading" secondItem="4Yb-M4-Vew" secondAttribute="trailing" constant="2" id="oNs-jO-qgL"/>
+                    <constraint firstItem="ziw-zS-1Pk" firstAttribute="top" secondItem="72Y-Zn-Bsb" secondAttribute="bottom" id="tGV-3h-i0k"/>
+                    <constraint firstItem="iXJ-h3-GMG" firstAttribute="leading" secondItem="Txf-ap-2TW" secondAttribute="trailing" constant="2" id="wGL-pZ-3nw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="entry_nameLabel" destination="72Y-Zn-Bsb" id="d4m-Kx-b5q"/>
+                <outlet property="image_urlImageView" destination="k3f-pb-hsE" id="dkq-sn-50F"/>
+                <outlet property="tipsLabel" destination="TfP-Xe-Bv9" id="l8S-dD-InA"/>
+            </connections>
+            <point key="canvasLocation" x="263.5" y="333"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="五角星" width="16" height="16"/>
+        <image name="五角星 (1)" width="16" height="16"/>
+        <image name="信号塔" width="32" height="32"/>
+    </resources>
+</document>

@@ -22,14 +22,11 @@
         
         _titleLabel = [[UILabel alloc]init];
         _titleLabel.font = [UIFont systemFontOfSize:18];
-        _titleLabel.textAlignment = NSTextAlignmentCenter;
         [_titleLabel sizeToFit];
         [bgView addSubview:_titleLabel];
         
         
         _titleImageView = [[UIImageView alloc]init];
-        _titleImageView.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
-        _titleImageView.bounds = CGRectMake(0, 0, 96, 35);
         [bgView addSubview:_titleImageView];
         
         [self addSubview:bgView];

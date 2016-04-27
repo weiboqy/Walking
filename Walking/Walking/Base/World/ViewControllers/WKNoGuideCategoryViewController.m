@@ -9,6 +9,7 @@
 #import "WKNoGuideCategoryViewController.h"
 #import "WKRouteViewController.h"
 #import "WKSubjectViewController.h"
+#import "WKTravelNoteViewController.h"
 
 @interface WKNoGuideCategoryViewController ()
 
@@ -26,8 +27,6 @@
     
     
 }
-
-
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -48,6 +47,8 @@
 - (IBAction)Route:(id)sender {
     WKRouteViewController *routeVC = [[WKRouteViewController alloc]init];
     routeVC.ID = _ID;
+    // title
+    
     [self.navigationController pushViewController:routeVC animated:YES];
 }
 
@@ -56,10 +57,20 @@
 - (IBAction)Subject:(id)sender {
     WKSubjectViewController *subjectVC = [[WKSubjectViewController alloc]init];
     subjectVC.destination_id = _ID;
+    // title
+    
     [self.navigationController pushViewController:subjectVC animated:YES];
 }
 
 
+// 游记
+- (IBAction)TravelNote:(id)sender {
+    WKTravelNoteViewController *travelNoteVC = [[WKTravelNoteViewController alloc]init];
+    travelNoteVC.ID = _ID;
+    // title
+    travelNoteVC.name_zn = _model.name_zh_cn;
+    [self.navigationController pushViewController:travelNoteVC animated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning {

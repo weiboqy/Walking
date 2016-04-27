@@ -31,10 +31,35 @@
 		7907619D1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907619C1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m */; };
 		790761A01CC66DF30097EF89 /* WKCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907619F1CC66DF30097EF89 /* WKCollectionCell.m */; };
 		790761A21CC66E0C0097EF89 /* WKCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */; };
+		790CA8811CD06855009547E7 /* WKGradientNaigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 790CA8801CD06855009547E7 /* WKGradientNaigationBar.m */; };
+		791289FB1CCF528600FCCA55 /* WKTravelNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791289F91CCF528600FCCA55 /* WKTravelNoteViewController.m */; };
+		791289FC1CCF528600FCCA55 /* WKTravelNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791289FA1CCF528600FCCA55 /* WKTravelNoteViewController.xib */; };
+		79128A001CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 791289FE1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.m */; };
+		79128A011CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791289FF1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.xib */; };
+		79128A051CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A031CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.m */; };
+		79128A061CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79128A041CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.xib */; };
+		79128A091CCF7FF400FCCA55 /* WKTravelDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A081CCF7FF400FCCA55 /* WKTravelDetailModel.m */; };
+		79128A0C1CCF853E00FCCA55 /* WKTravelPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A0B1CCF853E00FCCA55 /* WKTravelPhotoModel.m */; };
+		79128A0F1CCF864A00FCCA55 /* WKNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A0E1CCF864A00FCCA55 /* WKNoteModel.m */; };
+		79128A131CCF878800FCCA55 /* WKTravleDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A111CCF878800FCCA55 /* WKTravleDetailCell.m */; };
+		79128A141CCF878800FCCA55 /* WKTravleDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79128A121CCF878800FCCA55 /* WKTravleDetailCell.xib */; };
+		79128A171CCF913D00FCCA55 /* WKTravleNotesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A161CCF913D00FCCA55 /* WKTravleNotesModel.m */; };
+		79128A1B1CCFAF2700FCCA55 /* WKRouteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A191CCFAF2700FCCA55 /* WKRouteDetailViewController.m */; };
+		79128A1C1CCFAF2700FCCA55 /* WKRouteDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79128A1A1CCFAF2700FCCA55 /* WKRouteDetailViewController.xib */; };
+		79128A1F1CCFB17600FCCA55 /* WKRoutePlanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A1E1CCFB17600FCCA55 /* WKRoutePlanModel.m */; };
+		79128A231CCFB7A300FCCA55 /* WKRouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A211CCFB7A300FCCA55 /* WKRouteTableViewCell.m */; };
+		79128A241CCFB7A300FCCA55 /* WKRouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79128A221CCFB7A300FCCA55 /* WKRouteTableViewCell.xib */; };
+		79128A281CCFBD3600FCCA55 /* WKRouteDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A261CCFBD3600FCCA55 /* WKRouteDetailCell.m */; };
+		79128A291CCFBD3600FCCA55 /* WKRouteDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79128A271CCFBD3600FCCA55 /* WKRouteDetailCell.xib */; };
 		7914E35D1CC773BF001A0C5F /* WKforeignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35C1CC773BF001A0C5F /* WKforeignViewController.m */; };
 		7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */; };
 		7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */; };
 		791603071CCDB78B00D3F2FD /* UIImage+WKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603061CCDB78B00D3F2FD /* UIImage+WKExtension.m */; };
+		7916030F1CCE3BE300D3F2FD /* WKTravelNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7916030E1CCE3BE300D3F2FD /* WKTravelNoteModel.m */; };
+		791603121CCE3CA800D3F2FD /* WKTravelNoteUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603111CCE3CA800D3F2FD /* WKTravelNoteUserModel.m */; };
+		791603151CCE5DFE00D3F2FD /* VisualFormatLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603141CCE5DFE00D3F2FD /* VisualFormatLayout.m */; };
+		791603181CCE5F0E00D3F2FD /* UIImage+Part.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603171CCE5F0E00D3F2FD /* UIImage+Part.m */; };
+		791603621CCE669D00D3F2FD /* banner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 791603611CCE669D00D3F2FD /* banner.jpg */; };
 		791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791782B81CC9D1360015C0BD /* WKRecommendNotesDetailModel.m */; };
 		791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791C35DB1CC774DF00FFC596 /* WKMyCollectionViewController.m */; };
 		791C35DE1CC774DF00FFC596 /* WKMyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791C35DC1CC774DF00FFC596 /* WKMyCollectionViewController.xib */; };
@@ -179,6 +204,39 @@
 		7907619E1CC66DF30097EF89 /* WKCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCollectionCell.h; sourceTree = "<group>"; };
 		7907619F1CC66DF30097EF89 /* WKCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCollectionCell.m; sourceTree = "<group>"; };
 		790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKCollectionCell.xib; sourceTree = "<group>"; };
+		790CA87F1CD06855009547E7 /* WKGradientNaigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKGradientNaigationBar.h; sourceTree = "<group>"; };
+		790CA8801CD06855009547E7 /* WKGradientNaigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKGradientNaigationBar.m; sourceTree = "<group>"; };
+		791289F81CCF528600FCCA55 /* WKTravelNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelNoteViewController.h; sourceTree = "<group>"; };
+		791289F91CCF528600FCCA55 /* WKTravelNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTravelNoteViewController.m; sourceTree = "<group>"; };
+		791289FA1CCF528600FCCA55 /* WKTravelNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKTravelNoteViewController.xib; sourceTree = "<group>"; };
+		791289FD1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelNoteTableViewCell.h; sourceTree = "<group>"; };
+		791289FE1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTravelNoteTableViewCell.m; sourceTree = "<group>"; };
+		791289FF1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKTravelNoteTableViewCell.xib; sourceTree = "<group>"; };
+		79128A021CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelNoteDetailViewController.h; sourceTree = "<group>"; };
+		79128A031CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTravelNoteDetailViewController.m; sourceTree = "<group>"; };
+		79128A041CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKTravelNoteDetailViewController.xib; sourceTree = "<group>"; };
+		79128A071CCF7FF400FCCA55 /* WKTravelDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelDetailModel.h; sourceTree = "<group>"; };
+		79128A081CCF7FF400FCCA55 /* WKTravelDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTravelDetailModel.m; sourceTree = "<group>"; };
+		79128A0A1CCF853E00FCCA55 /* WKTravelPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelPhotoModel.h; sourceTree = "<group>"; };
+		79128A0B1CCF853E00FCCA55 /* WKTravelPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTravelPhotoModel.m; sourceTree = "<group>"; };
+		79128A0D1CCF864A00FCCA55 /* WKNoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKNoteModel.h; sourceTree = "<group>"; };
+		79128A0E1CCF864A00FCCA55 /* WKNoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKNoteModel.m; sourceTree = "<group>"; };
+		79128A101CCF878800FCCA55 /* WKTravleDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravleDetailCell.h; sourceTree = "<group>"; };
+		79128A111CCF878800FCCA55 /* WKTravleDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTravleDetailCell.m; sourceTree = "<group>"; };
+		79128A121CCF878800FCCA55 /* WKTravleDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKTravleDetailCell.xib; sourceTree = "<group>"; };
+		79128A151CCF913D00FCCA55 /* WKTravleNotesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravleNotesModel.h; sourceTree = "<group>"; };
+		79128A161CCF913D00FCCA55 /* WKTravleNotesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTravleNotesModel.m; sourceTree = "<group>"; };
+		79128A181CCFAF2700FCCA55 /* WKRouteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRouteDetailViewController.h; sourceTree = "<group>"; };
+		79128A191CCFAF2700FCCA55 /* WKRouteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRouteDetailViewController.m; sourceTree = "<group>"; };
+		79128A1A1CCFAF2700FCCA55 /* WKRouteDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKRouteDetailViewController.xib; sourceTree = "<group>"; };
+		79128A1D1CCFB17600FCCA55 /* WKRoutePlanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRoutePlanModel.h; sourceTree = "<group>"; };
+		79128A1E1CCFB17600FCCA55 /* WKRoutePlanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRoutePlanModel.m; sourceTree = "<group>"; };
+		79128A201CCFB7A300FCCA55 /* WKRouteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRouteTableViewCell.h; sourceTree = "<group>"; };
+		79128A211CCFB7A300FCCA55 /* WKRouteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRouteTableViewCell.m; sourceTree = "<group>"; };
+		79128A221CCFB7A300FCCA55 /* WKRouteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKRouteTableViewCell.xib; sourceTree = "<group>"; };
+		79128A251CCFBD3600FCCA55 /* WKRouteDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRouteDetailCell.h; sourceTree = "<group>"; };
+		79128A261CCFBD3600FCCA55 /* WKRouteDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRouteDetailCell.m; sourceTree = "<group>"; };
+		79128A271CCFBD3600FCCA55 /* WKRouteDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKRouteDetailCell.xib; sourceTree = "<group>"; };
 		7914E35B1CC773BF001A0C5F /* WKforeignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKforeignViewController.h; sourceTree = "<group>"; };
 		7914E35C1CC773BF001A0C5F /* WKforeignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKforeignViewController.m; sourceTree = "<group>"; };
 		7914E35E1CC773EA001A0C5F /* WKInlandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKInlandViewController.h; sourceTree = "<group>"; };
@@ -187,6 +245,15 @@
 		7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WKCustom.m"; sourceTree = "<group>"; };
 		791603051CCDB78B00D3F2FD /* UIImage+WKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WKExtension.h"; sourceTree = "<group>"; };
 		791603061CCDB78B00D3F2FD /* UIImage+WKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WKExtension.m"; sourceTree = "<group>"; };
+		7916030D1CCE3BE300D3F2FD /* WKTravelNoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelNoteModel.h; sourceTree = "<group>"; };
+		7916030E1CCE3BE300D3F2FD /* WKTravelNoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTravelNoteModel.m; sourceTree = "<group>"; };
+		791603101CCE3CA800D3F2FD /* WKTravelNoteUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelNoteUserModel.h; sourceTree = "<group>"; };
+		791603111CCE3CA800D3F2FD /* WKTravelNoteUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTravelNoteUserModel.m; sourceTree = "<group>"; };
+		791603131CCE5DFE00D3F2FD /* VisualFormatLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualFormatLayout.h; sourceTree = "<group>"; };
+		791603141CCE5DFE00D3F2FD /* VisualFormatLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisualFormatLayout.m; sourceTree = "<group>"; };
+		791603161CCE5F0E00D3F2FD /* UIImage+Part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Part.h"; sourceTree = "<group>"; };
+		791603171CCE5F0E00D3F2FD /* UIImage+Part.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Part.m"; sourceTree = "<group>"; };
+		791603611CCE669D00D3F2FD /* banner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner.jpg; sourceTree = "<group>"; };
 		791732931CCB64DC00199176 /* WKImageSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKImageSwitchView.h; sourceTree = "<group>"; };
 		791732941CCB64DC00199176 /* WKImageSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKImageSwitchView.m; sourceTree = "<group>"; };
 		791782B71CC9D1360015C0BD /* WKRecommendNotesDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendNotesDetailModel.h; sourceTree = "<group>"; };
@@ -364,6 +431,10 @@
 				79C5FEC01CCA589B004B61AA /* WKDarkLightMode.m */,
 				791603051CCDB78B00D3F2FD /* UIImage+WKExtension.h */,
 				791603061CCDB78B00D3F2FD /* UIImage+WKExtension.m */,
+				791603131CCE5DFE00D3F2FD /* VisualFormatLayout.h */,
+				791603141CCE5DFE00D3F2FD /* VisualFormatLayout.m */,
+				791603161CCE5F0E00D3F2FD /* UIImage+Part.h */,
+				791603171CCE5F0E00D3F2FD /* UIImage+Part.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -404,6 +475,7 @@
 			children = (
 				79FAC4951CC4E39F0068C093 /* Assets.xcassets */,
 				79FAC4971CC4E39F0068C093 /* LaunchScreen.storyboard */,
+				791603611CCE669D00D3F2FD /* banner.jpg */,
 				79FAC49A1CC4E39F0068C093 /* Info.plist */,
 				79FAC48A1CC4E39F0068C093 /* main.m */,
 			);
@@ -519,6 +591,8 @@
 				7907619C1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m */,
 				7914E3611CC77A1B001A0C5F /* UIView+WKCustom.h */,
 				7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */,
+				790CA87F1CD06855009547E7 /* WKGradientNaigationBar.h */,
+				790CA8801CD06855009547E7 /* WKGradientNaigationBar.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -637,6 +711,8 @@
 				793123651CC8D1DE0052CDEE /* WKWorldDetailModel.m */,
 				79C5FEB71CCA446F004B61AA /* WKRouteModel.h */,
 				79C5FEB81CCA446F004B61AA /* WKRouteModel.m */,
+				79128A1D1CCFB17600FCCA55 /* WKRoutePlanModel.h */,
+				79128A1E1CCFB17600FCCA55 /* WKRoutePlanModel.m */,
 				790040EE1CCA0B1E00D291C3 /* WKSubjectModel.h */,
 				790040EF1CCA0B1E00D291C3 /* WKSubjectModel.m */,
 				798B54CB1CCDAF5C00AA096B /* WKSubjectDetailModel.h */,
@@ -653,6 +729,18 @@
 				790085931CCB172C007E5E58 /* WKGuideDetailPhotoModel.m */,
 				790085981CCB58D9007E5E58 /* WKGuideUserModel.h */,
 				790085991CCB58D9007E5E58 /* WKGuideUserModel.m */,
+				7916030D1CCE3BE300D3F2FD /* WKTravelNoteModel.h */,
+				7916030E1CCE3BE300D3F2FD /* WKTravelNoteModel.m */,
+				791603101CCE3CA800D3F2FD /* WKTravelNoteUserModel.h */,
+				791603111CCE3CA800D3F2FD /* WKTravelNoteUserModel.m */,
+				79128A071CCF7FF400FCCA55 /* WKTravelDetailModel.h */,
+				79128A081CCF7FF400FCCA55 /* WKTravelDetailModel.m */,
+				79128A0D1CCF864A00FCCA55 /* WKNoteModel.h */,
+				79128A0E1CCF864A00FCCA55 /* WKNoteModel.m */,
+				79128A0A1CCF853E00FCCA55 /* WKTravelPhotoModel.h */,
+				79128A0B1CCF853E00FCCA55 /* WKTravelPhotoModel.m */,
+				79128A151CCF913D00FCCA55 /* WKTravleNotesModel.h */,
+				79128A161CCF913D00FCCA55 /* WKTravleNotesModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -678,6 +766,9 @@
 				79C5FEB01CCA3FA1004B61AA /* WKRouteViewController.h */,
 				79C5FEB11CCA3FA1004B61AA /* WKRouteViewController.m */,
 				79C5FEB21CCA3FA1004B61AA /* WKRouteViewController.xib */,
+				79128A181CCFAF2700FCCA55 /* WKRouteDetailViewController.h */,
+				79128A191CCFAF2700FCCA55 /* WKRouteDetailViewController.m */,
+				79128A1A1CCFAF2700FCCA55 /* WKRouteDetailViewController.xib */,
 				79C5FEC41CCA66F5004B61AA /* WKGuideViewController.h */,
 				79C5FEC51CCA66F5004B61AA /* WKGuideViewController.m */,
 				79C5FEC61CCA66F5004B61AA /* WKGuideViewController.xib */,
@@ -686,6 +777,12 @@
 				798B54D11CCDB94300AA096B /* WKSubjectDetailViewController.h */,
 				798B54D21CCDB94300AA096B /* WKSubjectDetailViewController.m */,
 				798B54D31CCDB94300AA096B /* WKSubjectDetailViewController.xib */,
+				791289F81CCF528600FCCA55 /* WKTravelNoteViewController.h */,
+				791289F91CCF528600FCCA55 /* WKTravelNoteViewController.m */,
+				791289FA1CCF528600FCCA55 /* WKTravelNoteViewController.xib */,
+				79128A021CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.h */,
+				79128A031CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.m */,
+				79128A041CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -701,6 +798,12 @@
 				7931235F1CC8D0C60052CDEE /* WKWorldDetailCell.h */,
 				793123601CC8D0C60052CDEE /* WKWorldDetailCell.m */,
 				793123611CC8D0C60052CDEE /* WKWorldDetailCell.xib */,
+				79128A201CCFB7A300FCCA55 /* WKRouteTableViewCell.h */,
+				79128A211CCFB7A300FCCA55 /* WKRouteTableViewCell.m */,
+				79128A221CCFB7A300FCCA55 /* WKRouteTableViewCell.xib */,
+				79128A251CCFBD3600FCCA55 /* WKRouteDetailCell.h */,
+				79128A261CCFBD3600FCCA55 /* WKRouteDetailCell.m */,
+				79128A271CCFBD3600FCCA55 /* WKRouteDetailCell.xib */,
 				790085DD1CCB735F007E5E58 /* WKGuideOverviewCell.h */,
 				790085DE1CCB735F007E5E58 /* WKGuideOverviewCell.m */,
 				790085DF1CCB735F007E5E58 /* WKGuideOverviewCell.xib */,
@@ -711,12 +814,21 @@
 				790085ED1CCB8ED3007E5E58 /* WKTableHeaderView.m */,
 				791732931CCB64DC00199176 /* WKImageSwitchView.h */,
 				791732941CCB64DC00199176 /* WKImageSwitchView.m */,
+<<<<<<< HEAD
 				792150691CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.h */,
 				7921506A1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.m */,
 				7921506B1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.xib */,
 				7921506E1CCF534B000CA6D8 /* WKSubjectImageTableViewCell.h */,
 				7921506F1CCF534B000CA6D8 /* WKSubjectImageTableViewCell.m */,
 				792150701CCF534B000CA6D8 /* WKSubjectImageTableViewCell.xib */,
+=======
+				791289FD1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.h */,
+				791289FE1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.m */,
+				791289FF1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.xib */,
+				79128A101CCF878800FCCA55 /* WKTravleDetailCell.h */,
+				79128A111CCF878800FCCA55 /* WKTravleDetailCell.m */,
+				79128A121CCF878800FCCA55 /* WKTravleDetailCell.xib */,
+>>>>>>> 98e3e01acb6ba808c542b2b449fcf01c59e5e223
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -845,8 +957,11 @@
 				791FB7531CCCAF5E0027C050 /* WKNoGuideCategoryViewController.xib in Resources */,
 				793DBDC61CC6609400A4E3CA /* WKMeHeadView.xib in Resources */,
 				791C35E31CC7750E00FFC596 /* WKAboutUsViewController.xib in Resources */,
+				79128A241CCFB7A300FCCA55 /* WKRouteTableViewCell.xib in Resources */,
+				791603621CCE669D00D3F2FD /* banner.jpg in Resources */,
 				79EFB52D1CCE4AF8005D9B63 /* WKSearchDetailViewControllerHeadView.xib in Resources */,
 				79FAC4E61CC533300068C093 /* WKMeViewController.xib in Resources */,
+				79128A141CCF878800FCCA55 /* WKTravleDetailCell.xib in Resources */,
 				790761A21CC66E0C0097EF89 /* WKCollectionCell.xib in Resources */,
 				793123631CC8D0C60052CDEE /* WKWorldDetailCell.xib in Resources */,
 				79FAC4991CC4E39F0068C093 /* LaunchScreen.storyboard in Resources */,
@@ -859,18 +974,31 @@
 				798B54D51CCDB94300AA096B /* WKSubjectDetailViewController.xib in Resources */,
 				79FAC4961CC4E39F0068C093 /* Assets.xcassets in Resources */,
 				791C362A1CC7BF0500FFC596 /* WKLoginAndRegistViewController.xib in Resources */,
+				79128A291CCFBD3600FCCA55 /* WKRouteDetailCell.xib in Resources */,
 				790085E61CCB7390007E5E58 /* WKGuideImpressionCell.xib in Resources */,
 				792150721CCF534B000CA6D8 /* WKSubjectImageTableViewCell.xib in Resources */,
 				79FAC4E11CC533220068C093 /* WKWorldViewController.xib in Resources */,
 				793035291CC687BA003E5491 /* WKListTableViewCell.xib in Resources */,
+				79128A011CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.xib in Resources */,
 				79EC2E581CCB689000BF59B3 /* WKSearchTableViewController.xib in Resources */,
 				79EC2E5D1CCB68D000BF59B3 /* WKSearchTableViewCell.xib in Resources */,
 				790428FA1CC9C4D7007AE8A4 /* WKNotesListHeadView.xib in Resources */,
+				791289FC1CCF528600FCCA55 /* WKTravelNoteViewController.xib in Resources */,
 				791DA5271CC77B52009D9093 /* WKStoryListTableViewCell.xib in Resources */,
+				79128A1C1CCFAF2700FCCA55 /* WKRouteDetailViewController.xib in Resources */,
 				79CBB2AD1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.xib in Resources */,
+<<<<<<< HEAD
 				7921506D1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.xib in Resources */,
 				79EFB5251CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.xib in Resources */,
 				790085E11CCB735F007E5E58 /* WKGuideOverviewCell.xib in Resources */,
+=======
+				79EFB5251CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.xib in Resources */,
+				790085E11CCB735F007E5E58 /* WKGuideOverviewCell.xib in Resources */,
+<<<<<<< HEAD
+=======
+				79128A061CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.xib in Resources */,
+>>>>>>> 3cf5a18b804f0b6b64503f49a44e1c407fd73fdd
+>>>>>>> 98e3e01acb6ba808c542b2b449fcf01c59e5e223
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -943,6 +1071,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79128A131CCF878800FCCA55 /* WKTravleDetailCell.m in Sources */,
 				791FB94D1CCCF13F0027C050 /* WKImageSwitchView.m in Sources */,
 				791FB94C1CCCF0FE0027C050 /* WKImageSwitchView.h in Sources */,
 				791FB7521CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m in Sources */,
@@ -952,6 +1081,13 @@
 				79C5FEB31CCA3FA1004B61AA /* WKRouteViewController.m in Sources */,
 				79FAC4D71CC5329A0068C093 /* WKTabBarViewController.m in Sources */,
 				7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+				7916030F1CCE3BE300D3F2FD /* WKTravelNoteModel.m in Sources */,
+>>>>>>> 3cf5a18b804f0b6b64503f49a44e1c407fd73fdd
+>>>>>>> 98e3e01acb6ba808c542b2b449fcf01c59e5e223
 				79EFB5281CCE3750005D9B63 /* WKRecomendSearchDetailModel.m in Sources */,
 				791603071CCDB78B00D3F2FD /* UIImage+WKExtension.m in Sources */,
 				7930352C1CC68857003E5491 /* WKCycleScrollView.m in Sources */,
@@ -962,6 +1098,7 @@
 				79EFB5201CCE17CC005D9B63 /* WKSearchDetailViewController.m in Sources */,
 				7907619D1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m in Sources */,
 				794D35031CCDB60600A90A99 /* WKRecommendSearchCityModel.m in Sources */,
+				79128A051CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.m in Sources */,
 				7907618F1CC654170097EF89 /* WKWorldListModel.m in Sources */,
 				798B54D01CCDB28F00AA096B /* WKSubjectDetailSectionsModel.m in Sources */,
 				791DA52A1CC77D40009D9093 /* WKStoryListHeadView.m in Sources */,
@@ -971,8 +1108,12 @@
 				792150711CCF534B000CA6D8 /* WKSubjectImageTableViewCell.m in Sources */,
 				790085971CCB1A88007E5E58 /* WKGuideDetailSectionsModel.m in Sources */,
 				791DA5261CC77B52009D9093 /* WKStoryListTableViewCell.m in Sources */,
+				791603151CCE5DFE00D3F2FD /* VisualFormatLayout.m in Sources */,
 				793DBDC41CC6607A00A4E3CA /* WKMeHeadView.m in Sources */,
 				790085911CCB12C1007E5E58 /* WKGuideDetailModel.m in Sources */,
+				791603181CCE5F0E00D3F2FD /* UIImage+Part.m in Sources */,
+				791289FB1CCF528600FCCA55 /* WKTravelNoteViewController.m in Sources */,
+				790CA8811CD06855009547E7 /* WKGradientNaigationBar.m in Sources */,
 				79FAC4E01CC533220068C093 /* WKWorldViewController.m in Sources */,
 				790761981CC6546F0097EF89 /* WKRecommendView.m in Sources */,
 				790752AD1CC8CFA300B968F3 /* WKRecommendListUserModel.m in Sources */,
@@ -988,8 +1129,10 @@
 				798B54CD1CCDAF5C00AA096B /* WKSubjectDetailModel.m in Sources */,
 				790085EE1CCB8ED3007E5E58 /* WKTableHeaderView.m in Sources */,
 				7931235E1CC8CDFE0052CDEE /* WKWorldDetailViewController.m in Sources */,
+				79128A0F1CCF864A00FCCA55 /* WKNoteModel.m in Sources */,
 				791C35E21CC7750E00FFC596 /* WKAboutUsViewController.m in Sources */,
 				793123621CC8D0C60052CDEE /* WKWorldDetailCell.m in Sources */,
+				791603121CCE3CA800D3F2FD /* WKTravelNoteUserModel.m in Sources */,
 				79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */,
 				7900859A1CCB58D9007E5E58 /* WKGuideUserModel.m in Sources */,
 				791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */,
@@ -998,6 +1141,8 @@
 				79C5FEC71CCA66F5004B61AA /* WKGuideViewController.m in Sources */,
 				791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */,
 				7907618C1CC654020097EF89 /* WKWorldView.m in Sources */,
+				79128A091CCF7FF400FCCA55 /* WKTravelDetailModel.m in Sources */,
+				79128A281CCFBD3600FCCA55 /* WKRouteDetailCell.m in Sources */,
 				791DA50D1CC725B1009D9093 /* WKRecommendCollectionViewCell.m in Sources */,
 				79EFB5241CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.m in Sources */,
 				79FAC48B1CC4E39F0068C093 /* main.m in Sources */,
@@ -1006,15 +1151,21 @@
 				79EC2E571CCB689000BF59B3 /* WKSearchTableViewController.m in Sources */,
 				790085941CCB172C007E5E58 /* WKGuideDetailPhotoModel.m in Sources */,
 				79FAC4DB1CC533130068C093 /* WKRecommendViewController.m in Sources */,
+				79128A1F1CCFB17600FCCA55 /* WKRoutePlanModel.m in Sources */,
+				79128A171CCF913D00FCCA55 /* WKTravleNotesModel.m in Sources */,
+				79128A1B1CCFAF2700FCCA55 /* WKRouteDetailViewController.m in Sources */,
 				79EFB52B1CCE4ADE005D9B63 /* WKSearchDetailViewControllerHeadView.m in Sources */,
 				790752BC1CC9275B00B968F3 /* WKRecommendStoryDetailModel.m in Sources */,
 				79C5FEC11CCA589B004B61AA /* Foundation+Log.m in Sources */,
 				79C5FEC21CCA589B004B61AA /* NetWorkRequestManager.m in Sources */,
 				79CBB2AC1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.m in Sources */,
 				790085E51CCB7390007E5E58 /* WKGuideImpressionCell.m in Sources */,
+				79128A0C1CCF853E00FCCA55 /* WKTravelPhotoModel.m in Sources */,
 				79C5FEAD1CC9B5C5004B61AA /* WKCategoryViewController.m in Sources */,
 				790040F01CCA0B1E00D291C3 /* WKSubjectModel.m in Sources */,
 				7914E35D1CC773BF001A0C5F /* WKforeignViewController.m in Sources */,
+				79128A231CCFB7A300FCCA55 /* WKRouteTableViewCell.m in Sources */,
+				79128A001CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.m in Sources */,
 				79C5FEC31CCA589B004B61AA /* WKDarkLightMode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

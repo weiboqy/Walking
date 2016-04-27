@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef CGFloat (^CellHeightBlock)();
 @interface WKRecommendStoryViewController : UIViewController
 
 @property (nonatomic, copy) NSString *spot_id;
 @property (nonatomic, strong) NSString *imageURL;
 
+@property (nonatomic, copy) CellHeightBlock cellHeightBlock;
 
 @end

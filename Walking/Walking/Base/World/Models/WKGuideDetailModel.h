@@ -11,7 +11,8 @@
 
 @interface WKGuideDetailModel : NSObject
 
-
+/** id */
+@property (copy, nonatomic)NSString *ID;
 /** 标题 */
 @property (copy, nonatomic)NSString *title;
 

@@ -126,7 +126,10 @@
         CGRect rightRect = contentView.frame;
         rightRect.origin = CGPointMake(CGRectGetWidth(self.scrollView.frame) * (counter ++), 0);
         contentView.frame = rightRect;
-        
+        //图片剪切 多余部分
+        contentView.contentMode = UIViewContentModeScaleAspectFill;
+        contentView.clipsToBounds = YES;
+        contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         [self.scrollView addSubview:contentView];
     }
   
