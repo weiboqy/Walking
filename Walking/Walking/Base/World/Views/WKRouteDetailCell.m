@@ -17,6 +17,7 @@
     [_image_urlImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", model.image_url]] placeholderImage:PLACEHOLDER];
 }
 
+
 - (void)awakeFromNib {
     // Initialization code
 }

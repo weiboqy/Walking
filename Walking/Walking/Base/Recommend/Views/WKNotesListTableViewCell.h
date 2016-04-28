@@ -19,4 +19,12 @@
 @property (nonatomic, strong) WKRecommendNotesDetailModel *detailModel;
 @property (strong, nonatomic) IBOutlet UIImageView *imageC;
 
+
+
+- (CGFloat)cellsHeight;
+
+
+
+
+
 @end

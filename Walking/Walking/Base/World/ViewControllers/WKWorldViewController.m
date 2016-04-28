@@ -33,6 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
     // 全局色
     self.view.backgroundColor = ColorGlobal;
     
@@ -104,6 +106,8 @@
 
 // 自定义导航条
 - (void)addCustomNagationBar {
+    
+//    self.navigationController.navigationBarHidden 
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
     

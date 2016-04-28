@@ -8,7 +8,7 @@
 
 #import "WKNavigationViewController.h"
 
-@interface WKNavigationViewController ()
+@interface WKNavigationViewController ()<UIGestureRecognizerDelegate>
 
 @end
 
@@ -16,8 +16,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
+    // 签订侧滑的代理
+    self.interactivePopGestureRecognizer.delegate = self;
     
     // Do any additional setup after loading the view.
+}
+
+// 侧滑代理实现
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (self.navigationController.viewControllers.count == 1) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
  // 这个方法可以拦截所有push进来的控制器

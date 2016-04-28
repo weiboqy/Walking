@@ -12,9 +12,11 @@
 #import "WKGuideImpressionCell.h"
 #import "WKTableHeaderView.h"
 
+#import "UMSocial.h"
+
 #define kNavigationAndStatusBarHeihght 64
 
-@interface WKGuideViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface WKGuideViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UMSocialUIDelegate>
 
 
 /** 数据源 */
@@ -35,6 +37,9 @@
 @property (nonatomic, strong) UILabel *navigationTitle;
 @property (nonatomic, strong) UIImageView *bannerImageView;
 @property (nonatomic, strong) UIButton *infoButton;
+@property (nonatomic, strong) UIButton *infoButton1;
+
+@property (strong, nonatomic) UIImageView *share;
 
 @end
 
@@ -76,11 +81,22 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     // 自定义导航条
 //    [self addCustomNagationBar];
     [self buildNavigationBar];
+    [self setBackButton];
 }
 
+- (void)setBackButton {
+    _infoButton1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_infoButton1 setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
+    _infoButton1.frame = _infoButton.frame;
+    // 自适应尺寸
+    //    [_infoButton sizeToFit];
+    [_infoButton1 addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_infoButton1];
+}
 
 // 加载数据
 - (void)parseData {
+    
     // 显示指示器
     [SVProgressHUD showInfoWithStatus:@"正在加载哦~~~"];
 //    WKLog(@"ID = %@", _ID);
@@ -92,12 +108,11 @@ static NSString * const tableHeaderID = @"tableHeaderID";
         [model setValuesForKeysWithDictionary:dataDic];
         
         for (NSDictionary *detailDic in dataDic[@"children"]) {
-            WKGuideDetailModel *detailModel = [[WKGuideDetailModel alloc]init];
-            [detailModel setValuesForKeysWithDictionary:detailDic];
             for (NSDictionary *detailDic1 in detailDic[@"sections"]) {
+                WKGuideDetailModel *detailModel = [[WKGuideDetailModel alloc]init];
+                [detailModel setValuesForKeysWithDictionary:detailDic];
                 WKGuideDetailSectionsModel *sectionsModel = [[WKGuideDetailSectionsModel alloc]init];
                 [sectionsModel setValuesForKeysWithDictionary:detailDic1];
-                
                 NSDictionary *userDic = detailDic1[@"user"];
                 WKGuideUserModel *userModel = [[WKGuideUserModel alloc]init];
                 [userModel setValuesForKeysWithDictionary:userDic];
@@ -122,25 +137,30 @@ static NSString * const tableHeaderID = @"tableHeaderID";
                     }
                 }
                 detailModel.sectionsModel = sectionsModel;
-                [self.dataArr addObject:sectionsModel];
                 
                 [self.dataArr1 addObject:detailModel];
+<<<<<<< HEAD
 //                WKLog(@"name = %@", model.detailModel.sectionsModel.userModel.name);
                 WKLog(@"titleSECTION = %@", model.detailModel.sectionsModel.title);
+=======
+
+//                WKLog(@"name = %@", model.detailModel.sectionsModel.userModel.name);
+
+                WKLog(@"titleSECTION = %@", model.detailModel.sectionsModel.title);
+
+>>>>>>> e65d70f0b806a65d27e0e54d38564c07e2605ecd
                 
+                WKLog(@"titleSECTION = %@", model.detailModel.sectionsModel.title);
                 model.detailModel = detailModel;
                 //                [self.dataArr addObject:model];
                 //                NSMutableDictionary *dataMutableDic = [[NSMutableDictionary alloc]initWithCapacity:0];
                 //                [dataMutableDic setObject:detailModel forKey:detailModel.title];
                 //                [self.dataArr addObject:dataMutableDic];
+                
+                [self.dataArr addObject:sectionsModel];
+                [self.dataArr1 addObject:detailModel];
             }
-//            WKLog(@"title = %@", model.title);
-//            WKLog(@"title1 = %@", model.detailModel.title);
-//            WKLog(@"title2 = %@", model.detailModel.sectionsModel.title);
-//            WKLog(@"des  = %@", model.detailModel.sectionsModel.descriptioN);
-//            WKLog(@"imageUrl = %@", model.detailModel.sectionsModel.photoModel.image_url);
         }
-//        WKLog(@"count ARR = %@", self.dataArr);
         // 取消指示器
         [SVProgressHUD dismiss];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -157,18 +177,36 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 - (void)createListView {
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    
+    
     UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, (624.0 / 1024) * kScreenWidth * 1.8 - 200) ];
     bgView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:bgView];
     
+//    _infoButton1 = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [_infoButton1 setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
+//    _infoButton1.frame = CGRectMake(10, 30, 30, 30);
+//    [_infoButton1 addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 1.8, (624.0 / 1024) * kScreenWidth * 1.8 - 200) ];
     imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _image_url]]]];
+<<<<<<< HEAD
+=======
+
+>>>>>>> e65d70f0b806a65d27e0e54d38564c07e2605ecd
 //    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
 //    WKLog(@"%@", _image_url);
     _bgView = bgView;
     [_bgView addSubview:imageView];
+<<<<<<< HEAD
 //    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
 //    WKLog(@"%@", _image_url);
+=======
+
+    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
+    WKLog(@"%@", _image_url);
+>>>>>>> e65d70f0b806a65d27e0e54d38564c07e2605ecd
     _bannerImageView = imageView;
     [bgView addSubview:imageView];
     
@@ -191,7 +229,9 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 
 // 透明导航栏
 -(void)buildNavigationBar {
+    
     _customNavigationBar = [[UIView alloc]init];
+    _customNavigationBar.backgroundColor = [UIColor redColor];
     [self.view addSubview:_customNavigationBar];
     NSDictionary *views = NSDictionaryOfVariableBindings(_customNavigationBar);
     NSDictionary *metrics = @{@"HN":@(kNavigationAndStatusBarHeihght)};
@@ -221,37 +261,50 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     
     _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_infoButton setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-    // 自适应尺寸
-    //    [_infoButton sizeToFit];
+    
     [_infoButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [_customNavigationBar addSubview:_infoButton];
+   
     
-    views = NSDictionaryOfVariableBindings(_navigationBangroundImageView, _navigationTitle, _infoButton);
+//    UIButton *share1 = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [share1 setImage:[UIImage imageNamed:@"五角星"] forState:UIControlStateNormal];
+//    [share1 addTarget:self action:@selector(shareClick) forControlEvents:UIControlEventTouchUpInside];
+//    [_customNavigationBar addSubview:share1];
+    
+    UIButton *share2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [share2 setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
+    [share2 addTarget:self action:@selector(shareClick) forControlEvents:UIControlEventTouchUpInside];
+    [_customNavigationBar addSubview:share2];
+    
+    views = NSDictionaryOfVariableBindings(_navigationBangroundImageView, _navigationTitle, _infoButton,  share2);
     // 使用UIBlurEffect来制作毛玻璃
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
     effectView.frame = CGRectMake(0, 0, kScreenWidth, 64);
     [_navigationBangroundImageView addSubview:effectView];
-    _navigationTitle.frame = CGRectMake(kScreenWidth / 2 - 50, 32, 100, 30);
-    
     _navigationTitle.textAlignment = NSTextAlignmentCenter;
+    
     metrics = @{@"WB":@(34)};
     visualFormats =  @[@"H:|[_navigationBangroundImageView]|",
                        @"H:|-[_infoButton(==WB)]-(-20)-[_navigationTitle]|",
+//                       @"H:|-WB-[_navigationTitle]-[share1(==100)]-|",
+                       @"H:|-WB-[_navigationTitle]-[share2(==WB)]-|",
                        @"H:|[_infoButton(==60)]|",
                        @"V:|[_navigationBangroundImageView]|",
                        @"V:|-[_navigationTitle(==50)]|",
-                       @"V:|-[_infoButton(==50)]|"
+                       @"V:|-[_infoButton(==50)]|",
+//                       @"V:|-[share1(==50)]|",
+                       @"V:|-[share2(==50)]|",
                        ];
     [VisualFormatLayout autoLayout:_customNavigationBar visualFormats:visualFormats metrics:metrics views:views];
 }
 
 // 视图将要出现时,_customNavigationBar的透明度为0,一开始不让它显示
 - (void)viewWillAppear:(BOOL)animated {
-    _customNavigationBar.alpha = 0;
+    _customNavigationBar.alpha = 0.1;
 }
--(void) scrollViewDidScroll:(UIScrollView *)scrollView
-{
+// 导航条随着滚动而透明度变化
+-(void) scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat threholdHeight = _bannerImageView.frame.size.height - kNavigationAndStatusBarHeihght;
     if(scrollView.contentOffset.y >= 0 &&
        scrollView.contentOffset.y <= threholdHeight) {
@@ -267,16 +320,17 @@ static NSString * const tableHeaderID = @"tableHeaderID";
         _customNavigationBar.alpha = 1.0;
     }
 }
-- (void)backClick
-{
+// 返回按钮
+- (void)backClick {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+// 分享按钮
+- (void)shareClick {
+//    WKLogFun;
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:@"shareshare~~~~(输入你想分享的内容" shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToQzone,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,nil] delegate:self];
+}
 #pragma  mark -----TabvlewView代理
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
     return self.dataArr.count;
 }
 
@@ -289,11 +343,22 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WKGuideDetailModel *detailModel = self.dataArr1[indexPath.row];
+<<<<<<< HEAD
     WKGuideDetailSectionsModel *model = self.dataArr[indexPath.row];
 //    WKLog(@"%@", model.title);
 //    WKGuideDetailSectionsModel *model = detailModel.sectionsModel;
 //    WKLog(@"model===%@", model);
 //    WKLog(@"%@", model.title);
+=======
+
+    WKGuideDetailSectionsModel *model = self.dataArr[indexPath.row];
+//    WKLog(@"%@", model.title);
+
+//    WKGuideDetailSectionsModel *model = detailModel.sectionsModel;
+    WKLog(@"model===%@", model);
+    WKLog(@"%@", model.title);
+
+>>>>>>> e65d70f0b806a65d27e0e54d38564c07e2605ecd
     if ([detailModel.title isEqualToString:@"旅行者印象"]) {
         WKGuideImpressionCell *cell = [tableView dequeueReusableCellWithIdentifier:ImpressionCellID];
         cell.model = model;
@@ -308,6 +373,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
         return cell;
     }
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

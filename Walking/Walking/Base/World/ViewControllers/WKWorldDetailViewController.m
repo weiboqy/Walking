@@ -36,9 +36,11 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     
     self.view.backgroundColor = ColorGlobal;
     
+    self.navigationController.navigationBarHidden = YES;
+    
     [self addCustomNagationBar];
     
-//    [self.navigationController setNavigationBarHidden:NO];
+//  [self.navigationController setNavigationBarHidden:NO];
     
     [self parseData];
     

@@ -31,11 +31,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k3f-pb-hsE">
-                        <rect key="frame" x="10" y="50" width="387" height="191"/>
+                        <rect key="frame" x="10" y="50" width="387" height="194"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfP-Xe-Bv9">
-                        <rect key="frame" x="10" y="246" width="387" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="10" y="249" width="387" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -109,7 +109,7 @@
                 <outlet property="image_urlImageView" destination="k3f-pb-hsE" id="dkq-sn-50F"/>
                 <outlet property="tipsLabel" destination="TfP-Xe-Bv9" id="l8S-dD-InA"/>
             </connections>
-            <point key="canvasLocation" x="263.5" y="333"/>
+            <point key="canvasLocation" x="354.5" y="326"/>
         </tableViewCell>
     </objects>
     <resources>

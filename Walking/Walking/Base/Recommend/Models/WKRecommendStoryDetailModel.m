@@ -27,16 +27,21 @@
                 imageH =  self.photo_height * (kScreenWidth - Margin * 2) / imageW;
                 imageW = kScreenWidth - Margin * 2;
             }
-            _imageFrame = CGRectMake(Margin, Margin, imageW, imageH);
-            _cellHeight += Margin + _imageFrame.size.height;
+            _imageFrame = CGRectMake(Margin, Margin/2, imageW, imageH);
+            _cellHeight += Margin/2 + _imageFrame.size.height;
         }
         
         NSString *string = self.text;
         CGSize maxSize = CGSizeMake(kScreenWidth - Margin * 2, MAXFLOAT);
         CGFloat textH = [string boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil].size.height;
-//        CGFloat textY = CGRectGetMaxY(self.imageFrame) + Margin;
-//        self.textFrame = CGRectMake(Margin, textY, maxSize.width, textH);
-        _cellHeight += Margin + textH + Margin;
+        CGFloat textY = CGRectGetMaxY(self.imageFrame) + Margin;
+        self.textFrame = CGRectMake(Margin, textY, maxSize.width, textH);
+        
+        if (![self.text isEqualToString:@""]) {
+            _cellHeight += Margin/2 + textH + Margin;
+        }else{
+            _cellHeight += Margin/2;
+        }
     }
     return _cellHeight;
 }
