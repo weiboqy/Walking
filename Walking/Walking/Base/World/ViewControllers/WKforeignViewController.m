@@ -57,16 +57,16 @@ static NSString * const foreignCollectViewCellID = @"WKForeignCollectViewCellID"
                 WKWorldListModel *listModel = [[WKWorldListModel alloc]init];
                 [listModel setValuesForKeysWithDictionary:dataDic];
                 [self.dataArr addObject:listModel];
-                WKLog(@"%@", listModel.name_zh_cn);
+//                WKLog(@"%@", listModel.name_zh_cn);
             }
         }
         [SVProgressHUD dismiss];
-        WKLog(@"count = %ld", self.dataArr.count);
+//        WKLog(@"count = %ld", self.dataArr.count);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.foreignCollectView reloadData];
         });
     } error:^(NSError *error) {
-        WKLog(@"failre");
+//        WKLog(@"failre");
         [SVProgressHUD showErrorWithStatus:@"数据加载失败"];
     }];
     
@@ -98,7 +98,7 @@ static NSString * const foreignCollectViewCellID = @"WKForeignCollectViewCellID"
 
 #pragma mark ---UICollectViewDelegate\UICollectViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    WKLog(@"c = %ld", self.dataArr.count);
+//    WKLog(@"c = %ld", self.dataArr.count);
     return self.dataArr.count;
 }
 
@@ -106,7 +106,7 @@ static NSString * const foreignCollectViewCellID = @"WKForeignCollectViewCellID"
     
     WKCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:foreignCollectViewCellID forIndexPath:indexPath];
     WKWorldListModel *model = self.dataArr[indexPath.row];
-    WKLog(@"%@", model.name_en);
+//    WKLog(@"%@", model.name_en);
     cell.model = model;
     return cell;
     

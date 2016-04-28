@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WKRecommendNotesDetailPhotoModel.h"
 
 @interface WKRecommendNotesDetailModel : NSObject
 
@@ -24,6 +25,18 @@
 
 @property (nonatomic, copy) NSString *photo;
 @property (nonatomic, copy) NSString *text;
+//计算高度
+@property (nonatomic, assign) CGRect textFrame;
+@property (nonatomic, assign) CGRect  imageFrame;
+
+@property (nonatomic, assign) CGFloat imageH;
+@property (nonatomic, assign) CGFloat textH;
+@property (nonatomic, assign) CGFloat cellHeight;
+//@property (nonatomic, assign) CGFloat photo_width;
+//@property (nonatomic, assign) CGFloat photo_height;
+@property (nonatomic, strong) WKRecommendNotesDetailPhotoModel *photoModel;
+
+- (CGFloat)cellsHeight;
 
 
 @end

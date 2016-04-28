@@ -1,14 +1,23 @@
 //
-//  WKTravleDetailCell.m
+//  WKSubjectTextTableViewCell.m
 //  Walking
 //
 //  Created by lanou on 16/4/26.
 //  Copyright © 2016年 xqy. All rights reserved.
 //
 
-#import "WKTravleDetailCell.h"
+#import "WKSubjectTextTableViewCell.h"
 
-@implementation WKTravleDetailCell
+@implementation WKSubjectTextTableViewCell
+
+//- (CGFloat)cellHeight
+//{
+//    if(!_cellHeight)
+//    {
+//        //fuzhi
+//    }
+//    return _cellHeight;
+//}
 
 
 - (void)awakeFromNib {

@@ -29,9 +29,12 @@
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *tableViewDataArray;
+
+@property (nonatomic, strong) NSString *firstStart;
 //刷新位置
 @property (nonatomic, strong) NSString *start;
-
+//collection 刷新数据的 起始位置
+@property (nonatomic, assign) NSInteger startLocation;
 
 @property (nonatomic, assign) BOOL isTure;
 //@property (nonatomic, strong) UITextField *searchField;
@@ -65,9 +68,9 @@
     return _tableViewDataArray;
 }
 
-- (void)requestDataForCollection{
+- (void)requestDataForCollectionwithStartLoaction:(NSInteger)startLocation{
     
-    [NetWorkRequestManager requestWithType:GET urlString:RecommendStoryURL parDic:@{} finish:^(NSData *data) {
+    [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat: RecommendStoryURL, startLocation] parDic:@{} finish:^(NSData *data) {
        
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //        NSLog(@"%@", dicData);
@@ -104,6 +107,9 @@
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //        WKLog(@"%@", dicData[@"elements"]);
         _start = dicData[@"next_start"];
+        if (self.tableViewDataArray.count>0) {
+            [self.tableViewDataArray removeAllObjects];
+        }
         
         for (NSDictionary *dic in dicData[@"elements"]) {
             WKRecommendListModel *listModel = [[WKRecommendListModel alloc] init];
@@ -132,8 +138,8 @@
                 
                 [self.viewArray[i] sd_setImageWithURL:[NSURL URLWithString:[self.tableViewDataArray[i+10] cover_image]]];
             }
-
             [self.listTableView reloadData];
+            [self.listTableView.mj_header endRefreshing];
         });
 //        WKLog(@"%@, %ld", _start, self.tableViewDataArray.count);
         
@@ -145,7 +151,7 @@
 //上拉刷新的请求方法
 - (void)requestDataWithStart:(NSString *)next_start{
     
-    [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendTableViewMoreURL, _start] parDic:@{next_start : _start} finish:^(NSData *data) {
+    [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendTableViewMoreURL, _start] parDic:@{} finish:^(NSData *data) {
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //       WKLog(@"%@", dicData[@"elements"]);
         //改变 刷新的 开始位置
@@ -168,6 +174,7 @@
         }        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.listTableView reloadData];
+            [self.listTableView.mj_footer endRefreshing];
             
         });
 //        WKLog(@"%@, %ld", _start, self.tableViewDataArray.count);
@@ -176,6 +183,29 @@
         WKLog(@"error%@", error);
     }];
 }
+// 自定义导航条
+- (void)addCustomNagationBar {
+    // NavigationBar
+    WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
+    bar.backgroundColor = ColorGlobal;
+    
+    
+#pragma mark -----设置搜索框-----
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
+    //    _searchBar.barStyle = UIBarStyleBlackTranslucent;//透明度设置
+    //    _searchBar.keyboardType = UIKeyboardTypeDefault;
+    _searchBar.placeholder = @"搜索";
+    _searchBar.delegate = self;
+    _searchBar.barTintColor = ColorGlobal;
+    _searchBar.tintColor = [UIColor orangeColor];
+    self.navigationItem.titleView = _searchBar;
+    UIView *searchView = [[UIView alloc]initWithFrame:CGRectMake(20, 0, kScreenWidth, 0)];
+    searchView.backgroundColor = ColorGlobal;
+    [searchView addSubview:_searchBar];
+    [bar addSubview:searchView];
+    [self.view addSubview:bar];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -189,33 +219,87 @@
     UIBarButtonItem *searchBt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search)];
     self.navigationItem.rightBarButtonItem = searchBt;
     _isTure = YES;
-    self.view.backgroundColor = [UIColor redColor];
-    
-//    self.title = @"推荐";
-//    self.view.backgroundColor = ColorGlobal;
-    
-#pragma mark -----设置搜索框-----
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
-//    _searchBar.backgroundColor = [UIColor clearColor];
-//    _searchBar.barStyle = UIBarStyleBlackTranslucent;//透明度设置
-//    _searchBar.keyboardType = UIKeyboardTypeDefault;
-    _searchBar.placeholder = @"搜索";
-    _searchBar.delegate = self;
-    _searchBar.tintColor = [UIColor orangeColor];
-    self.navigationItem.titleView = _searchBar;
-    
-    [self requestDataForCollection];
-    [self requestDataForList];
-    
-    [self createListTableView];
     _index = 0;
     _start = @"2387313699";
+    _startLocation = 0;
+    
+    [self addCustomNagationBar];
+//    self.title = @"推荐";
+//    self.view.backgroundColor = ColorGlobal;
 
+    
+
+#pragma mark ----刷新界面
+//    self.listTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        // 进入刷新状态后会自动调用这个block
+//        WKLog(@"000000");
+//    }];
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
+    self.listTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    
+    self.listTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        // 进入刷新状态后会自动调用这个block
+    }];
+    
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
+    self.listTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+
+#pragma mark ---collectionView 刷新---
+//    self.headView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(collectionHeadRefreshData)];
+//    self.headView.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(collectionFooterRefreshData)];
+    
+    [self requestDataForCollectionwithStartLoaction:_startLocation];
+    [self requestDataForList];
+    [self createListTableView];
     
     // Do any additional setup after loading the view from its nib.
 //    
 
 }
+//更多的点击方法
+- (void)button{
+    _startLocation += 12;
+    [self requestDataForCollectionwithStartLoaction:_startLocation];
+    
+ 
+    //    if (self.headView.collectionView.contentOffset.x  > self.headView.collectionView.contentSize.width - kScreenWidth + 20) {
+    //         [self.headView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+    //        return;
+    //    }
+    //    //滚动的  item
+    //    CGPoint p = self.headView.collectionView.contentOffset;
+    //    p = CGPointMake((kScreenWidth-20 + 10) + p.x, 0);
+    //    [self.headView.collectionView setContentOffset:p animated:YES];
+}
+#warning  -------collection加载更多数据 -------
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (self.headView.collectionView.contentOffset.y > self.headView.collectionView.contentSize.width - kScreenWidth) {
+        WKLog(@"collection滚动");
+    }
+    
+}
+
+- (void)loadNewData{
+    // 马上进入刷新状态
+    //    [self.listTableView.mj_header beginRefreshing];
+    WKLog(@"下啦刷新开始了");
+    [self requestDataForList];
+    
+}
+
+- (void)loadMoreData{
+    WKLog(@"上啦刷新开始了");
+    [self requestDataWithStart:_start];
+}
+
+//- (void)collectionHeadRefreshData{
+//    
+//    WKLog(@"collection下啦开始了");
+//}
+//
+//- (void)collectionFooterRefreshData{
+//     WKLog(@"collection上啦开始了");
+//}
 
 #pragma mark --- search--------
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
@@ -248,14 +332,14 @@
     WKSearchTableViewController *searchVc = [[WKSearchTableViewController alloc] init];
     searchVc.keyStr = searchBar.text;
     [self.navigationController pushViewController:searchVc animated:YES];
-
 }
 
 - (void)listTableViewHeadView{
     
     CGFloat with = [[UIScreen mainScreen] bounds].size.width;
+    CGFloat height = [[UIScreen mainScreen] bounds].size.height;
     //590
-    self.headView = [[WKRecommendView alloc] initWithFrame:CGRectMake(0, 0, with, 0.978* kScreenHeight)];//0.884* kScreenHeight
+    self.headView = [[WKRecommendView alloc] initWithFrame:CGRectMake(0, 0, with, 0.884 * height)];//0.884* kScreenHeight
     self.headView.backgroundColor = ColorGlobal;
     self.listTableView.tableHeaderView = self.headView;
     
@@ -288,27 +372,19 @@
     
     self.headView.collectionView.delegate = self;
     self.headView.collectionView.dataSource = self;
-}
-//更多的点击方法
-- (void)button{
-//    NSLog(@"moreButton");
-    if (self.headView.collectionView.contentOffset.x  > self.headView.collectionView.contentSize.width - kScreenWidth + 20) {
-         [self.headView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
-        return;
-    }
-    //滚动的  item
-    CGPoint p = self.headView.collectionView.contentOffset;
-    p = CGPointMake((kScreenWidth-20 + 10) + p.x, 0);
-    [self.headView.collectionView setContentOffset:p animated:YES];
-}
+    
+    self.headView.collectionView.contentOffset = CGPointMake(400, 0);
 
+}
 #pragma mark ---collectionView----
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(0, 10, 0, 0);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((kScreenWidth-20-10)/ 2, 160);
+//    WKLog(@"%.2f", (kScreenWidth-20-10)/ 2);//0.927
+    
+    return CGSizeMake((kScreenWidth-20-10)/ 2, (kScreenWidth-20-10)/ 2 * 0.927);//160
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 10;
@@ -350,7 +426,6 @@
     [self listTableViewHeadView];
 }
 
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -368,8 +443,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //220
-    return (0.329) * kScreenHeight;
+    //250
+    return (220/667.0) * kScreenHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -48,7 +48,7 @@
 //  分区数组
 - (void)creatArray {
     NSMutableArray *oneArray = [[NSMutableArray alloc] initWithObjects:@"我的收藏", nil];
-    NSMutableArray *twoArray = [[NSMutableArray alloc] initWithObjects:@"清除缓存", nil];
+    NSMutableArray *twoArray = [[NSMutableArray alloc] initWithObjects:@"清理缓存", nil];
     NSMutableArray *threeArray = [[NSMutableArray alloc] initWithObjects:@"夜间模式", nil];
     NSMutableArray *fourArray = [[NSMutableArray alloc] initWithObjects:@"关于我们", nil];
     _dataArray = [[NSMutableArray alloc] initWithObjects:oneArray,twoArray,threeArray,fourArray, nil];
@@ -178,14 +178,24 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentitfier];
     }
     _meTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.text = _dataArray[indexPath.section][indexPath.row];
+    
+    // 清除缓存
+    if (indexPath.section == 1) {
+        NSString *dataText = _dataArray[indexPath.section][indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@(M)",dataText];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    // 夜间模式
     if (indexPath.section == 2) {
         cell.textLabel.text = _dataArray[indexPath.section][indexPath.row];
         UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectMake(10, 300, 50, 20)];
         [switchView addTarget:self action:@selector(updateSwitchAtIndexPath:) forControlEvents:UIControlEventValueChanged];
         cell.accessoryView = switchView;
     }
-    cell.textLabel.text = _dataArray[indexPath.section][indexPath.row];
+    
     return cell;
 }
 /**  夜间模式*/
@@ -217,6 +227,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 不加此句时，在二级栏目点击返回时，此行会由选中状态慢慢变成非选中状态。加上此句，返回时直接就是非选中状态。
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.section) {
         case 0:{
             // 进入我的收藏界面
@@ -225,8 +237,10 @@
             break;
         }
         case 1:{
-            // 清除缓存
-            
+            // 清理缓存
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"是否清理缓存？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            alertView.tag = 2001;
+            [alertView show];
             break;
         }
         case 2:{
@@ -244,18 +258,18 @@
     }
 }
 
-
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    UIView *view = [[UIView alloc]init];
-//    view.backgroundColor = [UIColor redColor];
-//    CGRect rect = view.frame;
-//    rect.size.height = 2;
-//    view.frame = rect;
-//    NSLog(@"Header%@",NSStringFromCGRect(view.frame));
-//    return view;
-//}
+/*
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc]init];
+    view.backgroundColor = [UIColor redColor];
+    CGRect rect = view.frame;
+    rect.size.height = 2;
+    view.frame = rect;
+    NSLog(@"Header%@",NSStringFromCGRect(view.frame));
+    return view;
+}
+ */
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc]init];
@@ -270,10 +284,49 @@
     return 0.1;
 }
 
+#pragma mark -UIAlertViewDelegate-
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1 && alertView.tag == 2001) {
+        [self clearCache];
+    }
+}
+
+/** 清理缓存 */
+- (void)clearCache {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        WKLog(@"cachPath is %@", cachPath);
+        // 查找给定路径下的所有子路径，返回一个数组
+        NSArray *filesArray = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
+        for (NSString *fileName in filesArray) {
+            NSError *error;
+            // 拼接子文件路径
+            NSString *childPath = [cachPath stringByAppendingPathComponent:fileName];
+            // 判断文件或目录是否存在
+            if ([[NSFileManager defaultManager] fileExistsAtPath:childPath]) {
+                
+                
+                
+                [[NSFileManager defaultManager] removeItemAtPath:childPath error:&error];
+            }
+        }
+       // 会创建一个新的线程实行clearCacheSuccess函数，并且会等待函数退出后再继续执行。
+        [self performSelectorOnMainThread:@selector(clearCacheSuccess) withObject:nil waitUntilDone:YES];
+    });
+}
+
+/** 清理缓存成功 */
+- (void)clearCacheSuccess {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"缓存清理成功！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alertView show];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

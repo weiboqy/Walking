@@ -19,9 +19,9 @@
     _titleLabel.text = listModel.name;
     
     [_backImageV sd_setImageWithURL:[NSURL URLWithString:listModel.cover_image] placeholderImage:PLACEHOLDER];
-//    _backImageV.contentMode = UIViewContentModeScaleAspectFill;
-//    _backImageV.clipsToBounds = YES;
-//    _backImageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    _backImageV.contentMode = UIViewContentModeScaleAspectFill;
+    _backImageV.clipsToBounds = YES;
+    _backImageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 //    _backImageV.contentMode = UIViewContentModeScaleAspectFit;//图片的自适应大小
     //毛玻璃效果
 //    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
@@ -42,7 +42,7 @@
 - (void)awakeFromNib {
     
     self.view.layer.cornerRadius = 3;
-    self.icon.layer.cornerRadius = 13;
+    self.icon.layer.cornerRadius = 22;
     self.icon.layer.masksToBounds = YES;
     self.backImageV.layer.cornerRadius = 5;
     self.backImageV.layer.masksToBounds = YES;

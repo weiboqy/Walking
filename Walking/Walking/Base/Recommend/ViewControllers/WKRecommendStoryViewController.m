@@ -28,6 +28,7 @@
 @property (nonatomic, copy) NSString *date_added;//时间
 @property (nonatomic, copy) NSString *text;//第一条标题
 
+@property (nonatomic, assign) CGFloat flo;
 
 @property (nonatomic, strong) UIView *customNavigationBar;
 @property (nonatomic, strong) UIImageView *navigationBangroundImageView;
@@ -38,6 +39,8 @@
 
 
 @end
+
+static NSString * const imageCellID = @"listCell";
 
 @implementation WKRecommendStoryViewController
 
@@ -85,9 +88,8 @@
 - (void)createListTableView{
     
     
-    self.navigationController.navigationBar.translucent = NO;
     
-    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     self.listTableView.backgroundColor = [UIColor clearColor];
     
     self.listTableView.delegate = self;
@@ -106,7 +108,8 @@
     _bannerImageView = imageV;
     [self.view addSubview:imageV];
     
-    [self.listTableView registerNib:[UINib nibWithNibName:@"WKStoryListTableViewCell" bundle:nil] forCellReuseIdentifier:@"listCell"];
+//    [self.listTableView registerNib:[UINib nibWithNibName:@"WKStoryListTableViewCell" bundle:nil] forCellReuseIdentifier:@"listCell"];
+    [self.listTableView registerClass:[WKStoryListTableViewCell class] forCellReuseIdentifier:imageCellID];
     [self.listTableView registerNib:[UINib nibWithNibName:@"WKStoryListTableViewHeadCell" bundle:nil] forCellReuseIdentifier:@"listHeadCell"];
     //指定头视图
     //xib 指定 不行
@@ -115,9 +118,8 @@
     [_headView initializeData];
     self.listTableView.tableHeaderView = _headView;
     
-    self.listTableView.rowHeight = UITableViewAutomaticDimension;
-    self.listTableView.estimatedRowHeight = 500;
-    
+//    self.listTableView.rowHeight = UITableViewAutomaticDimension;
+//    self.listTableView.estimatedRowHeight = 500;    
     
   [self.view addSubview:self.listTableView];
     
@@ -243,19 +245,51 @@
         return cell;
         
     }else{
-        WKStoryListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"listCell" forIndexPath:indexPath];
+        WKStoryListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:imageCellID forIndexPath:indexPath];
         if (!cell) {
-            cell = [[WKStoryListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"listCell"];
+            cell = [[WKStoryListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:imageCellID];
         }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.detailModel = self.dataArray[indexPath.row];
+//        //返回给 cell的高度
+//        self.cellHeightBlock = ^(){
+//            return cell.cellHeight;
+//            WKLog(@"00000%f", cell.cellHeight);
+//        };
         return cell;
     }
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 300;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        CGSize maxSize = CGSizeMake(kScreenWidth - (10/375.0) * kScreenWidth * 2, MAXFLOAT);
+        CGFloat textH = [_text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0]} context:nil].size.height;
+//        WKLog(@"%f", textH);
+        return (textH + 20);//上下各 10 
+    }else{
+        WKRecommendStoryDetailModel *detailModel = self.dataArray[indexPath.row ];
+//        WKLog(@"cellHeight:%f, model.height:%f", [detailModel cellHeight], detailModel.photo_height);
+        return [detailModel cellsHeight];
+    }
+    
+    
+/*
+//    if (self.cellHeightBlock) {
+//        
+//        if (indexPath.row == 0) {
+//            CGSize maxSize = CGSizeMake(kScreenWidth-2*10, MAXFLOAT);
+//            CGFloat titleTextH = [_text boundingRectWithSize:maxSize options:0 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
+//            return  titleTextH + 10;
+//        }else{
+//            return self.cellHeightBlock();
+//        }
+//        
+//    }else{
+//        return 0.0;
+//    }
+ */
+    
+}
 
 
 /*

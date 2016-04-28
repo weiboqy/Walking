@@ -136,7 +136,7 @@
 #pragma mark --国内\国外按钮的点击方式
 
 - (void)foreignClick {
-    WKLogFun;
+//    WKLogFun;
     _foreignButton.selected = YES;
     [_foreignButton setImage:[UIImage imageNamed:@"国外"] forState:UIControlStateNormal];
     [_inlandButton setImage:[UIImage imageNamed:@"国内1"] forState:UIControlStateNormal];
@@ -144,7 +144,7 @@
 }
 
 - (void)inlandClick {
-    WKLogFun;
+//    WKLogFun;
     _inlandButton.selected = YES;
     [_foreignButton setImage:[UIImage imageNamed:@"国外1"] forState:UIControlStateNormal];
     [_inlandButton setImage:[UIImage imageNamed:@"国内"] forState:UIControlStateNormal];
