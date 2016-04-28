@@ -139,16 +139,13 @@ static NSString * const tableHeaderID = @"tableHeaderID";
                 detailModel.sectionsModel = sectionsModel;
                 
                 [self.dataArr1 addObject:detailModel];
-<<<<<<< HEAD
 //                WKLog(@"name = %@", model.detailModel.sectionsModel.userModel.name);
                 WKLog(@"titleSECTION = %@", model.detailModel.sectionsModel.title);
-=======
 
 //                WKLog(@"name = %@", model.detailModel.sectionsModel.userModel.name);
 
                 WKLog(@"titleSECTION = %@", model.detailModel.sectionsModel.title);
 
->>>>>>> e65d70f0b806a65d27e0e54d38564c07e2605ecd
                 
                 WKLog(@"titleSECTION = %@", model.detailModel.sectionsModel.title);
                 model.detailModel = detailModel;
@@ -191,22 +188,16 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 1.8, (624.0 / 1024) * kScreenWidth * 1.8 - 200) ];
     imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _image_url]]]];
-<<<<<<< HEAD
-=======
 
->>>>>>> e65d70f0b806a65d27e0e54d38564c07e2605ecd
 //    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
 //    WKLog(@"%@", _image_url);
     _bgView = bgView;
     [_bgView addSubview:imageView];
-<<<<<<< HEAD
 //    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
 //    WKLog(@"%@", _image_url);
-=======
 
     WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
     WKLog(@"%@", _image_url);
->>>>>>> e65d70f0b806a65d27e0e54d38564c07e2605ecd
     _bannerImageView = imageView;
     [bgView addSubview:imageView];
     
@@ -343,22 +334,17 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WKGuideDetailModel *detailModel = self.dataArr1[indexPath.row];
-<<<<<<< HEAD
     WKGuideDetailSectionsModel *model = self.dataArr[indexPath.row];
 //    WKLog(@"%@", model.title);
 //    WKGuideDetailSectionsModel *model = detailModel.sectionsModel;
 //    WKLog(@"model===%@", model);
 //    WKLog(@"%@", model.title);
-=======
-
-    WKGuideDetailSectionsModel *model = self.dataArr[indexPath.row];
 //    WKLog(@"%@", model.title);
 
 //    WKGuideDetailSectionsModel *model = detailModel.sectionsModel;
     WKLog(@"model===%@", model);
     WKLog(@"%@", model.title);
 
->>>>>>> e65d70f0b806a65d27e0e54d38564c07e2605ecd
     if ([detailModel.title isEqualToString:@"旅行者印象"]) {
         WKGuideImpressionCell *cell = [tableView dequeueReusableCellWithIdentifier:ImpressionCellID];
         cell.model = model;

@@ -121,6 +121,13 @@
     }else {
         return;
     }
+    
+    NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    _size = [self folderSizeAtPath:cachPath];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:1];
+    UITableViewCell *cell = [self.meTableView cellForRowAtIndexPath:indexPath];
+    NSString *dataText = _dataArray[indexPath.section][indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@(%lluM)",dataText,_size];
 }
 
 //  点击登录注册按钮实现的方法
@@ -144,14 +151,6 @@
     [self presentViewController:loginVC animated:YES completion:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    _size = [self folderSizeAtPath:cachPath];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:1];
-    UITableViewCell *cell = [self.meTableView cellForRowAtIndexPath:indexPath];
-    NSString *dataText = _dataArray[indexPath.section][indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@(%lluM)",dataText,_size];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
