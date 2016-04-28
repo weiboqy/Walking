@@ -34,6 +34,7 @@
 @property (nonatomic, strong) UILabel *navigationTitle;
 @property (nonatomic, strong) UIImageView *bannerImageView;
 @property (nonatomic, strong) UIButton *infoButton;
+@property (nonatomic, strong) UIButton *infoButton1;
 
 
 @end
@@ -82,6 +83,7 @@
 }
 
 - (void)createListTableView{
+    
     
     self.navigationController.navigationBar.translucent = NO;
     
@@ -218,8 +220,7 @@
         _customNavigationBar.alpha = 1.0;
     }
 }
--(void)backClick
-{
+-(void)backClick {
     [self.navigationController popViewControllerAnimated:YES];
 }
 

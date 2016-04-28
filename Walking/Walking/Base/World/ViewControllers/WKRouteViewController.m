@@ -45,7 +45,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
    
 }
 - (void)setupSubViews {
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 44, kScreenWidth, kScreenHeight - 44) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([WKRouteTableViewCell class]) bundle:nil] forCellReuseIdentifier:TableViewCellID];
@@ -115,6 +115,10 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     WKRouteDetailViewController *detailVC = [[WKRouteDetailViewController alloc]init];
     WKRouteModel *model = self.dataArr[indexPath.row];
     detailVC.ID = model.ID;
+    detailVC.image_url = model.image_url;
+    detailVC.name_zn = model.name;
+    detailVC.days = model.plan_days_count;
+    detailVC.plan_nodes_counts = model.plan_nodes_counts;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

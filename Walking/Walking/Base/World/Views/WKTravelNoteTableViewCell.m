@@ -17,6 +17,9 @@
     _daysLabel.text = [NSString stringWithFormat:@"%@", model.days];
     _likes_count.text = [NSString stringWithFormat:@"%@", model.photos_count];
     [_bgImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", model.front_cover_photo_url]] placeholderImage:PLACEHOLDER];
+    _bgImageView.contentMode = UIViewContentModeScaleAspectFill;
+    _bgImageView.clipsToBounds = YES;
+    _bgImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 }
 
 - (void)awakeFromNib {

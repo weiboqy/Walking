@@ -8,6 +8,11 @@
 
 #import "AppDelegate.h"
 #import "WKTabBarViewController.h"
+#import "UMSocial.h"
+//#import "UMSocialSinaSSOHandler.h"
+#import "UMSocialSnsService.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialQQHandler.h"
 
 @interface AppDelegate ()
 
@@ -26,7 +31,16 @@
     // 窗口展示
     [self.window makeKeyAndVisible];
     
+    [UMSocialData setAppKey:@"570bb59a67e58e78b30005a0"];
+    // 调试
+//    [UMSocialData openLog:YES];
     
+    //    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:@"289115101" secret:@"9226d860bcd65e0675f1d5e6f8cfb0d0" RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    
+    
+//    [UMSocialWechatHandler setWXAppId:@"wxd930ea5d5a258f4f" appSecret:@"db426a9829e4b49a0dcac7b4162da6b6" url:@"http://www.umeng.com/social"];
+    
+    [UMSocialQQHandler setQQWithAppId:@"100424468"appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://www.umeng.com/social"];
     
     // Override point for customization after application launch.
     return YES;

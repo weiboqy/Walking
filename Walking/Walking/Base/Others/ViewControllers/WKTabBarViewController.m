@@ -27,7 +27,7 @@
     
     NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
     selectedAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:12];
-    selectedAttrs[NSForegroundColorAttributeName] = [UIColor darkGrayColor];
+    selectedAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
     
     
     UITabBarItem *item = [UITabBarItem appearance];  // 当有appearance的时候 就表明可以配置全局性的东西
@@ -71,13 +71,13 @@
     [UIView animateWithDuration:0.1 animations:^{
         // 推荐模块
         WKRecommendViewController *recommendVC = [[WKRecommendViewController alloc]init];
-        [self createChildView:recommendVC title:@"推荐" image:@"写字" selectedImage:nil];
+        [self createChildView:recommendVC title:@"推荐" image:@"灯泡 (1)" selectedImage:@"灯泡"];
         // 时间模块
         WKWorldViewController *worldVC = [[WKWorldViewController alloc]init];
-        [self createChildView:worldVC title:@"世界" image:@"写字" selectedImage:nil];
+        [self createChildView:worldVC title:@"世界" image:@"地球 (1)" selectedImage:@"地球"];
         // 我 模块
         WKMeViewController *meVC = [[WKMeViewController alloc]init];
-        [self createChildView:meVC title:@"我" image:@"写字" selectedImage:nil];
+        [self createChildView:meVC title:@"我" image:@"人数 (1)" selectedImage:@"人数"];
     }];
 
 }

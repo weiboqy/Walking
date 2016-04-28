@@ -23,6 +23,7 @@
 
 #import "VisualFormatLayout.h"
 #import "UIImage+Part.h"
+#import "UserInfoManager.h"
 
 
 #define kScreenWidth [[UIScreen mainScreen] bounds].size.width

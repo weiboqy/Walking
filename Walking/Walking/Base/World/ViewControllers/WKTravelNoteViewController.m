@@ -69,7 +69,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
 - (void)parseData {
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:@"http://chanyouji.com/api/destinations/trips/%@.json?month=0&page=1", _ID] parDic:@{} finish:^(NSData *data) {
         NSArray *arr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        WKLog(@"%@", arr);
+//        WKLog(@"%@", arr);
         for (NSDictionary *dic in arr) {
             WKTravelNoteModel *travelNoteModel = [[WKTravelNoteModel alloc]init];
             [travelNoteModel setValuesForKeysWithDictionary:dic];
@@ -110,12 +110,15 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     cell.model = model;
     return cell;
 }
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    WKTravelNoteDetailViewController *detailVC = [[WKTravelNoteDetailViewController alloc]init];
-//    WKTravelNoteModel *model = self.dataArr[indexPath.row];
-//    detailVC.ID = model.ID;
-//    [self.navigationController pushViewController:detailVC animated:YES];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    WKTravelNoteDetailViewController *detailVC = [[WKTravelNoteDetailViewController alloc]init];
+    WKTravelNoteModel *model = self.dataArr[indexPath.row];
+    detailVC.ID = model.ID;
+    detailVC.image_url = model.front_cover_photo_url;
+    detailVC.name_zn = model.name;
+    detailVC.model = model;
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning {
