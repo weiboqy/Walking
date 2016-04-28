@@ -12,11 +12,9 @@
 @interface WKStoryListTableViewCell : UITableViewCell
 
 
-@property (strong, nonatomic) IBOutlet UIImageView *imageV;
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) UIImageView *imageV;
+@property (strong, nonatomic) UILabel *titleLabel;
 //@property (nonatomic, assign) CGFloat cellHeight;
-
-
 
 @property (nonatomic, strong) WKRecommendStoryDetailModel *detailModel;
 

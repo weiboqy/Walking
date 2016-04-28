@@ -33,7 +33,8 @@
 @property (nonatomic, strong) NSString *firstStart;
 //刷新位置
 @property (nonatomic, strong) NSString *start;
-
+//collection 刷新数据的 起始位置
+@property (nonatomic, assign) NSInteger startLocation;
 
 @property (nonatomic, assign) BOOL isTure;
 //@property (nonatomic, strong) UITextField *searchField;
@@ -67,9 +68,9 @@
     return _tableViewDataArray;
 }
 
-- (void)requestDataForCollection{
+- (void)requestDataForCollectionwithStartLoaction:(NSInteger)startLocation{
     
-    [NetWorkRequestManager requestWithType:GET urlString:RecommendStoryURL parDic:@{} finish:^(NSData *data) {
+    [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat: RecommendStoryURL, startLocation] parDic:@{} finish:^(NSData *data) {
        
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //        NSLog(@"%@", dicData);
@@ -220,7 +221,7 @@
     _isTure = YES;
     _index = 0;
     _start = @"2387313699";
-    
+    _startLocation = 0;
     
     [self addCustomNagationBar];
 //    self.title = @"推荐";
@@ -247,14 +248,35 @@
 //    self.headView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(collectionHeadRefreshData)];
 //    self.headView.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(collectionFooterRefreshData)];
     
-    [self requestDataForCollection];
+    [self requestDataForCollectionwithStartLoaction:_startLocation];
     [self requestDataForList];
-    
     [self createListTableView];
     
     // Do any additional setup after loading the view from its nib.
 //    
 
+}
+//更多的点击方法
+- (void)button{
+    _startLocation += 12;
+    [self requestDataForCollectionwithStartLoaction:_startLocation];
+    
+ 
+    //    if (self.headView.collectionView.contentOffset.x  > self.headView.collectionView.contentSize.width - kScreenWidth + 20) {
+    //         [self.headView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+    //        return;
+    //    }
+    //    //滚动的  item
+    //    CGPoint p = self.headView.collectionView.contentOffset;
+    //    p = CGPointMake((kScreenWidth-20 + 10) + p.x, 0);
+    //    [self.headView.collectionView setContentOffset:p animated:YES];
+}
+#warning  -------collection加载更多数据 -------
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (self.headView.collectionView.contentOffset.y > self.headView.collectionView.contentSize.width - kScreenWidth) {
+        WKLog(@"collection滚动");
+    }
+    
 }
 
 - (void)loadNewData{
@@ -310,7 +332,6 @@
     WKSearchTableViewController *searchVc = [[WKSearchTableViewController alloc] init];
     searchVc.keyStr = searchBar.text;
     [self.navigationController pushViewController:searchVc animated:YES];
-
 }
 
 - (void)listTableViewHeadView{
@@ -352,23 +373,9 @@
     self.headView.collectionView.delegate = self;
     self.headView.collectionView.dataSource = self;
     
+    self.headView.collectionView.contentOffset = CGPointMake(400, 0);
 
 }
-
-
-//更多的点击方法
-- (void)button{
-//    NSLog(@"moreButton");
-    if (self.headView.collectionView.contentOffset.x  > self.headView.collectionView.contentSize.width - kScreenWidth + 20) {
-         [self.headView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
-        return;
-    }
-    //滚动的  item
-    CGPoint p = self.headView.collectionView.contentOffset;
-    p = CGPointMake((kScreenWidth-20 + 10) + p.x, 0);
-    [self.headView.collectionView setContentOffset:p animated:YES];
-}
-
 #pragma mark ---collectionView----
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(0, 10, 0, 0);
@@ -419,7 +426,6 @@
     [self listTableViewHeadView];
 }
 
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -438,7 +444,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     //250
-    return (230/667.0) * kScreenHeight;
+    return (220/667.0) * kScreenHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

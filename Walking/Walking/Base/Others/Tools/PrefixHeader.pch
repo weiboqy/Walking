@@ -32,7 +32,7 @@
 #define PLACEHOLDER [UIImage imageNamed:@"placeholder.jpg"]  // 占位图
 
 //网络请求地址
-#define RecommendStoryURL @"http://api.breadtrip.com/v2/new_trip/spot/hot/list/?start=0"   //推荐的每日精彩故事地址
+#define RecommendStoryURL @"http://api.breadtrip.com/v2/new_trip/spot/hot/list/?start=%ld"   //推荐的每日精彩故事地址
 #define RecommendStoryDetailURL @"http://api.breadtrip.com/v2/new_trip/spot/?spot_id=%@"  //精彩故事详情接口
 #define RecommendTableViewURL @"http://api.breadtrip.com/v5/index/"  //推荐的游记的 列表的  接口数据
 #define RecommendTableViewMoreURL @"http://api.breadtrip.com/v5/index/?lat=30.28275878622556&lng=120.1101822501681&next_start=%@&sign=b5c6a9c6260e3e4f8c954fa7306835c3%20"

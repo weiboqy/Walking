@@ -31,6 +31,9 @@
 		7907619D1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907619C1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m */; };
 		790761A01CC66DF30097EF89 /* WKCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907619F1CC66DF30097EF89 /* WKCollectionCell.m */; };
 		790761A21CC66E0C0097EF89 /* WKCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */; };
+		790888D01CD0AF2000FA2CEA /* WKTravleNotesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A161CCF913D00FCCA55 /* WKTravleNotesModel.m */; };
+		790888D11CD0AF6B00FA2CEA /* WKTravelNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7916030E1CCE3BE300D3F2FD /* WKTravelNoteModel.m */; };
+		790888D41CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790888D31CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.m */; };
 		790CA8811CD06855009547E7 /* WKGradientNaigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 790CA8801CD06855009547E7 /* WKGradientNaigationBar.m */; };
 		791289FB1CCF528600FCCA55 /* WKTravelNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791289F91CCF528600FCCA55 /* WKTravelNoteViewController.m */; };
 		791289FC1CCF528600FCCA55 /* WKTravelNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791289FA1CCF528600FCCA55 /* WKTravelNoteViewController.xib */; };
@@ -43,7 +46,6 @@
 		79128A0F1CCF864A00FCCA55 /* WKNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A0E1CCF864A00FCCA55 /* WKNoteModel.m */; };
 		79128A131CCF878800FCCA55 /* WKTravleDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A111CCF878800FCCA55 /* WKTravleDetailCell.m */; };
 		79128A141CCF878800FCCA55 /* WKTravleDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79128A121CCF878800FCCA55 /* WKTravleDetailCell.xib */; };
-		79128A171CCF913D00FCCA55 /* WKTravleNotesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A161CCF913D00FCCA55 /* WKTravleNotesModel.m */; };
 		79128A1B1CCFAF2700FCCA55 /* WKRouteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A191CCFAF2700FCCA55 /* WKRouteDetailViewController.m */; };
 		79128A1C1CCFAF2700FCCA55 /* WKRouteDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79128A1A1CCFAF2700FCCA55 /* WKRouteDetailViewController.xib */; };
 		79128A1F1CCFB17600FCCA55 /* WKRoutePlanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A1E1CCFB17600FCCA55 /* WKRoutePlanModel.m */; };
@@ -55,7 +57,6 @@
 		7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */; };
 		7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */; };
 		791603071CCDB78B00D3F2FD /* UIImage+WKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603061CCDB78B00D3F2FD /* UIImage+WKExtension.m */; };
-		7916030F1CCE3BE300D3F2FD /* WKTravelNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7916030E1CCE3BE300D3F2FD /* WKTravelNoteModel.m */; };
 		791603121CCE3CA800D3F2FD /* WKTravelNoteUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603111CCE3CA800D3F2FD /* WKTravelNoteUserModel.m */; };
 		791603151CCE5DFE00D3F2FD /* VisualFormatLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603141CCE5DFE00D3F2FD /* VisualFormatLayout.m */; };
 		791603181CCE5F0E00D3F2FD /* UIImage+Part.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603171CCE5F0E00D3F2FD /* UIImage+Part.m */; };
@@ -80,8 +81,11 @@
 		791DA5761CC7BB64009D9093 /* WKNotesListHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 791DA5751CC7BB64009D9093 /* WKNotesListHeadView.m */; };
 		791FB7521CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791FB7501CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m */; };
 		791FB7531CCCAF5E0027C050 /* WKNoGuideCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791FB7511CCCAF5E0027C050 /* WKNoGuideCategoryViewController.xib */; };
-		791FB94C1CCCF0FE0027C050 /* WKImageSwitchView.h in Sources */ = {isa = PBXBuildFile; fileRef = 791732931CCB64DC00199176 /* WKImageSwitchView.h */; };
 		791FB94D1CCCF13F0027C050 /* WKImageSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 791732941CCB64DC00199176 /* WKImageSwitchView.m */; };
+		7921506C1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7921506A1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.m */; };
+		7921506D1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7921506B1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.xib */; };
+		792150711CCF534B000CA6D8 /* WKSubjectImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7921506F1CCF534B000CA6D8 /* WKSubjectImageTableViewCell.m */; };
+		792150721CCF534B000CA6D8 /* WKSubjectImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 792150701CCF534B000CA6D8 /* WKSubjectImageTableViewCell.xib */; };
 		793035281CC687BA003E5491 /* WKListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 793035261CC687BA003E5491 /* WKListTableViewCell.m */; };
 		793035291CC687BA003E5491 /* WKListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793035271CC687BA003E5491 /* WKListTableViewCell.xib */; };
 		7930352C1CC68857003E5491 /* WKCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7930352B1CC68857003E5491 /* WKCycleScrollView.m */; };
@@ -200,6 +204,8 @@
 		7907619E1CC66DF30097EF89 /* WKCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCollectionCell.h; sourceTree = "<group>"; };
 		7907619F1CC66DF30097EF89 /* WKCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCollectionCell.m; sourceTree = "<group>"; };
 		790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKCollectionCell.xib; sourceTree = "<group>"; };
+		790888D21CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendNotesDetailPhotoModel.h; sourceTree = "<group>"; };
+		790888D31CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendNotesDetailPhotoModel.m; sourceTree = "<group>"; };
 		790CA87F1CD06855009547E7 /* WKGradientNaigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKGradientNaigationBar.h; sourceTree = "<group>"; };
 		790CA8801CD06855009547E7 /* WKGradientNaigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKGradientNaigationBar.m; sourceTree = "<group>"; };
 		791289F81CCF528600FCCA55 /* WKTravelNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelNoteViewController.h; sourceTree = "<group>"; };
@@ -284,6 +290,12 @@
 		791FB74F1CCCAF5E0027C050 /* WKNoGuideCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKNoGuideCategoryViewController.h; sourceTree = "<group>"; };
 		791FB7501CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKNoGuideCategoryViewController.m; sourceTree = "<group>"; };
 		791FB7511CCCAF5E0027C050 /* WKNoGuideCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKNoGuideCategoryViewController.xib; sourceTree = "<group>"; };
+		792150691CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSubjectTextTableViewCell.h; sourceTree = "<group>"; };
+		7921506A1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSubjectTextTableViewCell.m; sourceTree = "<group>"; };
+		7921506B1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKSubjectTextTableViewCell.xib; sourceTree = "<group>"; };
+		7921506E1CCF534B000CA6D8 /* WKSubjectImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSubjectImageTableViewCell.h; sourceTree = "<group>"; };
+		7921506F1CCF534B000CA6D8 /* WKSubjectImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSubjectImageTableViewCell.m; sourceTree = "<group>"; };
+		792150701CCF534B000CA6D8 /* WKSubjectImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKSubjectImageTableViewCell.xib; sourceTree = "<group>"; };
 		793035251CC687BA003E5491 /* WKListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKListTableViewCell.h; sourceTree = "<group>"; };
 		793035261CC687BA003E5491 /* WKListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKListTableViewCell.m; sourceTree = "<group>"; };
 		793035271CC687BA003E5491 /* WKListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKListTableViewCell.xib; sourceTree = "<group>"; };
@@ -610,6 +622,8 @@
 				790752BB1CC9275B00B968F3 /* WKRecommendStoryDetailModel.m */,
 				791782B71CC9D1360015C0BD /* WKRecommendNotesDetailModel.h */,
 				791782B81CC9D1360015C0BD /* WKRecommendNotesDetailModel.m */,
+				790888D21CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.h */,
+				790888D31CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.m */,
 				794D34FE1CCDAF9800A90A99 /* WKRecommendSearchModel.h */,
 				794D34FF1CCDAF9800A90A99 /* WKRecommendSearchModel.m */,
 				794D35011CCDB60600A90A99 /* WKRecommendSearchCityModel.h */,
@@ -804,6 +818,12 @@
 				790085ED1CCB8ED3007E5E58 /* WKTableHeaderView.m */,
 				791732931CCB64DC00199176 /* WKImageSwitchView.h */,
 				791732941CCB64DC00199176 /* WKImageSwitchView.m */,
+				792150691CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.h */,
+				7921506A1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.m */,
+				7921506B1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.xib */,
+				7921506E1CCF534B000CA6D8 /* WKSubjectImageTableViewCell.h */,
+				7921506F1CCF534B000CA6D8 /* WKSubjectImageTableViewCell.m */,
+				792150701CCF534B000CA6D8 /* WKSubjectImageTableViewCell.xib */,
 				791289FD1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.h */,
 				791289FE1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.m */,
 				791289FF1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.xib */,
@@ -831,8 +851,8 @@
 			buildConfigurationList = 79FAC4B31CC4E39F0068C093 /* Build configuration list for PBXNativeTarget "Walking" */;
 			buildPhases = (
 				28B9800B03A6A585DD1BC910 /* Check Pods Manifest.lock */,
-				79FAC4821CC4E39F0068C093 /* Sources */,
 				79FAC4831CC4E39F0068C093 /* Frameworks */,
+				79FAC4821CC4E39F0068C093 /* Sources */,
 				79FAC4841CC4E39F0068C093 /* Resources */,
 				A72FDFD5AE5A41ED6D596355 /* Embed Pods Frameworks */,
 				4677F47CA7DD1DABC260F436 /* Copy Pods Resources */,
@@ -957,6 +977,7 @@
 				791C362A1CC7BF0500FFC596 /* WKLoginAndRegistViewController.xib in Resources */,
 				79128A291CCFBD3600FCCA55 /* WKRouteDetailCell.xib in Resources */,
 				790085E61CCB7390007E5E58 /* WKGuideImpressionCell.xib in Resources */,
+				792150721CCF534B000CA6D8 /* WKSubjectImageTableViewCell.xib in Resources */,
 				79FAC4E11CC533220068C093 /* WKWorldViewController.xib in Resources */,
 				793035291CC687BA003E5491 /* WKListTableViewCell.xib in Resources */,
 				79128A011CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.xib in Resources */,
@@ -967,11 +988,13 @@
 				791DA5271CC77B52009D9093 /* WKStoryListTableViewCell.xib in Resources */,
 				79128A1C1CCFAF2700FCCA55 /* WKRouteDetailViewController.xib in Resources */,
 				79CBB2AD1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.xib in Resources */,
+				7921506D1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.xib in Resources */,
 				79EFB5251CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.xib in Resources */,
 				790085E11CCB735F007E5E58 /* WKGuideOverviewCell.xib in Resources */,
-
+				79EFB5251CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.xib in Resources */,
+				790085E11CCB735F007E5E58 /* WKGuideOverviewCell.xib in Resources */,
 				79128A061CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.xib in Resources */,
-
+				79128A061CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1044,18 +1067,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				790888D11CD0AF6B00FA2CEA /* WKTravelNoteModel.m in Sources */,
+				790888D01CD0AF2000FA2CEA /* WKTravleNotesModel.m in Sources */,
 				79128A131CCF878800FCCA55 /* WKTravleDetailCell.m in Sources */,
 				791FB94D1CCCF13F0027C050 /* WKImageSwitchView.m in Sources */,
-				791FB94C1CCCF0FE0027C050 /* WKImageSwitchView.h in Sources */,
 				791FB7521CCCAF5E0027C050 /* WKNoGuideCategoryViewController.m in Sources */,
 				7930352F1CC6886A003E5491 /* NSTimer+myTimer.m in Sources */,
+				7921506C1CCF44EC000CA6D8 /* WKSubjectTextTableViewCell.m in Sources */,
 				791DA5721CC7B695009D9093 /* WKNotesListTableViewCell.m in Sources */,
 				79C5FEB31CCA3FA1004B61AA /* WKRouteViewController.m in Sources */,
 				79FAC4D71CC5329A0068C093 /* WKTabBarViewController.m in Sources */,
 				7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */,
-
-				7916030F1CCE3BE300D3F2FD /* WKTravelNoteModel.m in Sources */,
-
 				79EFB5281CCE3750005D9B63 /* WKRecomendSearchDetailModel.m in Sources */,
 				791603071CCDB78B00D3F2FD /* UIImage+WKExtension.m in Sources */,
 				7930352C1CC68857003E5491 /* WKCycleScrollView.m in Sources */,
@@ -1073,6 +1095,7 @@
 				79C5FEB91CCA446F004B61AA /* WKRouteModel.m in Sources */,
 				7900858B1CCB0EDB007E5E58 /* WKGuideModel.m in Sources */,
 				791DA5211CC76A0F009D9093 /* WKRecommendNotesViewController.m in Sources */,
+				792150711CCF534B000CA6D8 /* WKSubjectImageTableViewCell.m in Sources */,
 				790085971CCB1A88007E5E58 /* WKGuideDetailSectionsModel.m in Sources */,
 				791DA5261CC77B52009D9093 /* WKStoryListTableViewCell.m in Sources */,
 				791603151CCE5DFE00D3F2FD /* VisualFormatLayout.m in Sources */,
@@ -1084,6 +1107,7 @@
 				79FAC4E01CC533220068C093 /* WKWorldViewController.m in Sources */,
 				790761981CC6546F0097EF89 /* WKRecommendView.m in Sources */,
 				790752AD1CC8CFA300B968F3 /* WKRecommendListUserModel.m in Sources */,
+				790888D41CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.m in Sources */,
 				791C36291CC7BF0500FFC596 /* WKLoginAndRegistViewController.m in Sources */,
 				790761951CC6545E0097EF89 /* WKRecommendListModel.m in Sources */,
 				790761921CC6544A0097EF89 /* WKNavigtionBar.m in Sources */,
@@ -1119,7 +1143,6 @@
 				790085941CCB172C007E5E58 /* WKGuideDetailPhotoModel.m in Sources */,
 				79FAC4DB1CC533130068C093 /* WKRecommendViewController.m in Sources */,
 				79128A1F1CCFB17600FCCA55 /* WKRoutePlanModel.m in Sources */,
-				79128A171CCF913D00FCCA55 /* WKTravleNotesModel.m in Sources */,
 				79128A1B1CCFAF2700FCCA55 /* WKRouteDetailViewController.m in Sources */,
 				79EFB52B1CCE4ADE005D9B63 /* WKSearchDetailViewControllerHeadView.m in Sources */,
 				790752BC1CC9275B00B968F3 /* WKRecommendStoryDetailModel.m in Sources */,

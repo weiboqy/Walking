@@ -75,7 +75,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
 - (void)parseData {
     // 显示指示器
     [SVProgressHUD showInfoWithStatus:@"正在加载哦~~~"];
-    WKLog(@"%@", _ID);
+//    WKLog(@"%@", _ID);
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:@"http://chanyouji.com/api/destinations/plans/%@.json?page=1", _ID] parDic:@{} finish:^(NSData *data) {
         NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         for (NSDictionary *dic in dataArr) {
@@ -87,10 +87,12 @@ static NSString * const TableViewCellID = @"TableViewCellID";
         // 取消指示器
         [SVProgressHUD dismiss];
 //        WKLog(@"%ld", self.dataArr.count);
+
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
+
     } error:^(NSError *error) {
         // 取消指示器
         [SVProgressHUD showErrorWithStatus:@"数据加载失败"];

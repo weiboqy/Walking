@@ -69,8 +69,11 @@
         for (NSDictionary *dicT in dic[@"days"]) {
             for (NSDictionary *dicc in dicT[@"waypoints"]) {
                 WKRecommendNotesDetailModel *model = [[WKRecommendNotesDetailModel alloc] init];
+                WKRecommendNotesDetailPhotoModel *photoModel = [[WKRecommendNotesDetailPhotoModel alloc] init];
+                [photoModel setValuesForKeysWithDictionary:dicc[@"photo_info"]];
                 [model setValuesForKeysWithDictionary:dicT];
                 [model setValuesForKeysWithDictionary:dicc];
+                model.photoModel = photoModel;
                 [self.dataArray addObject:model];
             }
         }
@@ -82,7 +85,7 @@
             [self.headView.imageV sd_setImageWithURL:[NSURL URLWithString:_imageT] placeholderImage:PLACEHOLDER];
             [self.headView.icon sd_setImageWithURL:[NSURL URLWithString:_avatar_m] placeholderImage:PLACEHOLDER];
 //            WKLog(@"%@", _uName);
-            self.headView.nameLabel.text = _uName;
+            self.headView.nameLabel.text = [NSString stringWithFormat:@"By:%@", _uName];
             NSArray *strArray = [(NSString *)[NSString stringWithFormat:@"%@", _mileage] componentsSeparatedByString:@"."];
             self.headView.motersLabel.text = strArray[0];
             self.headView.daysLabel.text = [NSString stringWithFormat:@"%@", _day_count];
@@ -116,7 +119,7 @@
     [_customNavigationBar addSubview:_navigationBangroundImageView];
     
     _navigationTitle = [[UILabel alloc]init];
-    _navigationTitle.text = @"精彩故事";
+    _navigationTitle.text = @"精彩游记";
     _navigationTitle.textColor = [UIColor whiteColor];
     _navigationTitle.textAlignment = NSTextAlignmentCenter;
     _navigationTitle.font = [UIFont systemFontOfSize:18.0];
@@ -181,7 +184,7 @@
 
 - (void)createListTableView{
     
-    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 44)];
     
     self.listTableView.dataSource = self;
     self.listTableView.delegate = self;
@@ -189,12 +192,13 @@
     [self.listTableView registerNib:[UINib nibWithNibName:@"WKNotesListTableViewCell" bundle:nil] forCellReuseIdentifier:@"notesReuse"];
     _headView = [[[NSBundle mainBundle] loadNibNamed:@"WKNotesListHeadView" owner:nil options:nil] lastObject];
     _headView.backgroundColor = ColorGlobal;
-    _headView.frame = CGRectMake(0, 0, kScreenWidth, (300/667.0) * kScreenHeight);
+    _headView.frame = CGRectMake(0, 0, kScreenWidth, (340/667.0) * kScreenHeight);
     [_headView handleImage];//处理图片
     self.listTableView.tableHeaderView = _headView;
     
+//#warning mark --- cellHeight-----
     self.listTableView.rowHeight = UITableViewAutomaticDimension;
-    self.listTableView.estimatedRowHeight = 50;
+    self.listTableView.estimatedRowHeight = 20;
     
     [self.view addSubview:self.listTableView];
 }
@@ -214,20 +218,19 @@
     [bar addSubview:button];
     [self.view addSubview:bar];
 }
-//// 返回按钮
-//- (void)backClick {
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.navigationController.navigationBar.translucent = NO;
 //    self.tabBarController.tabBar.translucent = NO;
     self.view.backgroundColor = ColorGlobal;
-    self.title = @"精彩游记";
+//    self.title = @"精彩游记";
     [self createListTableView];
     [self requestData];
-    [self addCustomNagationBar];
+    
+//    [self addCustomNagationBar];
+    [self buildNavigationBar];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -285,7 +288,11 @@
         textView.textColor = [UIColor whiteColor];
         textView.editable = NO;
         [imageV sd_setImageWithURL:[NSURL URLWithString:model.photo] placeholderImage:PLACEHOLDER];
-        
+        imageV.userInteractionEnabled = YES;
+         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        UILongPressGestureRecognizer *longTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTap:)];
+        [imageV addGestureRecognizer:longTap];
+        [imageV addGestureRecognizer:tap];
         [_scrollView addSubview:textView];
 //        [scrollView addSubview:view];
 //        [scrollView addSubview:_scroView];
@@ -295,18 +302,34 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, kScreenWidth - 20, (3/667.0) * kScreenHeight)];//(620/667.0) * kScreenHeight
     view.backgroundColor = [UIColor grayColor];
     self.scroView = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, flo * (indexPath.row + 1), (3/667.0) * kScreenHeight)];
-    self.scroView.backgroundColor = [UIColor redColor];
+    self.scroView.backgroundColor = [UIColor orangeColor];
     
     [_imView addSubview:_scrollView];
     [_imView addSubview:view];
     [_imView addSubview:self.scroView];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction: )];
-    [_imView addGestureRecognizer:tap];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction: )];
+//    [_imView addGestureRecognizer:tap];
     
-//    [UIView animateWithDuration:1.0 animations:^{
+    [self.view addSubview:_imView];
+
     
-    [[UIApplication sharedApplication].keyWindow addSubview:_imView];
-//    }];
+//    [[UIApplication sharedApplication].keyWindow addSubview:_imView];
+
+}
+- (void)longTap:(UILongPressGestureRecognizer *)longTap{
+    WKLog(@"长按了图片。。。");
+    
+    
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"下载图片" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        WKLog(@" 执行 下载 ");
+    }];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        WKLog(@"取消了 下载");
+    }];
+    [alertC addAction:action1];
+    [alertC addAction:action2];
+    [self.navigationController presentViewController:alertC animated:YES completion:nil];
 }
 //删除 显示的图片
 - (void)tapAction:(UITapGestureRecognizer *)tap{
@@ -316,8 +339,9 @@
     self.scroView = nil;
  
 
+    CGFloat flo = self.listTableView.contentSize.height /self.dataArray.count;
     //返回到  滚动到的位置
-    self.listTableView.contentOffset = CGPointMake( 0, (300/667.0) * kScreenHeight + 300 * self.scrollView.contentOffset.x/ kScreenWidth);
+    self.listTableView.contentOffset = CGPointMake( 0, flo * self.scrollView.contentOffset.x/ kScreenWidth - 300);//(300/667.0) * kScreenHeight +
     //这个只是选中
 //    NSInteger index = [self.scrollView.contentOffset/ kScreenWidth cgf;
 //    NSIndexPath *indexpath = [NSIndexPath indexPathForRow: inSection:0];
@@ -334,9 +358,16 @@
     if (self.scroView) {
         WKLog(@"scroView....滚动结束了");
         self.scroView.frame = CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, flo * (scrollView.contentOffset.x / kScreenWidth + 1), (3/667.0) * kScreenHeight);
-        
     }
 }
+
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    WKRecommendNotesDetailModel *model = self.dataArray[indexPath.row];
+//    WKLog(@"%f", [model cellsHeight] + 60);
+//    return [model cellsHeight];
+//}
+
 //- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
 //    
 //    

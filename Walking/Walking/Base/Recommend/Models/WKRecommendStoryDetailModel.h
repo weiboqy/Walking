@@ -19,10 +19,12 @@
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NSString *photo_s;
 
+@property (nonatomic, assign) CGRect textFrame;
 @property (nonatomic, assign) CGRect  imageFrame;
 @property (nonatomic, assign) CGFloat cellHeight;
 @property (nonatomic, assign) CGFloat photo_width;
 @property (nonatomic, assign) CGFloat photo_height;
+
 
 - (CGFloat)cellsHeight;
 

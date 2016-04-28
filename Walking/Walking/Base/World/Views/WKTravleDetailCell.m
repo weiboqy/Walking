@@ -70,7 +70,6 @@
     _siteImageView.frame = CGRectMake(10, CGRectGetMaxY(_textsLabel.frame) + 10, 10, 20);
     _siteNameButton.frame = CGRectMake(CGRectGetMaxX(_siteImageView.frame) + 5, CGRectGetMaxY(_textsLabel.frame) + 10 , 100, 20);
     
-    
 }
 
 - (void)awakeFromNib {

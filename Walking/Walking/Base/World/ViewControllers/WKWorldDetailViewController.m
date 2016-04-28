@@ -88,7 +88,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     [SVProgressHUD showInfoWithStatus:@"正在加载哦~~~"];
     
     // id请求参数
-    WKLog(@"%@", _ID);
+//    WKLog(@"%@", _ID);
     
     NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/destinations/%@.json?page=1", _ID];
     [NetWorkRequestManager requestWithType:GET urlString:url parDic:@{} finish:^(NSData *data) {
@@ -98,7 +98,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
                 [model setValuesForKeysWithDictionary:dic];
                 [self.dataArr addObject:model];
                 
-                WKLog(@"%@", model.name_zh_cn);
+//                WKLog(@"%@", model.name_zh_cn);
                 //            WKLog(@"%ld", self.dataArr.count);
             }
             // 取消指示器

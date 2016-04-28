@@ -39,6 +39,8 @@
 
 @end
 
+static NSString * const imageCellID = @"listCell";
+
 @implementation WKRecommendStoryViewController
 
 
@@ -105,7 +107,8 @@
     _bannerImageView = imageV;
     [self.view addSubview:imageV];
     
-    [self.listTableView registerNib:[UINib nibWithNibName:@"WKStoryListTableViewCell" bundle:nil] forCellReuseIdentifier:@"listCell"];
+//    [self.listTableView registerNib:[UINib nibWithNibName:@"WKStoryListTableViewCell" bundle:nil] forCellReuseIdentifier:@"listCell"];
+    [self.listTableView registerClass:[WKStoryListTableViewCell class] forCellReuseIdentifier:imageCellID];
     [self.listTableView registerNib:[UINib nibWithNibName:@"WKStoryListTableViewHeadCell" bundle:nil] forCellReuseIdentifier:@"listHeadCell"];
     //指定头视图
     //xib 指定 不行
@@ -242,9 +245,9 @@
         return cell;
         
     }else{
-        WKStoryListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"listCell" forIndexPath:indexPath];
+        WKStoryListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:imageCellID forIndexPath:indexPath];
         if (!cell) {
-            cell = [[WKStoryListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"listCell"];
+            cell = [[WKStoryListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:imageCellID];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.detailModel = self.dataArray[indexPath.row];
@@ -259,11 +262,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return 50;
+        CGSize maxSize = CGSizeMake(kScreenWidth - (10/375.0) * kScreenWidth * 2, MAXFLOAT);
+        CGFloat textH = [_text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0]} context:nil].size.height;
+//        WKLog(@"%f", textH);
+        return (textH + 20);//上下各 10 
     }else{
         WKRecommendStoryDetailModel *detailModel = self.dataArray[indexPath.row ];
-        WKLog(@"cellHeight:%f, model.height:%f", [detailModel cellHeight], detailModel.photo_height);
-        return 100;
+//        WKLog(@"cellHeight:%f, model.height:%f", [detailModel cellHeight], detailModel.photo_height);
+        return [detailModel cellsHeight];
     }
     
     

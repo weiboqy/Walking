@@ -64,7 +64,7 @@ static NSString * const inlandCollectViewCellID = @"WKInlandCollectViewCellID";
             [self.inlandCollectView reloadData];
         });
     } error:^(NSError *error) {
-       WKLog(@"faile");
+//       WKLog(@"faile");
         [SVProgressHUD showErrorWithStatus:@"数据加载失败"];
     }];
 }
