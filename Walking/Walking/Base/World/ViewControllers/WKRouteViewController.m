@@ -87,13 +87,10 @@ static NSString * const TableViewCellID = @"TableViewCellID";
         // 取消指示器
         [SVProgressHUD dismiss];
 //        WKLog(@"%ld", self.dataArr.count);
-<<<<<<< HEAD
-=======
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
->>>>>>> 98e3e01acb6ba808c542b2b449fcf01c59e5e223
     } error:^(NSError *error) {
         // 取消指示器
         [SVProgressHUD showErrorWithStatus:@"数据加载失败"];

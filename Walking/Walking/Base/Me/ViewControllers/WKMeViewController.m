@@ -18,6 +18,8 @@
 @property (nonatomic, strong) WKMeHeadView *meHeadView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, weak) UIView *bgView;//夜间模式视图
+/** 沙盒中缓存文件的大小 */
+@property (assign, nonatomic) unsigned long long size;
 
 @end
 
@@ -60,6 +62,15 @@
     [self.navigationController pushViewController:LoginAndRegistVC animated:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    _size = [self folderSizeAtPath:cachPath];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:1];
+    UITableViewCell *cell = [self.meTableView cellForRowAtIndexPath:indexPath];
+    NSString *dataText = _dataArray[indexPath.section][indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@(%lluM)",dataText,_size];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -100,19 +111,32 @@
 //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.text = _dataArray[indexPath.section][indexPath.row];
     
+    if (indexPath.section == 0) {
+        cell.imageView.image = [UIImage imageNamed:@"收藏"];
+    }
+    
     // 清除缓存
     if (indexPath.section == 1) {
         NSString *dataText = _dataArray[indexPath.section][indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@(M)",dataText];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@(%lluM)",dataText,_size];
+        cell.imageView.image = [UIImage imageNamed:@"清洁"];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     // 夜间模式
     if (indexPath.section == 2) {
         cell.textLabel.text = _dataArray[indexPath.section][indexPath.row];
+        cell.imageView.image = [UIImage imageNamed:@"夜间模式"];
         UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectMake(10, 300, 50, 20)];
         [switchView addTarget:self action:@selector(updateSwitchAtIndexPath:) forControlEvents:UIControlEventValueChanged];
         cell.accessoryView = switchView;
+    }
+    
+    // 关于我们
+    if (indexPath.section == 3) {
+        cell.imageView.image = [UIImage imageNamed:@"关于我们"];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
     }
     
     return cell;
@@ -208,6 +232,11 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1 && alertView.tag == 2001) {
         [self clearCache];
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:1];
+        UITableViewCell *cell = [self.meTableView cellForRowAtIndexPath:indexPath];
+        NSString *dataText = _dataArray[indexPath.section][indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@(0M)",dataText];
     }
 }
 
@@ -225,14 +254,37 @@
             // 判断文件或目录是否存在
             if ([[NSFileManager defaultManager] fileExistsAtPath:childPath]) {
                 
-                
-                
                 [[NSFileManager defaultManager] removeItemAtPath:childPath error:&error];
             }
         }
        // 会创建一个新的线程实行clearCacheSuccess函数，并且会等待函数退出后再继续执行。
         [self performSelectorOnMainThread:@selector(clearCacheSuccess) withObject:nil waitUntilDone:YES];
     });
+}
+/** 计算缓存目录大小 */
+- (float)folderSizeAtPath:(NSString *)path {
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    
+    NSArray* array = [fileManager contentsOfDirectoryAtPath:path error:nil];
+    unsigned long long size = 0;
+    
+    for(int i = 0; i<[array count]; i++)
+    {
+        NSString *fullPath = [path stringByAppendingPathComponent:[array objectAtIndex:i]];
+        
+        BOOL isDir;
+        if (!([fileManager fileExistsAtPath:fullPath isDirectory:&isDir] && isDir) )
+        {
+            NSDictionary *fileAttributeDic=[fileManager attributesOfItemAtPath:fullPath error:nil];
+            size += fileAttributeDic.fileSize;
+        }
+        else
+        {
+            [self folderSizeAtPath:fullPath];
+        }
+    }
+    _size += size;
+    return _size / (1024.0 * 1024.0);
 }
 
 /** 清理缓存成功 */
