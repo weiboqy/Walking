@@ -14,5 +14,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *image_urlImageView;
 
 @property (strong, nonatomic)WKGuideDetailSectionsModel *model;
+@property (nonatomic, strong)UIView *bgView;
+@property (nonatomic, copy)NSString *urlStr;
+@property (nonatomic, strong)UIImageView *imageView1;
 
 @end

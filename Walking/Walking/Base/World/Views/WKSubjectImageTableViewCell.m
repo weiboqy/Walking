@@ -39,6 +39,46 @@
     
     [_cellImageView sd_setImageWithURL:[NSURL URLWithString:model.image_url] placeholderImage:PLACEHOLDER];
     _cellTextLabel.text = model.Description;
+    
+    _urlStr = model.image_url;
+    _cellImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
+    [_cellImageView addGestureRecognizer:tap];
+}
+
+// 图片点击手势
+- (void)tapClick {
+    UIImageView *imageView = [[UIImageView alloc]init];
+    imageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2);
+    imageView.bounds = CGRectMake(0, 0, 0, 0);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _urlStr]] placeholderImage:PLACEHOLDER];
+    });
+    
+    UIPinchGestureRecognizer  *pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinchClick:)];
+    [imageView addGestureRecognizer:pinch];
+    imageView.userInteractionEnabled = YES;
+    UIView *bgView = [[UIView alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+    bgView.backgroundColor = [UIColor blackColor];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
+    [bgView addGestureRecognizer:tap];
+    [UIView animateWithDuration:.25 animations:^{
+        imageView.bounds = CGRectMake(0, 0, kScreenWidth, 400);
+    }];
+    [bgView addSubview:imageView];
+    _bgView = bgView;
+    _imageView1 = imageView;
+    [[UIApplication sharedApplication].keyWindow addSubview:bgView];
+}
+- (void)pinchClick:(UIPinchGestureRecognizer *)pinch {
+    //获取要进行缩放的视图
+    _imageView1 = (UIImageView *)pinch.view;
+    _imageView1.transform = CGAffineTransformScale(_imageView1.transform, pinch.scale, pinch.scale);  //以imageV.transform为基础
+    pinch.scale = 1;
+}
+
+- (void)tapAction {
+    [_bgView removeFromSuperview];
 }
 
 //  重写布局方法

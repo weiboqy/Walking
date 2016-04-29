@@ -7,7 +7,12 @@
 //
 
 #import "WKNavigtionBar.h"
+<<<<<<< HEAD
 //#import <objc/runtime.h>
+=======
+
+
+>>>>>>> 44e637950167755bf88971890b258b5dc332aad6
 @implementation WKNavigtionBar
 //+ (void)initialize
 //{
@@ -28,7 +33,6 @@
         _titleLabel.font = [UIFont systemFontOfSize:18];
         [_titleLabel sizeToFit];
         [bgView addSubview:_titleLabel];
-        
         
         _titleImageView = [[UIImageView alloc]init];
         [bgView addSubview:_titleImageView];

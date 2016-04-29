@@ -13,11 +13,15 @@
 #import "WKLoginAndRegistViewController.h"
 #import "WKAboutUsViewController.h"
 #import "WKTabBarViewController.h"
-@interface WKMeViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
+#import "UserInfoManager.h"
+#import "LoginViewController.h"
+@interface WKMeViewController ()<UITableViewDataSource,UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *meTableView;
 @property (nonatomic, strong) WKMeHeadView *meHeadView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, weak) UIView *bgView;//夜间模式视图
+/** 沙盒中缓存文件的大小 */
+@property (assign, nonatomic) unsigned long long size;
 
 @end
 
@@ -31,6 +35,16 @@
 //    meHeadView.headImage.layer.masksToBounds = YES;
 //    meHeadView.headImage.layer.cornerRadius = 35;
     _meTableView.tableHeaderView = _meHeadView;
+    
+    //用户交互 如果想使用手势 就一定要开启这个 默认是关闭 不然手势不生效
+    _meHeadView.headImage.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
+    tap.numberOfTapsRequired = 2;
+    tap.numberOfTouchesRequired = 1;
+    [_meHeadView.headImage addGestureRecognizer:tap];
+    
+    [_meHeadView.LoginAndRegistButton addTarget:self action:@selector(loginAndRegistButton:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 //  分区数组
@@ -49,16 +63,94 @@
     self.navigationItem.titleView = titleImage;
 }
 
-//  登录注册的按钮
-- (void)loginAndRegistButton {
-    [_meHeadView.LoginAndRegistButton addTarget:self action:@selector(loginAndRegistButton:) forControlEvents:UIControlEventTouchUpInside];
+#pragma mark  ---设置用户头像
+- (void)tapClick {
+    //创建提醒视图
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提醒...." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //判断设备是否存在摄像头，有就调用系统相机，没有，就提醒用户
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            //创建相机
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            //文件由来
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera; //指定数据来源来自于相机
+            picker.delegate  = self;// 指定代理
+            picker.allowsEditing = YES; //允许编辑
+            
+            //模态弹出
+            [self presentViewController:picker animated:YES completion:nil];
+        }else{
+            //没有摄像头，提醒用户 您的设备没有摄像头
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"您的设备没有摄像头" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *alertAction1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:nil];
+            [alertController addAction:alertAction1];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }];
+    [alertController addAction:alertAction];
+    UIAlertAction *alertAction2 = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImagePickerController *pickerC = [[UIImagePickerController alloc] init];
+        pickerC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;//指定数据来源为相册
+        pickerC.delegate = self;  //指定代理
+        pickerC.allowsEditing = YES;  // 允许编辑
+        [self presentViewController:pickerC animated:YES completion:nil];
+    }];
+    [alertController addAction:alertAction2];
+    UIAlertAction *alertAction3 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertController addAction:alertAction3];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+// 选取图片之后执行的方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    NSLog(@"%@",info);
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    _meHeadView.headImage.image = image;
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+#pragma mark  ----用户登陆、 注册
+// 当登陆成功后，将"你还没有登陆哦"换成用户名
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (![[UserInfoManager getUserAuth] isEqualToString:@" "] ) {
+        [_meHeadView.LoginAndRegistButton setTitle:[NSString stringWithFormat:@"%@", [UserInfoManager getUserName]] forState:UIControlStateNormal];
+    }else {
+        return;
+    }
+    
+    NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    _size = [self folderSizeAtPath:cachPath];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:1];
+    UITableViewCell *cell = [self.meTableView cellForRowAtIndexPath:indexPath];
+    NSString *dataText = _dataArray[indexPath.section][indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@(%lluM)",dataText,_size];
 }
 
 //  点击登录注册按钮实现的方法
 - (void)loginAndRegistButton:(id)sender {
-    WKLoginAndRegistViewController *LoginAndRegistVC = [[WKLoginAndRegistViewController alloc] init];
-    [self.navigationController pushViewController:LoginAndRegistVC animated:YES];
+    //已经登陆 ，取消登陆
+    if (![[UserInfoManager getUserAuth] isEqualToString:@" "]) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提醒...." message:@"你已经登陆,是否取消登陆" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [alertController dismissViewControllerAnimated:YES completion:nil];
+        }];
+        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [UserInfoManager cancelUserAuth];
+            [UserInfoManager cancelUserID];
+        }];
+        [alertController addAction:action];
+        [alertController addAction:action2];
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+    }
+    LoginViewController *loginVC = [[LoginViewController alloc]init];
+    [self presentViewController:loginVC animated:YES completion:nil];
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -72,8 +164,7 @@
     [self creatHeadView];
     // 分区数组
     [self creatArray];
-    // 登录注册的按钮
-    [self loginAndRegistButton];
+    
     
     // 夜间模式
 //    [self setupBgView];
@@ -100,19 +191,32 @@
 //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.text = _dataArray[indexPath.section][indexPath.row];
     
+    if (indexPath.section == 0) {
+        cell.imageView.image = [UIImage imageNamed:@"收藏"];
+    }
+    
     // 清除缓存
     if (indexPath.section == 1) {
         NSString *dataText = _dataArray[indexPath.section][indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@(M)",dataText];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@(%lluM)",dataText,_size];
+        cell.imageView.image = [UIImage imageNamed:@"清洁"];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     // 夜间模式
     if (indexPath.section == 2) {
         cell.textLabel.text = _dataArray[indexPath.section][indexPath.row];
+        cell.imageView.image = [UIImage imageNamed:@"夜间模式"];
         UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectMake(10, 300, 50, 20)];
         [switchView addTarget:self action:@selector(updateSwitchAtIndexPath:) forControlEvents:UIControlEventValueChanged];
         cell.accessoryView = switchView;
+    }
+    
+    // 关于我们
+    if (indexPath.section == 3) {
+        cell.imageView.image = [UIImage imageNamed:@"关于我们"];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
     }
     
     return cell;
@@ -208,6 +312,11 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1 && alertView.tag == 2001) {
         [self clearCache];
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:1];
+        UITableViewCell *cell = [self.meTableView cellForRowAtIndexPath:indexPath];
+        NSString *dataText = _dataArray[indexPath.section][indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@(0M)",dataText];
     }
 }
 
@@ -225,14 +334,37 @@
             // 判断文件或目录是否存在
             if ([[NSFileManager defaultManager] fileExistsAtPath:childPath]) {
                 
-                
-                
                 [[NSFileManager defaultManager] removeItemAtPath:childPath error:&error];
             }
         }
        // 会创建一个新的线程实行clearCacheSuccess函数，并且会等待函数退出后再继续执行。
         [self performSelectorOnMainThread:@selector(clearCacheSuccess) withObject:nil waitUntilDone:YES];
     });
+}
+/** 计算缓存目录大小 */
+- (float)folderSizeAtPath:(NSString *)path {
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    
+    NSArray* array = [fileManager contentsOfDirectoryAtPath:path error:nil];
+    unsigned long long size = 0;
+    
+    for(int i = 0; i<[array count]; i++)
+    {
+        NSString *fullPath = [path stringByAppendingPathComponent:[array objectAtIndex:i]];
+        
+        BOOL isDir;
+        if (!([fileManager fileExistsAtPath:fullPath isDirectory:&isDir] && isDir) )
+        {
+            NSDictionary *fileAttributeDic=[fileManager attributesOfItemAtPath:fullPath error:nil];
+            size += fileAttributeDic.fileSize;
+        }
+        else
+        {
+            [self folderSizeAtPath:fullPath];
+        }
+    }
+    _size += size;
+    return _size / (1024.0 * 1024.0);
 }
 
 /** 清理缓存成功 */

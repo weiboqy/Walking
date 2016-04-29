@@ -35,6 +35,7 @@
 @property (nonatomic, strong) UILabel *navigationTitle;
 @property (nonatomic, strong) UIImageView *bannerImageView;
 @property (nonatomic, strong) UIButton *infoButton;
+@property (nonatomic, strong) UIButton *infoButton1;
 
 
 @end
@@ -88,7 +89,7 @@ static NSString * const imageCellID = @"listCell";
 
 - (void)createListTableView{
     
-//    self.navigationController.navigationBar.translucent = NO;
+    
     
     self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     self.listTableView.backgroundColor = [UIColor clearColor];
@@ -224,9 +225,13 @@ static NSString * const imageCellID = @"listCell";
         _customNavigationBar.alpha = 1.0;
     }
 }
+<<<<<<< HEAD
  */
 -(void)backClick
 {
+=======
+-(void)backClick {
+>>>>>>> 44e637950167755bf88971890b258b5dc332aad6
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -24,12 +24,15 @@
 
 #import "VisualFormatLayout.h"
 #import "UIImage+Part.h"
+#import "UserInfoManager.h"
 
 
 #define kScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define kScreenHeight [[UIScreen mainScreen] bounds].size.height
 #define ColorGlobal [UIColor colorWithRed:245 / 255.0 green:245 / 255.0 blue:245 / 255.0 alpha:1.0]
 #define PLACEHOLDER [UIImage imageNamed:@"placeholder.jpg"]  // 占位图
+
+#define kNavigationAndStatusBarHeihght 64 //分享的导航栏高度
 
 //网络请求地址
 #define RecommendStoryURL @"http://api.breadtrip.com/v2/new_trip/spot/hot/list/?start=%ld"   //推荐的每日精彩故事地址

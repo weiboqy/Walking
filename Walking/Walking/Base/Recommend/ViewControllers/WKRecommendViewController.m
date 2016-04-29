@@ -257,6 +257,7 @@
     //    [self.headView.collectionView setContentOffset:p animated:YES];
 }
 #warning  -------collection加载更多数据 -------
+<<<<<<< HEAD
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
 //    WKLog(@"scroll滚动中。。。。%f", self.headView.collectionView.contentOffset.x);
@@ -275,6 +276,14 @@
 //      }
     
 }
+=======
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    if (self.headView.collectionView.contentOffset.y > self.headView.collectionView.contentSize.width - kScreenWidth) {
+//        WKLog(@"collection滚动");
+//    }
+//    
+//}
+>>>>>>> 44e637950167755bf88971890b258b5dc332aad6
 
 - (void)loadNewData{
     // 马上进入刷新状态

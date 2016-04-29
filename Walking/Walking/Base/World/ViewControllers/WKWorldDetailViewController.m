@@ -12,6 +12,22 @@
 #import "WKCategoryViewController.h"
 #import "WKNoGuideCategoryViewController.h"
 
+@interface SDWebImageManager  (cache)
+
+
+- (BOOL)memoryCachedImageExistsForURL:(NSURL *)url;
+
+@end
+
+@implementation SDWebImageManager (cache)
+
+- (BOOL)memoryCachedImageExistsForURL:(NSURL *)url {
+    NSString *key = [self cacheKeyForURL:url];
+    return ([self.imageCache imageFromMemoryCacheForKey:key] != nil) ?  YES : NO;
+}
+
+@end
+
 @interface WKWorldDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic)UITableView *tableView;
@@ -36,9 +52,11 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     
     self.view.backgroundColor = ColorGlobal;
     
+    self.navigationController.navigationBarHidden = YES;
+    
     [self addCustomNagationBar];
     
-//    [self.navigationController setNavigationBarHidden:NO];
+//  [self.navigationController setNavigationBarHidden:NO];
     
     [self parseData];
     
@@ -53,7 +71,9 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     self.tableView.dataSource = self;
     // 隐藏分割线
     self.tableView.separatorStyle = NO;
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([WKWorldDetailCell class]) bundle:nil] forCellReuseIdentifier:WorldDetailCellID];
+//    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([WKWorldDetailCell class]) bundle:nil] forCellReuseIdentifier:WorldDetailCellID];
+    
+    [self.tableView registerClass:[WKWorldDetailCell class] forCellReuseIdentifier:WorldDetailCellID];
     
     [self.view addSubview:self.tableView];
 }
@@ -61,10 +81,10 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
 - (void)addCustomNagationBar {
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
-    bar.titleLabel.text = _titleName;
-    bar.titleLabel.center = CGPointMake(kScreenWidth / 2, 44);
-    bar.titleLabel.bounds = CGRectMake(0, 0, 40, 30);
-    bar.titleLabel.textAlignment = 2;
+//    bar.titleLabel.text = _titleName;
+//    bar.titleLabel.center = CGPointMake(kScreenWidth / 2, 44);
+//    bar.titleLabel.bounds = CGRectMake(0, 0, 40, 30);
+//    bar.titleLabel.textAlignment = 2;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(18, 10, 70, 30);
     // 设置返回按钮的图片
@@ -73,6 +93,14 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     [button sizeToFit];
     [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:button];
+    
+    UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    titleBtn.frame = CGRectMake(88, 8, 199, 30);
+    [titleBtn setTitle:_titleName forState:UIControlStateNormal];
+    [titleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [bar addSubview:titleBtn];
+    
     [self.view addSubview:bar];
     
 //    self.navigationItem.title = _titleName;
@@ -124,11 +152,40 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     return  self.dataArr.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 190;
+    return 250;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WKWorldDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:WorldDetailCellID forIndexPath:indexPath];
     WKWorldDetailModel *model = self.dataArr[indexPath.row];
+    
+    if (![[SDWebImageManager sharedManager] memoryCachedImageExistsForURL:[NSURL URLWithString:model.image_url]]) {
+        
+        CATransform3D rotation;//3D旋转
+        
+        rotation = CATransform3DMakeTranslation(0 ,50 ,20);
+        //        rotation = CATransform3DMakeRotation( M_PI_4 , 0.0, 0.7, 0.4);
+        //逆时针旋转
+        
+        rotation = CATransform3DScale(rotation, 0.9, .9, 1);
+        
+        rotation.m34 = 1.0/ -600;
+        
+        cell.layer.shadowColor = [[UIColor blackColor]CGColor];
+        cell.layer.shadowOffset = CGSizeMake(10, 10);
+        cell.alpha = 0;
+        
+        cell.layer.transform = rotation;
+        
+        [UIView beginAnimations:@"rotation" context:NULL];
+        //旋转时间
+        [UIView setAnimationDuration:0.6];
+        cell.layer.transform = CATransform3DIdentity;
+        cell.alpha = 1;
+        cell.layer.shadowOffset = CGSizeMake(0, 0);
+        [UIView commitAnimations];
+    }
+
+    
     cell.model = model;
     return cell;
 }
