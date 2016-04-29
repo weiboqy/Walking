@@ -253,7 +253,6 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)shareClick {
-    WKLog(@"3233");
     WKLogFun;
     [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:@"shareshare~~~~(输入你想分享的内容)" shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToQzone,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,   nil] delegate:self];
 }

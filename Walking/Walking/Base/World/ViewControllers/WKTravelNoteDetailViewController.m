@@ -10,10 +10,11 @@
 #import "WKTravelNoteModel.h"
 #import "WKTravelDetailModel.h"
 #import "WKTravleDetailCell.h"
+#import "UMSocial.h"
 
 #define kNavigationAndStatusBarHeihght 64
 
-@interface WKTravelNoteDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface WKTravelNoteDetailViewController ()<UITableViewDataSource, UITableViewDelegate, UMSocialUIDelegate>
 
 @property (strong, nonatomic)NSMutableArray *headerDataArr;
 @property (strong, nonatomic)NSMutableArray *dataArr;
@@ -85,13 +86,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
         WKTravelNoteModel *noteModel = [[WKTravelNoteModel alloc]init];
         [noteModel setValuesForKeysWithDictionary:DataDic];
         NSArray *tripArr = DataDic[@"trip_days"];
-        NSDictionary *headerDic = tripArr[0];
-        NSDictionary *headerDic1 = headerDic[@"nodes"][0];
-        NSArray *headerArr = headerDic1[@"notes"];
-        NSDictionary *headerDic2 = headerArr[0];
-        WKTravleNotesModel *notesModel = [[WKTravleNotesModel alloc]init];
-        [notesModel setValuesForKeysWithDictionary:headerDic2];
-        noteModel.notesModel = notesModel;
+        
 //        WKLog(@"Note desc = %@", noteModel.notesModel.descriptioN);
         
         
@@ -160,7 +155,12 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     [_infoButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [_customNavigationBar addSubview:_infoButton];
     
-    views = NSDictionaryOfVariableBindings(_navigationBangroundImageView, _navigationTitle, _infoButton);
+    UIButton *share2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [share2 setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
+    [share2 addTarget:self action:@selector(shareClick) forControlEvents:UIControlEventTouchUpInside];
+    [_customNavigationBar addSubview:share2];
+    
+    views = NSDictionaryOfVariableBindings(_navigationBangroundImageView, _navigationTitle, _infoButton, share2);
     // 使用UIBlurEffect来制作毛玻璃
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
@@ -171,20 +171,19 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     
     _navigationTitle.textAlignment = NSTextAlignmentCenter;
     
-    _share = [UIButton buttonWithType:UIButtonTypeCustom];
-    _share.frame = CGRectMake(kScreenWidth - 60, 10, 40, 30);
-    [_share setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
-    [_share addTarget:self action:@selector(shareClick) forControlEvents:UIControlEventTouchUpInside];
-    [_navigationTitle addSubview:_share];
 
     
     metrics = @{@"WB":@(34)};
     visualFormats =  @[@"H:|[_navigationBangroundImageView]|",
                        @"H:|-[_infoButton(==WB)]-(-20)-[_navigationTitle]|",
+                       //                       @"H:|-WB-[_navigationTitle]-[share1(==100)]-|",
+                       @"H:|-WB-[_navigationTitle]-[share2(==WB)]-|",
                        @"H:|[_infoButton(==60)]|",
                        @"V:|[_navigationBangroundImageView]|",
                        @"V:|-[_navigationTitle(==50)]|",
-                       @"V:|-[_infoButton(==50)]|"
+                       @"V:|-[_infoButton(==50)]|",
+                       //                       @"V:|-[share1(==50)]|",
+                       @"V:|-[share2(==50)]|",
                        ];
     [VisualFormatLayout autoLayout:_customNavigationBar visualFormats:visualFormats metrics:metrics views:views];
 }
@@ -216,7 +215,8 @@ static NSString * const TableViewCellID = @"TableViewCellID";
 }
 // 分享按钮
 - (void)shareClick {
-    
+    WKLogFun;
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:@"shareshare~~~~(输入你想分享的内容)" shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToQzone,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,   nil] delegate:self];
 }
 
 - (void) setupSubViews {

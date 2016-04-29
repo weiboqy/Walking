@@ -26,7 +26,6 @@
         [_titleLabel sizeToFit];
         [bgView addSubview:_titleLabel];
         
-        
         _titleImageView = [[UIImageView alloc]init];
         [bgView addSubview:_titleImageView];
         
