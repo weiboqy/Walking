@@ -11,6 +11,11 @@
 
 @interface WKSubjectImageTableViewCell : UITableViewCell
 
+@property (copy, nonatomic) NSString *urlStr;
+@property (strong, nonatomic) UIView *bgView;
+/** 缩放视图层 */
+@property (nonatomic, strong)UIImageView *imageView1;
+
 @property (nonatomic, strong) WKSubjectDetailSectionsModel *model;
 
 @end

@@ -12,7 +12,7 @@
 #import "UMSocial.h"
 
 
-#define kNavigationAndStatusBarHeihght 64
+
 
 @interface WKRouteDetailViewController ()<UITableViewDataSource, UITableViewDelegate, UMSocialUIDelegate>
 
@@ -101,7 +101,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
                 [self.dataArr addObject:planModel];
             }
         }
-        WKLog(@"count = %ld", self.dataArr.count);
+//        WKLog(@"count = %ld", self.dataArr.count);
 //        for (NSDictionary *dic in self.dataArr) {
 //            WKLog(@"%@ ",dic);
 //        }
@@ -111,7 +111,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
         // 取消指示器
         [SVProgressHUD dismiss];
     } error:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"数据在家失败哦~~"];
+        [SVProgressHUD showErrorWithStatus:@"数据加载失败哦~~"];
     }];
 }
 
@@ -126,15 +126,15 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 180)];
     imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _image_url]]]];
-    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
-    WKLog(@"%@", _image_url);
+//    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
+//    WKLog(@"%@", _image_url);
     
     UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 100, 300, 25)];
     nameLabel.font = [UIFont systemFontOfSize:15];
     nameLabel.text = [NSString stringWithFormat:@"%@", _name_zn];
     nameLabel.textColor = [UIColor whiteColor];
     [imageView addSubview:nameLabel];
-    WKLog(@"name = %@", _plan_nodes_counts);
+//    WKLog(@"name = %@", _plan_nodes_counts);
     UILabel *daysLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 130, 40, 20)];
     daysLabel.text = [NSString stringWithFormat:@"%@天/", _days];
     daysLabel.font = [UIFont systemFontOfSize:12];
@@ -228,7 +228,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
 
 // 视图将要出现时,_customNavigationBar的透明度为0,一开始不让它显示
 - (void)viewWillAppear:(BOOL)animated {
-    _customNavigationBar.alpha = 0;
+    _customNavigationBar.alpha = 0.1;
 }
 
 // 导航条随着滚动而透明度变化
@@ -236,12 +236,12 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     CGFloat threholdHeight = _bannerImageView.frame.size.height - kNavigationAndStatusBarHeihght;
     if(scrollView.contentOffset.y >= 0 &&
        scrollView.contentOffset.y <= threholdHeight) {
-        _customNavigationBar.alpha = 0;
+        _customNavigationBar.alpha = 0.1;
         CGFloat alpha = scrollView.contentOffset.y / threholdHeight;
         _customNavigationBar.alpha = alpha;
     }
     else if(scrollView.contentOffset.y < 0) {
-        _customNavigationBar.alpha = 0;
+        _customNavigationBar.alpha = 0.1;
         scrollView.contentOffset = CGPointMake(0, 0);
     }
     else {
@@ -253,7 +253,6 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)shareClick {
-    WKLogFun;
     [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:@"shareshare~~~~(输入你想分享的内容)" shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToQzone,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,   nil] delegate:self];
 }
 

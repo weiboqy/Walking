@@ -11,5 +11,7 @@
 @interface WKSubjectDetailViewController : UIViewController
 
 @property (nonatomic, copy) NSString *ID;
+@property (copy, nonatomic) NSString *image_url;
+@property (copy, nonatomic) NSString *name;
 
 @end
