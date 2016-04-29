@@ -13,9 +13,10 @@
 - (void)awakeFromNib {
     self.imageV.layer.cornerRadius = 10;
     self.imageV.layer.masksToBounds = YES;
-//    _imageV.contentMode = UIViewContentModeScaleAspectFill;
-////    _imageV.clipsToBounds = YES;
-//    _imageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    self.contentView.backgroundColor = ColorGlobal;
+    _imageV.contentMode = UIViewContentModeScaleAspectFill;
+    _imageV.clipsToBounds = YES;
+    _imageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
     // Initialization code
 }

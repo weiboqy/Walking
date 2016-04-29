@@ -15,4 +15,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *dayLabel;
 
+
+@property (strong, nonatomic) IBOutlet UIImageView *backImage;
+
+
 @end

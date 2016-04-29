@@ -11,7 +11,7 @@
 @interface WKRecommendNotesDetailPhotoModel : NSObject
 
 
-@property (nonatomic, assign) NSInteger h;
-@property (nonatomic, assign) NSInteger w;
+@property (nonatomic, assign) CGFloat h;
+@property (nonatomic, assign) CGFloat w;
 
 @end

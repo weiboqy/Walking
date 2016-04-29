@@ -11,31 +11,40 @@
             <rect key="frame" x="0.0" y="0.0" width="465" height="535"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="null" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihf-aY-QfK">
-                    <rect key="frame" x="15" y="490" width="42" height="25"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihf-aY-QfK">
+                    <rect key="frame" x="63" y="495" width="42" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="LAV-3N-YIy"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="null" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HW-HM-h25">
-                    <rect key="frame" x="15" y="440" width="49" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HW-HM-h25">
+                    <rect key="frame" x="20" y="445" width="63" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="l7r-QB-aJL"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="信号塔" translatesAutoresizingMaskIntoConstraints="NO" id="7PL-dt-fme">
+                    <rect key="frame" x="20" y="502" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="Ial-bh-cnx"/>
+                        <constraint firstAttribute="height" constant="25" id="yrW-Jl-ukU"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Ihf-aY-QfK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="4mA-mR-iGN"/>
-                <constraint firstItem="Ihf-aY-QfK" firstAttribute="top" secondItem="5HW-HM-h25" secondAttribute="bottom" constant="20" id="5xO-zo-O6p"/>
-                <constraint firstAttribute="bottom" secondItem="Ihf-aY-QfK" secondAttribute="bottom" constant="20" id="UxN-dH-xlC"/>
-                <constraint firstItem="5HW-HM-h25" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="zgg-Pg-Kya"/>
+                <constraint firstItem="Ihf-aY-QfK" firstAttribute="top" secondItem="5HW-HM-h25" secondAttribute="bottom" constant="15" id="5xO-zo-O6p"/>
+                <constraint firstItem="Ihf-aY-QfK" firstAttribute="centerY" secondItem="7PL-dt-fme" secondAttribute="centerY" id="6zf-ik-3JM"/>
+                <constraint firstAttribute="bottom" secondItem="7PL-dt-fme" secondAttribute="bottom" constant="8" id="Bci-oi-6gq"/>
+                <constraint firstItem="Ihf-aY-QfK" firstAttribute="leading" secondItem="7PL-dt-fme" secondAttribute="trailing" constant="3" id="LEQ-4M-0ba"/>
+                <constraint firstItem="7PL-dt-fme" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="pef-t8-Tdj"/>
+                <constraint firstItem="5HW-HM-h25" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="zgg-Pg-Kya"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -45,4 +54,7 @@
             <point key="canvasLocation" x="258.5" y="318.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="信号塔" width="32" height="32"/>
+    </resources>
 </document>

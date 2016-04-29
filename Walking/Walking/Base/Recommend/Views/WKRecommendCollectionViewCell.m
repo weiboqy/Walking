@@ -29,7 +29,7 @@
     self.icon.layer.cornerRadius   = 13;
     self.icon.layer.masksToBounds = YES;
     
-    self.backImageV.layer.cornerRadius = 10;
+    self.backImageV.layer.cornerRadius = 6;
     self.backImageV.layer.masksToBounds = YES;
 }
 

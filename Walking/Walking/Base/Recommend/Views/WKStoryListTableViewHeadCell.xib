@@ -21,6 +21,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="0GW-jn-3Ga" secondAttribute="trailing" constant="10" id="1uh-HY-6sK"/>
                     <constraint firstItem="0GW-jn-3Ga" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="2sZ-yL-GnY"/>

@@ -77,6 +77,8 @@ static NSString * const imageCellID = @"listCell";
             _headView.TLabel.text = [NSString stringWithFormat:@"此故事由 %@ 收录于", _uName];
             _headView.titleLabel.text = _name;
             [_headView.icon sd_setImageWithURL:[NSURL URLWithString:_avatar_l] placeholderImage:PLACEHOLDER];
+            //有数据了再 指定
+            self.listTableView.tableHeaderView = _headView;
         });
         
     } error:^(NSError *error) {
@@ -90,7 +92,7 @@ static NSString * const imageCellID = @"listCell";
     
     self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     self.listTableView.backgroundColor = [UIColor clearColor];
-    
+    self.listTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.listTableView.delegate = self;
     self.listTableView.dataSource = self;
     
@@ -115,7 +117,7 @@ static NSString * const imageCellID = @"listCell";
     _headView = [[NSBundle mainBundle] loadNibNamed:@"WKStoryListHeadView" owner:nil options:nil].lastObject;
     _headView.frame = CGRectMake(0, 0, 0, 240);
     [_headView initializeData];
-    self.listTableView.tableHeaderView = _headView;
+    
     
 //    self.listTableView.rowHeight = UITableViewAutomaticDimension;
 //    self.listTableView.estimatedRowHeight = 500;    
@@ -129,7 +131,7 @@ static NSString * const imageCellID = @"listCell";
     
      [self createListTableView];
     
-    [self buildNavigationBar];
+//    [self buildNavigationBar];
     
 //    self.title = @"精选故事";
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -204,6 +206,7 @@ static NSString * const imageCellID = @"listCell";
 - (void)viewWillAppear:(BOOL)animated {
    _customNavigationBar.alpha = 0;
 }
+/*
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat threholdHeight = _bannerImageView.frame.size.height - kNavigationAndStatusBarHeihght;
@@ -221,6 +224,7 @@ static NSString * const imageCellID = @"listCell";
         _customNavigationBar.alpha = 1.0;
     }
 }
+ */
 -(void)backClick
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -239,9 +243,11 @@ static NSString * const imageCellID = @"listCell";
         WKStoryListTableViewHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:@"listHeadCell" forIndexPath:indexPath];
         if (!cell) {
             cell = [[WKStoryListTableViewHeadCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"listHeadCell"];
-        }
+         }
         cell.contentLabel.text = _text;
+//        cell.backgroundColor = [UIColor clearColor];
         cell.textLabel.numberOfLines = 0;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
     }else{

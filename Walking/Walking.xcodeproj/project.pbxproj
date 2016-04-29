@@ -138,6 +138,10 @@
 		79FAC4E11CC533220068C093 /* WKWorldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4DF1CC533220068C093 /* WKWorldViewController.xib */; };
 		79FAC4E51CC533300068C093 /* WKMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC4E31CC533300068C093 /* WKMeViewController.m */; };
 		79FAC4E61CC533300068C093 /* WKMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4E41CC533300068C093 /* WKMeViewController.xib */; };
+		79FEA3601CD2578A00F23D17 /* WKSearchLastTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEA35F1CD2578A00F23D17 /* WKSearchLastTableViewController.m */; };
+		79FEA3631CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEA3621CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m */; };
+		79FEA3671CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEA3651CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.m */; };
+		79FEA3681CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FEA3661CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.xib */; };
 		890A9A7440843CA5E1484CDD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E80CE71F69D6659C8403C535 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -386,6 +390,13 @@
 		79FAC4E21CC533300068C093 /* WKMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMeViewController.h; sourceTree = "<group>"; };
 		79FAC4E31CC533300068C093 /* WKMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMeViewController.m; sourceTree = "<group>"; };
 		79FAC4E41CC533300068C093 /* WKMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKMeViewController.xib; sourceTree = "<group>"; };
+		79FEA35E1CD2578A00F23D17 /* WKSearchLastTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSearchLastTableViewController.h; sourceTree = "<group>"; };
+		79FEA35F1CD2578A00F23D17 /* WKSearchLastTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSearchLastTableViewController.m; sourceTree = "<group>"; };
+		79FEA3611CD258C500F23D17 /* WKSearchLastTableViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSearchLastTableViewControllerModel.h; sourceTree = "<group>"; };
+		79FEA3621CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSearchLastTableViewControllerModel.m; sourceTree = "<group>"; };
+		79FEA3641CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSearchLastTableViewControllerCell.h; sourceTree = "<group>"; };
+		79FEA3651CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSearchLastTableViewControllerCell.m; sourceTree = "<group>"; };
+		79FEA3661CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKSearchLastTableViewControllerCell.xib; sourceTree = "<group>"; };
 		BA9B7931D7FF7480C02BFBEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E80CE71F69D6659C8403C535 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -630,6 +641,8 @@
 				794D35021CCDB60600A90A99 /* WKRecommendSearchCityModel.m */,
 				79EFB5261CCE3750005D9B63 /* WKRecomendSearchDetailModel.h */,
 				79EFB5271CCE3750005D9B63 /* WKRecomendSearchDetailModel.m */,
+				79FEA3611CD258C500F23D17 /* WKSearchLastTableViewControllerModel.h */,
+				79FEA3621CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -649,6 +662,8 @@
 				79EC2E561CCB689000BF59B3 /* WKSearchTableViewController.xib */,
 				79EFB51E1CCE17CC005D9B63 /* WKSearchDetailViewController.h */,
 				79EFB51F1CCE17CC005D9B63 /* WKSearchDetailViewController.m */,
+				79FEA35E1CD2578A00F23D17 /* WKSearchLastTableViewController.h */,
+				79FEA35F1CD2578A00F23D17 /* WKSearchLastTableViewController.m */,
 				7930352A1CC68857003E5491 /* WKCycleScrollView.h */,
 				7930352B1CC68857003E5491 /* WKCycleScrollView.m */,
 				7930352D1CC6886A003E5491 /* NSTimer+myTimer.h */,
@@ -692,6 +707,9 @@
 				79EFB5291CCE4ADE005D9B63 /* WKSearchDetailViewControllerHeadView.h */,
 				79EFB52A1CCE4ADE005D9B63 /* WKSearchDetailViewControllerHeadView.m */,
 				79EFB52C1CCE4AF8005D9B63 /* WKSearchDetailViewControllerHeadView.xib */,
+				79FEA3641CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.h */,
+				79FEA3651CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.m */,
+				79FEA3661CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -914,7 +932,7 @@
 				TargetAttributes = {
 					79FAC4851CC4E39F0068C093 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 77724DT35C;
+						DevelopmentTeam = F69QY6X9T7;
 					};
 					79FAC49E1CC4E39F0068C093 = {
 						CreatedOnToolsVersion = 7.2;
@@ -955,6 +973,7 @@
 			files = (
 				791C35DE1CC774DF00FFC596 /* WKMyCollectionViewController.xib in Resources */,
 				79C5FEC81CCA66F5004B61AA /* WKGuideViewController.xib in Resources */,
+				79FEA3681CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.xib in Resources */,
 				791FB7531CCCAF5E0027C050 /* WKNoGuideCategoryViewController.xib in Resources */,
 				793DBDC61CC6609400A4E3CA /* WKMeHeadView.xib in Resources */,
 				791C35E31CC7750E00FFC596 /* WKAboutUsViewController.xib in Resources */,
@@ -1088,6 +1107,7 @@
 				79EFB5201CCE17CC005D9B63 /* WKSearchDetailViewController.m in Sources */,
 				7907619D1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m in Sources */,
 				794D35031CCDB60600A90A99 /* WKRecommendSearchCityModel.m in Sources */,
+				79FEA3631CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m in Sources */,
 				79128A051CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.m in Sources */,
 				7907618F1CC654170097EF89 /* WKWorldListModel.m in Sources */,
 				798B54D01CCDB28F00AA096B /* WKSubjectDetailSectionsModel.m in Sources */,
@@ -1099,6 +1119,7 @@
 				790085971CCB1A88007E5E58 /* WKGuideDetailSectionsModel.m in Sources */,
 				791DA5261CC77B52009D9093 /* WKStoryListTableViewCell.m in Sources */,
 				791603151CCE5DFE00D3F2FD /* VisualFormatLayout.m in Sources */,
+				79FEA3601CD2578A00F23D17 /* WKSearchLastTableViewController.m in Sources */,
 				793DBDC41CC6607A00A4E3CA /* WKMeHeadView.m in Sources */,
 				790085911CCB12C1007E5E58 /* WKGuideDetailModel.m in Sources */,
 				791603181CCE5F0E00D3F2FD /* UIImage+Part.m in Sources */,
@@ -1128,6 +1149,7 @@
 				7900859A1CCB58D9007E5E58 /* WKGuideUserModel.m in Sources */,
 				791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */,
 				7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */,
+				79FEA3671CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.m in Sources */,
 				793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */,
 				79C5FEC71CCA66F5004B61AA /* WKGuideViewController.m in Sources */,
 				791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */,
@@ -1289,12 +1311,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Walking/Base/Others/Tools/PrefixHeader.pch;
 				INFOPLIST_FILE = Walking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lanou3g.com.Walking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1305,12 +1329,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = Walking/Base/Others/Tools/PrefixHeader.pch;
 				INFOPLIST_FILE = Walking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lanou3g.com.Walking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

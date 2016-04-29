@@ -60,6 +60,9 @@
         
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //        NSLog(@"dataDic:%@", dicData);
+        if (_start == 0 & self.dataArray.count != 0) {
+            [self.dataArray removeAllObjects];
+        }
         for (NSDictionary *dic in dicData[@"trips"]) {
             WKRecommendSearchModel *searchModel = [[WKRecommendSearchModel alloc] init];
             [searchModel setValuesForKeysWithDictionary:dic];
@@ -75,7 +78,9 @@
         
         //回到主线程刷新UI
         dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
+            [self.tableView reloadData];
+            [self.tableView.mj_header endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
             
         });
         
@@ -95,14 +100,24 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"WKSearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"searchCell"];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier: @"searchCells"];
     
+    // 下拉刷新
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    // 上拉刷新
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    
     [self requestDataWithStart:0];
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+}
+
+- (void)loadNewData{
+    WKLog(@"下啦开始");
+    _start = 0;
+    [self requestDataWithStart:_start];
+}
+
+- (void)loadMoreData{
+    _start += 20;
+    [self requestDataWithStart:_start];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,11 +142,17 @@
     if (indexPath.row == 0) {
 //        static NSString *reuse = @"searchCells";
          UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"searchCells" forIndexPath:indexPath];
+       
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"searchCells"];
+        }
         WKRecommendSearchModel *model = [self.cityArray firstObject];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@  特 色 景 点 ", model.name];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@  简介", model.name];
         cell.textLabel.textColor = [UIColor orangeColor];
-        cell.textLabel.font = [UIFont systemFontOfSize:20];
-        cell.backgroundColor = [UIColor whiteColor];
+//        cell.detailTextLabel.text = @"简介";
+//        cell.detailTextLabel.textColor = [UIColor orangeColor];
+        cell.textLabel.font = [UIFont systemFontOfSize:21];
+        cell.backgroundColor = ColorGlobal;
         return cell;
         
     }else{
@@ -149,11 +170,10 @@
 //跳转到游记界面
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        
         WKSearchDetailViewController *detailVc = [[WKSearchDetailViewController alloc] init];
         WKRecommendSearchCityModel *model = [self.cityArray firstObject];
         detailVc.ID = model.ID;
-        detailVc.title = model.name;
+        detailVc.titles = model.name;
         [self.navigationController pushViewController:detailVc animated:YES];
         
     }else{
@@ -166,7 +186,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return 50;
+        return 80;
     }else{
         return 100;
     }

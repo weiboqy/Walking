@@ -15,13 +15,14 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageV;
 @property (strong, nonatomic) IBOutlet UILabel *contentLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
-
-@property (nonatomic, strong) WKRecommendNotesDetailModel *detailModel;
 @property (strong, nonatomic) IBOutlet UIImageView *imageC;
 
 
+@property (nonatomic, strong) WKRecommendNotesDetailModel *detailModel;
 
-- (CGFloat)cellsHeight;
+
+
+
 
 
 
