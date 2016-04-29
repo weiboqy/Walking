@@ -19,6 +19,7 @@
     _image_urlImageView.contentMode = UIViewContentModeScaleAspectFill;
     _image_urlImageView.clipsToBounds = YES;
     _image_urlImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    
     _urlStr = model.photoModel.image_url;
     _image_urlImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];

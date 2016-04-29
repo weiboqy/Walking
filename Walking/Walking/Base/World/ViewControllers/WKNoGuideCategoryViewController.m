@@ -58,7 +58,7 @@
     WKSubjectViewController *subjectVC = [[WKSubjectViewController alloc]init];
     subjectVC.destination_id = _ID;
     // title
-    
+    subjectVC.titleName = _model.name_zh_cn;
     [self.navigationController pushViewController:subjectVC animated:YES];
 }
 

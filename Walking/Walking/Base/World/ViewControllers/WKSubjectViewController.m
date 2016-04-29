@@ -49,7 +49,7 @@
         }
 //        WKLog(@"%@",self.dataArr);
         // 取消指示器
-//        [SVProgressHUD dismiss];
+        [SVProgressHUD dismiss];
         // 刷新UI
         dispatch_async(dispatch_get_main_queue(), ^{
 //            WKSubjectModel *model = _dataArr[5];
@@ -62,8 +62,8 @@
         });
     } error:^(NSError *error) {
         // 失败也取消指示器
-//        [SVProgressHUD dismiss];
-//        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
 }
 
@@ -88,12 +88,8 @@
 
 - (void)addCustomNagationBar {
     // NavigationBar
-    WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
+    WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
     bar.backgroundColor = [UIColor clearColor];
-    bar.titleLabel.text = [NSString stringWithFormat:@"%@专题",_titleName];
-    bar.titleLabel.center = CGPointMake(kScreenWidth / 2, 44);
-    bar.titleLabel.bounds = CGRectMake(0, 0, 100, 30);
-    bar.titleLabel.textAlignment = NSTextAlignmentCenter;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(18, 10, 70, 30);
     // 设置返回按钮的图片
@@ -102,6 +98,17 @@
     [button sizeToFit];
     [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:button];
+ 
+    UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    titleBtn.frame = CGRectMake(88, 8, 199, 30);
+    if ([_titleName isEqualToString:@""]) {
+        [titleBtn setTitle:@"专题" forState:UIControlStateNormal];
+    }
+    [titleBtn setTitle:[NSString stringWithFormat:@"%@专题",_titleName] forState:UIControlStateNormal];
+    [titleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [bar addSubview:titleBtn];
+    
     [self.view addSubview:bar];
 }
 
@@ -171,6 +178,8 @@
     NSInteger index = image.tag - 1000;
     WKSubjectModel *model = _dataArr[index];
     subjectDetailVC.ID = model.ID;
+    subjectDetailVC.image_url = model.image_url;
+    subjectDetailVC.name = model.name;
 //    [self.navigationController pushViewController:subjectDetailVC animated:YES];
     subjectDetailVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:subjectDetailVC animated:YES completion:nil];

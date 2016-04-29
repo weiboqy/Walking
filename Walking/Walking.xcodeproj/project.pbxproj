@@ -31,15 +31,14 @@
 		7907619D1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907619C1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m */; };
 		790761A01CC66DF30097EF89 /* WKCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907619F1CC66DF30097EF89 /* WKCollectionCell.m */; };
 		790761A21CC66E0C0097EF89 /* WKCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */; };
+		790888D01CD0AF2000FA2CEA /* WKTravleNotesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A161CCF913D00FCCA55 /* WKTravleNotesModel.m */; };
+		790888D11CD0AF6B00FA2CEA /* WKTravelNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7916030E1CCE3BE300D3F2FD /* WKTravelNoteModel.m */; };
+		790888D41CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790888D31CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.m */; };
 		790CA8911CD110BF009547E7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790CA8881CD110BF009547E7 /* LoginViewController.m */; };
 		790CA8921CD110BF009547E7 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790CA8891CD110BF009547E7 /* LoginViewController.xib */; };
 		790CA8931CD110BF009547E7 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790CA88B1CD110BF009547E7 /* RegisterViewController.m */; };
 		790CA8941CD110BF009547E7 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790CA88C1CD110BF009547E7 /* RegisterViewController.xib */; };
 		790CA8951CD110BF009547E7 /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 790CA88E1CD110BF009547E7 /* UserInfoManager.m */; };
-		790888D01CD0AF2000FA2CEA /* WKTravleNotesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79128A161CCF913D00FCCA55 /* WKTravleNotesModel.m */; };
-		790888D11CD0AF6B00FA2CEA /* WKTravelNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7916030E1CCE3BE300D3F2FD /* WKTravelNoteModel.m */; };
-		790888D41CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790888D31CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.m */; };
-		790CA8811CD06855009547E7 /* WKGradientNaigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 790CA8801CD06855009547E7 /* WKGradientNaigationBar.m */; };
 		791289FB1CCF528600FCCA55 /* WKTravelNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791289F91CCF528600FCCA55 /* WKTravelNoteViewController.m */; };
 		791289FC1CCF528600FCCA55 /* WKTravelNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791289FA1CCF528600FCCA55 /* WKTravelNoteViewController.xib */; };
 		79128A001CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 791289FE1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.m */; };
@@ -236,6 +235,8 @@
 		7907619E1CC66DF30097EF89 /* WKCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCollectionCell.h; sourceTree = "<group>"; };
 		7907619F1CC66DF30097EF89 /* WKCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCollectionCell.m; sourceTree = "<group>"; };
 		790761A11CC66E0C0097EF89 /* WKCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKCollectionCell.xib; sourceTree = "<group>"; };
+		790888D21CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendNotesDetailPhotoModel.h; sourceTree = "<group>"; };
+		790888D31CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendNotesDetailPhotoModel.m; sourceTree = "<group>"; };
 		790CA8871CD110BF009547E7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		790CA8881CD110BF009547E7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		790CA8891CD110BF009547E7 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -244,10 +245,6 @@
 		790CA88C1CD110BF009547E7 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		790CA88D1CD110BF009547E7 /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
 		790CA88E1CD110BF009547E7 /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
-		790888D21CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendNotesDetailPhotoModel.h; sourceTree = "<group>"; };
-		790888D31CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendNotesDetailPhotoModel.m; sourceTree = "<group>"; };
-		790CA87F1CD06855009547E7 /* WKGradientNaigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKGradientNaigationBar.h; sourceTree = "<group>"; };
-		790CA8801CD06855009547E7 /* WKGradientNaigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKGradientNaigationBar.m; sourceTree = "<group>"; };
 		791289F81CCF528600FCCA55 /* WKTravelNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelNoteViewController.h; sourceTree = "<group>"; };
 		791289F91CCF528600FCCA55 /* WKTravelNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTravelNoteViewController.m; sourceTree = "<group>"; };
 		791289FA1CCF528600FCCA55 /* WKTravelNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKTravelNoteViewController.xib; sourceTree = "<group>"; };
@@ -1552,7 +1549,6 @@
 				INFOPLIST_FILE = Walking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Walking.com.Walking;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_4.3",
@@ -1581,7 +1577,6 @@
 				INFOPLIST_FILE = Walking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Walking.com.Walking;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_4.3",
