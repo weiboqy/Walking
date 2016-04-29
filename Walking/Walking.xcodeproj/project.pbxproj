@@ -1695,6 +1695,7 @@
 				INFOPLIST_FILE = Walking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Walking.com.Walking;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_4.3",
@@ -1723,6 +1724,7 @@
 				INFOPLIST_FILE = Walking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Walking.com.Walking;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_4.3",

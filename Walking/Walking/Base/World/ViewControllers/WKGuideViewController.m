@@ -139,6 +139,8 @@ static NSString * const tableHeaderID = @"tableHeaderID";
                 detailModel.sectionsModel = sectionsModel;
                 
                 [self.dataArr1 addObject:detailModel];
+//                WKLog(@"name = %@", model.detailModel.sectionsModel.userModel.name);
+                WKLog(@"titleSECTION = %@", model.detailModel.sectionsModel.title);
 
 //                WKLog(@"name = %@", model.detailModel.sectionsModel.userModel.name);
 
@@ -191,6 +193,8 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 //    WKLog(@"%@", _image_url);
     _bgView = bgView;
     [_bgView addSubview:imageView];
+//    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
+//    WKLog(@"%@", _image_url);
 
     WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
     WKLog(@"%@", _image_url);
@@ -330,8 +334,11 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WKGuideDetailModel *detailModel = self.dataArr1[indexPath.row];
-
     WKGuideDetailSectionsModel *model = self.dataArr[indexPath.row];
+//    WKLog(@"%@", model.title);
+//    WKGuideDetailSectionsModel *model = detailModel.sectionsModel;
+//    WKLog(@"model===%@", model);
+//    WKLog(@"%@", model.title);
 //    WKLog(@"%@", model.title);
 
 //    WKGuideDetailSectionsModel *model = detailModel.sectionsModel;

@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationController.title = @"关于我们";
+    self.view.backgroundColor = ColorGlobal;
     // Do any additional setup after loading the view from its nib.
 }
 
