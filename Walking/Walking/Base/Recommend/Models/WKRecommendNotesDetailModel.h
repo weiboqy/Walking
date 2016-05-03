@@ -11,32 +11,19 @@
 
 @interface WKRecommendNotesDetailModel : NSObject
 
-@property (nonatomic, copy) NSString *name;//标题
-@property (nonatomic, copy) NSString *mileage;//里程
-@property (nonatomic, copy) NSString *day_count;//时间数
-@property (nonatomic, copy) NSString *recommendations;//喜欢数
-@property (nonatomic, copy) NSString *uName;
-@property (nonatomic, copy) NSString *trackpoints_thumbnail_image;//地图
-@property (nonatomic, copy) NSString *avatar_m;//头像
 
 //cell 图片等的具体内容
-@property (nonatomic, copy) NSString *date;
+@property (nonatomic, copy) NSString *local_time;
 @property (nonatomic, copy) NSString *DAY;
 
 @property (nonatomic, copy) NSString *photo;
 @property (nonatomic, copy) NSString *text;
-//计算高度
-@property (nonatomic, assign) CGRect textFrame;
-@property (nonatomic, assign) CGRect  imageFrame;
 
-@property (nonatomic, assign) CGFloat imageH;
-@property (nonatomic, assign) CGFloat textH;
-@property (nonatomic, assign) CGFloat cellHeight;
-//@property (nonatomic, assign) CGFloat photo_width;
-//@property (nonatomic, assign) CGFloat photo_height;
+
 @property (nonatomic, strong) WKRecommendNotesDetailPhotoModel *photoModel;
 
-- (CGFloat)cellsHeight;
+- (CGFloat)cellsHeightWithImageH:(CGFloat)imageH imageW:(CGFloat)imageW  textStr:(NSString *)textStr;
+
 
 
 @end

@@ -1,18 +1,17 @@
 //
-//  WKStoryListTableViewHeadCell.m
+//  WKSearchLastTableViewControllerCell.m
 //  Walking
 //
-//  Created by lanou on 16/4/22.
+//  Created by lanou on 16/4/28.
 //  Copyright © 2016年 xqy. All rights reserved.
 //
 
-#import "WKStoryListTableViewHeadCell.h"
+#import "WKSearchLastTableViewControllerCell.h"
 
-@implementation WKStoryListTableViewHeadCell
+@implementation WKSearchLastTableViewControllerCell
 
 - (void)awakeFromNib {
     // Initialization code
-    self.contentView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

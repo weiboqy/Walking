@@ -52,11 +52,11 @@
 
 
 - (void)requestData{
-    
+    WKLog(@"ID:%@", _ID);
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendTableViewDetailURL, _ID] parDic:@{} finish:^(NSData *data) {
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//        WKLog(@"%@", dic);
+//        WKLog(@"dic:%@", dic);
         //获取头视图的 数据
         _name = dic[@"name"];
         _mileage = dic[@"mileage"];
@@ -70,16 +70,21 @@
             for (NSDictionary *dicc in dicT[@"waypoints"]) {
                 WKRecommendNotesDetailModel *model = [[WKRecommendNotesDetailModel alloc] init];
                 WKRecommendNotesDetailPhotoModel *photoModel = [[WKRecommendNotesDetailPhotoModel alloc] init];
-                [photoModel setValuesForKeysWithDictionary:dicc[@"photo_info"]];
-                [model setValuesForKeysWithDictionary:dicT];
+            
                 [model setValuesForKeysWithDictionary:dicc];
+//                WKLog(@"%@", dicc[@"photo_info"]);
+#pragma mark---------bug-------
+//                [photoModel setValuesForKeysWithDictionary:dicc[@"photo_info"]];
+                [model setValuesForKeysWithDictionary:dicT];
                 model.photoModel = photoModel;
                 [self.dataArray addObject:model];
             }
         }
-//        WKLog(@" %@, %@",  _recommendations, [self.dataArray[0] photo]);
+//        WKLog(@"photoModel:%f", [[self.dataArray[0] photoModel] h]);
+        
+
         dispatch_async(dispatch_get_main_queue(), ^{
-            //头视图 的空间 赋值
+          //头视图 的空间 赋值
             [self.listTableView reloadData];
             self.headView.titleLabel.text = _name;
             [self.headView.imageV sd_setImageWithURL:[NSURL URLWithString:_imageT] placeholderImage:PLACEHOLDER];
@@ -91,100 +96,15 @@
             self.headView.daysLabel.text = [NSString stringWithFormat:@"%@", _day_count];
             self.headView.lovesLabel.text = [NSString stringWithFormat:@"%@",  _recommendations];
         });
-        
+//
     } error:^(NSError *error) {
         WKLog(@"error:%@", error);
     }];
 }
-// 透明导航栏
--(void)buildNavigationBar {
-    _customNavigationBar = [[UIView alloc]init];
-    [self.view addSubview:_customNavigationBar];
-    NSDictionary *views = NSDictionaryOfVariableBindings(_customNavigationBar);
-    NSDictionary *metrics = @{@"HN":@(kNavigationAndStatusBarHeihght)};
-    NSArray *visualFormats = @[@"H:|[_customNavigationBar]|",
-                               @"V:|[_customNavigationBar(==HN)]"
-                               ];
-    [VisualFormatLayout autoLayout:self.view visualFormats:visualFormats metrics:metrics views:views];
-    
-    _navigationBangroundImageView = [[UIImageView alloc]init];
-    _navigationBangroundImageView.contentMode = UIViewContentModeScaleToFill;
-    UIImage *bannerImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _imageT]]]];
-    
-    CGSize bannerImageSize = bannerImage.size;
-    CGFloat bannerNavBGImageHeight = bannerImageSize.width / self.view.frame.size.width * kNavigationAndStatusBarHeihght;
-    CGRect navigationBackroundImageRect = CGRectMake(0, 0, bannerImageSize.width, bannerNavBGImageHeight);
-    UIImage *bannerNavBGImage = [bannerImage partImageInRect:navigationBackroundImageRect];
-    _navigationBangroundImageView.image = bannerNavBGImage;
-    [_customNavigationBar addSubview:_navigationBangroundImageView];
-    
-    _navigationTitle = [[UILabel alloc]init];
-    _navigationTitle.text = @"精彩游记";
-    _navigationTitle.textColor = [UIColor whiteColor];
-    _navigationTitle.textAlignment = NSTextAlignmentCenter;
-    _navigationTitle.font = [UIFont systemFontOfSize:18.0];
-    [_customNavigationBar addSubview:_navigationTitle];
-    
-    
-    _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_infoButton setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-    // 自适应尺寸
-    //    [_infoButton sizeToFit];
-    [_infoButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
-    [_customNavigationBar addSubview:_infoButton];
-    
-    views = NSDictionaryOfVariableBindings(_navigationBangroundImageView, _navigationTitle, _infoButton);
-    // 使用UIBlurEffect来制作毛玻璃
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
-    effectView.frame = CGRectMake(0, 0, kScreenWidth, 64);
-    [_navigationBangroundImageView addSubview:effectView];
-    //    _navigationTitle.center = CGPointMake(kScreenWidth / 2, 22);
-    //    _navigationTitle.bounds = CGRectMake(0, 0, 100, 30);
-    _navigationTitle.frame = CGRectMake(kScreenWidth / 2 - 50, 32, 100, 30);
-    
-    _navigationTitle.textAlignment = NSTextAlignmentCenter;
-    metrics = @{@"WB":@(34)};
-    visualFormats =  @[@"H:|[_navigationBangroundImageView]|",
-                       @"H:|-[_infoButton(==WB)]-(-20)-[_navigationTitle]|",
-                       @"H:|[_infoButton(==60)]|",
-                       //                       @"H:|[_navigationTitle(==390)]|",
-                       @"V:|[_navigationBangroundImageView]|",
-                       @"V:|-[_navigationTitle(==50)]|",
-                       @"V:|-[_infoButton(==50)]|"
-                       ];
-    [VisualFormatLayout autoLayout:_customNavigationBar visualFormats:visualFormats metrics:metrics views:views];
-}
-
-// 视图将要出现时,_customNavigationBar的透明度为0,一开始不让它显示
-- (void)viewWillAppear:(BOOL)animated {
-    _customNavigationBar.alpha = 0;
-}
--(void) scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGFloat threholdHeight = _bannerImageView.frame.size.height - kNavigationAndStatusBarHeihght;
-    if(scrollView.contentOffset.y >= 0 &&
-       scrollView.contentOffset.y <= threholdHeight) {
-        _customNavigationBar.alpha = 0;
-        CGFloat alpha = scrollView.contentOffset.y / threholdHeight;
-        _customNavigationBar.alpha = alpha;
-    }
-    else if(scrollView.contentOffset.y < 0) {
-        _customNavigationBar.alpha = 0;
-        scrollView.contentOffset = CGPointMake(0, 0);
-    }
-    else {
-        _customNavigationBar.alpha = 1.0;
-    }
-}
--(void)backClick
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (void)createListTableView{
     
-    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 44)];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     
     self.listTableView.dataSource = self;
     self.listTableView.delegate = self;
@@ -192,31 +112,15 @@
     [self.listTableView registerNib:[UINib nibWithNibName:@"WKNotesListTableViewCell" bundle:nil] forCellReuseIdentifier:@"notesReuse"];
     _headView = [[[NSBundle mainBundle] loadNibNamed:@"WKNotesListHeadView" owner:nil options:nil] lastObject];
     _headView.backgroundColor = ColorGlobal;
-    _headView.frame = CGRectMake(0, 0, kScreenWidth, (340/667.0) * kScreenHeight);
+    _headView.frame = CGRectMake(0, 0, kScreenWidth, (345/667.0) * kScreenHeight);
     [_headView handleImage];//处理图片
     self.listTableView.tableHeaderView = _headView;
     
-//#warning mark --- cellHeight-----
-    self.listTableView.rowHeight = UITableViewAutomaticDimension;
-    self.listTableView.estimatedRowHeight = 20;
+#warning mark --- cellHeight-----
+//    self.listTableView.rowHeight = UITableViewAutomaticDimension;
+//    self.listTableView.estimatedRowHeight = 20;
     
     [self.view addSubview:self.listTableView];
-}
-
-// 自定义导航条
-- (void)addCustomNagationBar {
-    // NavigationBar
-    WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
-    bar.backgroundColor = [UIColor clearColor];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(18, 10, 70, 30);
-    // 设置返回按钮的图片
-    [button setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-    // 自适应尺寸
-    [button sizeToFit];
-    [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
-    [bar addSubview:button];
-    [self.view addSubview:bar];
 }
 
 
@@ -230,7 +134,7 @@
     [self requestData];
     
 //    [self addCustomNagationBar];
-    [self buildNavigationBar];
+//    [self buildNavigationBar];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -270,7 +174,10 @@
     for (WKRecommendNotesDetailModel *model in self.dataArray) {
         i ++;
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width * (i - 1), 0, [UIScreen mainScreen].bounds.size.width, (300 / 667.0) * kScreenHeight)];
-//        imageV.frame.size.height = model    //可以设置图片的高度 
+        
+//        imageV.height = model.photoModel.h * (kScreenWidth / model.photoModel.w);//可以设置图片的高度
+#pragma mark ---- Can't achieve---------
+        //剪切设置尺寸 多余的 暂时没有效果
         imageV.contentMode =  UIViewContentModeScaleToFill;
         imageV.clipsToBounds = YES;
         imageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -341,7 +248,7 @@
 
     CGFloat flo = self.listTableView.contentSize.height /self.dataArray.count;
     //返回到  滚动到的位置
-    self.listTableView.contentOffset = CGPointMake( 0, flo * self.scrollView.contentOffset.x/ kScreenWidth - 300);//(300/667.0) * kScreenHeight +
+//    self.listTableView.contentOffset = CGPointMake( 0, flo * self.scrollView.contentOffset.x/ kScreenWidth - 300);//(300/667.0) * kScreenHeight +
     //这个只是选中
 //    NSInteger index = [self.scrollView.contentOffset/ kScreenWidth cgf;
 //    NSIndexPath *indexpath = [NSIndexPath indexPathForRow: inSection:0];
@@ -355,38 +262,20 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     WKLog(@"滚动结束了");
     CGFloat flo =  (kScreenWidth - 20) / self.dataArray.count;
-    if (self.scroView) {
-        WKLog(@"scroView....滚动结束了");
-        self.scroView.frame = CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, flo * (scrollView.contentOffset.x / kScreenWidth + 1), (3/667.0) * kScreenHeight);
-    }
+//    if (self.scroView) {
+//        WKLog(@"scroView....滚动结束了");
+//        self.scroView.frame = CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, flo * (scrollView.contentOffset.x / kScreenWidth + 1), (3/667.0) * kScreenHeight);
+//    }
+}
+
+//#warning =--------has wenti--------
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    WKRecommendNotesDetailModel *model = self.dataArray[indexPath.row];
+
+    return  600;///[model cellsHeightWithImageH:model.photoModel.h imageW:model.photoModel.w  textStr:model.text]
 }
 
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    WKRecommendNotesDetailModel *model = self.dataArray[indexPath.row];
-//    WKLog(@"%f", [model cellsHeight] + 60);
-//    return [model cellsHeight];
-//}
-
-//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
-//    
-//    
-//    
-//}
-//
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    WKLog(@"scollView");
-//
-//    
-//
-//    
-//    
-//    
-//}
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 320;
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

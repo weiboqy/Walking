@@ -31,15 +31,14 @@
 @property (nonatomic, strong) NSMutableArray *tableViewDataArray;
 
 @property (nonatomic, strong) NSString *firstStart;
-//刷新位置
 @property (nonatomic, strong) NSString *start;
+
 //collection 刷新数据的 起始位置
 @property (nonatomic, assign) NSInteger startLocation;
 
 @property (nonatomic, assign) BOOL isTure;
-//@property (nonatomic, strong) UITextField *searchField;
 @property (nonatomic, strong) UISearchBar *searchBar;
-//@property (nonatomic, strong) UITextField *searchField;
+@property (nonatomic, strong) UIView *searchView;
 
 @end
 
@@ -91,8 +90,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             [self.headView.collectionView reloadData];
-//            //刷新 UI 来实现改变 偏移量 现实的效果不同
-//            [self.headView.collectionView setContentOffset:CGPointMake(kScreenWidth * 2, 0)];
+            
+            
         });
         
     } error:^(NSError *error) {
@@ -183,84 +182,70 @@
         WKLog(@"error%@", error);
     }];
 }
-// 自定义导航条
-- (void)addCustomNagationBar {
-    // NavigationBar
-    WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
-    bar.backgroundColor = ColorGlobal;
-    
-    
-#pragma mark -----设置搜索框-----
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
-    //    _searchBar.barStyle = UIBarStyleBlackTranslucent;//透明度设置
-    //    _searchBar.keyboardType = UIKeyboardTypeDefault;
-    _searchBar.placeholder = @"搜索";
-    _searchBar.delegate = self;
-    _searchBar.barTintColor = ColorGlobal;
-    _searchBar.tintColor = [UIColor orangeColor];
-    self.navigationItem.titleView = _searchBar;
-    UIView *searchView = [[UIView alloc]initWithFrame:CGRectMake(20, 0, kScreenWidth, 0)];
-    searchView.backgroundColor = ColorGlobal;
-    [searchView addSubview:_searchBar];
-    [bar addSubview:searchView];
-    [self.view addSubview:bar];
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //隐藏系统自带的NavigationBar
-    [self.navigationController setNavigationBarHidden:YES];
-
-    self.title = @"推荐";
-    self.view.backgroundColor = ColorGlobal;
-    
-    UIBarButtonItem *searchBt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search)];
-    self.navigationItem.rightBarButtonItem = searchBt;
-    _isTure = YES;
     _index = 0;
     _start = @"2387313699";
     _startLocation = 0;
-    
-    [self addCustomNagationBar];
-//    self.title = @"推荐";
-//    self.view.backgroundColor = ColorGlobal;
+    _isTure = YES;
+    //隐藏系统自带的NavigationBar
+//    [self.navigationController setNavigationBarHidden:YES];
+    self.title = @"推荐";
+    self.view.backgroundColor = ColorGlobal;
+#pragma mark --------搜索按钮-------
+    UIBarButtonItem *searchBt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search)];
+    [searchBt setTintColor:[UIColor orangeColor]];
+    self.navigationItem.rightBarButtonItem = searchBt;
 
     
-
-#pragma mark ----刷新界面
-//    self.listTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//        // 进入刷新状态后会自动调用这个block
-//        WKLog(@"000000");
-//    }];
-    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
+#pragma mark ----刷新数据--------
+    // 下拉刷新
     self.listTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
-    
-    self.listTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        // 进入刷新状态后会自动调用这个block
-    }];
-    
-    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
+    // 上拉刷新
     self.listTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-
 #pragma mark ---collectionView 刷新---
-//    self.headView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(collectionHeadRefreshData)];
-//    self.headView.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(collectionFooterRefreshData)];
     
+// self.headView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(collectionHeadRefreshData)];
+//    self.headView.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(collectionFooterRefreshData)];
     [self requestDataForCollectionwithStartLoaction:_startLocation];
     [self requestDataForList];
     [self createListTableView];
     
     // Do any additional setup after loading the view from its nib.
-//    
-
+}
+//点击搜索 执行
+- (void)search{
+    WKLog(@"search....");
+#pragma mark -----设置搜索框-----
+    _searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight)];
+    _searchView.backgroundColor = [UIColor whiteColor];
+    _searchView.alpha = 0.5;
+    //添加手势回收键盘
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+    [_searchView addGestureRecognizer:tap];
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 50/667.0*kScreenHeight)];
+//    _searchBar.backgroundColor = [UIColor grayColor];
+    //    _searchBar.barStyle = UIBarStyleBlackTranslucent;//透明度设置
+    _searchBar.placeholder = @"搜索";
+    _searchBar.delegate = self;
+    
+    [self.view addSubview:_searchView];
+    [self.view addSubview:_searchBar];
+    //    self.navigationItem.titleView = _searchBar;
+}
+//回收键盘 删除搜索界面
+- (void)tap{
+    
+    [_searchBar resignFirstResponder];
+    [_searchBar removeFromSuperview];
+    [_searchView removeFromSuperview];
+    
 }
 //更多的点击方法
 - (void)button{
     _startLocation += 12;
     [self requestDataForCollectionwithStartLoaction:_startLocation];
-    
  
     //    if (self.headView.collectionView.contentOffset.x  > self.headView.collectionView.contentSize.width - kScreenWidth + 20) {
     //         [self.headView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
@@ -272,6 +257,24 @@
     //    [self.headView.collectionView setContentOffset:p animated:YES];
 }
 #warning  -------collection加载更多数据 -------
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+//    WKLog(@"scroll滚动中。。。。%f", self.headView.collectionView.contentOffset.x);
+    
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    
+    WKLog(@"拖拽结束%f, size:%f", self.headView.collectionView.contentOffset.x, self.headView.collectionView.contentSize.width);
+
+//     //滚动的  item
+//    CGPoint p = self.headView.collectionView.contentOffset;
+//    p = CGPointMake(0, 0);
+//    if (self.headView.collectionView.contentOffset.x > self.headView.collectionView.contentSize.width - self.headView.collectionView.frame.size.width) {
+//        [self.headView.collectionView setContentOffset:p animated:NO];
+//      }
+    
+}
 //- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 //    if (self.headView.collectionView.contentOffset.y > self.headView.collectionView.contentSize.width - kScreenWidth) {
 //        WKLog(@"collection滚动");
@@ -284,7 +287,6 @@
     //    [self.listTableView.mj_header beginRefreshing];
     WKLog(@"下啦刷新开始了");
     [self requestDataForList];
-    
 }
 
 - (void)loadMoreData{
@@ -292,16 +294,8 @@
     [self requestDataWithStart:_start];
 }
 
-//- (void)collectionHeadRefreshData{
-//    
-//    WKLog(@"collection下啦开始了");
-//}
-//
-//- (void)collectionFooterRefreshData{
-//     WKLog(@"collection上啦开始了");
-//}
-
 #pragma mark --- search--------
+
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     return YES;
 }//任务编辑文
@@ -321,7 +315,6 @@
 //编辑框文字发生变化 执行的方法
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     WKLog(@"文本变化了, %@", searchText);
-    
 }
 
 //点击搜索按钮 执行的方法
@@ -331,6 +324,8 @@
     
     WKSearchTableViewController *searchVc = [[WKSearchTableViewController alloc] init];
     searchVc.keyStr = searchBar.text;
+    [_searchBar removeFromSuperview];
+    [_searchView removeFromSuperview];
     [self.navigationController pushViewController:searchVc animated:YES];
 }
 
@@ -373,21 +368,22 @@
     self.headView.collectionView.delegate = self;
     self.headView.collectionView.dataSource = self;
     
-    self.headView.collectionView.contentOffset = CGPointMake(400, 0);
 
+   
+    
 }
 #pragma mark ---collectionView----
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 10, 0, 0);
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
 //    WKLog(@"%.2f", (kScreenWidth-20-10)/ 2);//0.927
     
-    return CGSizeMake((kScreenWidth-20-10)/ 2, (kScreenWidth-20-10)/ 2 * 0.927);//160
+    return CGSizeMake((kScreenWidth-14/375.0*kScreenWidth)/ 2, (kScreenWidth-30/375.0*kScreenWidth)/ 2 * 0.927);//160
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 10;
+    return 0;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 0;

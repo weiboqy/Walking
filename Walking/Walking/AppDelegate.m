@@ -28,12 +28,21 @@
     
     // 根视图
 //    self.window.rootViewController = [[WKTabBarViewController alloc]init];
+    
+    
+    [UMSocialData setAppKey:@"570bb59a67e58e78b30005a0"];
+    
+    // qq分享
+    [UMSocialQQHandler setQQWithAppId:@"1105291371" appKey:@"LiWwSqSh2m80yCun" url:@"http://www.baidu.com"];
+    
+    // 微信分享
+    [UMSocialWechatHandler setWXAppId:@"wx7b54343d55aeaf6a" appSecret:@"7f5253eed661a5a86cde7fc2f0b8dab8" url:@"http://www.baidu.com"];
+    
+    
     // 窗口展示
     [self.window makeKeyAndVisible];
     
-    [UMSocialData setAppKey:@"570bb59a67e58e78b30005a0"];
 
-    [UMSocialQQHandler setQQWithAppId:@"100424468"appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://www.umeng.com/social"];
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
         WKLog(@"第一次启动");
@@ -55,18 +64,21 @@
         [UIView setAnimationDidStopSelector:@selector(startupAnimationDone:finished:context:)];
         _image.alpha = 0.0;
         _image.frame = CGRectMake(-60, -85, 440, 635);
-        
     }
-   
-    
-    
-    
-    
+ 
     [UIView commitAnimations];
     return YES;
 }
 - (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
     [_image removeFromSuperview];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    BOOL result = [UMSocialSnsService handleOpenURL:url];
+    if (result == FALSE) {
+        WKLog(@"share others");
+    }
+    return result;
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

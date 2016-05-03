@@ -8,56 +8,38 @@
 
 #import "WKRecommendNotesDetailModel.h"
 #define Margin 10
-@implementation WKRecommendNotesDetailModel
 
+@implementation WKRecommendNotesDetailModel
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
  
     if ([key isEqualToString:@"day"]) {
         _DAY = value;
     }
+    if ([key isEqualToString:@"text"]) {
+        _text = value;
+    }
 }
 
 
-//  返回cell的高度
-- (CGFloat)cellsHeight{
+- (CGFloat)cellsHeightWithImageH:(CGFloat)imageH imageW:(CGFloat)imageW  textStr:(NSString *)textStr{
+    //w 1600,  h 1200
+//    WKLog(@"h:%f, w:%f",  imageH,  imageW);
+//    CGFloat floImageW = [imageW floatValue];
+//    CGFloat floImageH = [imageH floatValue];
+//
+    CGFloat imageHeight = imageH;
     
-    CGFloat imageH = self.photoModel.h;
-    CGFloat imageW = self.photoModel.w;
-    CGFloat flo = 0;
-    
-    if (!_cellHeight) {
-       
-        if (![self.photo isEqualToString:@""]) {
-            
-            if ( self.photoModel.w > (kScreenWidth - Margin * 2)) {
-                imageH =  self.photoModel.h * (kScreenWidth - Margin * 2) / imageW;
-                imageW = kScreenWidth - Margin * 2;
-            }
-            _imageFrame = CGRectMake(Margin, Margin/2, imageW, imageH);
-            ////fgdfgdfgd
-            _imageH = imageH;
-//            _cellHeight += Margin/2 + _imageFrame.size.height;
-            _cellHeight += Margin/2 + imageH;
-        }
-        
-        NSString *string = self.text;
-        CGSize maxSize = CGSizeMake(kScreenWidth - Margin * 2, MAXFLOAT);
-        CGFloat textH = [string boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil].size.height;
-        CGFloat textY = CGRectGetMaxY(self.imageFrame) + Margin;
-        self.textFrame = CGRectMake(Margin, textY, maxSize.width, textH);
-        //返回 text 的高度。 给外界使用
-        _textH = textH;
-        flo = textH;
-        if (![self.text isEqualToString:@""]) {
-            _cellHeight += Margin/2 + textH + Margin;
-//            WKLog(@"celllll:%f", _cellHeight);
-        }else{
-//            _cellHeight += Margin/2;
+    if ( imageW > (kScreenWidth - Margin * 2)) {
+        if (!imageW == 0.0) {
+            imageHeight =  imageH * (kScreenWidth - Margin * 2) / imageW;
         }
     }
-    return imageH + flo + 60;
+    
+    CGSize maxSize = CGSizeMake(kScreenWidth - Margin * 2, MAXFLOAT);
+    CGFloat textH = [textStr boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil].size.height;
+     //返回
+//    WKLog(@"%f", imageHeight + textH + 60.0);
+    return imageHeight + 10.0/667.0* kScreenHeight + textH + 60.0/667*kScreenHeight;   
 }
-
-
 @end

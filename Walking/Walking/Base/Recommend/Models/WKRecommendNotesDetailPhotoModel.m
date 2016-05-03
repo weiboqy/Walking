@@ -11,8 +11,10 @@
 @implementation WKRecommendNotesDetailPhotoModel
 
 
-- (void)setValuesForKeysWithDictionary:(NSDictionary<NSString *,id> *)keyedValues{
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
     
 }
+
+
 
 @end

@@ -7,10 +7,15 @@
 //
 
 #import "WKNavigtionBar.h"
+//#import <objc/runtime.h>
 
 
 @implementation WKNavigtionBar
-
+//+ (void)initialize
+//{
+//    unsigned int *outCount = 0;
+//    class_copyIvarList(<#__unsafe_unretained Class cls#>, &outCount)
+//}
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 //        self.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.1];
@@ -42,5 +47,6 @@
     [_titleImageView sizeToFit];
     [_titleLabel sizeToFit];
 }
+
 
 @end

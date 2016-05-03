@@ -14,6 +14,10 @@
     
     self.icon.layer.cornerRadius = 6;
     self.icon.layer.masksToBounds = YES;
+    
+    self.contentView.backgroundColor = ColorGlobal;
+    self.backImage.layer.cornerRadius = 6;
+    self.backImage.layer.masksToBounds = YES;
     // Initialization code
 }
 

@@ -15,6 +15,9 @@
     if ([key isEqualToString:@"description"]) {
         _descriptionS = value;
     }
+    if ([key isEqualToString:@"id"]) {
+        _ID = value;
+    }
 }
 
 @end

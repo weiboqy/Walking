@@ -16,6 +16,11 @@
 @property (strong, nonatomic) IBOutlet UITextField *emailTF;
 @property (strong, nonatomic) IBOutlet UITextField *passworldTF;
 
+@property (strong, nonatomic) IBOutlet UIButton *newuserBtu;
+@property (strong, nonatomic) UIScrollView *scrollView;
+
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+
 
 @end
 
@@ -23,18 +28,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self addCustomNavigationBar];
     
-    //用户交互 如果想使用手势 就一定要开启这个 默认是关闭 不然手势不生效
-//    _headerImageView.userInteractionEnabled = YES;
+    [self setupScrollView];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
-    tap.numberOfTapsRequired = 2;
-    tap.numberOfTouchesRequired = 1;
-    // Do any additional setup after loading the view from its nib.
 }
 
-
+- (void)setupScrollView {
+    
+//    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.newuserBtu.frame) + 10, kScreenWidth, kScreenHeight - CGRectGetMaxY(self.newuserBtu.frame) - 10)];
+//    self.imageView.image = [UIImage imageNamed:@"夜空视角.jpg"];
+//    self.imageView.backgroundColor = [UIColor redColor];
+//    [UIView animateWithDuration:2.0 animations:^{
+//        [UIView beginAnimations:nil context:nil];
+//        [UIView setAnimationDelegate:self];
+//        self.imageView.alpha = 0.0;
+//        self.imageView.frame = CGRectMake(-60, -85, 440, 635);
+//    }];
+//    [UIView setAnimationDuration:2.0];
+//    [UIView setAnimationDidStopSelector:@selector(startupAnimationDone:finished:context:)];
+//    [self.view addSubview:self.imageView];
+//    [self.view bringSubviewToFront:self.imageView];
+    
+    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.newuserBtu.frame) + 10, kScreenWidth, kScreenHeight - CGRectGetMaxY(self.newuserBtu.frame) - 10)];
+    self.scrollView.contentSize = CGSizeMake(3 * kScreenWidth, 0);
+    self.scrollView.contentOffset = CGPointMake(0, 0);
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.backgroundColor = [UIColor yellowColor];
+    for (int i = 1; i < 4; i ++)  {
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth * (i - 1), 400, kScreenWidth, 200)];
+//        imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d",i]];
+        imageView.backgroundColor = [UIColor redColor];
+        WKLog(@"%@", NSStringFromCGRect(imageView.frame));
+        [self.scrollView addSubview:imageView];
+    }
+    
+//    [self.view addSubview:self.scrollView];
+}
+- (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+    [self.imageView removeFromSuperview];
+}
 
 #pragma mark  -----自定义导航条
 
@@ -43,6 +75,8 @@
     RegisterViewController *registerVC = [[RegisterViewController alloc]init];
     [self presentViewController:registerVC animated:YES completion:nil];
 }
+
+
 - (IBAction)backClick:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

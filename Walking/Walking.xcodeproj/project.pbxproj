@@ -161,6 +161,10 @@
 		793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 793123651CC8D1DE0052CDEE /* WKWorldDetailModel.m */; };
 		793DBDC41CC6607A00A4E3CA /* WKMeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */; };
 		793DBDC61CC6609400A4E3CA /* WKMeHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */; };
+		793F4DEF1CD8AA5B002944E5 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 793F4DEC1CD8AA5B002944E5 /* 1.png */; };
+		793F4DF01CD8AA5B002944E5 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 793F4DED1CD8AA5B002944E5 /* 2.png */; };
+		793F4DF11CD8AA5B002944E5 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 793F4DEE1CD8AA5B002944E5 /* 3.png */; };
+		793F4DF31CD8AB30002944E5 /* AV.png in Resources */ = {isa = PBXBuildFile; fileRef = 793F4DF21CD8AB30002944E5 /* AV.png */; };
 		794D35001CCDAF9800A90A99 /* WKRecommendSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D34FF1CCDAF9800A90A99 /* WKRecommendSearchModel.m */; };
 		794D35031CCDB60600A90A99 /* WKRecommendSearchCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D35021CCDB60600A90A99 /* WKRecommendSearchCityModel.m */; };
 		798B54CD1CCDAF5C00AA096B /* WKSubjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 798B54CC1CCDAF5C00AA096B /* WKSubjectDetailModel.m */; };
@@ -203,6 +207,10 @@
 		79FAC4E11CC533220068C093 /* WKWorldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4DF1CC533220068C093 /* WKWorldViewController.xib */; };
 		79FAC4E51CC533300068C093 /* WKMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FAC4E31CC533300068C093 /* WKMeViewController.m */; };
 		79FAC4E61CC533300068C093 /* WKMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FAC4E41CC533300068C093 /* WKMeViewController.xib */; };
+		79FEA3601CD2578A00F23D17 /* WKSearchLastTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEA35F1CD2578A00F23D17 /* WKSearchLastTableViewController.m */; };
+		79FEA3631CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEA3621CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m */; };
+		79FEA3671CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEA3651CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.m */; };
+		79FEA3681CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FEA3661CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.xib */; };
 		890A9A7440843CA5E1484CDD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E80CE71F69D6659C8403C535 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -463,6 +471,10 @@
 		793DBDC21CC6607A00A4E3CA /* WKMeHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMeHeadView.h; sourceTree = SOURCE_ROOT; };
 		793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMeHeadView.m; sourceTree = SOURCE_ROOT; };
 		793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKMeHeadView.xib; sourceTree = "<group>"; };
+		793F4DEC1CD8AA5B002944E5 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		793F4DED1CD8AA5B002944E5 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		793F4DEE1CD8AA5B002944E5 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		793F4DF21CD8AB30002944E5 /* AV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AV.png; sourceTree = "<group>"; };
 		794D34FE1CCDAF9800A90A99 /* WKRecommendSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendSearchModel.h; sourceTree = "<group>"; };
 		794D34FF1CCDAF9800A90A99 /* WKRecommendSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendSearchModel.m; sourceTree = "<group>"; };
 		794D35011CCDB60600A90A99 /* WKRecommendSearchCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendSearchCityModel.h; sourceTree = "<group>"; };
@@ -536,6 +548,13 @@
 		79FAC4E21CC533300068C093 /* WKMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKMeViewController.h; sourceTree = "<group>"; };
 		79FAC4E31CC533300068C093 /* WKMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKMeViewController.m; sourceTree = "<group>"; };
 		79FAC4E41CC533300068C093 /* WKMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKMeViewController.xib; sourceTree = "<group>"; };
+		79FEA35E1CD2578A00F23D17 /* WKSearchLastTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSearchLastTableViewController.h; sourceTree = "<group>"; };
+		79FEA35F1CD2578A00F23D17 /* WKSearchLastTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSearchLastTableViewController.m; sourceTree = "<group>"; };
+		79FEA3611CD258C500F23D17 /* WKSearchLastTableViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSearchLastTableViewControllerModel.h; sourceTree = "<group>"; };
+		79FEA3621CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSearchLastTableViewControllerModel.m; sourceTree = "<group>"; };
+		79FEA3641CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSearchLastTableViewControllerCell.h; sourceTree = "<group>"; };
+		79FEA3651CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSearchLastTableViewControllerCell.m; sourceTree = "<group>"; };
+		79FEA3661CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKSearchLastTableViewControllerCell.xib; sourceTree = "<group>"; };
 		BA9B7931D7FF7480C02BFBEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E80CE71F69D6659C8403C535 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -721,6 +740,7 @@
 		7928D1AA1CD33AA1000B4298 /* welcome */ = {
 			isa = PBXGroup;
 			children = (
+				793F4DF21CD8AB30002944E5 /* AV.png */,
 				7928D1AB1CD33AA1000B4298 /* welcome－10（被拖移）.tiff */,
 				7928D1AC1CD33AA1000B4298 /* welcome－11（被拖移）.tiff */,
 				7928D1AD1CD33AA1000B4298 /* welcome－12（被拖移）.tiff */,
@@ -810,6 +830,9 @@
 			isa = PBXGroup;
 			children = (
 				7928D1AA1CD33AA1000B4298 /* welcome */,
+				793F4DEC1CD8AA5B002944E5 /* 1.png */,
+				793F4DED1CD8AA5B002944E5 /* 2.png */,
+				793F4DEE1CD8AA5B002944E5 /* 3.png */,
 				79FAC4951CC4E39F0068C093 /* Assets.xcassets */,
 				79FAC4971CC4E39F0068C093 /* LaunchScreen.storyboard */,
 				791603611CCE669D00D3F2FD /* banner.jpg */,
@@ -967,6 +990,8 @@
 				794D35021CCDB60600A90A99 /* WKRecommendSearchCityModel.m */,
 				79EFB5261CCE3750005D9B63 /* WKRecomendSearchDetailModel.h */,
 				79EFB5271CCE3750005D9B63 /* WKRecomendSearchDetailModel.m */,
+				79FEA3611CD258C500F23D17 /* WKSearchLastTableViewControllerModel.h */,
+				79FEA3621CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -986,6 +1011,8 @@
 				79EC2E561CCB689000BF59B3 /* WKSearchTableViewController.xib */,
 				79EFB51E1CCE17CC005D9B63 /* WKSearchDetailViewController.h */,
 				79EFB51F1CCE17CC005D9B63 /* WKSearchDetailViewController.m */,
+				79FEA35E1CD2578A00F23D17 /* WKSearchLastTableViewController.h */,
+				79FEA35F1CD2578A00F23D17 /* WKSearchLastTableViewController.m */,
 				7930352A1CC68857003E5491 /* WKCycleScrollView.h */,
 				7930352B1CC68857003E5491 /* WKCycleScrollView.m */,
 				7930352D1CC6886A003E5491 /* NSTimer+myTimer.h */,
@@ -1029,6 +1056,9 @@
 				79EFB5291CCE4ADE005D9B63 /* WKSearchDetailViewControllerHeadView.h */,
 				79EFB52A1CCE4ADE005D9B63 /* WKSearchDetailViewControllerHeadView.m */,
 				79EFB52C1CCE4AF8005D9B63 /* WKSearchDetailViewControllerHeadView.xib */,
+				79FEA3641CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.h */,
+				79FEA3651CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.m */,
+				79FEA3661CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1296,6 +1326,7 @@
 				791D558B1CD2339F0083CB3E /* UMSCommentInputController.xib in Resources */,
 				791C35DE1CC774DF00FFC596 /* WKMyCollectionViewController.xib in Resources */,
 				79C5FEC81CCA66F5004B61AA /* WKGuideViewController.xib in Resources */,
+				79FEA3681CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.xib in Resources */,
 				791D558C1CD2339F0083CB3E /* UMSCommentInputControlleriPad.xib in Resources */,
 				791D55951CD2339F0083CB3E /* UMSocialSDKResourcesNew.bundle in Resources */,
 				791D55881CD2339F0083CB3E /* UMSocialLocalizable.strings in Resources */,
@@ -1338,8 +1369,10 @@
 				79FAC4961CC4E39F0068C093 /* Assets.xcassets in Resources */,
 				791D55901CD2339F0083CB3E /* UMSnsAccountViewController.xib in Resources */,
 				7928D1EC1CD33AA1000B4298 /* welcome－9（被拖移）.tiff in Resources */,
+				793F4DF11CD8AA5B002944E5 /* 3.png in Resources */,
 				7928D1DA1CD33AA1000B4298 /* welcome－23（被拖移）.tiff in Resources */,
 				7928D1CD1CD33AA1000B4298 /* welcome－11（被拖移）.tiff in Resources */,
+				793F4DF01CD8AA5B002944E5 /* 2.png in Resources */,
 				791C362A1CC7BF0500FFC596 /* WKLoginAndRegistViewController.xib in Resources */,
 				7928D1EA1CD33AA1000B4298 /* welcome－7（被拖移）.tiff in Resources */,
 				79128A291CCFBD3600FCCA55 /* WKRouteDetailCell.xib in Resources */,
@@ -1372,7 +1405,9 @@
 				7928D1E51CD33AA1000B4298 /* welcome－33（被拖移）.tiff in Resources */,
 				791D55941CD2339F0083CB3E /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				7928D1D41CD33AA1000B4298 /* welcome－18（被拖移）.tiff in Resources */,
+				793F4DF31CD8AB30002944E5 /* AV.png in Resources */,
 				7928D1D21CD33AA1000B4298 /* welcome－16（被拖移）.tiff in Resources */,
+				793F4DEF1CD8AA5B002944E5 /* 1.png in Resources */,
 				7928D1E41CD33AA1000B4298 /* welcome－32（被拖移）.tiff in Resources */,
 				7928D1DC1CD33AA1000B4298 /* welcome－25（被拖移）.tiff in Resources */,
 				790085E11CCB735F007E5E58 /* WKGuideOverviewCell.xib in Resources */,
@@ -1474,6 +1509,7 @@
 				79EFB5201CCE17CC005D9B63 /* WKSearchDetailViewController.m in Sources */,
 				7907619D1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m in Sources */,
 				794D35031CCDB60600A90A99 /* WKRecommendSearchCityModel.m in Sources */,
+				79FEA3631CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m in Sources */,
 				79128A051CCF6BAD00FCCA55 /* WKTravelNoteDetailViewController.m in Sources */,
 				790CA8951CD110BF009547E7 /* UserInfoManager.m in Sources */,
 				7907618F1CC654170097EF89 /* WKWorldListModel.m in Sources */,
@@ -1486,6 +1522,7 @@
 				790085971CCB1A88007E5E58 /* WKGuideDetailSectionsModel.m in Sources */,
 				791DA5261CC77B52009D9093 /* WKStoryListTableViewCell.m in Sources */,
 				791603151CCE5DFE00D3F2FD /* VisualFormatLayout.m in Sources */,
+				79FEA3601CD2578A00F23D17 /* WKSearchLastTableViewController.m in Sources */,
 				793DBDC41CC6607A00A4E3CA /* WKMeHeadView.m in Sources */,
 				790085911CCB12C1007E5E58 /* WKGuideDetailModel.m in Sources */,
 				791603181CCE5F0E00D3F2FD /* UIImage+Part.m in Sources */,
@@ -1515,6 +1552,7 @@
 				7900859A1CCB58D9007E5E58 /* WKGuideUserModel.m in Sources */,
 				791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */,
 				7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */,
+				79FEA3671CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.m in Sources */,
 				793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */,
 				79C5FEC71CCA66F5004B61AA /* WKGuideViewController.m in Sources */,
 				791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */,

@@ -88,7 +88,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
 //        WKLog(@"%@", dataDic);
         WKRouteModel *model = [[WKRouteModel alloc]init];
         [model setValuesForKeysWithDictionary:dataDic];
-        [_headerDataArr addObject:model];
+        [self.headerDataArr addObject:model];
         for (NSDictionary *planDic in dataDic[@"plan_days"]) {
             for (NSDictionary *dic in planDic[@"plan_nodes"]) {
                 NSMutableDictionary *mDic = [[NSMutableDictionary alloc]initWithCapacity:0];
@@ -252,8 +252,11 @@ static NSString * const TableViewCellID = @"TableViewCellID";
 - (void)backClick {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
 - (void)shareClick {
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:@"shareshare~~~~(输入你想分享的内容)" shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToQzone,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,   nil] delegate:self];
+    WKRouteModel *routeModel = self.headerDataArr[0];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/plans/%@", routeModel.ID] shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToQzone,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,   nil] delegate:self];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

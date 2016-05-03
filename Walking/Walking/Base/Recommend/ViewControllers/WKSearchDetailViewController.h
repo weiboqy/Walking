@@ -11,7 +11,7 @@
 @interface WKSearchDetailViewController : UIViewController
 
 @property (nonatomic, copy) NSString *ID;
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *titles;
 
 
 @end

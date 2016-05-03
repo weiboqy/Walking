@@ -53,11 +53,16 @@
     [screenView addSubview:label];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(235, 602, 110, 30);
+    button.frame = image.frame;
     [button addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
     [screenView addSubview:button];
     
-    WKLog(@"%@", NSStringFromCGRect(label.frame));
+    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    button1.frame = label.frame;
+    [button1 addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
+    [screenView addSubview:button1];
+    
+//    WKLog(@"%@", NSStringFromCGRect(label.frame));
     
     // Do any additional setup after loading the view.
 }

@@ -40,7 +40,7 @@
     _meHeadView.headImage.userInteractionEnabled = YES;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
-    tap.numberOfTapsRequired = 2;
+    tap.numberOfTapsRequired = 1;
     tap.numberOfTouchesRequired = 1;
     [_meHeadView.headImage addGestureRecognizer:tap];
     
@@ -132,6 +132,7 @@
 
 //  点击登录注册按钮实现的方法
 - (void)loginAndRegistButton:(id)sender {
+    WKLogFun ;
     //已经登陆 ，取消登陆
     if (![[UserInfoManager getUserAuth] isEqualToString:@" "]) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提醒...." message:@"你已经登陆,是否取消登陆" preferredStyle:UIAlertControllerStyleAlert];
@@ -141,10 +142,12 @@
         UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [UserInfoManager cancelUserAuth];
             [UserInfoManager cancelUserID];
+            [_meHeadView.LoginAndRegistButton setTitle:[NSString stringWithFormat:@"你还没有登陆哦～～"] forState:UIControlStateNormal];
         }];
         [alertController addAction:action];
         [alertController addAction:action2];
         [self presentViewController:alertController animated:YES completion:nil];
+       
         
     }
     LoginViewController *loginVC = [[LoginViewController alloc]init];
