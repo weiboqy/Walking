@@ -7,12 +7,12 @@
 //
 
 #import "WKNavigtionBar.h"
-<<<<<<< HEAD
+
 //#import <objc/runtime.h>
-=======
 
 
->>>>>>> 44e637950167755bf88971890b258b5dc332aad6
+
+
 @implementation WKNavigtionBar
 //+ (void)initialize
 //{

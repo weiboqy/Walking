@@ -39,7 +39,7 @@
 #define RecommendStoryDetailURL @"http://api.breadtrip.com/v2/new_trip/spot/?spot_id=%@"  //精彩故事详情接口
 #define RecommendTableViewURL @"http://api.breadtrip.com/v5/index/"  //推荐的游记的 列表的  接口数据
 #define RecommendTableViewMoreURL @"http://api.breadtrip.com/v5/index/?lat=30.28275878622556&lng=120.1101822501681&next_start=%@&sign=b5c6a9c6260e3e4f8c954fa7306835c3%20"
-#define RecommendTableViewDetailURL @"http://api.breadtrip.com/trips/%@/waypoints/?gallery_mode=1&sign=a4d6a98d84562c66533a3eb834500ee1"//http://api.breadtrip.com/trips/2387285434/waypoints/?gallery_mode=1&sign=a4d6a98d84562c66533a3eb834500ee1    2387285434
+#define RecommendTableViewDetailURL @"http://api.breadtrip.com/trips/%@/waypoints/?gallery_mode=1&sign=a4d6a98d84562c66533a3eb834500ee1"//http://api.breadtrip.com/trips/2387309072/waypoints/?gallery_mode=1&sign=a4d6a98d84562c66533a3eb834500ee1    2387285434..2387309072
 
 #define  RecommendSearchURL @"http://api.breadtrip.com/search/?key=%@&start=%@&count=20&source=search&sign=0"//搜索 接口
 #define  RecommendSearchDetailURL  @"http://api.breadtrip.com/destination/place/3/%@/pois/all/?sort=default&start=%@&latitude=38.880918&longitude=121.546376&sign=e306b4ad817d9c2df47cd4097ac69244"

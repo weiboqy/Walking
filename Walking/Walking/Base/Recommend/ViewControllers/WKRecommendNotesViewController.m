@@ -14,7 +14,7 @@
 
 #define kNavigationAndStatusBarHeihght 64
 
-@interface WKRecommendNotesViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface WKRecommendNotesViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UITableView *listTableView;
 
@@ -53,6 +53,7 @@
 
 - (void)requestData{
     WKLog(@"ID:%@", _ID);
+    [SVProgressHUD showInfoWithStatus:@"正在加载中哦~~~"];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendTableViewDetailURL, _ID] parDic:@{} finish:^(NSData *data) {
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -81,9 +82,10 @@
             }
         }
 //        WKLog(@"photoModel:%f", [[self.dataArray[0] photoModel] h]);
-        
+         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self createListTableView];
 
-        dispatch_async(dispatch_get_main_queue(), ^{
           //头视图 的空间 赋值
             [self.listTableView reloadData];
             self.headView.titleLabel.text = _name;
@@ -96,15 +98,18 @@
             self.headView.daysLabel.text = [NSString stringWithFormat:@"%@", _day_count];
             self.headView.lovesLabel.text = [NSString stringWithFormat:@"%@",  _recommendations];
         });
-//
+
+        [SVProgressHUD dismiss];
     } error:^(NSError *error) {
         WKLog(@"error:%@", error);
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"数据加载失败!"];
     }];
 }
 
 - (void)createListTableView{
     
-    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     
     self.listTableView.dataSource = self;
     self.listTableView.delegate = self;
@@ -115,10 +120,9 @@
     _headView.frame = CGRectMake(0, 0, kScreenWidth, (345/667.0) * kScreenHeight);
     [_headView handleImage];//处理图片
     self.listTableView.tableHeaderView = _headView;
-    
-#warning mark --- cellHeight-----
-//    self.listTableView.rowHeight = UITableViewAutomaticDimension;
-//    self.listTableView.estimatedRowHeight = 20;
+
+    self.listTableView.rowHeight = UITableViewAutomaticDimension;
+    self.listTableView.estimatedRowHeight = 20;
     
     [self.view addSubview:self.listTableView];
 }
@@ -126,15 +130,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.navigationController.navigationBar.translucent = NO;
-//    self.tabBarController.tabBar.translucent = NO;
     self.view.backgroundColor = ColorGlobal;
-//    self.title = @"精彩游记";
-    [self createListTableView];
+
     [self requestData];
-    
-//    [self addCustomNagationBar];
-//    [self buildNavigationBar];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -200,9 +199,8 @@
         UILongPressGestureRecognizer *longTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTap:)];
         [imageV addGestureRecognizer:longTap];
         [imageV addGestureRecognizer:tap];
+        
         [_scrollView addSubview:textView];
-//        [scrollView addSubview:view];
-//        [scrollView addSubview:_scroView];
         [_scrollView addSubview:imageV];
     }
     //添加下边的滑动条
@@ -214,66 +212,122 @@
     [_imView addSubview:_scrollView];
     [_imView addSubview:view];
     [_imView addSubview:self.scroView];
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction: )];
-//    [_imView addGestureRecognizer:tap];
     
     [self.view addSubview:_imView];
-
-    
-//    [[UIApplication sharedApplication].keyWindow addSubview:_imView];
-
 }
-- (void)longTap:(UILongPressGestureRecognizer *)longTap{
+- (void)longTap:(UILongPressGestureRecognizer *)longTap {
     WKLog(@"长按了图片。。。");
     
-    
     UIAlertController *alertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"下载图片" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"保存图片" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         WKLog(@" 执行 下载 ");
+        
+        NSInteger count =  self.scrollView.contentOffset.x/kScreenWidth;//从 0 开始的整数
+        //保存到相册
+        UIImageView *imageVV = [[UIImageView alloc] init];
+        NSString *str =  [self.dataArray[count] photo];
+        [imageVV sd_setImageWithURL:[NSURL URLWithString:str]];
+        UIImageWriteToSavedPhotosAlbum(imageVV.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        
+        
     }];
-    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        WKLog(@" 相 册 ");
+        //点击相册的按钮 之后执行的方法
+        UIImagePickerController *pickerV = [[UIImagePickerController alloc] init];
+        pickerV.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;//指定弹出的类型
+        pickerV.delegate = self;
+        pickerV.allowsEditing = YES;//打开相册选取是  对照片的编辑是否打开
+        [self presentViewController:pickerV animated:YES completion:nil];
+    }];
+    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         WKLog(@"取消了 下载");
     }];
+    
     [alertC addAction:action1];
     [alertC addAction:action2];
+    [alertC addAction:action3];
     [self.navigationController presentViewController:alertC animated:YES completion:nil];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    
+    if (error == nil) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
+        view.layer.cornerRadius = 8/375.0 * kScreenWidth;
+        view.layer.masksToBounds = YES;
+        view.backgroundColor = [UIColor grayColor];
+        CGPoint p =  _imView.center;
+        view.center = p;
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100/375.0 * kScreenWidth, 30/667.0 *kScreenHeight)];
+        label.text = @"保存成功!";
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [UIColor whiteColor];
+        label.font = [UIFont systemFontOfSize:13/375.0 * kScreenWidth];
+//        label.backgroundColor = [UIColor yellowColor];
+        label.center = p;
+        [_imView addSubview:view];
+        [_imView addSubview:label];
+        
+        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+        dispatch_after(time, dispatch_get_main_queue(), ^{
+//            WKLog(@"000000miao");
+            [view removeFromSuperview];
+            [label removeFromSuperview];
+        });
+        WKLog(@"添加成功到 相册");
+        
+    }else{
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
+        view.layer.cornerRadius = 8/375.0 * kScreenWidth;
+        view.layer.masksToBounds = YES;
+        view.backgroundColor = [UIColor grayColor];
+        CGPoint p =  _imView.center;
+        view.center = p;
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100/375.0 * kScreenWidth, 30/667.0 *kScreenHeight)];
+        label.text = @"保存失败!";
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [UIColor whiteColor];
+        label.font = [UIFont systemFontOfSize:13/375.0 * kScreenWidth];
+        //        label.backgroundColor = [UIColor yellowColor];
+        label.center = p;
+        [_imView addSubview:view];
+        [_imView addSubview:label];
+        
+        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+        dispatch_after(time, dispatch_get_main_queue(), ^{
+            //            WKLog(@"000000miao");
+            [view removeFromSuperview];
+            [label removeFromSuperview];
+        });
+        WKLog(@"添加失败");
+    }
 }
 //删除 显示的图片
 - (void)tapAction:(UITapGestureRecognizer *)tap{
-    WKLog(@"触摸了屏幕");
+//    WKLog(@"触摸了屏幕");
 //    self.navigationController.navigationBarHidden = NO;
     [_imView removeFromSuperview];
     self.scroView = nil;
- 
 
-    CGFloat flo = self.listTableView.contentSize.height /self.dataArray.count;
-    //返回到  滚动到的位置
-//    self.listTableView.contentOffset = CGPointMake( 0, flo * self.scrollView.contentOffset.x/ kScreenWidth - 300);//(300/667.0) * kScreenHeight +
-    //这个只是选中
-//    NSInteger index = [self.scrollView.contentOffset/ kScreenWidth cgf;
-//    NSIndexPath *indexpath = [NSIndexPath indexPathForRow: inSection:0];
-//    [self.listTableView deselectRowAtIndexPath:indexpath animated:NO];
-    // 当前选中
-//    NSIndexPath *index = [NSIndexPath indexPathForRow:0 inSection:0];
-//    [self.listTableView selectRowAtIndexPath:index animated:NO scrollPosition:UITableViewScrollPositionNone];
-    
- 
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    WKLog(@"滚动结束了");
+//    WKLog(@"滚动结束了");
+    
     CGFloat flo =  (kScreenWidth - 20) / self.dataArray.count;
-//    if (self.scroView) {
-//        WKLog(@"scroView....滚动结束了");
-//        self.scroView.frame = CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, flo * (scrollView.contentOffset.x / kScreenWidth + 1), (3/667.0) * kScreenHeight);
-//    }
+    if (self.scroView) {
+        WKLog(@"scroView....滚动结束了");
+        self.scroView.frame = CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, flo * (scrollView.contentOffset.x / kScreenWidth + 1), (3/667.0) * kScreenHeight);
+    }
 }
 
 //#warning =--------has wenti--------
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    WKRecommendNotesDetailModel *model = self.dataArray[indexPath.row];
-
-    return  600;///[model cellsHeightWithImageH:model.photoModel.h imageW:model.photoModel.w  textStr:model.text]
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    WKRecommendNotesDetailModel *model = self.dataArray[indexPath.row];
+//    return  600;//[model cellsHeightWithImageH:model.photoModel.h imageW:model.photoModel.w  textStr:model.text]
+//}
 
 
 

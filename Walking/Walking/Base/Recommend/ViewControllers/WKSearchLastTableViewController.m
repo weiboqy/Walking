@@ -8,7 +8,8 @@
 
 #import "WKSearchLastTableViewController.h"
 #import "WKSearchLastTableViewControllerModel.h"
-#import "WKSearchLastTableViewControllerCell.h"//WKSearchLastTableViewControllerCell
+#import "WKSearchLastTableViewControllerCell.h"
+
 
 @interface WKSearchLastTableViewController ()//<UITableViewDataSource, UITableViewDelegate>
 
@@ -26,9 +27,8 @@
     }
     return _dataArray;
 }
-
-
 - (void)requestData{
+    [SVProgressHUD show];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendSearchLastDetailURL, _ID] parDic:@{} finish:^(NSData *data) {
         
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -45,9 +45,11 @@
             [self.tableView reloadData];
     
         });
-        
+        [SVProgressHUD dismiss];
     } error:^(NSError *error) {
         WKLog(@"error%@", error);
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
 }
 
@@ -62,7 +64,7 @@
     self.tableView.showsVerticalScrollIndicator = NO;
     
     UIImageView *headImageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 220/667.0*kScreenHeight)];
-//    view.backgroundColor = [UIColor redColor];
+
 
     [headImageV sd_setImageWithURL:[NSURL URLWithString:_headImageURL] placeholderImage:PLACEHOLDER];
     headImageV.contentMode = UIViewContentModeScaleToFill;
@@ -72,8 +74,9 @@
     
     //去掉 横线
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
-    self.tableView.bounces = NO;
+//    self.tableView.bounces = NO;
     [self requestData];
+
     
 }
 

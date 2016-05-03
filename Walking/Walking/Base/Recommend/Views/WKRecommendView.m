@@ -36,11 +36,9 @@
         self.moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.moreButton.frame = CGRectMake(self.bounds.size.width - 60/375.0*kScreenWidth, self.headScrolView.frame.size.height + 5/667.0*kScreenHeight, 50/375.0*kScreenWidth, 30/667.0*kScreenHeight);
         [self.moreButton setTitle: @"更多" forState:UIControlStateNormal];
-//        _moreButton font = [UIFont systemFontOfSize:17.0/375*kScreenWidth];
-        [self.moreButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-//        [self.moreButton setTitle:@"更多" forState:UIControlStateHighlighted];
-//        [self.moreButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-//        [self.moreButton addTarget:self action:@selector(buttonAction) forControlEvents:(UIControlEventTouchDown)];
+        _moreButton.titleLabel.font = [UIFont systemFontOfSize:17.0/375*kScreenWidth];
+        [self.moreButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [self.moreButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         [self addSubview:self.moreButton];
         
         //创建celloctionView
@@ -53,7 +51,8 @@
         
         UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(25/375.0*kScreenWidth, self.collectionView.frame.origin.y + self.collectionView.frame.size.height + 5/667.0*kScreenHeight, 200/375.0*kScreenWidth, 30/667.0*kScreenHeight)];//535
         label2.text = @"精彩游记";
-        
+        label2.font = [UIFont systemFontOfSize:17.0/375*kScreenWidth];
+
         [self addSubview:label2];
     }
     return self;
