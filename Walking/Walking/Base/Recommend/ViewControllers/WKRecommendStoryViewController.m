@@ -164,10 +164,18 @@ static NSString * const imageCellID = @"listCell";
         [_itemLove setImage:[UIImage imageNamed:@"五角星（空）"]];
         _isTure = NO;
     }
-    }
+}
+
 - (void)share{
     WKLog(@"分享");
     
+
+}
+
+
+-(void)backClick {
+    [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 

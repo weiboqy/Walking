@@ -8,10 +8,6 @@
 
 #import "WKNavigtionBar.h"
 
-//#import <objc/runtime.h>
-
-
-
 
 @implementation WKNavigtionBar
 //+ (void)initialize

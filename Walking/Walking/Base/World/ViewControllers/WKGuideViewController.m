@@ -99,7 +99,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     
     // 显示指示器
     [SVProgressHUD showInfoWithStatus:@"正在加载哦~~~"];
-//    WKLog(@"ID = %@", _ID);
+    WKLog(@"ID = %@", _ID);
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:@"http://chanyouji.com/api/wiki/destinations/%@.json?page=1", _ID] parDic:@{} finish:^(NSData *data) {
         NSArray *dataArr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSDictionary *dic = dataArr[0];
@@ -261,13 +261,9 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 //    [share1 setImage:[UIImage imageNamed:@"五角星"] forState:UIControlStateNormal];
 //    [share1 addTarget:self action:@selector(shareClick) forControlEvents:UIControlEventTouchUpInside];
 //    [_customNavigationBar addSubview:share1];
+   
     
-    UIButton *share2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [share2 setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
-    [share2 addTarget:self action:@selector(shareClick) forControlEvents:UIControlEventTouchUpInside];
-    [_customNavigationBar addSubview:share2];
-    
-    views = NSDictionaryOfVariableBindings(_navigationBangroundImageView, _navigationTitle, _infoButton,  share2);
+    views = NSDictionaryOfVariableBindings(_navigationBangroundImageView, _navigationTitle, _infoButton);
     // 使用UIBlurEffect来制作毛玻璃
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
@@ -278,14 +274,10 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     metrics = @{@"WB":@(34)};
     visualFormats =  @[@"H:|[_navigationBangroundImageView]|",
                        @"H:|-[_infoButton(==WB)]-(-20)-[_navigationTitle]|",
-//                       @"H:|-WB-[_navigationTitle]-[share1(==100)]-|",
-                       @"H:|-WB-[_navigationTitle]-[share2(==WB)]-|",
                        @"H:|[_infoButton(==60)]|",
                        @"V:|[_navigationBangroundImageView]|",
                        @"V:|-[_navigationTitle(==50)]|",
                        @"V:|-[_infoButton(==50)]|",
-//                       @"V:|-[share1(==50)]|",
-                       @"V:|-[share2(==50)]|",
                        ];
     [VisualFormatLayout autoLayout:_customNavigationBar visualFormats:visualFormats metrics:metrics views:views];
 }
@@ -294,6 +286,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 - (void)viewWillAppear:(BOOL)animated {
     _customNavigationBar.alpha = 0.1;
 }
+
 // 导航条随着滚动而透明度变化
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat threholdHeight = _bannerImageView.frame.size.height - kNavigationAndStatusBarHeihght;
@@ -311,15 +304,12 @@ static NSString * const tableHeaderID = @"tableHeaderID";
         _customNavigationBar.alpha = 1.0;
     }
 }
+
 // 返回按钮
 - (void)backClick {
     [self.navigationController popViewControllerAnimated:YES];
 }
-// 分享按钮
-- (void)shareClick {
-//    WKLogFun;
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:@"shareshare~~~~(输入你想分享的内容" shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToQzone,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,nil] delegate:self];
-}
+
 #pragma  mark -----TabvlewView代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataArr.count;

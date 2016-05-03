@@ -7,6 +7,7 @@
 //
 
 #import "WKSubjectDetailViewController.h"
+#import "WKSubjectModel.h"
 #import "WKSubjectDetailModel.h"
 #import "WKSubjectDetailSectionsModel.h"
 #import "WKSubjectImageTableViewCell.h"
@@ -16,6 +17,7 @@
 
 @property (nonatomic, strong) NSMutableArray *headArray;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (strong, nonatomic) NSMutableArray *shareArr;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) UIView *customNavigationBar;
@@ -29,6 +31,13 @@
 static NSString * const ImageCellID = @"imageCell";
 
 @implementation WKSubjectDetailViewController
+
+- (NSMutableArray *)shareArr {
+    if (!_shareArr) {
+        _shareArr = [[NSMutableArray alloc]initWithCapacity:0];
+    }
+    return _shareArr;
+}
 
 - (NSMutableArray *)headArray {
     if (!_headArray) {
@@ -47,10 +56,13 @@ static NSString * const ImageCellID = @"imageCell";
     // 显示指示器
 //    [SVProgressHUD show];
     // ID请求参数
-//    WKLog(@"ID = %@",_ID);
+    WKLog(@"ID = %@",_ID);
     NSString *url = [NSString stringWithFormat:@"http://chanyouji.com/api/articles/%@.json?page=1",_ID];
     [NetWorkRequestManager requestWithType:GET urlString:url parDic:@{} finish:^(NSData *data) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+        WKSubjectModel *model = [[WKSubjectModel alloc]init];
+        [model setValuesForKeysWithDictionary:dic];
+        [self.shareArr addObject:model];
         WKSubjectDetailModel *detailModel = [[WKSubjectDetailModel alloc] init];
         [detailModel setValuesForKeysWithDictionary:dic];
         
@@ -135,6 +147,12 @@ static NSString * const ImageCellID = @"imageCell";
     titleBtn.frame = CGRectMake(88, 8, 199, 30);
     [titleBtn setTitle:self.name forState:UIControlStateNormal];
     [titleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    shareBtn.frame = CGRectMake(kScreenWidth - 50, 10, 50, 30);
+    [shareBtn setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
+    [shareBtn addTarget:self action:@selector(shareClick) forControlEvents:UIControlEventTouchUpInside];
+    [bar addSubview:shareBtn];
     
     [bar addSubview:titleBtn];
 
@@ -242,6 +260,12 @@ static NSString * const ImageCellID = @"imageCell";
 //    WKLogFun;
 //    [self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// 分享按钮
+- (void)shareClick {
+    WKSubjectModel *model = self.shareArr[0];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/articles/%@", model.ID] shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina, UMShareToQQ, UMShareToQzone,UMShareToWechatSession, UMShareToWechatTimeline ,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,nil] delegate:self];
 }
 // 创建头视图
 - (void)createHeadeView {

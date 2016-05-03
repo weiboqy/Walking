@@ -85,6 +85,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
         NSDictionary *DataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         WKTravelNoteModel *noteModel = [[WKTravelNoteModel alloc]init];
         [noteModel setValuesForKeysWithDictionary:DataDic];
+        [self.headerDataArr addObject:noteModel];
         NSArray *tripArr = DataDic[@"trip_days"];
         
 //        WKLog(@"Note desc = %@", noteModel.notesModel.descriptioN);
@@ -215,8 +216,8 @@ static NSString * const TableViewCellID = @"TableViewCellID";
 }
 // 分享按钮
 - (void)shareClick {
-    WKLogFun;
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:@"shareshare~~~~(输入你想分享的内容)" shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToQzone,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,   nil] delegate:self];
+    WKTravelNoteModel *noteModel = self.headerDataArr[0];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/trips/%@", noteModel.ID] shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina, UMShareToQQ, UMShareToQzone,UMShareToWechatSession, UMShareToWechatTimeline ,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,nil] delegate:self];
 }
 
 - (void) setupSubViews {
