@@ -111,8 +111,11 @@
 // 选取图片之后执行的方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     NSLog(@"%@",info);
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    _meHeadView.headImage.image = image;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        _meHeadView.headImage.image = image;
+    });
     [picker dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -123,7 +126,11 @@
     [super viewWillAppear:animated];
     if (![[UserInfoManager getUserID] isEqualToString:@" "] ) {
         [_meHeadView.LoginAndRegistButton setTitle:[NSString stringWithFormat:@"%@", [UserInfoManager getUserName]] forState:UIControlStateNormal];
-        [_meHeadView.headImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [UserInfoManager getUsercoverimg]]]];
+        if (![[UserInfoManager getUserAuth] isEqualToString:@" "]) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imagePickerController:didFinishPickingMediaWithInfo:) name:@"ee" object:nil];
+        } else {
+            [_meHeadView.headImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [UserInfoManager getUsercoverimg]]]];
+        }
     }else {
         return;
     }
@@ -165,6 +172,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = ColorGlobal;
 //    [self.navigationController setNavigationBarHidden:YES];
     // 显示头logo
     [self setTitleImage];
@@ -316,6 +324,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.1;
 }
+
 
 #pragma mark -UIAlertViewDelegate-
 

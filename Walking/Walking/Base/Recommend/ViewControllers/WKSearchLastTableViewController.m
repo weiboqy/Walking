@@ -11,7 +11,7 @@
 #import "WKSearchLastTableViewControllerCell.h"
 
 
-@interface WKSearchLastTableViewController ()//<UITableViewDataSource, UITableViewDelegate>
+@interface WKSearchLastTableViewController ()
 
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -53,9 +53,16 @@
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //隐藏掉 导航栏
+//    self.navigationController.navigationBarHidden = YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    self.tableView.frame = CGRectMake(0, 100, kScreenWidth, kScreenHeight);
     
     [self.tableView registerNib:[UINib nibWithNibName:@"WKSearchLastTableViewControllerCell" bundle:nil] forCellReuseIdentifier:@"searchLast"];
     
