@@ -18,6 +18,7 @@
 //@property (nonatomic, copy) NSString *text;//第一条标题
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NSString *photo_s;
+@property (nonatomic, copy) NSString *spot_id;
 
 @property (nonatomic, assign) CGRect  textFrame;
 @property (nonatomic, assign) CGRect  imageFrame;

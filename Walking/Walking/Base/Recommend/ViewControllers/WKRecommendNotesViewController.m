@@ -11,10 +11,11 @@
 #import "WKNotesListHeadView.h"
 #import "NetWorkRequestManager.h"
 #import "WKRecommendNotesDetailModel.h"
+#import "UMSocial.h"
 
 #define kNavigationAndStatusBarHeihght 64
 
-@interface WKRecommendNotesViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface WKRecommendNotesViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UMSocialUIDelegate>
 
 @property (strong, nonatomic) UITableView *listTableView;
 
@@ -38,6 +39,11 @@
 @property (nonatomic, strong) UIImageView *bannerImageView;
 @property (nonatomic, strong) UIButton *infoButton;
 
+//收藏分享
+@property (nonatomic, strong) UIBarButtonItem *itemLove;
+@property (nonatomic, assign) BOOL isTure;
+
+
 @end
 
 @implementation WKRecommendNotesViewController
@@ -53,7 +59,7 @@
 
 - (void)requestData{
     WKLog(@"ID:%@", _ID);
-    [SVProgressHUD showInfoWithStatus:@"正在加载中哦~~~"];
+    [SVProgressHUD show];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendTableViewDetailURL, _ID] parDic:@{} finish:^(NSData *data) {
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -103,7 +109,7 @@
     } error:^(NSError *error) {
         WKLog(@"error:%@", error);
         [SVProgressHUD dismiss];
-        [SVProgressHUD showErrorWithStatus:@"数据加载失败!"];
+        [SVProgressHUD showErrorWithStatus:@"加载失败!"];
     }];
 }
 
@@ -134,8 +140,32 @@
 
     [self requestData];
 
+    
+    UIBarButtonItem *itemShare = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"分享"] style:UIBarButtonItemStylePlain target:self action:@selector(share)];
+    _itemLove = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"五角星（空）"] style:UIBarButtonItemStylePlain target:self action:@selector(love)];
+    
+    self.navigationItem.rightBarButtonItems = @[itemShare, _itemLove];
+    
     // Do any additional setup after loading the view from its nib.
 }
+
+- (void)love{
+    WKLog(@"收藏");
+    if (!_isTure) {
+        [_itemLove setImage:[UIImage imageNamed:@"五角星（满）"]];
+        _isTure = YES;
+    }else{
+        [_itemLove setImage:[UIImage imageNamed:@"五角星（空）"]];
+        _isTure = NO;
+    }
+}
+
+- (void)share{
+    WKLog(@"分享");
+    
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/articles/"] shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina, UMShareToQQ, UMShareToQzone,UMShareToWechatSession, UMShareToWechatTimeline ,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,nil] delegate:self];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArray.count;
@@ -253,7 +283,7 @@
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
     
     if (error == nil) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 160/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
         view.layer.cornerRadius = 8/375.0 * kScreenWidth;
         view.layer.masksToBounds = YES;
         view.backgroundColor = [UIColor grayColor];
@@ -264,7 +294,7 @@
         label.text = @"保存成功!";
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = [UIColor whiteColor];
-        label.font = [UIFont systemFontOfSize:13/375.0 * kScreenWidth];
+        label.font = [UIFont systemFontOfSize:16/375.0 * kScreenWidth];
 //        label.backgroundColor = [UIColor yellowColor];
         label.center = p;
         [_imView addSubview:view];
