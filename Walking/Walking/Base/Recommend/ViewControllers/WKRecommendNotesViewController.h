@@ -11,6 +11,6 @@
 @interface WKRecommendNotesViewController : UIViewController
 
 @property (nonatomic, copy) NSString *ID;
-
+@property (nonatomic, copy) NSString *cover_image;
 
 @end

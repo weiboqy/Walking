@@ -73,13 +73,11 @@
 }
 
 - (void)requestDataForCollectionwithStartLoaction:(NSInteger)startLocation{
-    
-//    [SVProgressHUD show];
+
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat: RecommendStoryURL, startLocation] parDic:@{} finish:^(NSData *data) {
        
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //        NSLog(@"%@", dicData);
-        
         NSArray *array = dicData[@"data"][@"hot_spot_list"];
         for (NSDictionary *dic in array) {
             WKRecommendStoryModel *storyModel = [[WKRecommendStoryModel alloc] init];
@@ -90,23 +88,17 @@
             [storyModel setValuesForKeysWithDictionary:dic[@"user"]];
             [self.dataArray addObject:storyModel];
         }
-        
 //        WKLog(@"%@, %ld", [self.dataArray[0] spot_id], self.dataArray.count);
         //回到主线程刷新UI
         dispatch_async(dispatch_get_main_queue(), ^{
-            
             [self.headView.collectionView reloadData];
             //取消显示 加载数据框
             if (self.alertC) {
                 [self.alertC dismissViewControllerAnimated:YES completion:nil];
             }
-            
         });
-//        [SVProgressHUD dismiss];
     } error:^(NSError *error) {
         WKLog(@"error%@", error);
-//        [SVProgressHUD dismiss];
-//        [SVProgressHUD showErrorWithStatus:@"加载失败!"];
     }];
 }
 //请求  轮播图  tableView的数据
@@ -458,6 +450,7 @@
     [_searchBar resignFirstResponder];
     WKRecommendNotesViewController *notesVc = [[WKRecommendNotesViewController alloc] init];
     notesVc.ID = [self.tableViewDataArray[indexPath.row] ID];
+    notesVc.cover_image = [self.tableViewDataArray[indexPath.row] cover_image];
     [self.navigationController pushViewController:notesVc animated:YES];
 }
 
