@@ -14,19 +14,22 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.icon.layer.cornerRadius = 30;
+        self.icon.layer.cornerRadius = 30/375.0 * kScreenWidth;
         self.icon.layer.masksToBounds = YES;
-        self.view.layer.cornerRadius = 5;
+        self.view.layer.cornerRadius = 5/375.0 * kScreenWidth;
         self.view.layer.masksToBounds = YES;
     }
     return self;
 }
 
 - (void)initializeData{
-    self.icon.layer.cornerRadius = 28;
+    
+    self.icon.layer.cornerRadius = 28/375.0 * kScreenWidth;
     self.icon.layer.masksToBounds = YES;
-    self.view.layer.cornerRadius = 5;
-//    self.view.layer.masksToBounds = YES;
+    self.view.layer.cornerRadius = 5/375.0 * kScreenWidth;
+    self.view.layer.masksToBounds = YES;
+//    CGPoint p = CGPointMake(0, .0);
+//    self.TLabel.frame.origin = p;
     
 }
 

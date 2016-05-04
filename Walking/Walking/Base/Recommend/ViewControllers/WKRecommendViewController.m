@@ -278,6 +278,7 @@
     _startLocation += 12;
     [self requestDataForCollectionwithStartLoaction:_startLocation];
 
+    //弹出提示 框
     _alertC = [UIAlertController alertControllerWithTitle:@"加载中.." message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [self.navigationController presentViewController:_alertC animated:YES completion:nil];
     //滚动的  item
@@ -285,6 +286,7 @@
     p = CGPointMake( kScreenWidth-14/375.0 * kScreenWidth + p.x, 0);
     [self.headView.collectionView setContentOffset:p animated:YES];
   
+
 }
 
 - (void)loadNewData{

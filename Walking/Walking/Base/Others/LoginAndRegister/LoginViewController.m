@@ -13,7 +13,7 @@
 #import "UMSocialAccountManager.h"
 
 
-@interface LoginViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface LoginViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *emailTF;
 @property (strong, nonatomic) IBOutlet UITextField *passworldTF;
@@ -27,6 +27,11 @@
 @end
 
 @implementation LoginViewController
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.emailTF resignFirstResponder];
+    [self.passworldTF resignFirstResponder];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

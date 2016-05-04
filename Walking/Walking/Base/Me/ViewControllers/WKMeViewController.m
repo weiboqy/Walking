@@ -143,7 +143,7 @@
         UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [UserInfoManager cancelUserAuth];
             [UserInfoManager cancelUserID];
-            [_meHeadView.LoginAndRegistButton setTitle:[NSString stringWithFormat:@"你还没有登陆哦"] forState:UIControlStateNormal];
+            [_meHeadView.LoginAndRegistButton setTitle:[NSString stringWithFormat:@"登陆/注册"] forState:UIControlStateNormal];
             _meHeadView.headImage.image = [UIImage imageNamed:@"headImage"];
         }];
         [alertController addAction:action];

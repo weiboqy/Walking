@@ -14,12 +14,15 @@
 
 @property (nonatomic, strong) FMDatabase *dataBase;
 
-/*
+
 - (void)createDataTable;
-- (void)saveDetailModel:(ReadDetailModel *)detailModel;
-- (void)deleteDetailWithTiele:(NSString *)detailTitle;
-- (NSArray *)findWithUserID:(NSString *)userID;
-*/
+
+- (void)saveDetailID:(NSString *)ID title:(NSString *)title imageURL:(NSString *)imageURL type:(NSString *)type;
+
+- (void)deleteWithTitle:(NSString *)title;
+
+- (NSArray *)findWithID:(NSString *)ID;
+
 
 
 

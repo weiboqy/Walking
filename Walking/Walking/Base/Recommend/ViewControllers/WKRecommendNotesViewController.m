@@ -12,6 +12,8 @@
 #import "NetWorkRequestManager.h"
 #import "WKRecommendNotesDetailModel.h"
 #import "UMSocial.h"
+#import "WKRecommendDB.h"
+#import "LoginViewController.h"
 
 #define kNavigationAndStatusBarHeihght 64
 
@@ -58,7 +60,6 @@
 
 
 - (void)requestData{
-//    WKLog(@"ID:%@", _ID);
     [SVProgressHUD showInfoWithStatus:@"正在加载中哦~~~"];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendTableViewDetailURL, _ID] parDic:@{} finish:^(NSData *data) {
         
@@ -107,13 +108,13 @@
         [SVProgressHUD dismiss];
     } error:^(NSError *error) {
         WKLog(@"error:%@", error);
-        [SVProgressHUD showErrorWithStatus:@"数据加载失败!"];
+        [SVProgressHUD showErrorWithStatus:@"加载失败!"];
     }];
 }
 
 - (void)createListTableView{
     
-    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     
     self.listTableView.dataSource = self;
     self.listTableView.delegate = self;
@@ -134,29 +135,49 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = ColorGlobal;
 
     [self requestData];
 
-    
     UIBarButtonItem *itemShare = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"分享"] style:UIBarButtonItemStylePlain target:self action:@selector(share)];
     _itemLove = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"五角星（空）"] style:UIBarButtonItemStylePlain target:self action:@selector(love)];
     
     self.navigationItem.rightBarButtonItems = @[itemShare, _itemLove];
     
+    WKRecommendDB *db = [[WKRecommendDB alloc] init];
+    NSArray *array = [db findWithID:_ID];
+    if (!array.count == 0) {
+        [_itemLove setImage:[UIImage imageNamed:@"五角星（满）"]];
+    }
+
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)love{
     WKLog(@"收藏");
-    if (!_isTure) {
+    
+    if (![[UserInfoManager getUserID] isEqualToString:@" "]) {
+        // 创建数据表
+        WKRecommendDB *db = [[WKRecommendDB alloc] init];
+        [db createDataTable];
+        // 查询数据是否存储，如果存储就取消存储
+        NSArray *array = [db findWithID:_ID];
+        if (!array.count == 0) {
+            [db deleteWithTitle:_name];
+            [_itemLove setImage:[UIImage imageNamed:@"五角星（空）"]];
+            return;
+        }
+        // 否则，调用保存方法进行存储  http://api.breadtrip.com/trips/%@/waypoints/?gallery_mode=1&sign=a4d6a98d84562c66533a3eb834500ee1
+        [db saveDetailID:_ID title:_name imageURL:_cover_image type:@"travel"];
         [_itemLove setImage:[UIImage imageNamed:@"五角星（满）"]];
-        _isTure = YES;
     }else{
-        [_itemLove setImage:[UIImage imageNamed:@"五角星（空）"]];
-        _isTure = NO;
+        WKLog(@"请先登陆");
+        LoginViewController *logVC = [[LoginViewController alloc] init];
+        [self presentViewController:logVC animated:YES completion:nil];
     }
 }
+
 
 - (void)share{
     WKLog(@"分享");
@@ -292,8 +313,8 @@
         label.text = @"保存成功!";
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = [UIColor whiteColor];
-        label.font = [UIFont systemFontOfSize:16/375.0 * kScreenWidth];
-//        label.backgroundColor = [UIColor yellowColor];
+        label.font = [UIFont systemFontOfSize:13/375.0 * kScreenWidth];
+
         label.center = p;
         [_imView addSubview:view];
         [_imView addSubview:label];

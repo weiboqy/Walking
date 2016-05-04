@@ -52,13 +52,13 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="此故事由  收录于" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pe9-dM-lVc">
-                    <rect key="frame" x="219" y="80" width="128" height="21"/>
+                    <rect key="frame" x="219" y="60" width="128" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="null" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeT-RC-0VC" userLabel="name">
-                    <rect key="frame" x="267" y="103" width="32" height="24"/>
+                    <rect key="frame" x="267" y="83" width="32" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@
                 <constraint firstItem="Pe9-dM-lVc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8g9-qp-URQ"/>
                 <constraint firstAttribute="bottom" secondItem="HGp-Ti-17r" secondAttribute="bottom" id="IE9-HO-xCa"/>
                 <constraint firstItem="zeT-RC-0VC" firstAttribute="top" secondItem="Pe9-dM-lVc" secondAttribute="bottom" constant="2" id="LfA-eh-1Km"/>
-                <constraint firstItem="Pe9-dM-lVc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="OfA-pd-Fom"/>
+                <constraint firstItem="Pe9-dM-lVc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="OfA-pd-Fom"/>
                 <constraint firstAttribute="trailing" secondItem="HGp-Ti-17r" secondAttribute="trailing" id="UvY-CA-mt4"/>
                 <constraint firstAttribute="trailing" secondItem="haW-NK-eSr" secondAttribute="trailing" id="VQs-wZ-smE"/>
                 <constraint firstAttribute="bottom" secondItem="haW-NK-eSr" secondAttribute="bottom" id="Zln-nl-aHG"/>
