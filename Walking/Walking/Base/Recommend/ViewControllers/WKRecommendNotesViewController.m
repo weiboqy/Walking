@@ -15,11 +15,7 @@
 
 #define kNavigationAndStatusBarHeihght 64
 
-<<<<<<< HEAD
-@interface WKRecommendNotesViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-=======
 @interface WKRecommendNotesViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UMSocialUIDelegate>
->>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
 
 @property (strong, nonatomic) UITableView *listTableView;
 
@@ -62,12 +58,8 @@
 
 
 - (void)requestData{
-    WKLog(@"ID:%@", _ID);
-<<<<<<< HEAD
+//    WKLog(@"ID:%@", _ID);
     [SVProgressHUD showInfoWithStatus:@"正在加载中哦~~~"];
-=======
-    [SVProgressHUD show];
->>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendTableViewDetailURL, _ID] parDic:@{} finish:^(NSData *data) {
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -116,12 +108,7 @@
         [SVProgressHUD dismiss];
     } error:^(NSError *error) {
         WKLog(@"error:%@", error);
-        [SVProgressHUD dismiss];
-<<<<<<< HEAD
         [SVProgressHUD showErrorWithStatus:@"数据加载失败!"];
-=======
-        [SVProgressHUD showErrorWithStatus:@"加载失败!"];
->>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
     }];
 }
 
@@ -152,15 +139,12 @@
 
     [self requestData];
 
-<<<<<<< HEAD
-=======
     
     UIBarButtonItem *itemShare = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"分享"] style:UIBarButtonItemStylePlain target:self action:@selector(share)];
     _itemLove = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"五角星（空）"] style:UIBarButtonItemStylePlain target:self action:@selector(love)];
     
     self.navigationItem.rightBarButtonItems = @[itemShare, _itemLove];
     
->>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -298,11 +282,7 @@
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
     
     if (error == nil) {
-<<<<<<< HEAD
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
-=======
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 160/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
->>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
         view.layer.cornerRadius = 8/375.0 * kScreenWidth;
         view.layer.masksToBounds = YES;
         view.backgroundColor = [UIColor grayColor];
@@ -313,11 +293,7 @@
         label.text = @"保存成功!";
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = [UIColor whiteColor];
-<<<<<<< HEAD
-        label.font = [UIFont systemFontOfSize:13/375.0 * kScreenWidth];
-=======
         label.font = [UIFont systemFontOfSize:16/375.0 * kScreenWidth];
->>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
 //        label.backgroundColor = [UIColor yellowColor];
         label.center = p;
         [_imView addSubview:view];
