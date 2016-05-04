@@ -62,6 +62,7 @@
 		7914E35D1CC773BF001A0C5F /* WKforeignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35C1CC773BF001A0C5F /* WKforeignViewController.m */; };
 		7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */; };
 		7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */; };
+		7915A0051CD9DE0D00C13A7C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7915A0031CD9DDC700C13A7C /* ImageIO.framework */; };
 		791603071CCDB78B00D3F2FD /* UIImage+WKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603061CCDB78B00D3F2FD /* UIImage+WKExtension.m */; };
 		791603121CCE3CA800D3F2FD /* WKTravelNoteUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603111CCE3CA800D3F2FD /* WKTravelNoteUserModel.m */; };
 		791603151CCE5DFE00D3F2FD /* VisualFormatLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603141CCE5DFE00D3F2FD /* VisualFormatLayout.m */; };
@@ -328,6 +329,7 @@
 		7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKInlandViewController.m; sourceTree = "<group>"; };
 		7914E3611CC77A1B001A0C5F /* UIView+WKCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WKCustom.h"; sourceTree = "<group>"; };
 		7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WKCustom.m"; sourceTree = "<group>"; };
+		7915A0031CD9DDC700C13A7C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		791603051CCDB78B00D3F2FD /* UIImage+WKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WKExtension.h"; sourceTree = "<group>"; };
 		791603061CCDB78B00D3F2FD /* UIImage+WKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WKExtension.m"; sourceTree = "<group>"; };
 		7916030D1CCE3BE300D3F2FD /* WKTravelNoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelNoteModel.h; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7915A0051CD9DE0D00C13A7C /* ImageIO.framework in Frameworks */,
 				791D555B1CD233390083CB3E /* Security.framework in Frameworks */,
 				791D55991CD2339F0083CB3E /* libSocialWechat.a in Frameworks */,
 				791D559A1CD2339F0083CB3E /* libWeChatSDK.a in Frameworks */,
@@ -606,6 +609,7 @@
 		460FDDDAAF86AF4A4C6D6970 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7915A0031CD9DDC700C13A7C /* ImageIO.framework */,
 				791D555A1CD233390083CB3E /* Security.framework */,
 				791D55581CD2332E0083CB3E /* libiconv.tbd */,
 				791D55561CD233040083CB3E /* SystemConfiguration.framework */,
@@ -1287,7 +1291,7 @@
 				TargetAttributes = {
 					79FAC4851CC4E39F0068C093 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = F69QY6X9T7;
+						DevelopmentTeam = X4P4XDTS83;
 					};
 					79FAC49E1CC4E39F0068C093 = {
 						CreatedOnToolsVersion = 7.2;
@@ -1748,7 +1752,7 @@
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Walking2221g.Walking;
+				PRODUCT_BUNDLE_IDENTIFIER = Walking222g.Walking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1779,7 +1783,7 @@
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Walking2221g.Walking;
+				PRODUCT_BUNDLE_IDENTIFIER = Walking222g.Walking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
