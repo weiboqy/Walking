@@ -12,10 +12,15 @@
 #import "NetWorkRequestManager.h"
 #import "WKRecommendStoryDetailModel.h"
 #import "WKStoryListTableViewHeadCell.h"
+#import "UMSocial.h"
 
 #define kNavigationAndStatusBarHeihght 64
 
+<<<<<<< HEAD
 @interface WKRecommendStoryViewController ()<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+=======
+@interface WKRecommendStoryViewController ()<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UMSocialUIDelegate>
+>>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
 
 @property (strong, nonatomic) UITableView *listTableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -62,7 +67,11 @@ static NSString * const imageCellID = @"listCell";
 }
 
 - (void)requestData{
+<<<<<<< HEAD
     
+=======
+    WKLog(@"id:%@", _spot_id);
+>>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
     [SVProgressHUD show];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendStoryDetailURL, _spot_id] parDic:@{} finish:^(NSData *data) {
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -77,6 +86,7 @@ static NSString * const imageCellID = @"listCell";
         
         for (NSDictionary *dicN in dicT[@"spot"][@"detail_list"]) {
             WKRecommendStoryDetailModel *detailModel = [[WKRecommendStoryDetailModel alloc] init];
+//            [detailModel setValuesForKeysWithDictionary:dicT[@"spot"]];
             [detailModel setValuesForKeysWithDictionary:dicN];
             [self.dataArray addObject:detailModel];
         }
@@ -98,7 +108,11 @@ static NSString * const imageCellID = @"listCell";
         
         [SVProgressHUD dismiss];
         
+<<<<<<< HEAD
         [SVProgressHUD showErrorWithStatus:@"数据加载失败!"];
+=======
+        [SVProgressHUD showErrorWithStatus:@"加载失败!"];
+>>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
         
         
     }];
@@ -169,7 +183,11 @@ static NSString * const imageCellID = @"listCell";
 - (void)share{
     WKLog(@"分享");
     
+<<<<<<< HEAD
 
+=======
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/articles/"] shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina, UMShareToQQ, UMShareToQzone,UMShareToWechatSession, UMShareToWechatTimeline ,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,nil] delegate:self];
+>>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
 }
 
 
@@ -330,7 +348,11 @@ static NSString * const imageCellID = @"listCell";
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
     
     if (error == nil) {
+<<<<<<< HEAD
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
+=======
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 160/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
+>>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
         view.layer.cornerRadius = 8/375.0 * kScreenWidth;
         view.layer.masksToBounds = YES;
         view.backgroundColor = [UIColor grayColor];
@@ -341,7 +363,11 @@ static NSString * const imageCellID = @"listCell";
         label.text = @"保存成功!";
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = [UIColor whiteColor];
+<<<<<<< HEAD
         label.font = [UIFont systemFontOfSize:13/375.0 * kScreenWidth];
+=======
+        label.font = [UIFont systemFontOfSize:16/375.0 * kScreenWidth];
+>>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
         //        label.backgroundColor = [UIColor yellowColor];
         label.center = p;
         [_imView addSubview:view];

@@ -39,6 +39,8 @@
 		790CA8931CD110BF009547E7 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790CA88B1CD110BF009547E7 /* RegisterViewController.m */; };
 		790CA8941CD110BF009547E7 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790CA88C1CD110BF009547E7 /* RegisterViewController.xib */; };
 		790CA8951CD110BF009547E7 /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 790CA88E1CD110BF009547E7 /* UserInfoManager.m */; };
+		790E476B1CD99B5A00125C9E /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 790E476A1CD99B5A00125C9E /* DBManager.m */; };
+		790E476E1CD99C8700125C9E /* WKRecommendDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 790E476D1CD99C8700125C9E /* WKRecommendDB.m */; };
 		791289FB1CCF528600FCCA55 /* WKTravelNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791289F91CCF528600FCCA55 /* WKTravelNoteViewController.m */; };
 		791289FC1CCF528600FCCA55 /* WKTravelNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791289FA1CCF528600FCCA55 /* WKTravelNoteViewController.xib */; };
 		79128A001CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 791289FE1CCF5F9D00FCCA55 /* WKTravelNoteTableViewCell.m */; };
@@ -285,6 +287,10 @@
 		790CA88C1CD110BF009547E7 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		790CA88D1CD110BF009547E7 /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
 		790CA88E1CD110BF009547E7 /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
+		790E47691CD99B5A00125C9E /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		790E476A1CD99B5A00125C9E /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		790E476C1CD99C8700125C9E /* WKRecommendDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendDB.h; sourceTree = "<group>"; };
+		790E476D1CD99C8700125C9E /* WKRecommendDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendDB.m; sourceTree = "<group>"; };
 		791289F81CCF528600FCCA55 /* WKTravelNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelNoteViewController.h; sourceTree = "<group>"; };
 		791289F91CCF528600FCCA55 /* WKTravelNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTravelNoteViewController.m; sourceTree = "<group>"; };
 		791289FA1CCF528600FCCA55 /* WKTravelNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKTravelNoteViewController.xib; sourceTree = "<group>"; };
@@ -788,6 +794,8 @@
 				791603141CCE5DFE00D3F2FD /* VisualFormatLayout.m */,
 				791603161CCE5F0E00D3F2FD /* UIImage+Part.h */,
 				791603171CCE5F0E00D3F2FD /* UIImage+Part.m */,
+				790E47691CD99B5A00125C9E /* DBManager.h */,
+				790E476A1CD99B5A00125C9E /* DBManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -986,6 +994,8 @@
 				79EFB5271CCE3750005D9B63 /* WKRecomendSearchDetailModel.m */,
 				79FEA3611CD258C500F23D17 /* WKSearchLastTableViewControllerModel.h */,
 				79FEA3621CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m */,
+				790E476C1CD99C8700125C9E /* WKRecommendDB.h */,
+				790E476D1CD99C8700125C9E /* WKRecommendDB.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1277,7 +1287,7 @@
 				TargetAttributes = {
 					79FAC4851CC4E39F0068C093 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = X4P4XDTS83;
+						DevelopmentTeam = F69QY6X9T7;
 					};
 					79FAC49E1CC4E39F0068C093 = {
 						CreatedOnToolsVersion = 7.2;
@@ -1525,10 +1535,12 @@
 				790752AD1CC8CFA300B968F3 /* WKRecommendListUserModel.m in Sources */,
 				790888D41CD0D86100FA2CEA /* WKRecommendNotesDetailPhotoModel.m in Sources */,
 				791C36291CC7BF0500FFC596 /* WKLoginAndRegistViewController.m in Sources */,
+				790E476E1CD99C8700125C9E /* WKRecommendDB.m in Sources */,
 				790761951CC6545E0097EF89 /* WKRecommendListModel.m in Sources */,
 				790761921CC6544A0097EF89 /* WKNavigtionBar.m in Sources */,
 				790761A01CC66DF30097EF89 /* WKCollectionCell.m in Sources */,
 				79FAC4E51CC533300068C093 /* WKMeViewController.m in Sources */,
+				790E476B1CD99B5A00125C9E /* DBManager.m in Sources */,
 				790085E01CCB735F007E5E58 /* WKGuideOverviewCell.m in Sources */,
 				798B54D41CCDB94300AA096B /* WKSubjectDetailViewController.m in Sources */,
 				7928D1A91CD33130000B4298 /* WKWelcomeViewController.m in Sources */,
@@ -1736,7 +1748,7 @@
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Walking222g.Walking;
+				PRODUCT_BUNDLE_IDENTIFIER = Walking2221g.Walking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1767,7 +1779,7 @@
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Walking222g.Walking;
+				PRODUCT_BUNDLE_IDENTIFIER = Walking2221g.Walking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

@@ -285,6 +285,7 @@
     //加载更多数据
     _startLocation += 12;
     [self requestDataForCollectionwithStartLoaction:_startLocation];
+<<<<<<< HEAD
 
     //    if (self.headView.collectionView.contentOffset.x  > self.headView.collectionView.contentSize.width - kScreenWidth + 20) {
     //         [self.headView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
@@ -330,6 +331,17 @@
 //    }
 //    
 //}
+=======
+    //弹出提示 框
+    _alertC = [UIAlertController alertControllerWithTitle:@"加载中.." message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [self.navigationController presentViewController:_alertC animated:YES completion:nil];
+   
+    //滚动的  item
+    CGPoint p = self.headView.collectionView.contentOffset;
+    p = CGPointMake((kScreenWidth-14/375.0 * kScreenWidth) + p.x, 0);
+    [self.headView.collectionView setContentOffset:p animated:YES];
+}
+>>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
 
 
 - (void)loadNewData{
