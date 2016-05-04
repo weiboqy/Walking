@@ -13,7 +13,7 @@
 #import "UMSocialAccountManager.h"
 
 
-@interface LoginViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface LoginViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *emailTF;
 @property (strong, nonatomic) IBOutlet UITextField *passworldTF;
@@ -27,6 +27,11 @@
 @end
 
 @implementation LoginViewController
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.emailTF resignFirstResponder];
+    [self.passworldTF resignFirstResponder];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -85,7 +90,6 @@
 
 
 - (IBAction)loginAction:(id)sender {
-    [SVProgressHUD show];
     NSMutableDictionary *parDic = [[NSMutableDictionary alloc] initWithCapacity:0];
     parDic[@"email"] = _emailTF.text;
     parDic[@"passwd"] = _passworldTF.text;
@@ -119,12 +123,9 @@
                 }];
                 [alertController addAction:action];
                 [self presentViewController:alertController animated:YES completion:nil];
-                //                [self dismissViewControllerAnimated:YES completion:nil];
-                [SVProgressHUD dismiss];
             }
         });
     } error:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
     }];
 }
 - (IBAction)sinaClick:(id)sender {

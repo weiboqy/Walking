@@ -275,6 +275,7 @@
     //加载更多数据
     _startLocation += 12;
     [self requestDataForCollectionwithStartLoaction:_startLocation];
+
     //弹出提示 框
     _alertC = [UIAlertController alertControllerWithTitle:@"加载中.." message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [self.navigationController presentViewController:_alertC animated:YES completion:nil];
@@ -282,6 +283,7 @@
     CGPoint p = self.headView.collectionView.contentOffset;
     p = CGPointMake( kScreenWidth-14/375.0 * kScreenWidth + p.x, 0);
     [self.headView.collectionView setContentOffset:p animated:YES];
+  
 
 }
 

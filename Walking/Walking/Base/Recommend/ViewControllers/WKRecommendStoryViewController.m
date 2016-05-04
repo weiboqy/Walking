@@ -20,7 +20,6 @@
 
 @interface WKRecommendStoryViewController ()<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UMSocialUIDelegate>
 
-
 @property (strong, nonatomic) UITableView *listTableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) WKStoryListHeadView *headView;
@@ -66,9 +65,6 @@ static NSString * const imageCellID = @"listCell";
 }
 
 - (void)requestData{
-
-    WKLog(@"id:%@", _spot_id);
-
     [SVProgressHUD show];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendStoryDetailURL, _spot_id] parDic:@{} finish:^(NSData *data) {
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -103,12 +99,7 @@ static NSString * const imageCellID = @"listCell";
     } error:^(NSError *error) {
         WKLog(@"error%@", error);
         
-        [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"数据加载失败!"];
-        [SVProgressHUD showErrorWithStatus:@"加载失败!"];
-
-        
-        
     }];
 }
 
@@ -359,7 +350,6 @@ static NSString * const imageCellID = @"listCell";
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
     
     if (error == nil) {
-
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 160/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
 
         view.layer.cornerRadius = 8/375.0 * kScreenWidth;
@@ -374,9 +364,6 @@ static NSString * const imageCellID = @"listCell";
         label.textColor = [UIColor whiteColor];
 
         label.font = [UIFont systemFontOfSize:13/375.0 * kScreenWidth];
-
-        label.font = [UIFont systemFontOfSize:16/375.0 * kScreenWidth];
-
         //        label.backgroundColor = [UIColor yellowColor];
         label.center = p;
         [_imView addSubview:view];

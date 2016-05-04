@@ -257,8 +257,10 @@ static NSString * const TableViewCellID = @"TableViewCellID";
 - (void)shareClick {
     WKRouteModel *routeModel = self.headerDataArr[0];
    
+    UIImageView *image = [[UIImageView alloc]init];
+    [image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", routeModel.image_url]]];
     // dibu展示
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/plans/%@", routeModel.ID] shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToQzone,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,   nil] delegate:self];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/plans/%@", routeModel.ID] shareImage:image shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToQzone,UMShareToEmail, UMShareToSms, UMShareToWechatTimeline, UMShareToTencent,   nil] delegate:self];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

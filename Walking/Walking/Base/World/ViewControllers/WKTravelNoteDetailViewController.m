@@ -68,12 +68,12 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     
     // 加载数据
     [self loadData];
+    // 创建列表
+    [self setupSubViews];
     
     // 自定义透明导航条
     [self buildNavigationBar];
     
-    // 创建列表
-    [self setupSubViews];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -217,7 +217,9 @@ static NSString * const TableViewCellID = @"TableViewCellID";
 // 分享按钮
 - (void)shareClick {
     WKTravelNoteModel *noteModel = self.headerDataArr[0];
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/trips/%@", noteModel.ID] shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina, UMShareToQQ, UMShareToQzone,UMShareToWechatSession, UMShareToWechatTimeline ,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,nil] delegate:self];
+    UIImageView *image = [[UIImageView alloc]init];
+    [image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", noteModel.front_cover_photo_url]]];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/trips/%@", noteModel.ID] shareImage:image shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina, UMShareToQQ, UMShareToQzone,UMShareToWechatSession, UMShareToWechatTimeline ,UMShareToEmail, UMShareToSms, UMShareToTencent,nil] delegate:self];
 }
 
 - (void) setupSubViews {
@@ -248,7 +250,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     _bannerImageView = imageView;
     [bgView addSubview:imageView];
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableHeaderView = bgView;
