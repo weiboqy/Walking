@@ -139,7 +139,7 @@ static NSString * const imageCellID = @"listCell";
     //指定头视图
     //xib 指定 不行
     _headView = [[NSBundle mainBundle] loadNibNamed:@"WKStoryListHeadView" owner:nil options:nil].lastObject;
-    _headView.frame = CGRectMake(0, 0, 0, 230/667.0 * kScreenHeight);
+    _headView.frame = CGRectMake(0, 0, 0, 240/667.0 * kScreenHeight);
     [_headView initializeData];
     
   [self.view addSubview:self.listTableView];
@@ -190,7 +190,7 @@ static NSString * const imageCellID = @"listCell";
     }else{
         WKLog(@"请先登陆");
         
-        LoginViewController *logVC = [[LoginViewController alloc] init];
+        LoginViewController *logVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         [self presentViewController:logVC animated:YES completion:nil];
     }
 }

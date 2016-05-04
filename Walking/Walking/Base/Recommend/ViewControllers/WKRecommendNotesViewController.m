@@ -184,7 +184,7 @@
         [_itemLove setImage:[UIImage imageNamed:@"五角星（满）"]];
     }else{
         WKLog(@"请先登陆");
-        LoginViewController *logVC = [[LoginViewController alloc] init];
+        LoginViewController *logVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         [self presentViewController:logVC animated:YES completion:nil];
     }
 }
