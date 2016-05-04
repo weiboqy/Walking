@@ -277,6 +277,53 @@
     //加载更多数据
     _startLocation += 12;
     [self requestDataForCollectionwithStartLoaction:_startLocation];
+<<<<<<< HEAD
+
+    //    if (self.headView.collectionView.contentOffset.x  > self.headView.collectionView.contentSize.width - kScreenWidth + 20) {
+    //         [self.headView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+    //        return;
+    //    }
+    //    //滚动的  item
+    //    CGPoint p = self.headView.collectionView.contentOffset;
+    //    p = CGPointMake((kScreenWidth-20 + 10) + p.x, 0);
+    //    [self.headView.collectionView setContentOffset:p animated:YES];
+}
+#warning  -------collection加载更多数据 -------
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
+    
+    //弹出提示 框
+    _alertC = [UIAlertController alertControllerWithTitle:@"加载中.." message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [self.navigationController presentViewController:_alertC animated:YES completion:nil];
+    
+    //实现无限轮播
+  /*
+    if (self.headView.collectionView.contentOffset.x  > self.headView.collectionView.contentSize.width - (kScreenWidth - 14) * 2) {
+        WKLog(@"moreBotton");
+        [self.headView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+        return;
+    }
+   */
+    //滚动的  item
+    CGPoint p = self.headView.collectionView.contentOffset;
+    p = CGPointMake( kScreenWidth-14/375.0 * kScreenWidth + p.x, 0);
+    [self.headView.collectionView setContentOffset:p animated:YES];
+   
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    
+//    WKLog(@"拖拽结束%f, size:%f", self.headView.collectionView.contentOffset.x, self.headView.collectionView.contentSize.width);    
+
+}
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    if (self.headView.collectionView.contentOffset.y > self.headView.collectionView.contentSize.width - kScreenWidth) {
+//        WKLog(@"collection滚动");
+//    }
+//    
+//}
+=======
     //弹出提示 框
     _alertC = [UIAlertController alertControllerWithTitle:@"加载中.." message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [self.navigationController presentViewController:_alertC animated:YES completion:nil];
@@ -286,6 +333,8 @@
     p = CGPointMake((kScreenWidth-14/375.0 * kScreenWidth) + p.x, 0);
     [self.headView.collectionView setContentOffset:p animated:YES];
 }
+>>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
+
 
 - (void)loadNewData{
     // 马上进入刷新状态

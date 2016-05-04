@@ -256,6 +256,8 @@ static NSString * const TableViewCellID = @"TableViewCellID";
 
 - (void)shareClick {
     WKRouteModel *routeModel = self.headerDataArr[0];
+   
+    // dibu展示
     [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/plans/%@", routeModel.ID] shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToQzone,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,   nil] delegate:self];
 }
 
