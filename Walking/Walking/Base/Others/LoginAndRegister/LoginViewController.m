@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "UserInfoManager.h"
+#import "UMSocialSnsPlatformManager.h"
+#import "UMSocialAccountManager.h"
 
 
 @interface LoginViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -117,23 +119,109 @@
                 }];
                 [alertController addAction:action];
                 [self presentViewController:alertController animated:YES completion:nil];
-                
                 //                [self dismissViewControllerAnimated:YES completion:nil];
                 [SVProgressHUD dismiss];
             }
-            
         });
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //            MenuHeaderView *headerView = [[MenuHeaderView alloc]init];
-            //            [headerView.name setTitle:[NSString stringWithFormat:@"%@", dataDic[@"data"][@"uname"]] forState:UIControlStateNormal];
-            //            QYLog(@"%@", dataDic[@"data"][@"uname"]);
-        });
- 
     } error:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
     }];
 }
+- (IBAction)sinaClick:(id)sender {
+    
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        //获取微博用户名、uid、token等
+        
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToSina];
+            
+            WKLog(@"\nusername = %@,\n usid = %@,\n token = %@ iconUrl = %@,\n unionId = %@,\n ", snsAccount.userName, snsAccount.usid, snsAccount.accessToken, snsAccount.iconURL, snsAccount.unionId);
+            
+            //保持用户的id
+            [UserInfoManager conserveUserID:snsAccount.usid];
+            //保存用户的name
+            [UserInfoManager conserveUserName:snsAccount.userName];
+            //保存用户头像
+            [UserInfoManager conserveUsercoverimg:snsAccount.iconURL];
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"欢迎%@回来", [UserInfoManager getUserName]] message: nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+            
+            [alertController addAction:action];
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+        }
+    });
 
+    
+}
+- (IBAction)qqClick:(id)sender {
+    
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        // 获取微博用户名、uid、token等
+        
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToQQ];
+            
+            WKLog(@"\nusername = %@,\n usid = %@,\n token = %@ iconUrl = %@,\n unionId = %@,\n ", snsAccount.userName, snsAccount.usid, snsAccount.accessToken, snsAccount.iconURL, snsAccount.unionId);
+            
+            //保持用户的id
+            [UserInfoManager conserveUserID:snsAccount.usid];
+            //保存用户的name
+            [UserInfoManager conserveUserName:snsAccount.userName];
+            //保存用户头像
+            [UserInfoManager conserveUsercoverimg:snsAccount.iconURL];
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"欢迎%@回来", [UserInfoManager getUserName]] message: nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+            
+            [alertController addAction:action];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    });
+}
+
+- (IBAction)wechatClick:(id)sender {
+    
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToTencent];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToTencent];
+            
+            NSLog(@"\nusername = %@,\n usid = %@,\n token = %@ iconUrl = %@,\n unionId = %@,\n ",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL, snsAccount.unionId);
+            
+            //保持用户的id
+            [UserInfoManager conserveUserID:snsAccount.usid];
+            //保存用户的name
+            [UserInfoManager conserveUserName:snsAccount.userName];
+            //保存用户头像
+            [UserInfoManager conserveUsercoverimg:snsAccount.iconURL];
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"欢迎%@回来", [UserInfoManager getUserName]] message: nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+            
+            [alertController addAction:action];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    });
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

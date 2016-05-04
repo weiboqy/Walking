@@ -116,8 +116,9 @@
 // 当登陆成功后，将"你还没有登陆哦"换成用户名
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (![[UserInfoManager getUserAuth] isEqualToString:@" "] ) {
+    if (![[UserInfoManager getUserID] isEqualToString:@" "] ) {
         [_meHeadView.LoginAndRegistButton setTitle:[NSString stringWithFormat:@"%@", [UserInfoManager getUserName]] forState:UIControlStateNormal];
+        [_meHeadView.headImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [UserInfoManager getUsercoverimg]]]];
     }else {
         return;
     }
@@ -134,7 +135,7 @@
 - (void)loginAndRegistButton:(id)sender {
     WKLogFun ;
     //已经登陆 ，取消登陆
-    if (![[UserInfoManager getUserAuth] isEqualToString:@" "]) {
+    if (![[UserInfoManager getUserID] isEqualToString:@" "]) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提醒...." message:@"你已经登陆,是否取消登陆" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [alertController dismissViewControllerAnimated:YES completion:nil];
@@ -142,7 +143,8 @@
         UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [UserInfoManager cancelUserAuth];
             [UserInfoManager cancelUserID];
-            [_meHeadView.LoginAndRegistButton setTitle:[NSString stringWithFormat:@"你还没有登陆哦～～"] forState:UIControlStateNormal];
+            [_meHeadView.LoginAndRegistButton setTitle:[NSString stringWithFormat:@"你还没有登陆哦"] forState:UIControlStateNormal];
+            _meHeadView.headImage.image = [UIImage imageNamed:@"headImage"];
         }];
         [alertController addAction:action];
         [alertController addAction:action2];

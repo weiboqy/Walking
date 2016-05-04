@@ -42,4 +42,6 @@
 /** 获取用户的coverimg */
 + (NSString *)getUsercoverimg;
 
+
+
 @end

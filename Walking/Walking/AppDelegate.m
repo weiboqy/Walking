@@ -30,6 +30,7 @@
 //    self.window.rootViewController = [[WKTabBarViewController alloc]init];
     
     
+    // 友盟appkey
     [UMSocialData setAppKey:@"570bb59a67e58e78b30005a0"];
     
     // qq分享
