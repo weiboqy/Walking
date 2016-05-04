@@ -9,13 +9,13 @@
 #import "WKMeHeadView.h"
 
 @implementation WKMeHeadView
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
+//- (void)awakeFromNib
+//{
+//    self.LoginAndRegistButton.backgroundColor = [UIColor redColor];
+//    [self.LoginAndRegistButton addTarget:self action:@selector(btnclick) forControlEvents:UIControlEventTouchUpInside];
+//}
+//- (void)btnclick
+//{
+//    NSLog(@"--------------");
+//}
 @end

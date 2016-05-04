@@ -63,6 +63,8 @@
 		7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E35F1CC773EA001A0C5F /* WKInlandViewController.m */; };
 		7914E3631CC77A1B001A0C5F /* UIView+WKCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */; };
 		7915A0051CD9DE0D00C13A7C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7915A0031CD9DDC700C13A7C /* ImageIO.framework */; };
+		7915A0091CDA26F100C13A7C /* WKCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7915A0071CDA26F100C13A7C /* WKCollectionTableViewCell.m */; };
+		7915A00A1CDA26F100C13A7C /* WKCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7915A0081CDA26F100C13A7C /* WKCollectionTableViewCell.xib */; };
 		791603071CCDB78B00D3F2FD /* UIImage+WKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603061CCDB78B00D3F2FD /* UIImage+WKExtension.m */; };
 		791603121CCE3CA800D3F2FD /* WKTravelNoteUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603111CCE3CA800D3F2FD /* WKTravelNoteUserModel.m */; };
 		791603151CCE5DFE00D3F2FD /* VisualFormatLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603141CCE5DFE00D3F2FD /* VisualFormatLayout.m */; };
@@ -290,8 +292,8 @@
 		790CA88E1CD110BF009547E7 /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
 		790E47691CD99B5A00125C9E /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		790E476A1CD99B5A00125C9E /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
-		790E476C1CD99C8700125C9E /* WKRecommendDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendDB.h; sourceTree = "<group>"; };
-		790E476D1CD99C8700125C9E /* WKRecommendDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendDB.m; sourceTree = "<group>"; };
+		790E476C1CD99C8700125C9E /* WKRecommendDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKRecommendDB.h; path = ../../Recommend/Models/WKRecommendDB.h; sourceTree = "<group>"; };
+		790E476D1CD99C8700125C9E /* WKRecommendDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKRecommendDB.m; path = ../../Recommend/Models/WKRecommendDB.m; sourceTree = "<group>"; };
 		791289F81CCF528600FCCA55 /* WKTravelNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelNoteViewController.h; sourceTree = "<group>"; };
 		791289F91CCF528600FCCA55 /* WKTravelNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTravelNoteViewController.m; sourceTree = "<group>"; };
 		791289FA1CCF528600FCCA55 /* WKTravelNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKTravelNoteViewController.xib; sourceTree = "<group>"; };
@@ -330,6 +332,9 @@
 		7914E3611CC77A1B001A0C5F /* UIView+WKCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WKCustom.h"; sourceTree = "<group>"; };
 		7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WKCustom.m"; sourceTree = "<group>"; };
 		7915A0031CD9DDC700C13A7C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		7915A0061CDA26F100C13A7C /* WKCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCollectionTableViewCell.h; sourceTree = "<group>"; };
+		7915A0071CDA26F100C13A7C /* WKCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCollectionTableViewCell.m; sourceTree = "<group>"; };
+		7915A0081CDA26F100C13A7C /* WKCollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKCollectionTableViewCell.xib; sourceTree = "<group>"; };
 		791603051CCDB78B00D3F2FD /* UIImage+WKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WKExtension.h"; sourceTree = "<group>"; };
 		791603061CCDB78B00D3F2FD /* UIImage+WKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WKExtension.m"; sourceTree = "<group>"; };
 		7916030D1CCE3BE300D3F2FD /* WKTravelNoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTravelNoteModel.h; sourceTree = "<group>"; };
@@ -800,6 +805,8 @@
 				791603171CCE5F0E00D3F2FD /* UIImage+Part.m */,
 				790E47691CD99B5A00125C9E /* DBManager.h */,
 				790E476A1CD99B5A00125C9E /* DBManager.m */,
+				790E476C1CD99C8700125C9E /* WKRecommendDB.h */,
+				790E476D1CD99C8700125C9E /* WKRecommendDB.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -919,6 +926,9 @@
 				793DBDC21CC6607A00A4E3CA /* WKMeHeadView.h */,
 				793DBDC31CC6607A00A4E3CA /* WKMeHeadView.m */,
 				793DBDC51CC6609400A4E3CA /* WKMeHeadView.xib */,
+				7915A0061CDA26F100C13A7C /* WKCollectionTableViewCell.h */,
+				7915A0071CDA26F100C13A7C /* WKCollectionTableViewCell.m */,
+				7915A0081CDA26F100C13A7C /* WKCollectionTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -998,8 +1008,6 @@
 				79EFB5271CCE3750005D9B63 /* WKRecomendSearchDetailModel.m */,
 				79FEA3611CD258C500F23D17 /* WKSearchLastTableViewControllerModel.h */,
 				79FEA3621CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m */,
-				790E476C1CD99C8700125C9E /* WKRecommendDB.h */,
-				790E476D1CD99C8700125C9E /* WKRecommendDB.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1358,6 +1366,7 @@
 				7928D1CE1CD33AA1000B4298 /* welcome－12（被拖移）.tiff in Resources */,
 				790761A21CC66E0C0097EF89 /* WKCollectionCell.xib in Resources */,
 				793123631CC8D0C60052CDEE /* WKWorldDetailCell.xib in Resources */,
+				7915A00A1CDA26F100C13A7C /* WKCollectionTableViewCell.xib in Resources */,
 				79FAC4991CC4E39F0068C093 /* LaunchScreen.storyboard in Resources */,
 				79FAC4DC1CC533130068C093 /* WKRecommendViewController.xib in Resources */,
 				7928D1E71CD33AA1000B4298 /* welcome－4（被拖移）.tiff in Resources */,
@@ -1565,6 +1574,7 @@
 				79FEA3671CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.m in Sources */,
 				793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */,
 				79C5FEC71CCA66F5004B61AA /* WKGuideViewController.m in Sources */,
+				7915A0091CDA26F100C13A7C /* WKCollectionTableViewCell.m in Sources */,
 				791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */,
 				7907618C1CC654020097EF89 /* WKWorldView.m in Sources */,
 				79128A091CCF7FF400FCCA55 /* WKTravelDetailModel.m in Sources */,
@@ -1743,7 +1753,7 @@
 				);
 				GCC_PREFIX_HEADER = Walking/Base/Others/Tools/PrefixHeader.pch;
 				INFOPLIST_FILE = Walking/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1774,7 +1784,7 @@
 				);
 				GCC_PREFIX_HEADER = Walking/Base/Others/Tools/PrefixHeader.pch;
 				INFOPLIST_FILE = Walking/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

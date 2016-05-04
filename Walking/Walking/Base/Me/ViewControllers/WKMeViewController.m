@@ -16,7 +16,7 @@
 #import "UserInfoManager.h"
 #import "LoginViewController.h"
 @interface WKMeViewController ()<UITableViewDataSource,UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *meTableView;
+@property (strong, nonatomic)  UITableView *meTableView;
 @property (nonatomic, strong) WKMeHeadView *meHeadView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, weak) UIView *bgView;//夜间模式视图
@@ -29,24 +29,29 @@
 
 //  创建头视图
 - (void)creatHeadView {
+    
+    self.meTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
+    self.meTableView.delegate = self;
+    self.meTableView.dataSource = self;
+    [self.view addSubview:self.meTableView];
+    
     NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"WKMeHeadView" owner:nil options:nil];
     _meHeadView = [views lastObject];
     _meHeadView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200);
-//    meHeadView.headImage.layer.masksToBounds = YES;
-//    meHeadView.headImage.layer.cornerRadius = 35;
+
     _meTableView.tableHeaderView = _meHeadView;
     
     //用户交互 如果想使用手势 就一定要开启这个 默认是关闭 不然手势不生效
     _meHeadView.headImage.userInteractionEnabled = YES;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
+    
+    [_meHeadView.LoginAndRegistButton addTarget:self action:@selector(loginAndRegistButton:) forControlEvents:UIControlEventTouchUpInside];
     tap.numberOfTapsRequired = 1;
     tap.numberOfTouchesRequired = 1;
     [_meHeadView.headImage addGestureRecognizer:tap];
     
-    [_meHeadView.LoginAndRegistButton addTarget:self action:@selector(loginAndRegistButton:) forControlEvents:UIControlEventTouchUpInside];
 }
-
 //  分区数组
 - (void)creatArray {
     NSMutableArray *oneArray = [[NSMutableArray alloc] initWithObjects:@"我的收藏", nil];
