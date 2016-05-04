@@ -13,14 +13,13 @@
 #import "WKRecommendStoryDetailModel.h"
 #import "WKStoryListTableViewHeadCell.h"
 #import "UMSocial.h"
+#import "LoginViewController.h"
+#import "WKRecommendDB.h"
 
 #define kNavigationAndStatusBarHeihght 64
 
-<<<<<<< HEAD
-@interface WKRecommendStoryViewController ()<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-=======
 @interface WKRecommendStoryViewController ()<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UMSocialUIDelegate>
->>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
+
 
 @property (strong, nonatomic) UITableView *listTableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -67,11 +66,9 @@ static NSString * const imageCellID = @"listCell";
 }
 
 - (void)requestData{
-<<<<<<< HEAD
-    
-=======
+
     WKLog(@"id:%@", _spot_id);
->>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
+
     [SVProgressHUD show];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendStoryDetailURL, _spot_id] parDic:@{} finish:^(NSData *data) {
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -107,12 +104,9 @@ static NSString * const imageCellID = @"listCell";
         WKLog(@"error%@", error);
         
         [SVProgressHUD dismiss];
-        
-<<<<<<< HEAD
         [SVProgressHUD showErrorWithStatus:@"数据加载失败!"];
-=======
         [SVProgressHUD showErrorWithStatus:@"加载失败!"];
->>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
+
         
         
     }];
@@ -145,7 +139,7 @@ static NSString * const imageCellID = @"listCell";
     //指定头视图
     //xib 指定 不行
     _headView = [[NSBundle mainBundle] loadNibNamed:@"WKStoryListHeadView" owner:nil options:nil].lastObject;
-    _headView.frame = CGRectMake(0, 0, 0, 240);
+    _headView.frame = CGRectMake(0, 0, 0, 230/667.0 * kScreenHeight);
     [_headView initializeData];
     
   [self.view addSubview:self.listTableView];
@@ -153,9 +147,10 @@ static NSString * const imageCellID = @"listCell";
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super viewDidLoad];   
     
     _isTure = NO;
+    self.navigationController.navigationBar.translucent = NO;
     
     [self requestData];
     [self createListTableView];
@@ -165,29 +160,45 @@ static NSString * const imageCellID = @"listCell";
     _itemLove = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"五角星（空）"] style:UIBarButtonItemStylePlain target:self action:@selector(love)];
     
     self.navigationItem.rightBarButtonItems = @[itemShare, _itemLove];
+    //设置 收藏的 图片的显示状态
+    WKRecommendDB *db = [[WKRecommendDB alloc] init];
+    NSArray *array = [db findWithID:_spot_id];
+    if (!array.count == 0) {
+      [_itemLove setImage:[UIImage imageNamed:@"五角星（满）"]];
+    }
     
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)love{
     WKLog(@"收藏");
-    if (!_isTure) {
+    
+    if (![[UserInfoManager getUserID] isEqualToString:@" "]) {
+        // 创建数据表
+        WKRecommendDB *db = [[WKRecommendDB alloc] init];
+        [db createDataTable];
+        // 查询数据是否存储，如果存储就取消存储
+        NSArray *array = [db findWithID:_spot_id];
+        if (!array.count == 0) {
+                [db deleteWithTitle:_name];
+                [_itemLove setImage:[UIImage imageNamed:@"五角星（空）"]];
+                return;
+            }
+        // 否则，调用保存方法进行存储 http://api.breadtrip.com/v2/new_trip/spot/?spot_id=%@
+        [db saveDetailID:_spot_id title:_name imageURL:_imageURL type:@"story"];
         [_itemLove setImage:[UIImage imageNamed:@"五角星（满）"]];
-        _isTure = YES;
     }else{
-        [_itemLove setImage:[UIImage imageNamed:@"五角星（空）"]];
-        _isTure = NO;
+        WKLog(@"请先登陆");
+        
+        LoginViewController *logVC = [[LoginViewController alloc] init];
+        [self presentViewController:logVC animated:YES completion:nil];
     }
 }
 
 - (void)share{
     WKLog(@"分享");
-    
-<<<<<<< HEAD
-
-=======
     [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/articles/"] shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina, UMShareToQQ, UMShareToQzone,UMShareToWechatSession, UMShareToWechatTimeline ,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,nil] delegate:self];
->>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
+
 }
 
 
@@ -348,11 +359,9 @@ static NSString * const imageCellID = @"listCell";
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
     
     if (error == nil) {
-<<<<<<< HEAD
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
-=======
+
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 160/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
->>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
+
         view.layer.cornerRadius = 8/375.0 * kScreenWidth;
         view.layer.masksToBounds = YES;
         view.backgroundColor = [UIColor grayColor];
@@ -363,11 +372,11 @@ static NSString * const imageCellID = @"listCell";
         label.text = @"保存成功!";
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = [UIColor whiteColor];
-<<<<<<< HEAD
+
         label.font = [UIFont systemFontOfSize:13/375.0 * kScreenWidth];
-=======
+
         label.font = [UIFont systemFontOfSize:16/375.0 * kScreenWidth];
->>>>>>> 3fc51c70e33d25b6ac35456d700f626c84af452d
+
         //        label.backgroundColor = [UIColor yellowColor];
         label.center = p;
         [_imView addSubview:view];

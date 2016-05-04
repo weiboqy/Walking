@@ -7,10 +7,8 @@
 //
 
 #import "WKRecommendDB.h"
-
 @implementation WKRecommendDB
 
-/*
 - (instancetype)init{
     self = [super init];
     if (self) {
@@ -19,91 +17,77 @@
     return self;
 }
 
-- (void)createDataTable{
-    //    FMResultSet *set = [_dataBase executeQuery:[NSString stringWithFormat:@"select count(*) from sqlite_master where type ='table' and name ='ReadDetail'"]];
-    //    [set next];
-    //    NSInteger count = [set intForColumn:0];
-    //    if (count) {
-    //        NSLog(@"数据表已经存在");
-    //    }else{
-    //        NSString *sql = [NSString stringWithFormat:@"create table ReadDetail(readID integer primary key autoincrement not null, userID text, tilte text,contentID text, conent text, name text, coverimg text)"];
-    //        BOOL res = [_dataBase executeQuery:sql];
-    //        if (res) {
-    //            NSLog(@"数据表创建成功");
-    //        }else{
-    //            NSLog(@"数据表创建失败");
-    //        }
-    //    }
+- (void)createDataTable{   
     // 查询数据表中元素个数
-    FMResultSet * set = [_dataBase executeQuery:[NSString stringWithFormat:@"select count(*) from sqlite_master where type ='table' and name = '%@'", READDETAILTABLE]];
+    FMResultSet * set = [_dataBase executeQuery:[NSString stringWithFormat:@"select count(*) from sqlite_master where type ='table' and name = '%@'", COLLECTTABLE]];
     [set next];
     NSInteger count = [set intForColumnIndex:0];
     if (count) {
-        NSLog(@"数据表已经存在");
+        WKLog(@"数据表已经存在");
     } else {
         // 创建新的数据表
-        NSString * sql = [NSString stringWithFormat:@"CREATE TABLE %@ (readID INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL, userID text, title text, contentID text, content text, name text, coverimg text)", READDETAILTABLE];
+        NSString * sql = [NSString stringWithFormat:@"CREATE TABLE %@ (readID INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL, ID text, title text, imageURL text, type text)", COLLECTTABLE];
         BOOL res = [_dataBase executeUpdate:sql];
         if (res) {
-            NSLog(@"数据表创建成功");
+            WKLog(@"数据表创建成功");
         } else {
-            NSLog(@"数据表创建失败");
+            WKLog(@"数据表创建失败");
         }
     }
 }
 //传入的是模型参数
-- (void)saveDetailModel:(ReadDetailModel *)detailModel{
+- (void)saveDetailID:(NSString *)ID title:(NSString *)title imageURL:(NSString *)imageURL type:(NSString *)type{
     
-    NSMutableString * query = [NSMutableString stringWithFormat:@"INSERT INTO %@(userID, title, contentid, content, name, coverimg) values (?,?,?,?,?,?)", READDETAILTABLE];
+    NSMutableString * query = [NSMutableString stringWithFormat:@"INSERT INTO %@(ID, title, imageURL, type) values (?,?,?,?)", COLLECTTABLE];
     //创建插入内容
     NSMutableArray *arguments = [[NSMutableArray alloc] initWithCapacity:0];
-    if (![[UserInfoManager getUserID] isEqualToString:@" "]) {
-        [arguments addObject:[UserInfoManager getUserID]];
+//    if (![[UserInfoManager getUserID] isEqualToString:@" "]) {
+//        [arguments addObject:[UserInfoManager getUserID]];
+//    }
+    
+    if (ID) {
+        [arguments addObject:ID];
     }
-    if (detailModel.title) {
-        [arguments addObject:detailModel.title];
+    if (title) {
+        [arguments addObject:title];
     }
-    if (detailModel.contentid) {
-        [arguments addObject:detailModel.contentid];
+    if (imageURL) {
+        [arguments addObject:imageURL];
     }
-    if (detailModel.content) {
-        [arguments addObject:detailModel.content];
+    if (type) {
+        [arguments addObject:type];
     }
-    if (detailModel.name) {
-        [arguments addObject:detailModel.name];
-    }
-    if (detailModel.coverimg) {
-        [arguments addObject:detailModel.coverimg];
-    }
-    NSLog(@"%@",query);
-    NSLog(@"收藏一条数据");
+    WKLog(@"%@",query);
+    WKLog(@"收藏一条数据");
     // 执行语句
     [_dataBase executeUpdate:query withArgumentsInArray:arguments];
 }
 
-- (void)deleteDetailWithTiele:(NSString *)detailTitle{
-    NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE title = '%@'", READDETAILTABLE, detailTitle];
-    NSLog(@"删除成功");
+- (void)deleteWithTitle:(NSString *)title{
+    NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE title = '%@'", COLLECTTABLE, title];
+    WKLog(@"删除成功");
     [_dataBase executeUpdate:query];
 }
 
-- (NSArray *)findWithUserID:(NSString *)userID{
-    NSString *query = [NSString stringWithFormat:@"select *from %@ where userID = '%@'", READDETAILTABLE, userID];
+- (NSArray *)findWithID:(NSString *)ID{
+    NSString *query = [NSString stringWithFormat:@"select *from %@ where ID = '%@'", COLLECTTABLE, ID];
     FMResultSet *set = [_dataBase executeQuery:query];
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[set columnCount]];
     while ([set next]) {
-        ReadDetailModel * detailModel = [[ReadDetailModel alloc] init];
-        detailModel.title = [set stringForColumn:@"title"];
-        detailModel.contentid = [set stringForColumn:@"contentid"];
-        detailModel.content = [set stringForColumn:@"content"];
-        detailModel.name = [set stringForColumn:@"name"];
-        detailModel.coverimg = [set stringForColumn:@"coverimg"];
-        [array addObject:detailModel];
+        NSString *title    = [set stringForColumn:@"title"];
+        NSString *ID       = [set stringForColumn:@"ID"];
+        NSString *imageURL = [set stringForColumn:@"imageURL"];
+        NSString *type     = [set stringForColumn:@"type"];
+        
+        [array addObject:title];
+        [array addObject:ID];
+        [array addObject:imageURL];
+        [array addObject:type];
     }
     [set close];
     return array;
 }
-*/
+
 
 
 @end
