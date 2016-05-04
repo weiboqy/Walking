@@ -39,6 +39,11 @@
 @property (nonatomic, assign) BOOL isTure;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIView *searchView;
+@property (nonatomic, assign) NSInteger clickTime;
+
+@property (nonatomic, strong)  UIAlertController *alertC;
+
+
 
 @end
 
@@ -69,6 +74,7 @@
 
 - (void)requestDataForCollectionwithStartLoaction:(NSInteger)startLocation{
     
+//    [SVProgressHUD show];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat: RecommendStoryURL, startLocation] parDic:@{} finish:^(NSData *data) {
        
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -90,17 +96,23 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             [self.headView.collectionView reloadData];
-            
+            //取消显示 加载数据框
+            if (self.alertC) {
+                [self.alertC dismissViewControllerAnimated:YES completion:nil];
+            }
             
         });
-        
+//        [SVProgressHUD dismiss];
     } error:^(NSError *error) {
         WKLog(@"error%@", error);
+//        [SVProgressHUD dismiss];
+//        [SVProgressHUD showErrorWithStatus:@"加载失败!"];
     }];
 }
 //请求  轮播图  tableView的数据
 - (void)requestDataForList{
     
+    [SVProgressHUD show];
     [NetWorkRequestManager requestWithType:GET urlString:RecommendTableViewURL parDic:@{} finish:^(NSData *data) {
         
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -122,34 +134,45 @@
                 [self.tableViewDataArray addObject:listModel];
             }
         }
-//        WKLog(@"%@", [self.tableViewDataArray[0] ID]);
-        dispatch_async(dispatch_get_main_queue(), ^{
+        
+        dispatch_once_t once;
+        dispatch_once(&once, ^{
             //1 设置头视图轮播图设置(添加文字)
             for (int i = 0; i < 4; i ++) {
                 //没有 alloc 操作的还是本身对象
                 UIImageView *imageView = self.viewArray[i];
                 
                 UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, self.headView.headScrolView.frame.size.height - 50, kScreenWidth - 10, 25)];                ;
-//                label.backgroundColor = [UIColor redColor];
+                //                label.backgroundColor = [UIColor redColor];
                 label.textColor = [UIColor whiteColor];
                 label.text = [NSString stringWithFormat:@"%@",[self.tableViewDataArray[i+10] name]];
                 [imageView addSubview:label];
                 
                 [self.viewArray[i] sd_setImageWithURL:[NSURL URLWithString:[self.tableViewDataArray[i+10] cover_image]]];
             }
+        });
+        
+//        WKLog(@"%@", [self.tableViewDataArray[0] ID]);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
             [self.listTableView reloadData];
+            
+            
             [self.listTableView.mj_header endRefreshing];
         });
 //        WKLog(@"%@, %ld", _start, self.tableViewDataArray.count);
-        
+        [SVProgressHUD dismiss];
     } error:^(NSError *error) {
         WKLog(@"error%@", error);
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"加载失败!"];
     }];
     
 }
 //上拉刷新的请求方法
 - (void)requestDataWithStart:(NSString *)next_start{
     
+    [SVProgressHUD show];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendTableViewMoreURL, _start] parDic:@{} finish:^(NSData *data) {
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //       WKLog(@"%@", dicData[@"elements"]);
@@ -176,11 +199,17 @@
             [self.listTableView.mj_footer endRefreshing];
             
         });
+        [SVProgressHUD dismiss];
 //        WKLog(@"%@, %ld", _start, self.tableViewDataArray.count);
         
     } error:^(NSError *error) {
         WKLog(@"error%@", error);
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"加载失败!"];
+        
+        
     }];
+    
 }
 
 - (void)viewDidLoad {
@@ -189,6 +218,10 @@
     _start = @"2387313699";
     _startLocation = 0;
     _isTure = YES;
+    
+    //search 判断点击次数
+    _clickTime = 0;
+    
     //隐藏系统自带的NavigationBar
 //    [self.navigationController setNavigationBarHidden:YES];
     self.title = @"推荐";
@@ -205,19 +238,22 @@
     // 上拉刷新
     self.listTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 #pragma mark ---collectionView 刷新---
-    
-// self.headView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(collectionHeadRefreshData)];
-//    self.headView.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(collectionFooterRefreshData)];
+
     [self requestDataForCollectionwithStartLoaction:_startLocation];
     [self requestDataForList];
     [self createListTableView];
     
     // Do any additional setup after loading the view from its nib.
 }
+#pragma mark -----设置搜索框-----
 //点击搜索 执行
 - (void)search{
-    WKLog(@"search....");
-#pragma mark -----设置搜索框-----
+    
+    _clickTime ++;
+    WKLog(@"a = %ld", _clickTime);
+    if (_clickTime > 1) {
+        return;
+    }
     _searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight)];
     _searchView.backgroundColor = [UIColor whiteColor];
     _searchView.alpha = 0.5;
@@ -232,21 +268,24 @@
     
     [self.view addSubview:_searchView];
     [self.view addSubview:_searchBar];
+    
     //    self.navigationItem.titleView = _searchBar;
 }
 //回收键盘 删除搜索界面
 - (void)tap{
     
-    [_searchBar resignFirstResponder];
-    [_searchBar removeFromSuperview];
+    [_searchBar  resignFirstResponder];
+    [_searchBar  removeFromSuperview];
     [_searchView removeFromSuperview];
-    
+    //恢复为初值
+    _clickTime = 0;
 }
 //更多的点击方法
-- (void)button{
+- (void)moreButton{
+    //加载更多数据
     _startLocation += 12;
     [self requestDataForCollectionwithStartLoaction:_startLocation];
- 
+
     //    if (self.headView.collectionView.contentOffset.x  > self.headView.collectionView.contentSize.width - kScreenWidth + 20) {
     //         [self.headView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
     //        return;
@@ -258,29 +297,40 @@
 }
 #warning  -------collection加载更多数据 -------
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
     
-//    WKLog(@"scroll滚动中。。。。%f", self.headView.collectionView.contentOffset.x);
+    //弹出提示 框
+    _alertC = [UIAlertController alertControllerWithTitle:@"加载中.." message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [self.navigationController presentViewController:_alertC animated:YES completion:nil];
     
+    //实现无限轮播
+  /*
+    if (self.headView.collectionView.contentOffset.x  > self.headView.collectionView.contentSize.width - (kScreenWidth - 14) * 2) {
+        WKLog(@"moreBotton");
+        [self.headView.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+        return;
+    }
+   */
+    //滚动的  item
+    CGPoint p = self.headView.collectionView.contentOffset;
+    p = CGPointMake( kScreenWidth-14/375.0 * kScreenWidth + p.x, 0);
+    [self.headView.collectionView setContentOffset:p animated:YES];
+   
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
     
-    WKLog(@"拖拽结束%f, size:%f", self.headView.collectionView.contentOffset.x, self.headView.collectionView.contentSize.width);
+//    WKLog(@"拖拽结束%f, size:%f", self.headView.collectionView.contentOffset.x, self.headView.collectionView.contentSize.width);    
 
-//     //滚动的  item
-//    CGPoint p = self.headView.collectionView.contentOffset;
-//    p = CGPointMake(0, 0);
-//    if (self.headView.collectionView.contentOffset.x > self.headView.collectionView.contentSize.width - self.headView.collectionView.frame.size.width) {
-//        [self.headView.collectionView setContentOffset:p animated:NO];
-//      }
-    
 }
+
 //- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 //    if (self.headView.collectionView.contentOffset.y > self.headView.collectionView.contentSize.width - kScreenWidth) {
 //        WKLog(@"collection滚动");
 //    }
 //    
 //}
+
 
 - (void)loadNewData{
     // 马上进入刷新状态
@@ -326,6 +376,7 @@
     searchVc.keyStr = searchBar.text;
     [_searchBar removeFromSuperview];
     [_searchView removeFromSuperview];
+    _clickTime = 0;
     [self.navigationController pushViewController:searchVc animated:YES];
 }
 
@@ -360,16 +411,13 @@
         [Vc.navigationController pushViewController:notesVc animated:YES];
     };
     //2 moreButton
-    [self.headView.moreButton addTarget:self action:@selector(button) forControlEvents:UIControlEventTouchUpInside];
+    [self.headView.moreButton addTarget:self action:@selector(moreButton) forControlEvents:UIControlEventTouchUpInside];
     
     //3 设置collection
     [self.headView.collectionView registerNib:[UINib nibWithNibName:@"WKRecommendCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:kStr];
     
     self.headView.collectionView.delegate = self;
     self.headView.collectionView.dataSource = self;
-    
-
-   
     
 }
 #pragma mark ---collectionView----
@@ -418,7 +466,6 @@
     self.listTableView.dataSource = self;
     
     [self.listTableView registerNib:[UINib nibWithNibName:@"WKListTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
-    
     [self listTableViewHeadView];
 }
 

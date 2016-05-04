@@ -55,6 +55,7 @@
 
 - (void)requestDataWithStart:(NSInteger)start{
 //    WKLog(@"keyStr:%@", _keyStr);//
+    [SVProgressHUD show];
     NSString *URL = [self transform:_keyStr];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendSearchURL, URL, @(start)] parDic:@{} finish:^(NSData *data) {
         
@@ -83,9 +84,12 @@
             [self.tableView.mj_footer endRefreshing];
             
         });
+        [SVProgressHUD dismiss];
         
     } error:^(NSError *error) {
         WKLog(@"error%@", error);
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"加载失败！"];
     }];
 }
 

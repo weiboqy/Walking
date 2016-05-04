@@ -15,7 +15,7 @@
 
 #define kNavigationAndStatusBarHeihght 64
 
-@interface WKRecommendStoryViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface WKRecommendStoryViewController ()<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UITableView *listTableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -37,6 +37,15 @@
 @property (nonatomic, strong) UIButton *infoButton;
 @property (nonatomic, strong) UIButton *infoButton1;
 
+//点击图片的 方法
+@property (nonatomic, strong) UIView *imView;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIView *scroView;
+
+//收藏/分享
+@property (nonatomic, strong) UIBarButtonItem *itemLove;
+@property (nonatomic, assign) BOOL isTure;
+
 
 @end
 
@@ -54,6 +63,7 @@ static NSString * const imageCellID = @"listCell";
 
 - (void)requestData{
     
+    [SVProgressHUD show];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendStoryDetailURL, _spot_id] parDic:@{} finish:^(NSData *data) {
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 //        NSLog(@"%@", dicData);
@@ -82,14 +92,19 @@ static NSString * const imageCellID = @"listCell";
             self.listTableView.tableHeaderView = _headView;
         });
         
+        [SVProgressHUD dismiss];
     } error:^(NSError *error) {
         WKLog(@"error%@", error);
+        
+        [SVProgressHUD dismiss];
+        
+        [SVProgressHUD showErrorWithStatus:@"数据加载失败!"];
+        
+        
     }];
 }
 
 - (void)createListTableView{
-    
-    
     
     self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     self.listTableView.backgroundColor = [UIColor clearColor];
@@ -119,10 +134,6 @@ static NSString * const imageCellID = @"listCell";
     _headView.frame = CGRectMake(0, 0, 0, 240);
     [_headView initializeData];
     
-    
-//    self.listTableView.rowHeight = UITableViewAutomaticDimension;
-//    self.listTableView.estimatedRowHeight = 500;    
-    
   [self.view addSubview:self.listTableView];
     
 }
@@ -130,107 +141,42 @@ static NSString * const imageCellID = @"listCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     [self createListTableView];
-    
-//    [self buildNavigationBar];
-    
-//    self.title = @"精选故事";
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    _isTure = NO;
     
     [self requestData];
+    [self createListTableView];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
+    UIBarButtonItem *itemShare = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"分享"] style:UIBarButtonItemStylePlain target:self action:@selector(share)];
+    _itemLove = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"五角星（空）"] style:UIBarButtonItemStylePlain target:self action:@selector(love)];
+    
+    self.navigationItem.rightBarButtonItems = @[itemShare, _itemLove];
     
     // Do any additional setup after loading the view from its nib.
 }
 
-// 透明导航栏
--(void)buildNavigationBar {
-    _customNavigationBar = [[UIView alloc]init];
-    [self.view addSubview:_customNavigationBar];
-    NSDictionary *views = NSDictionaryOfVariableBindings(_customNavigationBar);
-    NSDictionary *metrics = @{@"HN":@(kNavigationAndStatusBarHeihght)};
-    NSArray *visualFormats = @[@"H:|[_customNavigationBar]|",
-                               @"V:|[_customNavigationBar(==HN)]"
-                               ];
-    [VisualFormatLayout autoLayout:self.view visualFormats:visualFormats metrics:metrics views:views];
-    
-    _navigationBangroundImageView = [[UIImageView alloc]init];
-    _navigationBangroundImageView.contentMode = UIViewContentModeScaleToFill;
-    UIImage *bannerImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", self.imageURL]]]];
-    
-    CGSize bannerImageSize = bannerImage.size;
-    CGFloat bannerNavBGImageHeight = bannerImageSize.width / self.view.frame.size.width * kNavigationAndStatusBarHeihght;
-    CGRect navigationBackroundImageRect = CGRectMake(0, 0, bannerImageSize.width, bannerNavBGImageHeight);
-    UIImage *bannerNavBGImage = [bannerImage partImageInRect:navigationBackroundImageRect];
-    _navigationBangroundImageView.image = bannerNavBGImage;
-    [_customNavigationBar addSubview:_navigationBangroundImageView];
-    
-    _navigationTitle = [[UILabel alloc]init];
-    _navigationTitle.text = @"精彩故事";
-    _navigationTitle.textColor = [UIColor whiteColor];
-    _navigationTitle.textAlignment = NSTextAlignmentCenter;
-    _navigationTitle.font = [UIFont systemFontOfSize:18.0];
-    [_customNavigationBar addSubview:_navigationTitle];
-    
-    
-    _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_infoButton setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-    // 自适应尺寸
-//    [_infoButton sizeToFit];
-    [_infoButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
-    [_customNavigationBar addSubview:_infoButton];
-    
-    views = NSDictionaryOfVariableBindings(_navigationBangroundImageView, _navigationTitle, _infoButton);
-    // 使用UIBlurEffect来制作毛玻璃
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
-    effectView.frame = CGRectMake(0, 0, kScreenWidth, 64);
-    [_navigationBangroundImageView addSubview:effectView];
-//    _navigationTitle.center = CGPointMake(kScreenWidth / 2, 22);
-//    _navigationTitle.bounds = CGRectMake(0, 0, 100, 30);
-    _navigationTitle.frame = CGRectMake(kScreenWidth / 2 - 50, 32, 100, 30);
-    
-    _navigationTitle.textAlignment = NSTextAlignmentCenter;
-    metrics = @{@"WB":@(34)};
-    visualFormats =  @[@"H:|[_navigationBangroundImageView]|",
-                       @"H:|-[_infoButton(==WB)]-(-20)-[_navigationTitle]|",
-                       @"H:|[_infoButton(==60)]|",
-//                       @"H:|[_navigationTitle(==390)]|",
-                       @"V:|[_navigationBangroundImageView]|",
-                       @"V:|-[_navigationTitle(==50)]|",
-                       @"V:|-[_infoButton(==50)]|"
-                       ];
-    [VisualFormatLayout autoLayout:_customNavigationBar visualFormats:visualFormats metrics:metrics views:views];
+- (void)love{
+    WKLog(@"收藏");
+    if (!_isTure) {
+        [_itemLove setImage:[UIImage imageNamed:@"五角星（满）"]];
+        _isTure = YES;
+    }else{
+        [_itemLove setImage:[UIImage imageNamed:@"五角星（空）"]];
+        _isTure = NO;
+    }
 }
 
-// 视图将要出现时,_customNavigationBar的透明度为0,一开始不让它显示
-- (void)viewWillAppear:(BOOL)animated {
-   _customNavigationBar.alpha = 0;
+- (void)share{
+    WKLog(@"分享");
+    
+
 }
-/*
--(void) scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGFloat threholdHeight = _bannerImageView.frame.size.height - kNavigationAndStatusBarHeihght;
-    if(scrollView.contentOffset.y >= 0 &&
-       scrollView.contentOffset.y <= threholdHeight) {
-        _customNavigationBar.alpha = 0;
-        CGFloat alpha = scrollView.contentOffset.y / threholdHeight;
-        _customNavigationBar.alpha = alpha;
-    }
-    else if(scrollView.contentOffset.y < 0) {
-        _customNavigationBar.alpha = 0;
-        scrollView.contentOffset = CGPointMake(0, 0);
-    }
-    else {
-        _customNavigationBar.alpha = 1.0;
-    }
-}
- */
+
 
 -(void)backClick {
     [self.navigationController popViewControllerAnimated:YES];
-}
 
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -278,25 +224,182 @@ static NSString * const imageCellID = @"listCell";
 //        WKLog(@"cellHeight:%f, model.height:%f", [detailModel cellHeight], detailModel.photo_height);
         return [detailModel cellsHeight];
     }
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    WKLog(@"%ld", indexPath.row);
     
+    //    self.navigationController.navigationBarHidden = YES;
+    _imView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    _imView.backgroundColor = [UIColor blackColor];
+    _scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //    scrollView.alwaysBounceHorizontal = NO;
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    _scrollView.contentSize = CGSizeMake(kScreenWidth * self.dataArray.count, 0);
+    _scrollView.pagingEnabled = YES;
+    _scrollView.bounces = NO;
+    //设置偏移量
+    _scrollView.contentOffset = CGPointMake(kScreenWidth * indexPath.row, 0);
+    //    scrollView.showsVerticalScrollIndicator = NO;
+    _scrollView.delegate = self;
     
-/*
-//    if (self.cellHeightBlock) {
-//        
-//        if (indexPath.row == 0) {
-//            CGSize maxSize = CGSizeMake(kScreenWidth-2*10, MAXFLOAT);
-//            CGFloat titleTextH = [_text boundingRectWithSize:maxSize options:0 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
-//            return  titleTextH + 10;
-//        }else{
-//            return self.cellHeightBlock();
-//        }
-//        
-//    }else{
-//        return 0.0;
-//    }
- */
+    CGFloat flo =  (kScreenWidth - 20) / self.dataArray.count;
+    
+    int i = 0;
+    for (WKRecommendStoryDetailModel *model in self.dataArray) {
+        i ++;
+        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width * (i - 1), 0, [UIScreen mainScreen].bounds.size.width, (300 / 667.0) * kScreenHeight)];
+        
+        //        imageV.height = model.photoModel.h * (kScreenWidth / model.photoModel.w);//可以设置图片的高度
+#pragma mark ---- Can't achieve---------
+        //剪切设置尺寸 多余的 暂时没有效果
+        imageV.contentMode =  UIViewContentModeScaleToFill;
+        imageV.clipsToBounds = YES;
+        imageV.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        //设置 中心位置
+        CGPoint imageVp = imageV.center;
+        CGFloat p = _scrollView.center.y;
+        imageVp.y = p;
+        imageV.center = imageVp;
+        
+        UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(kScreenWidth * (i - 1), (500/ 667.0) * kScreenHeight, kScreenWidth, (110/667.0) * kScreenHeight)];
+        textView.backgroundColor = [UIColor blackColor];
+        textView.showsVerticalScrollIndicator = NO;
+        textView.font = [UIFont systemFontOfSize:14.0];
+        textView.text = model.text;
+        textView.textColor = [UIColor whiteColor];
+        textView.editable = NO;
+        [imageV sd_setImageWithURL:[NSURL URLWithString:model.photo_s] placeholderImage:PLACEHOLDER];
+        imageV.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        UILongPressGestureRecognizer *longTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTap:)];
+        [imageV addGestureRecognizer:longTap];
+        [imageV addGestureRecognizer:tap];
+        
+        [_scrollView addSubview:textView];
+        [_scrollView addSubview:imageV];
+    }
+    //添加下边的滑动条
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, kScreenWidth - 20, (3/667.0) * kScreenHeight)];//(620/667.0) * kScreenHeight
+    view.backgroundColor = [UIColor grayColor];
+    self.scroView = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, flo * (indexPath.row + 1), (3/667.0) * kScreenHeight)];
+    self.scroView.backgroundColor = [UIColor orangeColor];
+    
+    [_imView addSubview:_scrollView];
+    [_imView addSubview:view];
+    [_imView addSubview:self.scroView];
+    
+    [self.view addSubview:_imView];
+}
+- (void)longTap:(UILongPressGestureRecognizer *)longTap {
+    WKLog(@"长按了图片。。。");
+    
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"保存图片" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        WKLog(@" 执行 下载 ");
+        
+        NSInteger count =  self.scrollView.contentOffset.x/kScreenWidth;//从 0 开始的整数
+        //保存到相册
+        UIImageView *imageVV = [[UIImageView alloc] init];
+        NSString *str =  [self.dataArray[count] photo_s];
+        [imageVV sd_setImageWithURL:[NSURL URLWithString:str]];
+        UIImageWriteToSavedPhotosAlbum(imageVV.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        
+        
+    }];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        WKLog(@" 相 册 ");
+        //点击相册的按钮 之后执行的方法
+        UIImagePickerController *pickerV = [[UIImagePickerController alloc] init];
+        pickerV.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;//指定弹出的类型
+        pickerV.delegate = self;
+        pickerV.allowsEditing = YES;//打开相册选取是  对照片的编辑是否打开
+        [self presentViewController:pickerV animated:YES completion:nil];
+    }];
+    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        WKLog(@"取消了 下载");
+    }];
+    
+    [alertC addAction:action1];
+    [alertC addAction:action2];
+    [alertC addAction:action3];
+    [self.navigationController presentViewController:alertC animated:YES completion:nil];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    
+    if (error == nil) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
+        view.layer.cornerRadius = 8/375.0 * kScreenWidth;
+        view.layer.masksToBounds = YES;
+        view.backgroundColor = [UIColor grayColor];
+        CGPoint p =  _imView.center;
+        view.center = p;
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100/375.0 * kScreenWidth, 30/667.0 *kScreenHeight)];
+        label.text = @"保存成功!";
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [UIColor whiteColor];
+        label.font = [UIFont systemFontOfSize:13/375.0 * kScreenWidth];
+        //        label.backgroundColor = [UIColor yellowColor];
+        label.center = p;
+        [_imView addSubview:view];
+        [_imView addSubview:label];
+        
+        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+        dispatch_after(time, dispatch_get_main_queue(), ^{
+            //            WKLog(@"000000miao");
+            [view removeFromSuperview];
+            [label removeFromSuperview];
+        });
+        WKLog(@"添加成功到 相册");
+        
+    }else{
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120/375.0 * kScreenWidth, 120/375.0 * kScreenWidth)];
+        view.layer.cornerRadius = 8/375.0 * kScreenWidth;
+        view.layer.masksToBounds = YES;
+        view.backgroundColor = [UIColor grayColor];
+        CGPoint p =  _imView.center;
+        view.center = p;
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100/375.0 * kScreenWidth, 30/667.0 *kScreenHeight)];
+        label.text = @"保存失败!";
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [UIColor whiteColor];
+        label.font = [UIFont systemFontOfSize:13/375.0 * kScreenWidth];
+        //        label.backgroundColor = [UIColor yellowColor];
+        label.center = p;
+        [_imView addSubview:view];
+        [_imView addSubview:label];
+        
+        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+        dispatch_after(time, dispatch_get_main_queue(), ^{
+            //            WKLog(@"000000miao");
+            [view removeFromSuperview];
+            [label removeFromSuperview];
+        });
+        WKLog(@"添加失败");
+    }
+}
+//删除 显示的图片
+- (void)tapAction:(UITapGestureRecognizer *)tap{
+    //    WKLog(@"触摸了屏幕");
+    //    self.navigationController.navigationBarHidden = NO;
+    [_imView removeFromSuperview];
+    self.scroView = nil;
     
 }
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    //    WKLog(@"滚动结束了");
+    
+    CGFloat flo =  (kScreenWidth - 20) / self.dataArray.count;
+    if (self.scroView) {
+        WKLog(@"scroView....滚动结束了");
+        self.scroView.frame = CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, flo * (scrollView.contentOffset.x / kScreenWidth + 1), (3/667.0) * kScreenHeight);
+    }
+}
+
 
 
 /*

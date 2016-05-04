@@ -184,6 +184,7 @@
 		79EC2E581CCB689000BF59B3 /* WKSearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79EC2E561CCB689000BF59B3 /* WKSearchTableViewController.xib */; };
 		79EC2E5C1CCB68D000BF59B3 /* WKSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EC2E5A1CCB68D000BF59B3 /* WKSearchTableViewCell.m */; };
 		79EC2E5D1CCB68D000BF59B3 /* WKSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79EC2E5B1CCB68D000BF59B3 /* WKSearchTableViewCell.xib */; };
+		79EC7C6D1CD8951400AB6BCE /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EC7C6C1CD8951400AB6BCE /* HeadView.m */; };
 		79EFB5201CCE17CC005D9B63 /* WKSearchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EFB51F1CCE17CC005D9B63 /* WKSearchDetailViewController.m */; };
 		79EFB5241CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EFB5221CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.m */; };
 		79EFB5251CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79EFB5231CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.xib */; };
@@ -506,6 +507,8 @@
 		79EC2E591CCB68D000BF59B3 /* WKSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSearchTableViewCell.h; sourceTree = "<group>"; };
 		79EC2E5A1CCB68D000BF59B3 /* WKSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSearchTableViewCell.m; sourceTree = "<group>"; };
 		79EC2E5B1CCB68D000BF59B3 /* WKSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKSearchTableViewCell.xib; sourceTree = "<group>"; };
+		79EC7C6B1CD8951400AB6BCE /* HeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadView.h; sourceTree = "<group>"; };
+		79EC7C6C1CD8951400AB6BCE /* HeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadView.m; sourceTree = "<group>"; };
 		79EFB51E1CCE17CC005D9B63 /* WKSearchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSearchDetailViewController.h; sourceTree = "<group>"; };
 		79EFB51F1CCE17CC005D9B63 /* WKSearchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSearchDetailViewController.m; sourceTree = "<group>"; };
 		79EFB5211CCE17EA005D9B63 /* WKSearchDetailViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSearchDetailViewControllerCell.h; sourceTree = "<group>"; };
@@ -1008,6 +1011,8 @@
 				7930352B1CC68857003E5491 /* WKCycleScrollView.m */,
 				7930352D1CC6886A003E5491 /* NSTimer+myTimer.h */,
 				7930352E1CC6886A003E5491 /* NSTimer+myTimer.m */,
+				79EC7C6B1CD8951400AB6BCE /* HeadView.h */,
+				79EC7C6C1CD8951400AB6BCE /* HeadView.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1538,6 +1543,7 @@
 				791603121CCE3CA800D3F2FD /* WKTravelNoteUserModel.m in Sources */,
 				79FAC48E1CC4E39F0068C093 /* AppDelegate.m in Sources */,
 				7900859A1CCB58D9007E5E58 /* WKGuideUserModel.m in Sources */,
+				79EC7C6D1CD8951400AB6BCE /* HeadView.m in Sources */,
 				791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */,
 				7914E3601CC773EA001A0C5F /* WKInlandViewController.m in Sources */,
 				79FEA3671CD25BF600F23D17 /* WKSearchLastTableViewControllerCell.m in Sources */,

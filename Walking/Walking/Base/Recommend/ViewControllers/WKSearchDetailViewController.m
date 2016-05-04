@@ -36,7 +36,7 @@
 
 - (void)requestDataWithStart:(NSInteger)start{
     //    WKLog(@"keyStr:%@", _keyStr);//
-//    NSString *startStr = [NSString stringWithFormat:];
+    [SVProgressHUD show];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendSearchDetailURL, _ID, @(start)] parDic:@{} finish:^(NSData *data) {
         
         NSDictionary *dicData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -78,9 +78,12 @@
 //            
 //            WKLog(@"%ld", _visited_count);
         });
+        [SVProgressHUD dismiss];
         
     } error:^(NSError *error) {
         WKLog(@"error%@", error);
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
 }
 
