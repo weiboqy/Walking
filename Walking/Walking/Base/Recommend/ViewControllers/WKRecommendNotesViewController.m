@@ -76,8 +76,7 @@
         for (NSDictionary *dicT in dic[@"days"]) {
             for (NSDictionary *dicc in dicT[@"waypoints"]) {
                 WKRecommendNotesDetailModel *model = [[WKRecommendNotesDetailModel alloc] init];
-                WKRecommendNotesDetailPhotoModel *photoModel = [[WKRecommendNotesDetailPhotoModel alloc] init];
-            
+                WKRecommendNotesDetailPhotoModel *photoModel = [[WKRecommendNotesDetailPhotoModel alloc] init];            
                 [model setValuesForKeysWithDictionary:dicc];
 //                WKLog(@"%@", dicc[@"photo_info"]);
 #pragma mark---------bug-------
