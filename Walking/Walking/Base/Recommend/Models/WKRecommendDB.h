@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DBManager.h"
 #import "FMDB.h"
+#import "WKCollectModel.h"
 
 @interface WKRecommendDB : NSObject
 
@@ -23,7 +24,7 @@
 
 - (NSArray *)findWithID:(NSString *)ID;
 
-
+- (NSArray *)getAllDataWithCollectModel:(WKCollectModel *)collectModel;
 
 
 

@@ -105,7 +105,7 @@ static NSString * const imageCellID = @"listCell";
 
 - (void)createListTableView{
     
-    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.listTableView.delegate = self;
@@ -141,7 +141,7 @@ static NSString * const imageCellID = @"listCell";
     [super viewDidLoad];   
     
     _isTure = NO;
-    self.navigationController.navigationBar.translucent = NO;
+//    self.navigationController.navigationBar.translucent = NO;
     
     [self requestData];
     [self createListTableView];

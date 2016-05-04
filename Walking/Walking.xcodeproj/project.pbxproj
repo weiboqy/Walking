@@ -68,6 +68,7 @@
 		791603151CCE5DFE00D3F2FD /* VisualFormatLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603141CCE5DFE00D3F2FD /* VisualFormatLayout.m */; };
 		791603181CCE5F0E00D3F2FD /* UIImage+Part.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603171CCE5F0E00D3F2FD /* UIImage+Part.m */; };
 		791603621CCE669D00D3F2FD /* banner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 791603611CCE669D00D3F2FD /* banner.jpg */; };
+		7916D3B91CDA2D17009BF8AF /* WKCollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7916D3B81CDA2D17009BF8AF /* WKCollectModel.m */; };
 		791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791782B81CC9D1360015C0BD /* WKRecommendNotesDetailModel.m */; };
 		791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791C35DB1CC774DF00FFC596 /* WKMyCollectionViewController.m */; };
 		791C35DE1CC774DF00FFC596 /* WKMyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791C35DC1CC774DF00FFC596 /* WKMyCollectionViewController.xib */; };
@@ -341,6 +342,8 @@
 		791603161CCE5F0E00D3F2FD /* UIImage+Part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Part.h"; sourceTree = "<group>"; };
 		791603171CCE5F0E00D3F2FD /* UIImage+Part.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Part.m"; sourceTree = "<group>"; };
 		791603611CCE669D00D3F2FD /* banner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner.jpg; sourceTree = "<group>"; };
+		7916D3B71CDA2D17009BF8AF /* WKCollectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCollectModel.h; sourceTree = "<group>"; };
+		7916D3B81CDA2D17009BF8AF /* WKCollectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCollectModel.m; sourceTree = "<group>"; };
 		791732931CCB64DC00199176 /* WKImageSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKImageSwitchView.h; sourceTree = "<group>"; };
 		791732941CCB64DC00199176 /* WKImageSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKImageSwitchView.m; sourceTree = "<group>"; };
 		791782B71CC9D1360015C0BD /* WKRecommendNotesDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendNotesDetailModel.h; sourceTree = "<group>"; };
@@ -998,6 +1001,8 @@
 				79EFB5271CCE3750005D9B63 /* WKRecomendSearchDetailModel.m */,
 				79FEA3611CD258C500F23D17 /* WKSearchLastTableViewControllerModel.h */,
 				79FEA3621CD258C500F23D17 /* WKSearchLastTableViewControllerModel.m */,
+				7916D3B71CDA2D17009BF8AF /* WKCollectModel.h */,
+				7916D3B81CDA2D17009BF8AF /* WKCollectModel.m */,
 				790E476C1CD99C8700125C9E /* WKRecommendDB.h */,
 				790E476D1CD99C8700125C9E /* WKRecommendDB.m */,
 			);
@@ -1291,7 +1296,7 @@
 				TargetAttributes = {
 					79FAC4851CC4E39F0068C093 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = X4P4XDTS83;
+						DevelopmentTeam = F69QY6X9T7;
 					};
 					79FAC49E1CC4E39F0068C093 = {
 						CreatedOnToolsVersion = 7.2;
@@ -1566,6 +1571,7 @@
 				793123661CC8D1DE0052CDEE /* WKWorldDetailModel.m in Sources */,
 				79C5FEC71CCA66F5004B61AA /* WKGuideViewController.m in Sources */,
 				791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */,
+				7916D3B91CDA2D17009BF8AF /* WKCollectModel.m in Sources */,
 				7907618C1CC654020097EF89 /* WKWorldView.m in Sources */,
 				79128A091CCF7FF400FCCA55 /* WKTravelDetailModel.m in Sources */,
 				79128A281CCFBD3600FCCA55 /* WKRouteDetailCell.m in Sources */,
@@ -1752,7 +1758,7 @@
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Walking222g.Walking;
+				PRODUCT_BUNDLE_IDENTIFIER = Walking22g.Walking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1783,7 +1789,7 @@
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Walking/Base/Others/share/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Walking222g.Walking;
+				PRODUCT_BUNDLE_IDENTIFIER = Walking22g.Walking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

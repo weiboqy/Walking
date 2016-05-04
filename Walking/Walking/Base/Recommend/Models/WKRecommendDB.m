@@ -70,6 +70,7 @@
 }
 
 - (NSArray *)findWithID:(NSString *)ID{
+    
     NSString *query = [NSString stringWithFormat:@"select *from %@ where ID = '%@'", COLLECTTABLE, ID];
     FMResultSet *set = [_dataBase executeQuery:query];
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[set columnCount]];
@@ -88,6 +89,22 @@
     return array;
 }
 
+- (NSArray *)getAllDataWithCollectModel:(WKCollectModel *)collectModel{
+    NSString *query = [NSString stringWithFormat:@"select *from %@", COLLECTTABLE];
+    FMResultSet *set = [_dataBase executeQuery:query];
+    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[set columnCount]];
+    while ([set next]) {
+        WKCollectModel *model = [[WKCollectModel alloc] init];
+        model.title    = [set stringForColumn:@"title"];
+        model.ID       = [set stringForColumn:@"ID"];
+        model.imageURL = [set stringForColumn:@"imageURL"];
+        model.type     = [set stringForColumn:@"type"];
+        
+        [array addObject:model];
+    }
+    [set close];
+    return array;
+}
 
 
 @end
