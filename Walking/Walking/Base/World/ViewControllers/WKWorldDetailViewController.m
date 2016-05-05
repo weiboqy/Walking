@@ -95,7 +95,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     [bar addSubview:button];
     
     UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    titleBtn.frame = CGRectMake(88, 8, 199, 30);
+    titleBtn.frame = CGRectMake(kScreenWidth / 2 - 50, 8, 100, 30);
     [titleBtn setTitle:_titleName forState:UIControlStateNormal];
     [titleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
