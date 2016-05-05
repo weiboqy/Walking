@@ -54,10 +54,10 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zgc-bD-iT3">
-                        <rect key="frame" x="10" y="38" width="463" height="303"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zgc-bD-iT3">
+                        <rect key="frame" x="10" y="35" width="463" height="303"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="zgc-bD-iT3" secondAttribute="height" multiplier="463:303" id="7Zg-51-7O5"/>
+                            <constraint firstAttribute="width" secondItem="zgc-bD-iT3" secondAttribute="height" multiplier="463:303" id="fk0-u6-Cpe"/>
                         </constraints>
                     </imageView>
                 </subviews>

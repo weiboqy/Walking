@@ -15,7 +15,9 @@
 #import "WKTabBarViewController.h"
 #import "UserInfoManager.h"
 #import "LoginViewController.h"
+
 @interface WKMeViewController ()<UITableViewDataSource,UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 @property (strong, nonatomic)  UITableView *meTableView;
 @property (nonatomic, strong) WKMeHeadView *meHeadView;
 @property (nonatomic, strong) NSMutableArray *dataArray;

@@ -111,7 +111,6 @@
 		791DA51C1CC769F9009D9093 /* WKRecommendStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791DA51A1CC769F9009D9093 /* WKRecommendStoryViewController.m */; };
 		791DA5211CC76A0F009D9093 /* WKRecommendNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791DA51F1CC76A0F009D9093 /* WKRecommendNotesViewController.m */; };
 		791DA5261CC77B52009D9093 /* WKStoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 791DA5241CC77B52009D9093 /* WKStoryListTableViewCell.m */; };
-		791DA5271CC77B52009D9093 /* WKStoryListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791DA5251CC77B52009D9093 /* WKStoryListTableViewCell.xib */; };
 		791DA52A1CC77D40009D9093 /* WKStoryListHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 791DA5291CC77D40009D9093 /* WKStoryListHeadView.m */; };
 		791DA52C1CC77D5D009D9093 /* WKStoryListHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791DA52B1CC77D5C009D9093 /* WKStoryListHeadView.xib */; };
 		791DA5721CC7B695009D9093 /* WKNotesListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 791DA5701CC7B695009D9093 /* WKNotesListTableViewCell.m */; };
@@ -418,7 +417,6 @@
 		791DA51F1CC76A0F009D9093 /* WKRecommendNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKRecommendNotesViewController.m; sourceTree = "<group>"; };
 		791DA5231CC77B52009D9093 /* WKStoryListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKStoryListTableViewCell.h; sourceTree = "<group>"; };
 		791DA5241CC77B52009D9093 /* WKStoryListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKStoryListTableViewCell.m; sourceTree = "<group>"; };
-		791DA5251CC77B52009D9093 /* WKStoryListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKStoryListTableViewCell.xib; sourceTree = "<group>"; };
 		791DA5281CC77D40009D9093 /* WKStoryListHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKStoryListHeadView.h; sourceTree = "<group>"; };
 		791DA5291CC77D40009D9093 /* WKStoryListHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKStoryListHeadView.m; sourceTree = "<group>"; };
 		791DA52B1CC77D5C009D9093 /* WKStoryListHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKStoryListHeadView.xib; sourceTree = "<group>"; };
@@ -1062,7 +1060,6 @@
 				793035271CC687BA003E5491 /* WKListTableViewCell.xib */,
 				791DA5231CC77B52009D9093 /* WKStoryListTableViewCell.h */,
 				791DA5241CC77B52009D9093 /* WKStoryListTableViewCell.m */,
-				791DA5251CC77B52009D9093 /* WKStoryListTableViewCell.xib */,
 				79CBB2A91CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.h */,
 				79CBB2AA1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.m */,
 				79CBB2AB1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.xib */,
@@ -1419,7 +1416,6 @@
 				7928D1EB1CD33AA1000B4298 /* welcome－8（被拖移）.tiff in Resources */,
 				7928D1D01CD33AA1000B4298 /* welcome－14（被拖移）.tiff in Resources */,
 				791289FC1CCF528600FCCA55 /* WKTravelNoteViewController.xib in Resources */,
-				791DA5271CC77B52009D9093 /* WKStoryListTableViewCell.xib in Resources */,
 				7928D1E91CD33AA1000B4298 /* welcome－6（被拖移）.tiff in Resources */,
 				79128A1C1CCFAF2700FCCA55 /* WKRouteDetailViewController.xib in Resources */,
 				79CBB2AD1CCA23C6005FEA30 /* WKStoryListTableViewHeadCell.xib in Resources */,

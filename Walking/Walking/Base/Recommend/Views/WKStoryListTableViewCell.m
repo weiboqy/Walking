@@ -38,6 +38,7 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
+    
     _imageV.frame     = self.detailModel.imageFrame;
     _titleLabel.frame = self.detailModel.textFrame;
 }

@@ -464,6 +464,8 @@
     
     self.listTableView.delegate   = self;
     self.listTableView.dataSource = self;
+    //去掉分割线
+//    self.listTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.listTableView registerNib:[UINib nibWithNibName:@"WKListTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
     [self listTableViewHeadView];

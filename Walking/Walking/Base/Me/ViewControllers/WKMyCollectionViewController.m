@@ -31,17 +31,25 @@ static NSString * const TableViewCellID = @"TableCellID";
     return _dataArr;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+//    [self.tableView reloadData];
+    
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    self.navigationController.navigationBar.translucent = NO;
+    // 标题
+    self.navigationItem.title = @"我的收藏";
     // 加载数据
     [self loadData];
-    
     // 创建TableView
     [self setupTableView];
     
-    // 标题
-    self.navigationItem.title = @"我的收藏";
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -54,6 +62,7 @@ static NSString * const TableViewCellID = @"TableCellID";
 
 // 创建TableView
 - (void)setupTableView {
+    
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
