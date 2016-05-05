@@ -69,6 +69,7 @@
 		791603181CCE5F0E00D3F2FD /* UIImage+Part.m in Sources */ = {isa = PBXBuildFile; fileRef = 791603171CCE5F0E00D3F2FD /* UIImage+Part.m */; };
 		791603621CCE669D00D3F2FD /* banner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 791603611CCE669D00D3F2FD /* banner.jpg */; };
 		7916D3B91CDA2D17009BF8AF /* WKCollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7916D3B81CDA2D17009BF8AF /* WKCollectModel.m */; };
+		7916D3BC1CDA3E42009BF8AF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7916D3BB1CDA3E42009BF8AF /* Reachability.m */; };
 		791782B91CC9D1360015C0BD /* WKRecommendNotesDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791782B81CC9D1360015C0BD /* WKRecommendNotesDetailModel.m */; };
 		791C35DD1CC774DF00FFC596 /* WKMyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791C35DB1CC774DF00FFC596 /* WKMyCollectionViewController.m */; };
 		791C35DE1CC774DF00FFC596 /* WKMyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791C35DC1CC774DF00FFC596 /* WKMyCollectionViewController.xib */; };
@@ -344,6 +345,8 @@
 		791603611CCE669D00D3F2FD /* banner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner.jpg; sourceTree = "<group>"; };
 		7916D3B71CDA2D17009BF8AF /* WKCollectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCollectModel.h; sourceTree = "<group>"; };
 		7916D3B81CDA2D17009BF8AF /* WKCollectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCollectModel.m; sourceTree = "<group>"; };
+		7916D3BA1CDA3E42009BF8AF /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		7916D3BB1CDA3E42009BF8AF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		791732931CCB64DC00199176 /* WKImageSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKImageSwitchView.h; sourceTree = "<group>"; };
 		791732941CCB64DC00199176 /* WKImageSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKImageSwitchView.m; sourceTree = "<group>"; };
 		791782B71CC9D1360015C0BD /* WKRecommendNotesDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKRecommendNotesDetailModel.h; sourceTree = "<group>"; };
@@ -803,6 +806,8 @@
 				791603171CCE5F0E00D3F2FD /* UIImage+Part.m */,
 				790E47691CD99B5A00125C9E /* DBManager.h */,
 				790E476A1CD99B5A00125C9E /* DBManager.m */,
+				7916D3BA1CDA3E42009BF8AF /* Reachability.h */,
+				7916D3BB1CDA3E42009BF8AF /* Reachability.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1581,6 +1586,7 @@
 				791DA5761CC7BB64009D9093 /* WKNotesListHeadView.m in Sources */,
 				791DA51C1CC769F9009D9093 /* WKRecommendStoryViewController.m in Sources */,
 				79EC2E571CCB689000BF59B3 /* WKSearchTableViewController.m in Sources */,
+				7916D3BC1CDA3E42009BF8AF /* Reachability.m in Sources */,
 				790085941CCB172C007E5E58 /* WKGuideDetailPhotoModel.m in Sources */,
 				79FAC4DB1CC533130068C093 /* WKRecommendViewController.m in Sources */,
 				790CA8931CD110BF009547E7 /* RegisterViewController.m in Sources */,

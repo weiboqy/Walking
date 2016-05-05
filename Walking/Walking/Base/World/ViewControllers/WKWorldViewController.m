@@ -130,7 +130,6 @@
 }
 
 #pragma mark --国内\国外按钮的点击方式
-
 - (void)foreignClick {
 //    WKLogFun;
     _foreignButton.selected = YES;
@@ -146,9 +145,6 @@
     [_inlandButton setImage:[UIImage imageNamed:@"国内"] forState:UIControlStateNormal];
     self.rootScrollView.contentOffset = CGPointMake(kScreenWidth, 0);
 }
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

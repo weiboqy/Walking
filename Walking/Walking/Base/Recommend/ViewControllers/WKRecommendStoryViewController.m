@@ -113,10 +113,11 @@ static NSString * const imageCellID = @"listCell";
     
     //添加背景图
     UIImageView *imageV = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
-        effectview.frame = [UIScreen mainScreen].bounds;
-        effectview.alpha = 1;
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+    effectview.frame = [UIScreen mainScreen].bounds;
+    effectview.alpha = 1;
+    
     [imageV sd_setImageWithURL:[NSURL URLWithString:self.imageURL]];
         effectview.alpha = 0.5;
     [imageV sd_setImageWithURL:[NSURL URLWithString:self.imageURL] placeholderImage:PLACEHOLDER];
