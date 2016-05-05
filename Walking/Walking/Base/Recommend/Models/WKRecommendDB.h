@@ -27,8 +27,4 @@
 - (NSArray *)getAllDataWithCollectModel:(WKCollectModel *)collectModel;
 
 
-
-
-
-
 @end

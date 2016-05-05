@@ -22,6 +22,13 @@
     [super viewDidLoad];
     
 }
+
+// 收回键盘
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.nameLabel resignFirstResponder];
+    [self.EmilTF resignFirstResponder];
+    [self.passworldTF resignFirstResponder];
+}
 - (IBAction)backClick:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

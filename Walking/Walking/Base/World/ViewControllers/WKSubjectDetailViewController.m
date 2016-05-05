@@ -144,7 +144,7 @@ static NSString * const ImageCellID = @"imageCell";
     [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    titleBtn.frame = CGRectMake(88, 8, 199, 30);
+    titleBtn.frame = CGRectMake(kScreenWidth / 2 - 50, 8, 100, 30);
     [titleBtn setTitle:self.name forState:UIControlStateNormal];
     [titleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     

@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_1349" translatesAutoresizingMaskIntoConstraints="NO" id="aPY-9f-urD">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_1349" translatesAutoresizingMaskIntoConstraints="NO" id="aPY-9f-urD">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="wYB-yF-fqF"/>
@@ -24,59 +24,61 @@
                         <constraint firstAttribute="height" constant="200" id="72F-Pg-6up"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opb-dH-zSN">
-                    <rect key="frame" x="87" y="140" width="200" height="30"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PO8-PO-24W">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6N-5u-VwP">
+                            <rect key="frame" x="148" y="135" width="78" height="34"/>
+                            <state key="normal" title="登陆/注册"/>
+                            <state key="highlighted" image="120"/>
+                        </button>
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headImage" translatesAutoresizingMaskIntoConstraints="NO" id="Mu5-Ul-6tk">
+                            <rect key="frame" x="152" y="40" width="70" height="70"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="pbV-ji-T6F"/>
+                                <constraint firstAttribute="height" constant="70" id="tWI-ra-8Qc"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="35"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                    </subviews>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="8id-VH-pv5"/>
-                        <constraint firstAttribute="width" constant="200" id="NOR-Hn-gCk"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="jwh-Py-afU"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="kAZ-2E-lNu"/>
+                        <constraint firstAttribute="height" constant="200" id="9SP-bk-oU5"/>
+                        <constraint firstItem="Mu5-Ul-6tk" firstAttribute="centerX" secondItem="PO8-PO-24W" secondAttribute="centerX" id="D7a-1Y-EDc"/>
+                        <constraint firstItem="l6N-5u-VwP" firstAttribute="top" secondItem="Mu5-Ul-6tk" secondAttribute="bottom" constant="25" id="F4G-gJ-NXg"/>
+                        <constraint firstItem="l6N-5u-VwP" firstAttribute="centerX" secondItem="PO8-PO-24W" secondAttribute="centerX" id="bgv-01-whr"/>
+                        <constraint firstItem="Mu5-Ul-6tk" firstAttribute="top" secondItem="PO8-PO-24W" secondAttribute="top" constant="40" id="ozr-95-6KU"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="登陆/注册">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headImage" translatesAutoresizingMaskIntoConstraints="NO" id="Mu5-Ul-6tk">
-                    <rect key="frame" x="153" y="60" width="70" height="70"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="BkF-Xy-2M3"/>
-                        <constraint firstAttribute="height" constant="70" id="Z6V-XP-FM7"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="ebA-0n-v71"/>
-                        <constraint firstAttribute="width" constant="70" id="hht-S7-XWZ"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="35"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </imageView>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Mu5-Ul-6tk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1Dz-8T-rPp"/>
                 <constraint firstItem="6oQ-Bl-6NJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Huo-Bt-NbJ"/>
                 <constraint firstAttribute="trailing" secondItem="6oQ-Bl-6NJ" secondAttribute="trailing" id="ISH-AT-ave"/>
                 <constraint firstItem="6oQ-Bl-6NJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="L1P-Ts-BDS"/>
-                <constraint firstItem="opb-dH-zSN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gFS-U2-iIP"/>
-                <constraint firstItem="opb-dH-zSN" firstAttribute="top" secondItem="Mu5-Ul-6tk" secondAttribute="bottom" constant="10" id="hhT-5d-8Xu"/>
+                <constraint firstAttribute="trailing" secondItem="PO8-PO-24W" secondAttribute="trailing" id="S45-Cq-on9"/>
+                <constraint firstItem="PO8-PO-24W" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YKJ-lc-tBy"/>
                 <constraint firstAttribute="trailing" secondItem="aPY-9f-urD" secondAttribute="trailing" id="nPb-QT-Zdg"/>
+                <constraint firstItem="PO8-PO-24W" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qfB-X9-MB2"/>
                 <constraint firstItem="aPY-9f-urD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tW7-Lz-Ith"/>
-                <constraint firstItem="Mu5-Ul-6tk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="vYa-5A-GZz"/>
                 <constraint firstItem="aPY-9f-urD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="x9C-hh-ALF"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <connections>
-                <outlet property="LoginAndRegistButton" destination="opb-dH-zSN" id="ZrL-KD-Lfg"/>
+                <outlet property="LoginAndRegistButton" destination="l6N-5u-VwP" id="nRA-Wg-mzD"/>
                 <outlet property="headImage" destination="Mu5-Ul-6tk" id="4c6-Sj-8Zf"/>
             </connections>
             <point key="canvasLocation" x="122.5" y="432.5"/>
         </view>
     </objects>
     <resources>
+        <image name="120" width="120" height="120"/>
         <image name="IMG_1349" width="1259" height="645"/>
         <image name="headImage" width="450" height="451"/>
     </resources>
