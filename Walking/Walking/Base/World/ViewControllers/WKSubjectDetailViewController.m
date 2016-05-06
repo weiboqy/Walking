@@ -131,6 +131,7 @@ static NSString * const ImageCellID = @"imageCell";
 }
 /**/
 - (void)addCustomNagationBar {
+    
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
     bar.backgroundColor = [UIColor clearColor];
@@ -144,7 +145,7 @@ static NSString * const ImageCellID = @"imageCell";
     [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    titleBtn.frame = CGRectMake(kScreenWidth / 2 - 50, 8, 100, 30);
+    titleBtn.frame = CGRectMake(kScreenWidth / 2 - 100, 8, 200, 30);
     [titleBtn setTitle:self.name forState:UIControlStateNormal];
     [titleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     

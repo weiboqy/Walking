@@ -34,17 +34,27 @@ static NSString * const TableViewCellID = @"TableCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 加载数据
-    [self loadData];
-    
-    // 创建TableView
-    [self setupTableView];
+//    // 加载数据
+//    [self loadData];
+//    
+//    // 创建TableView
+//    [self setupTableView];
     
     // 标题
     self.navigationItem.title = @"我的收藏";
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // 加载数据
+    [self loadData];
+    
+    // 创建TableView
+    [self setupTableView];
+    
+    self.navigationController.navigationBar.translucent = NO;
+}
 // 加载数据
 - (void)loadData {
     WKCollectModel *model = [[WKCollectModel alloc]init];
@@ -54,6 +64,7 @@ static NSString * const TableViewCellID = @"TableCellID";
 
 // 创建TableView
 - (void)setupTableView {
+    
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

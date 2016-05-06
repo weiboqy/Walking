@@ -80,6 +80,10 @@
 
 - (IBAction)registerAction:(id)sender {
     RegisterViewController *registerVC = [[RegisterViewController alloc]init];
+    registerVC.block = ^(NSString *email, NSString *password) {
+        self.emailTF.text = email;
+        self.passworldTF.text = password;
+    };
     [self presentViewController:registerVC animated:YES completion:nil];
 }
 

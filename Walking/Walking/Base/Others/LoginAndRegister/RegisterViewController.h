@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef void (^sendBlock)(NSString *, NSString *);
+
 @interface RegisterViewController : UIViewController
+
+@property (nonatomic, copy) sendBlock block;
 
 @end

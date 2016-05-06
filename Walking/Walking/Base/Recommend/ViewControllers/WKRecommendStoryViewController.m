@@ -141,7 +141,7 @@ static NSString * const imageCellID = @"listCell";
     [super viewDidLoad];   
     
     _isTure = NO;
-//    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.translucent = YES;
     
     [self requestData];
     [self createListTableView];

@@ -174,6 +174,7 @@
 		798B54D01CCDB28F00AA096B /* WKSubjectDetailSectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 798B54CF1CCDB28F00AA096B /* WKSubjectDetailSectionsModel.m */; };
 		798B54D41CCDB94300AA096B /* WKSubjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 798B54D21CCDB94300AA096B /* WKSubjectDetailViewController.m */; };
 		798B54D51CCDB94300AA096B /* WKSubjectDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 798B54D31CCDB94300AA096B /* WKSubjectDetailViewController.xib */; };
+		7996BEAA1CDC3D3300BCFEE8 /* WKCustomNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7996BEA91CDC3D3300BCFEE8 /* WKCustomNavigationView.m */; };
 		79C5FEAD1CC9B5C5004B61AA /* WKCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C5FEAB1CC9B5C5004B61AA /* WKCategoryViewController.m */; };
 		79C5FEAE1CC9B5C5004B61AA /* WKCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C5FEAC1CC9B5C5004B61AA /* WKCategoryViewController.xib */; };
 		79C5FEB31CCA3FA1004B61AA /* WKRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C5FEB11CCA3FA1004B61AA /* WKRouteViewController.m */; };
@@ -497,6 +498,8 @@
 		798B54D11CCDB94300AA096B /* WKSubjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSubjectDetailViewController.h; sourceTree = "<group>"; };
 		798B54D21CCDB94300AA096B /* WKSubjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSubjectDetailViewController.m; sourceTree = "<group>"; };
 		798B54D31CCDB94300AA096B /* WKSubjectDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKSubjectDetailViewController.xib; sourceTree = "<group>"; };
+		7996BEA81CDC3D3300BCFEE8 /* WKCustomNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCustomNavigationView.h; sourceTree = "<group>"; };
+		7996BEA91CDC3D3300BCFEE8 /* WKCustomNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCustomNavigationView.m; sourceTree = "<group>"; };
 		79C5FEAA1CC9B5C5004B61AA /* WKCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCategoryViewController.h; sourceTree = "<group>"; };
 		79C5FEAB1CC9B5C5004B61AA /* WKCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCategoryViewController.m; sourceTree = "<group>"; };
 		79C5FEAC1CC9B5C5004B61AA /* WKCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKCategoryViewController.xib; sourceTree = "<group>"; };
@@ -972,6 +975,8 @@
 				7907619C1CC65D890097EF89 /* UIBarButtonItem+WKExtension.m */,
 				7914E3611CC77A1B001A0C5F /* UIView+WKCustom.h */,
 				7914E3621CC77A1B001A0C5F /* UIView+WKCustom.m */,
+				7996BEA81CDC3D3300BCFEE8 /* WKCustomNavigationView.h */,
+				7996BEA91CDC3D3300BCFEE8 /* WKCustomNavigationView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1557,6 +1562,7 @@
 				790761951CC6545E0097EF89 /* WKRecommendListModel.m in Sources */,
 				790761921CC6544A0097EF89 /* WKNavigtionBar.m in Sources */,
 				790761A01CC66DF30097EF89 /* WKCollectionCell.m in Sources */,
+				7996BEAA1CDC3D3300BCFEE8 /* WKCustomNavigationView.m in Sources */,
 				79FAC4E51CC533300068C093 /* WKMeViewController.m in Sources */,
 				790E476B1CD99B5A00125C9E /* DBManager.m in Sources */,
 				790085E01CCB735F007E5E58 /* WKGuideOverviewCell.m in Sources */,

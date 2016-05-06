@@ -100,7 +100,7 @@
     [bar addSubview:button];
  
     UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    titleBtn.frame = CGRectMake(kScreenWidth / 2 - 50, 8, 100, 30);
+    titleBtn.frame = CGRectMake(kScreenWidth / 2 - 100, 8, 200, 30);
     if ([_titleName isEqualToString:@""]) {
         [titleBtn setTitle:@"专题" forState:UIControlStateNormal];
     }

@@ -57,7 +57,15 @@
                 [UserInfoManager conserveUserID:dataDic[@"data"][@"uid"]];
                 //保存用户的name
                 [UserInfoManager conserveUserName:dataDic[@"data"][@"uname"]];
-                [self dismissViewControllerAnimated:YES completion:nil];
+                UIAlertController *alerController = [UIAlertController alertControllerWithTitle:nil message:@"注册成功" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    if (self.block != nil) {
+                        self.block(self.EmilTF.text, self.passworldTF.text);
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    }
+                }];
+                [alerController addAction:action];
+                [self presentViewController:alerController animated:YES completion:nil];
             }
             
         });

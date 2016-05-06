@@ -141,7 +141,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     [_customNavigationBar addSubview:_navigationBangroundImageView];
     
     _navigationTitle = [[UILabel alloc]init];
-    _navigationTitle.text = [NSString stringWithFormat:@"%@游玩指南", _name_zn];;
+//    _navigationTitle.text = [NSString stringWithFormat:@"%@游玩指南", _name_zn];;
     _navigationTitle.textColor = [UIColor whiteColor];
     _navigationTitle.textAlignment = NSTextAlignmentCenter;
     _navigationTitle.font = [UIFont systemFontOfSize:18.0];

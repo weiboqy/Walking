@@ -135,8 +135,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.navigationController.navigationBar.translucent = NO;
+    
     self.view.backgroundColor = ColorGlobal;
+    
+    self.navigationController.navigationBar.translucent = YES;
 
     [self requestData];
 

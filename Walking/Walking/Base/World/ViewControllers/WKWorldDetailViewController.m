@@ -56,13 +56,11 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     
     [self addCustomNagationBar];
     
-//  [self.navigationController setNavigationBarHidden:NO];
     
     [self parseData];
     
-    // 
+    //chuangjian
     [self createListView];
-    // Do any additional setup after loading the view.
 }
 
 - (void)createListView {
@@ -81,10 +79,7 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
 - (void)addCustomNagationBar {
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
-//    bar.titleLabel.text = _titleName;
-//    bar.titleLabel.center = CGPointMake(kScreenWidth / 2, 44);
-//    bar.titleLabel.bounds = CGRectMake(0, 0, 40, 30);
-//    bar.titleLabel.textAlignment = 2;
+
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(18, 10, 70, 30);
     // 设置返回按钮的图片
