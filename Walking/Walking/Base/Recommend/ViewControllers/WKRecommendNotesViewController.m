@@ -44,7 +44,7 @@
 //收藏分享
 @property (nonatomic, strong) UIBarButtonItem *itemLove;
 @property (nonatomic, assign) BOOL isTure;
-
+@property (nonatomic, strong) UITextView *textView;
 
 @end
 
@@ -126,10 +126,11 @@
 //}
 - (void)createListTableView{
     
-    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64.0)];
     
     self.listTableView.dataSource = self;
     self.listTableView.delegate = self;
+    self.listTableView.bounces = NO;
     
     [self.listTableView registerNib:[UINib nibWithNibName:@"WKNotesListTableViewCell" bundle:nil] forCellReuseIdentifier:@"notesReuse"];
     _headView = [[[NSBundle mainBundle] loadNibNamed:@"WKNotesListHeadView" owner:nil options:nil] lastObject];
@@ -148,10 +149,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = ColorGlobal;
     
-    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.translucent = NO;
+    self.title = @"精选游记";
 
     [self requestData];
 
@@ -197,7 +198,7 @@
 - (void)share{
     WKLog(@"分享");
     
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/articles/"] shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina, UMShareToQQ, UMShareToQzone,UMShareToWechatSession, UMShareToWechatTimeline ,UMShareToEmail, UMShareToSms, UMShareToDouban, UMShareToTencent,nil] delegate:self];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/articles/"] shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina, UMShareToQQ,UMShareToWechatSession, UMShareToWechatTimeline ,UMShareToEmail, UMShareToSms,  UMShareToTencent,nil] delegate:self];
 }
 
 
@@ -217,11 +218,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     WKLog(@"%ld", indexPath.row);
     
-//    self.navigationController.navigationBarHidden = YES;
+
     _imView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     _imView.backgroundColor = [UIColor blackColor];
     _scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    scrollView.alwaysBounceHorizontal = NO;
+
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.contentSize = CGSizeMake(kScreenWidth * self.dataArray.count, 0);
     _scrollView.pagingEnabled = YES;
@@ -230,15 +231,17 @@
     _scrollView.contentOffset = CGPointMake(kScreenWidth * indexPath.row, 0);
 //    scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.delegate = self;
-
     CGFloat flo =  (kScreenWidth - 20) / self.dataArray.count;
+
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(queue, ^{
+//        WKLog(@"imageV 多线程操作");
     
     int i = 0;
     for (WKRecommendNotesDetailModel *model in self.dataArray) {
         i ++;
-        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width * (i - 1), 0, [UIScreen mainScreen].bounds.size.width, (300 / 667.0) * kScreenHeight)];
+        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth * (i - 1), 0, kScreenWidth, (300 / 667.0) * kScreenHeight)];
         
-//        imageV.height = model.photoModel.h * (kScreenWidth / model.photoModel.w);//可以设置图片的高度
 #pragma mark ---- Can't achieve---------
         //剪切设置尺寸 多余的 暂时没有效果
         imageV.contentMode =  UIViewContentModeScaleToFill;
@@ -249,35 +252,43 @@
         CGFloat p = _scrollView.center.y;
         imageVp.y = p;
         imageV.center = imageVp;
+        //(500/ 667.0) * kScreenHeight
+        _textView = [[UITextView alloc] initWithFrame:CGRectMake(kScreenWidth * (i - 1), (500/ 667.0) * kScreenHeight, kScreenWidth, (110/667.0) * kScreenHeight)];
+        _textView.backgroundColor = [UIColor blackColor];
+        _textView.showsVerticalScrollIndicator = NO;
+        _textView.font = [UIFont systemFontOfSize:14.0];
+        _textView.text = model.text;
+        _textView.textColor = [UIColor whiteColor];
+        _textView.editable = NO;
         
-        UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(kScreenWidth * (i - 1), (500/ 667.0) * kScreenHeight, kScreenWidth, (110/667.0) * kScreenHeight)];
-        textView.backgroundColor = [UIColor blackColor];
-        textView.showsVerticalScrollIndicator = NO;
-        textView.font = [UIFont systemFontOfSize:14.0];
-        textView.text = model.text;
-        textView.textColor = [UIColor whiteColor];
-        textView.editable = NO;
         [imageV sd_setImageWithURL:[NSURL URLWithString:model.photo] placeholderImage:PLACEHOLDER];
+
         imageV.userInteractionEnabled = YES;
          UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
         UILongPressGestureRecognizer *longTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTap:)];
-        [imageV addGestureRecognizer:longTap];
-        [imageV addGestureRecognizer:tap];
+            [imageV addGestureRecognizer:longTap];
+            [imageV addGestureRecognizer:tap];
+            [_scrollView addSubview:_textView];
+            [_scrollView addSubview:imageV];
         
-        [_scrollView addSubview:textView];
-        [_scrollView addSubview:imageV];
     }
-    //添加下边的滑动条
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, kScreenWidth - 20, (3/667.0) * kScreenHeight)];//(620/667.0) * kScreenHeight
+        
+ 
+    
+    
+    //添加下边的滑动条(620/667.0) * kScreenHeight
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (630/667.0) * kScreenHeight, kScreenWidth - 20, (3/667.0) * kScreenHeight)];
     view.backgroundColor = [UIColor grayColor];
-    self.scroView = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, flo * (indexPath.row + 1), (3/667.0) * kScreenHeight)];
+    self.scroView = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (630/667.0) * kScreenHeight, flo * (indexPath.row + 1), (3/667.0) * kScreenHeight)];
     self.scroView.backgroundColor = [UIColor orangeColor];
     
     [_imView addSubview:_scrollView];
     [_imView addSubview:view];
     [_imView addSubview:self.scroView];
     
-    [self.view addSubview:_imView];
+    [[UIApplication sharedApplication].keyWindow addSubview:_imView];
+
+//    [self.view addSubview:_imView];
 }
 - (void)longTap:(UILongPressGestureRecognizer *)longTap {
     WKLog(@"长按了图片。。。");
@@ -383,7 +394,7 @@
     CGFloat flo =  (kScreenWidth - 20) / self.dataArray.count;
     if (self.scroView) {
         WKLog(@"scroView....滚动结束了");
-        self.scroView.frame = CGRectMake((10/375.0) * kScreenWidth, (620/667.0) * kScreenHeight, flo * (scrollView.contentOffset.x / kScreenWidth + 1), (3/667.0) * kScreenHeight);
+        self.scroView.frame = CGRectMake((10/375.0) * kScreenWidth, (630/667.0) * kScreenHeight, flo * (scrollView.contentOffset.x / kScreenWidth + 1), (3/667.0) * kScreenHeight);
     }
 }
 

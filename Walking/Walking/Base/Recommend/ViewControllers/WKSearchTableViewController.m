@@ -46,7 +46,7 @@
     NSMutableString *pinyin = [chinese mutableCopy];
     CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformMandarinLatin, NO);
     CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformStripCombiningMarks, NO);
-    NSArray *array = [pinyin componentsSeparatedByString:@" "];
+    NSArray  *array  = [pinyin componentsSeparatedByString:@" "];
     NSString *newStr = [array componentsJoinedByString:@""];
     
 //    NSLog(@"%@", pinyin);
@@ -98,6 +98,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = ColorGlobal;
     _start = 0;
+    self.title = @"搜索结果";
+    
     
 //    WKLog(@"keyStr:%@", self.keyStr);
 //    self.tableView.frame.size.height = [UIScreen mainScreen].bounds.size.height - 64;
