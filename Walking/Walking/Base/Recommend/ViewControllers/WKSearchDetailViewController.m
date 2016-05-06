@@ -68,15 +68,11 @@
             [self.listTableView.mj_header endRefreshing];
             [self.listTableView.mj_footer endRefreshing];
             
-            
+            self.listTableView.tableHeaderView = self.headView;
             self.headView.conutLabel.text = [NSString stringWithFormat:@"%ld 去过", _visited_count];
             self.headView.titleLabel.text = self.titles;
             self.headView.backgroundColor  = ColorGlobal;
-//            //背景图片赋值
-//            NSURL *URL = [NSURL URLWithString:[self.dataArray[0] cover]];
-//            [self.backImageV sd_setImageWithURL:URL];
-//            
-//            WKLog(@"%ld", _visited_count);
+
         });
         [SVProgressHUD dismiss];
         
@@ -92,7 +88,7 @@
     
     _start = 0;
     [self requestDataWithStart:_start];
-    
+    self.title = [NSString stringWithFormat:@"%@", _titles];
 //    self.backImageV = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 //    [self.headView addSubview:self.backImageV];
     
@@ -106,7 +102,7 @@
     //设置头视图
     self.headView = [[NSBundle mainBundle] loadNibNamed:@"WKSearchDetailViewControllerHeadView" owner:nil options:nil].lastObject;
     self.headView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight*0.15);
-    self.listTableView.tableHeaderView = self.headView;
+    
     
     // 下拉刷新
     self.listTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
@@ -153,6 +149,7 @@
     WKSearchLastTableViewController *searchLastVc = [[WKSearchLastTableViewController alloc] init];
     searchLastVc.ID = [self.dataArray[indexPath.row] ID];
     searchLastVc.headImageURL = [self.dataArray[indexPath.row] cover];
+    searchLastVc.titles = self.titles;
     [self.navigationController pushViewController:searchLastVc animated:YES];
 
 }

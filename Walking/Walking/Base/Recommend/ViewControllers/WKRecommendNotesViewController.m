@@ -215,11 +215,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     WKLog(@"%ld", indexPath.row);
     
-//    self.navigationController.navigationBarHidden = YES;
+
     _imView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     _imView.backgroundColor = [UIColor blackColor];
     _scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    scrollView.alwaysBounceHorizontal = NO;
+
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.contentSize = CGSizeMake(kScreenWidth * self.dataArray.count, 0);
     _scrollView.pagingEnabled = YES;
@@ -228,15 +228,17 @@
     _scrollView.contentOffset = CGPointMake(kScreenWidth * indexPath.row, 0);
 //    scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.delegate = self;
-
     CGFloat flo =  (kScreenWidth - 20) / self.dataArray.count;
+
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(queue, ^{
+//        WKLog(@"imageV 多线程操作");
     
     int i = 0;
     for (WKRecommendNotesDetailModel *model in self.dataArray) {
         i ++;
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth * (i - 1), 0, kScreenWidth, (300 / 667.0) * kScreenHeight)];
         
-//        imageV.height = model.photoModel.h * (kScreenWidth / model.photoModel.w);//可以设置图片的高度
 #pragma mark ---- Can't achieve---------
         //剪切设置尺寸 多余的 暂时没有效果
         imageV.contentMode =  UIViewContentModeScaleToFill;
@@ -255,16 +257,22 @@
         _textView.text = model.text;
         _textView.textColor = [UIColor whiteColor];
         _textView.editable = NO;
+        
         [imageV sd_setImageWithURL:[NSURL URLWithString:model.photo] placeholderImage:PLACEHOLDER];
+
         imageV.userInteractionEnabled = YES;
          UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
         UILongPressGestureRecognizer *longTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTap:)];
-        [imageV addGestureRecognizer:longTap];
-        [imageV addGestureRecognizer:tap];
+            [imageV addGestureRecognizer:longTap];
+            [imageV addGestureRecognizer:tap];
+            [_scrollView addSubview:_textView];
+            [_scrollView addSubview:imageV];
         
-        [_scrollView addSubview:_textView];
-        [_scrollView addSubview:imageV];
     }
+        
+ 
+    
+    
     //添加下边的滑动条(620/667.0) * kScreenHeight
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (630/667.0) * kScreenHeight, kScreenWidth - 20, (3/667.0) * kScreenHeight)];
     view.backgroundColor = [UIColor grayColor];
@@ -276,6 +284,7 @@
     [_imView addSubview:self.scroView];
     
     [[UIApplication sharedApplication].keyWindow addSubview:_imView];
+
 //    [self.view addSubview:_imView];
 }
 - (void)longTap:(UILongPressGestureRecognizer *)longTap {

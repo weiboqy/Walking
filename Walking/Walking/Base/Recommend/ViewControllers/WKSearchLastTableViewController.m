@@ -53,16 +53,12 @@
     }];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    //隐藏掉 导航栏
-//    self.navigationController.navigationBarHidden = YES;
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.tableView.frame = CGRectMake(0, 100, kScreenWidth, kScreenHeight);
+    self.title = [NSString stringWithFormat:@"%@", _titles];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"WKSearchLastTableViewControllerCell" bundle:nil] forCellReuseIdentifier:@"searchLast"];
     
