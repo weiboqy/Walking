@@ -60,6 +60,8 @@
 
 
 - (void)requestData{
+    
+    WKLog(@"%@", _ID);
     [SVProgressHUD show];
     [NetWorkRequestManager requestWithType:GET urlString:[NSString stringWithFormat:RecommendTableViewDetailURL, _ID] parDic:@{} finish:^(NSData *data) {
         
@@ -73,20 +75,25 @@
         _imageT = dic[@"trackpoints_thumbnail_image"];
         _avatar_m = dic[@"user"][@"avatar_m"];
         _uName = dic[@"user"][@"name"];
+        
         //cell中模型赋值
         for (NSDictionary *dicT in dic[@"days"]) {
             for (NSDictionary *dicc in dicT[@"waypoints"]) {
                 WKRecommendNotesDetailModel *model = [[WKRecommendNotesDetailModel alloc] init];
                 WKRecommendNotesDetailPhotoModel *photoModel = [[WKRecommendNotesDetailPhotoModel alloc] init];            
                 [model setValuesForKeysWithDictionary:dicc];
-//                WKLog(@"%@", dicc[@"photo_info"]);
-#pragma mark---------bug-------
-//                [photoModel setValuesForKeysWithDictionary:dicc[@"photo_info"]];
+//                WKLog(@"w - h：%@", dicc[@"photo_info"]);
+#pragma mark---------bug完美解决-------
+                if ([dicc[@"photo_info"] isKindOfClass:[NSDictionary class]]) {
+                    [photoModel setValuesForKeysWithDictionary:(NSDictionary *)dicc[@"photo_info"]];
+                }
+            
                 [model setValuesForKeysWithDictionary:dicT];
                 model.photoModel = photoModel;
                 [self.dataArray addObject:model];
             }
         }
+         
 //        WKLog(@"photoModel:%f", [[self.dataArray[0] photoModel] h]);
          dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -94,9 +101,10 @@
 
           //头视图 的空间 赋值
             [self.listTableView reloadData];
+//             
             self.headView.titleLabel.text = _name;
-            [self.headView.imageV sd_setImageWithURL:[NSURL URLWithString:_imageT] placeholderImage:PLACEHOLDER];
-            [self.headView.icon sd_setImageWithURL:[NSURL URLWithString:_avatar_m] placeholderImage:PLACEHOLDER];
+            [self.headView.imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _imageT]] placeholderImage:PLACEHOLDER];
+            [self.headView.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _avatar_m]] placeholderImage:PLACEHOLDER];
 //            WKLog(@"%@", _uName);
             self.headView.nameLabel.text = [NSString stringWithFormat:@"By:%@", _uName];
             NSArray *strArray = [(NSString *)[NSString stringWithFormat:@"%@", _mileage] componentsSeparatedByString:@"."];
@@ -111,10 +119,14 @@
         [SVProgressHUD showErrorWithStatus:@"加载失败!"];
     }];
 }
-
+////拖拽结束的方法
+//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+//    
+//    
+//}
 - (void)createListTableView{
     
-    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     
     self.listTableView.dataSource = self;
     self.listTableView.delegate = self;
@@ -128,7 +140,7 @@
 
     self.listTableView.rowHeight = UITableViewAutomaticDimension;
     self.listTableView.estimatedRowHeight = 20;
-    
+//
     [self.view addSubview:self.listTableView];
 }
 
@@ -136,6 +148,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = ColorGlobal;
     
     self.navigationController.navigationBar.translucent = YES;
@@ -377,7 +390,7 @@
 //#warning =--------has wenti--------
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    WKRecommendNotesDetailModel *model = self.dataArray[indexPath.row];
-//    return  600;//[model cellsHeightWithImageH:model.photoModel.h imageW:model.photoModel.w  textStr:model.text]
+//    return  [model cellsHeightWithImageH:model.photoModel.h imageW:model.photoModel.w  textStr:model.text];//
 //}
 
 

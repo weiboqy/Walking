@@ -71,7 +71,7 @@
     WKTabBarViewController *tabBarVC = [[WKTabBarViewController alloc] init];
     tabBarVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:tabBarVC animated:YES completion:nil];
-    WKLogFun;
+    WKLogFun;//输出 fundation
     
 }
 

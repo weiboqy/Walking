@@ -18,6 +18,9 @@
 #import "WKRecommendStoryModel.h"
 #import "WKRecommendListModel.h"
 #import "WKRecommendListUserModel.h"
+//检测网络状态
+#import "Reachability.h"
+
 #define kStr @"reuse"
 
 @interface WKRecommendViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UITextFieldDelegate>
@@ -233,8 +236,40 @@
     [self requestDataForList];
     [self createListTableView];
     
+#pragma mark ---------检测网络状态---------
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStateChange) name:kReachabilityChangedNotification object:nil];
+//    Reachability *conn =  [Reachability reachabilityForInternetConnection];
+//    [conn startNotifier];
+    
     // Do any additional setup after loading the view from its nib.
 }
+/*
+- (void)networkStateChange{
+      [self checkNetworkState];
+}
+
+- (void)checkNetworkState
+ {
+     // 1.检测wifi状态
+     Reachability *wifi = [Reachability reachabilityForLocalWiFi];
+
+     // 2.检测手机是否能上网络(WIFI\3G\2.5G)
+     Reachability *conn = [Reachability reachabilityForInternetConnection];
+
+    // 3.判断网络状态
+    if ([wifi currentReachabilityStatus] != NotReachable) { // 有wifi
+        NSLog(@"有wifi");
+
+     } else if ([conn currentReachabilityStatus] != NotReachable) { // 没有使用wifi, 使用手机自带网络进行上网
+         NSLog(@"使用手机自带网络进行上网");
+
+    } else { // 没有网络
+        
+         NSLog(@"没有网络");
+     }
+}
+*/
 #pragma mark -----设置搜索框-----
 //点击搜索 执行
 - (void)search{
@@ -279,6 +314,16 @@
     //弹出提示 框
     _alertC = [UIAlertController alertControllerWithTitle:@"加载中.." message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [self.navigationController presentViewController:_alertC animated:YES completion:nil];
+    
+    //3秒执行的方法
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        WKLog(@"取消显示加载");
+        if (_alertC) {
+            [_alertC dismissViewControllerAnimated:YES completion:nil];
+        }
+        
+    });
+    
     //滚动的  item
     CGPoint p = self.headView.collectionView.contentOffset;
     p = CGPointMake( kScreenWidth-14/375.0 * kScreenWidth + p.x, 0);
@@ -420,6 +465,8 @@
     
     self.listTableView.delegate   = self;
     self.listTableView.dataSource = self;
+    //去掉分割线
+//    self.listTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.listTableView registerNib:[UINib nibWithNibName:@"WKListTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
     [self listTableViewHeadView];

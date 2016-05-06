@@ -46,35 +46,40 @@
 
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
-        WKLog(@"第一次启动");
+//        WKLog(@"第一次启动");
         
         WKWelcomeViewController *welcomeVC = [[WKWelcomeViewController alloc]init];
         self.window.rootViewController = welcomeVC;
     }else {
-        WKLog(@"不是第一次启动");
-        // 根视图
+//        WKLog(@"不是第一次启动");
+        
+        // 根视图 制定标签栏
         self.window.rootViewController = [[WKTabBarViewController alloc]init];
         
         _image = [[UIImageView alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
         _image.image = [UIImage imageNamed:@"夜空视角.jpg"];
         [self.window addSubview:_image];
-        [self.window bringSubviewToFront:_image];
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:2.0];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(startupAnimationDone:finished:context:)];
-        _image.alpha = 0.0;
-        _image.frame = CGRectMake(-60, -85, 440, 635);
+        [UIView animateWithDuration:2.0 animations:^{
+            [UIView setAnimationDelegate:self];
+            [UIView setAnimationDidStopSelector:@selector(startupAnimationDone:finished:context:)];
+            _image.alpha = 0.0;
+            _image.frame = CGRectMake(-60, -85, 440, 635);
+        }];
     }
  
     [UIView commitAnimations];
+    
     return YES;
 }
-- (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+
+- (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+//    WKLogFun;
     [_image removeFromSuperview];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
     BOOL result = [UMSocialSnsService handleOpenURL:url];
     if (result == FALSE) {
         WKLog(@"share others");
@@ -96,7 +101,7 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface. 
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

@@ -79,7 +79,6 @@
         NSString *ID       = [set stringForColumn:@"ID"];
         NSString *imageURL = [set stringForColumn:@"imageURL"];
         NSString *type     = [set stringForColumn:@"type"];
-        
         [array addObject:title];
         [array addObject:ID];
         [array addObject:imageURL];

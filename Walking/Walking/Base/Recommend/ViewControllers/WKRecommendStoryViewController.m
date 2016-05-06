@@ -105,7 +105,7 @@ static NSString * const imageCellID = @"listCell";
 
 - (void)createListTableView{
     
-    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
+    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     self.listTableView.backgroundColor = [UIColor clearColor];
     self.listTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.listTableView.delegate = self;
@@ -113,10 +113,11 @@ static NSString * const imageCellID = @"listCell";
     
     //添加背景图
     UIImageView *imageV = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
-        effectview.frame = [UIScreen mainScreen].bounds;
-        effectview.alpha = 1;
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+    effectview.frame = [UIScreen mainScreen].bounds;
+    effectview.alpha = 1;
+    
     [imageV sd_setImageWithURL:[NSURL URLWithString:self.imageURL]];
         effectview.alpha = 0.5;
     [imageV sd_setImageWithURL:[NSURL URLWithString:self.imageURL] placeholderImage:PLACEHOLDER];

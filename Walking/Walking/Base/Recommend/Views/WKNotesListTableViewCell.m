@@ -20,9 +20,14 @@
     NSString *string = [NSString stringWithFormat:@"%@", detailModel.local_time];
     NSString *str = [string substringWithRange:NSMakeRange(5, 5)];
     _dayTimeLabel.text = [NSString stringWithFormat:@"第%@天 %@", detailModel.DAY, str];
-    _timeLabel.text = [NSString stringWithFormat:@"%@", detailModel.local_time];
 
-    [_imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", detailModel.photo]] placeholderImage:PLACEHOLDER];
+    _timeLabel.text = [NSString stringWithFormat:@"%@", detailModel.local_time];
+   
+//    if (![detailModel.photo isEqualToString:@""]) {
+//        WKLog(@"imageV 地址  空");
+        [_imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", detailModel.photo]] placeholderImage:PLACEHOLDER];
+//    }
+    
     _imageV.layer.cornerRadius = 6;
     _imageV.layer.masksToBounds = YES;
     _imageV.contentMode = UIViewContentModeScaleAspectFill;
@@ -31,6 +36,7 @@
     _imageV.userInteractionEnabled = YES;
     
     _contentLabel.text = [NSString stringWithFormat:@"%@", detailModel.text];
+//    WKLog(@"%@", detailModel.text);
     
     self.imageC.layer.cornerRadius = 6;
     self.imageC.layer.masksToBounds = YES;

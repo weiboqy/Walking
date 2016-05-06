@@ -31,6 +31,7 @@ static NSString * const TableViewCellID = @"TableCellID";
     return _dataArr;
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -47,9 +48,11 @@ static NSString * const TableViewCellID = @"TableCellID";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+//    self.navigationController.navigationBar.translucent = NO;
+    // 标题
+    self.navigationItem.title = @"我的收藏";
     // 加载数据
     [self loadData];
-    
     // 创建TableView
     [self setupTableView];
     

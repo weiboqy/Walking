@@ -40,6 +40,6 @@
     CGFloat textH = [textStr boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil].size.height;
      //返回
 //    WKLog(@"%f", imageHeight + textH + 60.0);
-    return imageHeight + 10.0/667.0* kScreenHeight + textH + 60.0/667*kScreenHeight;   
+    return imageHeight + textH + 60.0/667*kScreenHeight;
 }
 @end
