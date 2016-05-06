@@ -216,7 +216,7 @@
     
     //search 判断点击次数
     _clickTime = 0;
-//    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.translucent = NO;
     self.title = @"推荐";
     self.view.backgroundColor = ColorGlobal;
 #pragma mark --------搜索按钮-------
@@ -285,7 +285,7 @@
     //添加手势回收键盘
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     [_searchView addGestureRecognizer:tap];
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 50/667.0*kScreenHeight)];
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 50/667.0*kScreenHeight)];
 //    _searchBar.backgroundColor = [UIColor grayColor];
     //    _searchBar.barStyle = UIBarStyleBlackTranslucent;//透明度设置
     _searchBar.placeholder = @"搜索";

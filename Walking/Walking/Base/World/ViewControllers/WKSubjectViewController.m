@@ -181,6 +181,7 @@
     subjectDetailVC.image_url = model.image_url;
     subjectDetailVC.name = model.name;
 //    [self.navigationController pushViewController:subjectDetailVC animated:YES];
+    //模态执行的 方法
     subjectDetailVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:subjectDetailVC animated:YES completion:nil];
 }
