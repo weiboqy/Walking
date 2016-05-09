@@ -216,9 +216,9 @@
     WKLog(@"%ld", indexPath.row);
     
 
-    _imView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    _imView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64)];
     _imView.backgroundColor = [UIColor blackColor];
-    _scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64)];
 
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.contentSize = CGSizeMake(kScreenWidth * self.dataArray.count, 0);
@@ -250,7 +250,7 @@
         imageVp.y = p;
         imageV.center = imageVp;
         //(500/ 667.0) * kScreenHeight
-        _textView = [[UITextView alloc] initWithFrame:CGRectMake(kScreenWidth * (i - 1), (500/ 667.0) * kScreenHeight, kScreenWidth, (110/667.0) * kScreenHeight)];
+        _textView = [[UITextView alloc] initWithFrame:CGRectMake(kScreenWidth * (i - 1), (456/ 667.0) * kScreenHeight, kScreenWidth, (110/667.0) * kScreenHeight)];
         _textView.backgroundColor = [UIColor blackColor];
         _textView.showsVerticalScrollIndicator = NO;
         _textView.font = [UIFont systemFontOfSize:14.0];
@@ -274,18 +274,18 @@
     
     
     //添加下边的滑动条(620/667.0) * kScreenHeight
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (630/667.0) * kScreenHeight, kScreenWidth - 20, (3/667.0) * kScreenHeight)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (576/667.0) * kScreenHeight, kScreenWidth - 20, (3/667.0) * kScreenHeight)];
     view.backgroundColor = [UIColor grayColor];
-    self.scroView = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (630/667.0) * kScreenHeight, flo * (indexPath.row + 1), (3/667.0) * kScreenHeight)];
+    self.scroView = [[UIView alloc] initWithFrame:CGRectMake((10/375.0) * kScreenWidth, (576/667.0) * kScreenHeight, flo * (indexPath.row + 1), (3/667.0) * kScreenHeight)];
     self.scroView.backgroundColor = [UIColor orangeColor];
     
     [_imView addSubview:_scrollView];
     [_imView addSubview:view];
     [_imView addSubview:self.scroView];
     
-    [[UIApplication sharedApplication].keyWindow addSubview:_imView];
+//    [[UIApplication sharedApplication].keyWindow addSubview:_imView];
 
-//    [self.view addSubview:_imView];
+    [self.view addSubview:_imView];
 }
 - (void)longTap:(UILongPressGestureRecognizer *)longTap {
     WKLog(@"长按了图片。。。");
@@ -391,7 +391,7 @@
     CGFloat flo =  (kScreenWidth - 20) / self.dataArray.count;
     if (self.scroView) {
         WKLog(@"scroView....滚动结束了");
-        self.scroView.frame = CGRectMake((10/375.0) * kScreenWidth, (630/667.0) * kScreenHeight, flo * (scrollView.contentOffset.x / kScreenWidth + 1), (3/667.0) * kScreenHeight);
+        self.scroView.frame = CGRectMake((10/375.0) * kScreenWidth, (576/667.0) * kScreenHeight, flo * (scrollView.contentOffset.x / kScreenWidth + 1), (3/667.0) * kScreenHeight);
     }
 }
 
