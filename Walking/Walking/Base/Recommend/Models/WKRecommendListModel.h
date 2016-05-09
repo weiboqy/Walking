@@ -11,6 +11,7 @@
 
 @interface WKRecommendListModel : NSObject
 
+
 @property (nonatomic, strong) NSString *cover_image; //背景大图
 @property (nonatomic, strong) NSString *name;    //标题
 @property (nonatomic, strong) NSString *popular_place_str;//地址详情名字

@@ -94,13 +94,12 @@
     button.frame = CGRectMake(18, 10, 70, 30);
     // 设置返回按钮的图片
     [button setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-    // 自适应尺寸
-    [button sizeToFit];
+    
     [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:button];
  
     UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    titleBtn.frame = CGRectMake(kScreenWidth / 2 - 50, 8, 100, 30);
+    titleBtn.frame = CGRectMake(kScreenWidth / 2 - 100, 8, 200, 30);
     if ([_titleName isEqualToString:@""]) {
         [titleBtn setTitle:@"专题" forState:UIControlStateNormal];
     }

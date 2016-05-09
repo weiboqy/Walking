@@ -32,6 +32,9 @@
 @property (assign, nonatomic)CGFloat bgViewOffsetY;
 @property (strong, nonatomic)UIView *bgView;
 
+@property (strong, nonatomic) WKCustomNavigationView *customNavigationView;
+@property (strong, nonatomic) UIImageView *imageView;
+
 @property (nonatomic, strong) UIView *customNavigationBar;
 @property (nonatomic, strong) UIImageView *navigationBangroundImageView;
 @property (nonatomic, strong) UILabel *navigationTitle;
@@ -81,7 +84,9 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     // 自定义导航条
 //    [self addCustomNagationBar];
     [self buildNavigationBar];
-    [self setBackButton];
+//    [self setupNavigtionView];
+    
+//    [self setBackButton];
 }
 
 - (void)setBackButton {
@@ -173,39 +178,32 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 // 创建列表展示
 - (void)createListView {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    
-    
+   
     UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, (624.0 / 1024) * kScreenWidth * 1.8 - 200) ];
     bgView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:bgView];
     
-//    _infoButton1 = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [_infoButton1 setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-//    _infoButton1.frame = CGRectMake(10, 30, 30, 30);
-//    [_infoButton1 addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 1.8, (624.0 / 1024) * kScreenWidth * 1.8 - 200) ];
-    imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _image_url]]]];
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 1.8, (624.0 / 1024) * kScreenWidth * 1.8 - 200) ];
+    _imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _image_url]]]];
 
 //    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
 //    WKLog(@"%@", _image_url);
     _bgView = bgView;
-    [_bgView addSubview:imageView];
+    [_bgView addSubview:_imageView];
 //    WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
 //    WKLog(@"%@", _image_url);
 
     WKLog(@"heigth = %f",  (624.0 / 1024) * kScreenWidth);
     WKLog(@"%@", _image_url);
-    _bannerImageView = imageView;
-    [bgView addSubview:imageView];
+    _bannerImageView = _imageView;
+    [bgView addSubview:_imageView];
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0 , kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight ) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.bounces = NO;
     self.tableView.tableHeaderView = bgView;
     // 自适应高度
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -216,6 +214,19 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     [self.tableView registerClass:[WKTableHeaderView class] forHeaderFooterViewReuseIdentifier:tableHeaderID];
     
     [self.view addSubview:self.tableView];
+}
+
+- (void)setupNavigtionView {
+    _customNavigationView = [[WKCustomNavigationView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 64)];
+    [_customNavigationView.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _image_url]] placeholderImage:PLACEHOLDER];
+    _customNavigationView.back.frame = CGRectMake(10, 27, 50, 30);
+    [_customNavigationView.back addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+    _customNavigationView.back1.frame = CGRectMake(10, 27, 50, 30);
+    [_customNavigationView.back1 addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+    _customNavigationView.share.frame = CGRectMake(kScreenWidth - 70, 27, 50, 30);
+    _customNavigationView.share1.frame = CGRectMake(kScreenWidth - 70, 27, 50, 30);
+    _customNavigationView.navigationBar.alpha = 0;
+    [self.view addSubview:_customNavigationView];
 }
 
 // 透明导航栏
@@ -243,7 +254,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
     [_customNavigationBar addSubview:_navigationBangroundImageView];
     
     _navigationTitle = [[UILabel alloc]init];
-    _navigationTitle.text = [NSString stringWithFormat:@"%@游玩指南", _name_zn];;
+//    _navigationTitle.text = [NSString stringWithFormat:@"%@游玩指南", _name_zn];;
     _navigationTitle.textColor = [UIColor whiteColor];
     _navigationTitle.textAlignment = NSTextAlignmentCenter;
     _navigationTitle.font = [UIFont systemFontOfSize:18.0];
@@ -284,7 +295,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
 
 // 视图将要出现时,_customNavigationBar的透明度为0,一开始不让它显示
 - (void)viewWillAppear:(BOOL)animated {
-    _customNavigationBar.alpha = 0.1;
+    _customNavigationView.navigationBar.alpha = 0;
 }
 
 // 导航条随着滚动而透明度变化
@@ -304,6 +315,7 @@ static NSString * const tableHeaderID = @"tableHeaderID";
         _customNavigationBar.alpha = 1.0;
     }
 }
+
 
 // 返回按钮
 - (void)backClick {

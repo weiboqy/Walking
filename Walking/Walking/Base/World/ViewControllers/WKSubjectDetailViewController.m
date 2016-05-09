@@ -131,6 +131,7 @@ static NSString * const ImageCellID = @"imageCell";
 }
 /**/
 - (void)addCustomNagationBar {
+    
     // NavigationBar
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
     bar.backgroundColor = [UIColor clearColor];
@@ -144,7 +145,7 @@ static NSString * const ImageCellID = @"imageCell";
     [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    titleBtn.frame = CGRectMake(kScreenWidth / 2 - 50, 8, 100, 30);
+    titleBtn.frame = CGRectMake(kScreenWidth / 2 - 100, 8, 200, 30);
     [titleBtn setTitle:self.name forState:UIControlStateNormal];
     [titleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
@@ -268,7 +269,7 @@ static NSString * const ImageCellID = @"imageCell";
     
     UIImageView *image = [[UIImageView alloc]init];
     [image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", model.image_url]]];
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/articles/%@", model.ID] shareImage:image shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina, UMShareToQQ, UMShareToQzone,UMShareToWechatSession, UMShareToWechatTimeline ,UMShareToEmail, UMShareToSms,  UMShareToTencent,nil] delegate:self];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/articles/%@", model.ID] shareImage:image shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina, UMShareToQQ,UMShareToWechatSession, UMShareToWechatTimeline ,UMShareToEmail, UMShareToSms,  UMShareToTencent,nil] delegate:self];
 }
 // 创建头视图
 - (void)createHeadeView {

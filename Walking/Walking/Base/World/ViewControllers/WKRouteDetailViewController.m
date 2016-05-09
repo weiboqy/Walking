@@ -182,7 +182,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     [_customNavigationBar addSubview:_navigationBangroundImageView];
     
     _navigationTitle = [[UILabel alloc]init];
-    _navigationTitle.text = [NSString stringWithFormat:@"%@游玩指南", _name_zn];;
+//    _navigationTitle.text = [NSString stringWithFormat:@"%@游玩指南", _name_zn];;
     _navigationTitle.textColor = [UIColor whiteColor];
     _navigationTitle.textAlignment = NSTextAlignmentCenter;
     _navigationTitle.font = [UIFont systemFontOfSize:18.0];
@@ -207,8 +207,6 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
     effectView.frame = CGRectMake(0, 0, kScreenWidth, 64);
     [_navigationBangroundImageView addSubview:effectView];
-    _navigationTitle.frame = CGRectMake(kScreenWidth / 2 - 50, 32, 100, 30);
-    
     _navigationTitle.textAlignment = NSTextAlignmentCenter;
     metrics = @{@"WB":@(34)};
     visualFormats =  @[@"H:|[_navigationBangroundImageView]|",
@@ -260,18 +258,10 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     UIImageView *image = [[UIImageView alloc]init];
     [image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", routeModel.image_url]]];
     // dibu展示
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/plans/%@", routeModel.ID] shareImage:image shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToQzone,UMShareToEmail, UMShareToSms, UMShareToWechatTimeline, UMShareToTencent,   nil] delegate:self];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"570bb59a67e58e78b30005a0" shareText:[NSString stringWithFormat:@"我在Walking看到一个有趣的游记哦,这是网址:http://chanyouji.com/plans/%@", routeModel.ID] shareImage:image shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,  UMShareToWechatSession, UMShareToQQ, UMShareToEmail, UMShareToSms, UMShareToWechatTimeline, UMShareToTencent,   nil] delegate:self];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    if (self.dataArr.count == 0) {
-//        return 0;
-//    }else {
-//        
-//        NSDictionary *dic = self.dataArr[section];
-//        WKLog(@"=====%ld", [dic allKeys].count);
-//        return [dic allKeys].count;
-//    }
     return self.dataArr.count;
 }
 

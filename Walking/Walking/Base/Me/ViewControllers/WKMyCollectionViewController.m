@@ -31,17 +31,23 @@ static NSString * const TableViewCellID = @"TableCellID";
     return _dataArr;
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-//    [self.tableView reloadData];
-    
-    
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    // 加载数据
+//    [self loadData];
+//    
+//    // 创建TableView
+//    [self setupTableView];
+    
+    // 标题
+    self.navigationItem.title = @"我的收藏";
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 //    self.navigationController.navigationBar.translucent = NO;
     // 标题
     self.navigationItem.title = @"我的收藏";
@@ -50,9 +56,8 @@ static NSString * const TableViewCellID = @"TableCellID";
     // 创建TableView
     [self setupTableView];
     
-    // Do any additional setup after loading the view from its nib.
+    self.navigationController.navigationBar.translucent = NO;
 }
-
 // 加载数据
 - (void)loadData {
     WKCollectModel *model = [[WKCollectModel alloc]init];

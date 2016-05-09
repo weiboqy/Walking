@@ -33,8 +33,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
     // 全局色
     self.view.backgroundColor = ColorGlobal;
     
