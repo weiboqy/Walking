@@ -60,8 +60,7 @@ static NSString * const TableViewCellID = @"TableViewCellID";
     button.frame = CGRectMake(18, 10, 70, 30);
     // 设置返回按钮的图片
     [button setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-    // 自适应尺寸
-    [button sizeToFit];
+  
     [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:button];
     [self.view addSubview:bar];

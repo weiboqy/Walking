@@ -81,11 +81,11 @@ static NSString * const WorldDetailCellID = @"WorldDetailCellID";
     WKNavigtionBar *bar = [[WKNavigtionBar alloc]initWithFrame:CGRectMake(0, 20, kScreenHeight, 44)];
 
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(18, 10, 70, 30);
+    button.frame = CGRectMake(-10, 10, 70, 30);
+    
     // 设置返回按钮的图片
     [button setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-    // 自适应尺寸
-    [button sizeToFit];
+    
     [button addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:button];
     

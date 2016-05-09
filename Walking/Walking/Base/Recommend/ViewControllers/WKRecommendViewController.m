@@ -332,6 +332,7 @@
 
 }
 
+
 - (void)loadNewData{
     // 马上进入刷新状态
     //    [self.listTableView.mj_header beginRefreshing];
